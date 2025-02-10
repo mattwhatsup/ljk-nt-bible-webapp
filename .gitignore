@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+repo-ljk-nt-bible/*
+!repo-ljk-nt-bible/.dir
