@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-repo-ljk-nt-bible/*
-!repo-ljk-nt-bible/.dir
+repo/*
+!repo/.dir
 
 public/*
 !public/.dir
