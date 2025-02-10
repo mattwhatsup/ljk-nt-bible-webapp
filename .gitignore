@@ -25,3 +25,6 @@ dist-ssr
 
 repo-ljk-nt-bible/*
 !repo-ljk-nt-bible/.dir
+
+public/*
+!public/.dir
