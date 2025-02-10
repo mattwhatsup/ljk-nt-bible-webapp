@@ -7,6 +7,7 @@ import React, { FC } from 'react'
 import { transform } from '@babel/standalone'
 
 const jsxCode = `<button onClick={() => alert("Hello!")}>Click Me</button>`
+const jsxCode2 = `<b >Click Me</b>`
 
 type ParsedComponent = FC | null
 
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <div dangerouslySetInnerHTML={{ __html: jsxCode2 }}></div>
         {/*Comp && <Comp />*/}
         <Counter />
       </header>
