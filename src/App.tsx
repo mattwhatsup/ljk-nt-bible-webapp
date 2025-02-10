@@ -8,7 +8,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         {/*Comp && <Comp />*/}
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" className="App-logo" />
         <Counter />
         <Quotes />
       </header>
