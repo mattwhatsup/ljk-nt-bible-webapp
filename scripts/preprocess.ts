@@ -19,4 +19,3 @@ const html = fs.readFileSync(
   'utf-8',
 )
 const dom = new JSDOM(html)
-console.log(dom.window.document.body.children.length)

@@ -1,65 +1,35 @@
-import "./App.css"
-import { Counter } from "./features/counter/Counter"
-import { Quotes } from "./features/quotes/Quotes"
-import logo from "./logo.svg"
+import './App.css'
+import { Counter } from './features/counter/Counter'
+import { Quotes } from './features/quotes/Quotes'
+import logo from './logo.svg'
 
+import React, { FC } from 'react'
+import { transform } from '@babel/standalone'
+
+const jsxCode = `<button onClick={() => alert("Hello!")}>Click Me</button>`
+
+type ParsedComponent = FC | null
+
+function parseJSX(jsxString: string): ParsedComponent {
+  try {
+    const transpiledCode = transform(jsxString, { presets: ['react'] }).code
+    if (!transpiledCode) return null
+
+    // 生成一个 React 组件
+    // eslint-disable-next-line no-new-func
+    return new Function('React', `return () => ${transpiledCode}`)(React)
+  } catch (error) {
+    console.error('JSX 解析错误:', error)
+    return null
+  }
+}
 const App = () => {
+  const Comp = parseJSX(jsxCode)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/*Comp && <Comp />*/}
         <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Quotes />
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://reselect.js.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Reselect
-          </a>
-        </span>
       </header>
     </div>
   )
