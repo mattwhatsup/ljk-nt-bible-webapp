@@ -1,7 +1,5 @@
-import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { JSDOM } from 'jsdom'
 import { outputResource, readResource, removeResources } from './includes/io'
 import { books, langs } from './includes/consts'
 
