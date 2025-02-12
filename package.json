@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit",
-    "preprocess": "npx tsx scripts/preprocess.ts"
+    "preprocess": "npx tsx src/scripts/preprocess.ts"
   },
   "dependencies": {
     "@babel/standalone": "^7.26.8",

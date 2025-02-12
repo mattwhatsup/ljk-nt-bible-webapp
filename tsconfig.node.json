@@ -7,5 +7,5 @@
     "target": "ES2015",
     "downlevelIteration": true
   },
-  "include": ["vite.config.ts", "scripts"]
+  "include": ["vite.config.ts"]
 }

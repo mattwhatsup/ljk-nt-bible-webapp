@@ -8,8 +8,8 @@ const __dirname = path.dirname(__filename)
 
 console.log('进行预处理...')
 
-const outputDir = path.join(__dirname, '../public/resources')
-const repoDir = path.join(__dirname, '../repo/ljk-nt-bible')
+const outputDir = path.join(__dirname, '../../public/resources')
+const repoDir = path.join(__dirname, '../../repo/ljk-nt-bible')
 console.log(`清空输出目录: ${outputDir}`)
 removeResources(outputDir)
 //
