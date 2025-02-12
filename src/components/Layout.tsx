@@ -1,6 +1,7 @@
 // filepath: /Users/mattzhou/Documents/Bible/梁木老师翻译的圣经/ljk-nt-bible-webapp/src/components/Layout.tsx
 import React from 'react'
 import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import ResponsiveMenu from './ResponsiveMenu'
 
 interface LayoutProps {
   children: React.ReactNode
