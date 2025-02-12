@@ -15,7 +15,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["vitest/globals"],
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["vite.config.ts"],
