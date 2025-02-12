@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import styles from "./Counter.module.css"
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import styles from './Counter.module.css'
 import {
   decrement,
   increment,
@@ -10,13 +10,13 @@ import {
   incrementIfOdd,
   selectCount,
   selectStatus,
-} from "./counterSlice"
+} from './counterSlice'
 
 export const Counter = () => {
   const dispatch = useAppDispatch()
   const count = useAppSelector(selectCount)
   const status = useAppSelector(selectStatus)
-  const [incrementAmount, setIncrementAmount] = useState("2")
+  const [incrementAmount, setIncrementAmount] = useState('2')
 
   const incrementValue = Number(incrementAmount) || 0
 
@@ -49,6 +49,7 @@ export const Counter = () => {
           type="number"
           onChange={e => {
             setIncrementAmount(e.target.value)
+            console.log('change', e.target.value)
           }}
         />
         <button
@@ -59,7 +60,7 @@ export const Counter = () => {
         </button>
         <button
           className={styles.asyncButton}
-          disabled={status !== "idle"}
+          disabled={status !== 'idle'}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
