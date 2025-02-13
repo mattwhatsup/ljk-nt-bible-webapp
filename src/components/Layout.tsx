@@ -1,7 +1,6 @@
 // filepath: /Users/mattzhou/Documents/Bible/梁木老师翻译的圣经/ljk-nt-bible-webapp/src/components/Layout.tsx
 import React from 'react'
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
-import ResponsiveMenu from './ResponsiveMenu'
+import { Box, Container, Heading, Text, Stack } from '@chakra-ui/react'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -19,6 +18,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Box as="footer" py={4}>
         <Text>© 2025 圣经阅读 WebApp</Text>
       </Box>
+      <Stack hideFrom="md">
+        <Text>This text will be hidden from the `md` breakpoint</Text>
+      </Stack>
     </Container>
   )
 }
