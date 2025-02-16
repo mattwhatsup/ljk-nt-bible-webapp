@@ -1,7 +1,6 @@
 // filepath: /Users/mattzhou/Documents/Bible/梁木老师翻译的圣经/ljk-nt-bible-webapp/src/components/Layout.tsx
 import React from 'react'
 import { Box, Container, Heading, Text, Stack } from '@chakra-ui/react'
-import Sidebar from './Sidebar'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -22,7 +21,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Stack hideFrom="md">
         <Text>This text will be hidden from the `md` breakpoint</Text>
       </Stack>
-      <Sidebar />
     </Container>
   )
 }
