@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Container maxW="full" px={0}>
+    <Container maxW="2xl" px={0}>
       <Box as="header" py={4}>
         <Heading as="h1">圣经阅读 WebApp</Heading>
       </Box>

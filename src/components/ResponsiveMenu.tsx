@@ -12,9 +12,13 @@ import {
 } from '@/components/ui/drawer'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
+import { CgReadme } from 'react-icons/cg'
+import { GoInfo } from 'react-icons/go'
+import { BsAt } from 'react-icons/bs'
+import { FiImage } from 'react-icons/fi'
 
 const MenuItems = ({ children }: { children: React.ReactNode }) => (
-  <Box mt={{ base: 4, md: 0 }} mr={6} display="block">
+  <Box mt={{ base: 4, md: 0 }} mr={2} display="block">
     {children}
   </Box>
 )
@@ -23,15 +27,19 @@ const ResponsiveMenu = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <Box>
+    <Box
+      display={'flex'}
+      width={'full'}
+      bg={'teal.500'}
+      justifyContent={'center'}
+    >
       <Flex
         as="nav"
         align="center"
         justify="space-between"
         wrap="wrap"
-        padding="1.5rem"
-        bg="teal.500"
         color="white"
+        width={'2xl'}
       >
         <DrawerRoot
           open={open}
@@ -43,8 +51,13 @@ const ResponsiveMenu = () => {
             <Box
               display={{ base: 'block', md: 'none' }}
               onClick={() => setOpen(true)}
+              padding={'1.2rem'}
             >
-              <IconButton variant="outline" aria-label="Open Menu">
+              <IconButton
+                variant="outline"
+                aria-label="Open Menu"
+                color={'white'}
+              >
                 <GiHamburgerMenu />
               </IconButton>
             </Box>
@@ -69,10 +82,38 @@ const ResponsiveMenu = () => {
           width={{ md: 'auto' }}
           alignItems="center"
           flexGrow={1}
+          py="1.2rem"
         >
-          <MenuItems>Home</MenuItems>
-          <MenuItems>About</MenuItems>
-          <MenuItems>Contact</MenuItems>
+          <MenuItems>
+            <IconButton
+              colorScheme={'purple'}
+              px={'1em'}
+              color={'white'}
+              bg={'transparent'}
+              aria-pressed={true}
+              _active={{ bg: 'teal.600' }}
+              _hover={{ bg: 'teal.600' }}
+              variant={'outline'}
+            >
+              <CgReadme /> 阅读
+            </IconButton>
+          </MenuItems>
+          <MenuItems>
+            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <GoInfo /> 关于
+            </IconButton>
+          </MenuItems>
+          <MenuItems>
+            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <BsAt /> 引用
+            </IconButton>
+          </MenuItems>
+
+          <MenuItems>
+            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <FiImage /> 插图
+            </IconButton>
+          </MenuItems>
         </Box>
       </Flex>
     </Box>
