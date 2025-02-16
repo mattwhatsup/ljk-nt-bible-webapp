@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import App from './App'
 import { store } from './app/store'
+import { Provider as ChakraProvider } from '@/components/ui/provider'
 import './index.css'
 
 const container = document.getElementById('root')
@@ -13,7 +14,9 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App />
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
       </Provider>
     </React.StrictMode>,
   )
