@@ -1,4 +1,3 @@
-import BibleReader from './components/BibleReader'
 import Layout from './components/Layout'
 import ResponsiveMenu from './components/ResponsiveMenu'
 import { Routes, Route, Navigate } from 'react-router-dom'
@@ -10,17 +9,15 @@ import Chapter from './pages/Chapter'
 const App = () => {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Navigate to="/book/mt/1" />} />
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/book/:book" element={<Book />}>
-          <Route path=":chapter" element={<Chapter />} />
-        </Route>
-        <Route path="/about" element={<About />} />
-      </Routes>
       <ResponsiveMenu />
       <Layout>
-        <BibleReader />
+        <Routes>
+          <Route path="/" element={<Navigate to="/book/mt/1" />} />
+          <Route path="/book/:book" element={<Book />}>
+            <Route path=":chapter" element={<Chapter />} />
+          </Route>
+          <Route path="/about" element={<About />} />
+        </Routes>
       </Layout>
     </div>
   )
