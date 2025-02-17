@@ -32,6 +32,8 @@ const ResponsiveMenu = () => {
       width={'full'}
       bg={'teal.500'}
       justifyContent={'center'}
+      position={'fixed'}
+      zIndex={100}
     >
       <Flex
         as="nav"

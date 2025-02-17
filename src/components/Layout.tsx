@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Container maxW="2xl" px={0}>
+    <Container maxW="2xl" px={0} pt={20}>
       <Box as="main" py={4}>
         <Box borderWidth="1px" borderRadius="lg" p={4}>
           {children}
