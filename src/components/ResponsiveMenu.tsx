@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Flex, IconButton, Button, Stack } from '@chakra-ui/react'
 import {
   DrawerBackdrop,

@@ -1,7 +1,6 @@
 import Layout from './components/Layout'
 import ResponsiveMenu from './components/ResponsiveMenu'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './pages/Home'
+import { Routes, Route, Navigate, useParams, Outlet } from 'react-router-dom'
 import About from './pages/About'
 import Book from './pages/Book'
 import Chapter from './pages/Chapter'
@@ -10,14 +9,36 @@ const App = () => {
   return (
     <div className="App">
       <ResponsiveMenu />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to="/book/mt/1" />} />
-          <Route path="/book/:book/:chapter?" element={<Book />} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/book/mt/1" />} />
+
+        <Route element={<OtherLayout />}>
           <Route path="/about" element={<About />} />
-        </Routes>
-      </Layout>
+        </Route>
+        <Route path="/book/:book/:chapter?" element={<BookLayout />}>
+          <Route index element={<Book />} />
+          <Route path=":chapter" element={<Chapter />} />
+        </Route>
+      </Routes>
     </div>
+  )
+}
+
+const BookLayout = () => {
+  const { book } = useParams<{ book: string }>()
+
+  return (
+    <Layout forBook>
+      <Outlet />
+    </Layout>
+  )
+}
+
+const OtherLayout = () => {
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
   )
 }
 
