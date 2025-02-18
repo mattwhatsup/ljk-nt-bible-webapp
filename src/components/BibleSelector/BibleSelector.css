@@ -1,23 +1,31 @@
-.book-list-header > * + * {
-  @apply ml-1;
-}
 .book-list > li {
-  @apply text-sm leading-6 border-b border-gray-100 pt-1 pb-1 indent-2;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity));
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  text-indent: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
 }
 .book-list > li.active {
-  @apply bg-gray-200;
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 238 238 / var(--tw-bg-opacity));
 }
 .book-grid {
-  @apply grid grid-cols-4;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .book-grid > li {
-  @apply border text-center m-0.5 leading-10 rounded-sm;
+  margin: 0.125rem;
+  border-radius: 0.125rem;
+  border-width: 1px;
+  text-align: center;
+  line-height: 2.5rem;
 }
 .book-grid > li.active {
-  @apply bg-gray-200;
-}
-.list-height {
-  @apply h-[23rem];
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 238 238 / var(--tw-bg-opacity));
 }
 
 /* .list-content::-webkit-scrollbar {

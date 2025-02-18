@@ -1,3 +1,4 @@
+import { Box, List } from '@chakra-ui/react'
 import type { FunctionComponent, MouseEvent } from 'react'
 
 interface BibleSelectorItemProps {
@@ -12,12 +13,16 @@ const BibleSelectorItem: FunctionComponent<BibleSelectorItemProps> = ({
   onClick,
 }) => {
   return (
-    <li
+    <Box
+      as="li"
       className={`hover:bg-gray-50 ${active ? 'active' : ''}`}
+      _hover={{
+        backgroundColor: 'gray.50',
+      }}
       onClick={onClick}
     >
       <span>{label}</span>
-    </li>
+    </Box>
   )
 }
 

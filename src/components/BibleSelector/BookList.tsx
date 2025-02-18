@@ -5,9 +5,10 @@ import { OtOrNt } from '../../app/api'
 import { SelectedValueContext } from '.'
 import { book_filter } from '../../utils/book-filter'
 import BibleSelectorItem from './BibleSelectorItem'
-import { Box, Icon } from '@chakra-ui/react'
-import { FaTh } from 'react-icons/fa'
+import { Box, HStack, Icon, Input } from '@chakra-ui/react'
+import { FaSearch, FaTh } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
+import { InputGroup } from '../ui/input-group'
 
 enum ListStyle {
   grid = 'grid',
@@ -57,9 +58,15 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
               return (
                 books.length > 0 && (
                   <>
-                    <div className=" text-lg mt-2 sticky top-0 bg-white">
+                    <Box
+                      fontSize={'lg'}
+                      mt={2}
+                      position={'sticky'}
+                      top={0}
+                      bg={'white'}
+                    >
                       {group.name}
-                    </div>
+                    </Box>
                     <ul className={`book-${style} mt-2`}>
                       {books.map(book => (
                         <BibleSelectorItem
@@ -112,20 +119,26 @@ const BookList: FunctionComponent<BookListProps> = ({ className }) => {
 
   return (
     <div className={className}>
-      <Box display={'flex'} alignItems={'center'} className="book-list-header">
+      <HStack
+        display={'flex'}
+        alignItems={'center'}
+        className="book-list-header"
+        gap={3}
+      >
         <span className="font-bold">书</span>
-        <div className=" flex-1 relative">
-          <i className="fa fa-search absolute left-3 top-0 text-gray-400 text-sm"></i>
-          <input
-            type="text"
-            className="form-control form-control-sm pl-8 rounded-2xl text-sm w-full"
-            placeholder="过滤..."
+        <InputGroup flex="1" startElement={<FaSearch />}>
+          <Input
+            rounded={'2em'}
+            placeholder="搜索"
+            fontSize={'0.875rem'}
+            lineHeight={'1.25rem'}
+            height={'1.25rem'}
+            padding={0}
+            width={'full'}
             value={filterText}
-            onChange={e => {
-              setFilterText(e.target.value)
-            }}
+            onChange={e => setFilterText(e.target.value)}
           />
-        </div>
+        </InputGroup>
 
         <label className="swap swap-rotate" style={{ marginLeft: 8 }}>
           <input
@@ -144,10 +157,14 @@ const BookList: FunctionComponent<BookListProps> = ({ className }) => {
             <FaBars />
           </Icon>
         </label>
-      </Box>
-      <div className="list-height overflow-y-auto list-content " ref={listDiv}>
+      </HStack>
+      <Box
+        mt={2}
+        className="list-height overflow-y-auto list-content "
+        ref={listDiv}
+      >
         <ListView style={listStyle} filterText={filterText} />
-      </div>
+      </Box>
     </div>
   )
 }
