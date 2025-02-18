@@ -1,4 +1,5 @@
 import { Box, Container, Text } from '@chakra-ui/react'
+import BookNav from './BookNav'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -8,6 +9,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
   return (
     <>
+      {forBook && <BookNav />}
       <Container maxW="2xl" px={0} pt={20 + (forBook ? 20 : 0)}>
         <Box as="main" py={4}>
           <Box borderWidth="1px" borderRadius="lg" p={4}>

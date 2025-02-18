@@ -1,0 +1,124 @@
+.book-list-header > * + * {
+  @apply ml-1;
+}
+.book-list > li {
+  @apply text-sm leading-6 border-b border-gray-100 pt-1 pb-1 indent-2;
+}
+.book-list > li.active {
+  @apply bg-gray-200;
+}
+.book-grid {
+  @apply grid grid-cols-4;
+}
+.book-grid > li {
+  @apply border text-center m-0.5 leading-10 rounded-sm;
+}
+.book-grid > li.active {
+  @apply bg-gray-200;
+}
+.list-height {
+  @apply h-[23rem];
+}
+
+/* .list-content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.list-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.list-content::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+} */
+
+/* .swap: 基本样式 */
+
+:root {
+  --tw-translate-x: 0;
+  --tw-translate-y: 1;
+  --tw-rotate: 0deg;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
+
+.swap {
+  /* position: relative; */
+  display: inline-grid;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  place-content: center;
+  cursor: pointer;
+}
+.swap input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.swap-rotate input:checked ~ .swap-on,
+.swap-rotate.swap-active .swap-on,
+.swap-rotate input:indeterminate ~ .swap-indeterminate {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.swap input:checked ~ .swap-on,
+.swap-active .swap-on,
+.swap input:indeterminate ~ .swap-indeterminate {
+  opacity: 1;
+}
+
+.swap-rotate .swap-on,
+.swap-rotate .swap-indeterminate,
+.swap-rotate input:indeterminate ~ .swap-on {
+  --tw-rotate: 45deg;
+  transform: rotateZ(var(--tw-rotate));
+}
+.swap .swap-on,
+.swap .swap-indeterminate,
+.swap input:indeterminate ~ .swap-on {
+  opacity: 0;
+}
+
+.swap-rotate input:checked ~ .swap-off,
+.swap-rotate.swap-active .swap-off,
+.swap-rotate input:indeterminate ~ .swap-off {
+  --tw-rotate: -45deg;
+  transform: rotateZ(var(--tw-rotate));
+}
+.swap input:checked ~ .swap-off,
+.swap.swap-active .swap-off,
+.swap input:indeterminate ~ .swap-off {
+  opacity: 0;
+}
+
+.swap > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, opacity;
+}
+/**/
+
+.list-height {
+  height: 23rem; /* 23rem = 368px，bibleselector内部的list高度 */
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.flex-1 {
+  flex: 1 1 0%;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
