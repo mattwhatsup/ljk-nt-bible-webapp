@@ -1,7 +1,7 @@
 import type { FunctionComponent, ReactElement } from 'react'
-import { cloneElement } from 'react'
+import { cloneElement, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Button, Text } from '@chakra-ui/react'
+import { Box, Button, PopoverCloseTrigger, Text } from '@chakra-ui/react'
 import {
   PopoverArrow,
   PopoverBody,
@@ -10,6 +10,7 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
 
 interface BibleDropDownProps {
   label: String
@@ -40,12 +41,20 @@ const BibleDropDown: FunctionComponent<
     <PopoverRoot positioning={{ placement: 'bottom-start' }} modal>
       <PopoverTrigger asChild>
         <Button size="sm" variant="outline">
-          Click me
+          {label}
         </Button>
       </PopoverTrigger>
       <PopoverContent width={'unset'}>
         {/* 取消Chakra UI的Popover的默认宽度 */}
-        <PopoverBody>{cloneElement(children, selectorProps)}</PopoverBody>
+        <PopoverArrow />
+        <PopoverBody>
+          <Box position={'relative'}>
+            <PopoverCloseTrigger>
+              <BibleSelectorPanelCloser />
+            </PopoverCloseTrigger>
+            {cloneElement(children, selectorProps)}
+          </Box>
+        </PopoverBody>
       </PopoverContent>
     </PopoverRoot>
   )

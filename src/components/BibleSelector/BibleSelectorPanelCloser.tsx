@@ -11,12 +11,16 @@ const BibleSelectorPanelCloser: FunctionComponent<
 > = ({ onClose }) => {
   return (
     <Icon
+      id="close-trigger"
       position={'absolute'}
       right={'0.5rem'}
       color={'gray.400'}
       fontSize={'xs'}
       cursor={'pointer'}
-      onClick={() => onClose?.()}
+      zIndex={1}
+      onClick={() => {
+        onClose?.()
+      }}
     >
       <FaRectangleXmark />
     </Icon>

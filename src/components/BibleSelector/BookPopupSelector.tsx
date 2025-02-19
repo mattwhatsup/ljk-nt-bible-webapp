@@ -26,7 +26,6 @@ const BookPopupSelector: FunctionComponent<
 
   return (
     <Box position={'relative'} rounded={'md'} width={widths[cols]}>
-      <BibleSelectorPanelCloser onClose={onClose} />
       <Stack direction={'row'}>
         <BookList className="flex-1  " />
         {selected?.book && <ChapterList className="flex-1  ml-2" />}
