@@ -1,13 +1,11 @@
 import type { FunctionComponent, ReactElement } from 'react'
-import { cloneElement, useState } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Box, Button, PopoverCloseTrigger, Text } from '@chakra-ui/react'
+import { cloneElement } from 'react'
+import { Box, Button, PopoverCloseTrigger } from '@chakra-ui/react'
 import {
   PopoverArrow,
   PopoverBody,
   PopoverContent,
   PopoverRoot,
-  PopoverTitle,
   PopoverTrigger,
 } from '@/components/ui/popover'
 import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
@@ -40,7 +38,19 @@ const BibleDropDown: FunctionComponent<
   return (
     <PopoverRoot positioning={{ placement: 'bottom-start' }} modal>
       <PopoverTrigger asChild>
-        <Button size="sm" variant="outline">
+        <Button
+          size="sm"
+          variant="plain"
+          focusRing={'none'}
+          color={'whiteAlpha.800'}
+          _hover={{
+            textDecoration: 'underline',
+            textUnderlineOffset: '2px',
+            textDecorationColor: 'black.400',
+            textDecorationThickness: '2px',
+            color: 'white',
+          }}
+        >
           {label}
         </Button>
       </PopoverTrigger>

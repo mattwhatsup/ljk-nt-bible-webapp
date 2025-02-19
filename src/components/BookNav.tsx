@@ -20,6 +20,7 @@ export default function BookNav({}: Props) {
           selected={{
             book: 783907,
             chapter: 1,
+            verse: 2,
           }}
           onChange={selected => {
             console.log(selected)

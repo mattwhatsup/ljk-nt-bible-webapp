@@ -1,4 +1,5 @@
-import { FunctionComponent, useContext } from 'react'
+import type { FunctionComponent } from 'react'
+import { useContext } from 'react'
 import VersePopupSelector from './VersePopupSelector'
 import BibleDropDown, { SelectType } from './BibleDropDown'
 import { SelectedValueContext } from './BibleSelector'
@@ -11,7 +12,7 @@ const VerseDropDown: FunctionComponent<VerseDropDownProps> = () => {
 
   return (
     <BibleDropDown label={label} selectType={SelectType.Verse}>
-      <VersePopupSelector className="dropdown-menu dropdown-content block !top-[120%] shadow-lg border-gray-200" />
+      <VersePopupSelector />
     </BibleDropDown>
   )
 }

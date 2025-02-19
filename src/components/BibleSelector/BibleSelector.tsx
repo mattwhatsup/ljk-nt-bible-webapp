@@ -6,7 +6,8 @@ import VerseDropDown from './VerseDropDown'
 import './BibleSelector.css'
 import BibleSelectorContextProvider from './BibleSelectorContextProvider'
 import type { SelectValue } from './BibleDropDown'
-import { Box } from '@chakra-ui/react'
+import { Box, Icon } from '@chakra-ui/react'
+import { FaChevronRight } from 'react-icons/fa'
 
 export const SelectedValueContext = createContext<
   | {
@@ -49,15 +50,10 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
         <BookDropDown />
         {selected?.book && (
           <>
-            <i className=" text-gray-400 mx-1 fa-solid fa-chevron-right"></i>
+            <Icon color={'whiteAlpha.800'}>
+              <FaChevronRight />
+            </Icon>
             <ChapterDropDown />
-
-            {selected.chapter && (
-              <>
-                <i className=" text-gray-400 mx-1 fa-solid fa-chevron-right"></i>
-                <VerseDropDown />
-              </>
-            )}
           </>
         )}
       </Box>

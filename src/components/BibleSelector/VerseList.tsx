@@ -1,4 +1,5 @@
-import { FunctionComponent, HTMLAttributes, useContext } from 'react'
+import type { FunctionComponent, HTMLAttributes } from 'react'
+import { useContext } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import BibleSelectorItem from './BibleSelectorItem'
