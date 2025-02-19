@@ -1,7 +1,8 @@
-import { FunctionComponent, useContext } from 'react'
+import type { FunctionComponent } from 'react'
+import { useContext } from 'react'
 import ChapterPopupSelector from './ChapterPopupSelector'
 import BibleDropDown, { SelectType } from './BibleDropDown'
-import { SelectedValueContext } from '.'
+import { SelectedValueContext } from './BibleSelector'
 
 interface ChapterDropDownProps {}
 
@@ -11,7 +12,7 @@ const ChapterDropDown: FunctionComponent<ChapterDropDownProps> = () => {
 
   return (
     <BibleDropDown label={label} selectType={SelectType.Chapter}>
-      <ChapterPopupSelector className="dropdown-menu dropdown-content block !top-[120%] shadow-lg border-gray-200" />
+      <ChapterPopupSelector />
     </BibleDropDown>
   )
 }

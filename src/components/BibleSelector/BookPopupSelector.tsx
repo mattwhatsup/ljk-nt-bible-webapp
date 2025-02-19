@@ -5,8 +5,7 @@ import ChapterList from './ChapterList'
 import VerseList from './VerseList'
 import type { BibleSelectorProps } from './BibleDropDown'
 import './BibleSelector.css'
-import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
-import { SelectedValueContext } from '.'
+import { SelectedValueContext } from './BibleSelector'
 import { Box, Stack } from '@chakra-ui/react'
 
 interface BookPopupSelectorProps extends HTMLAttributes<HTMLDivElement> {}

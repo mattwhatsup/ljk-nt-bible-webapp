@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext } from 'react'
 import VersePopupSelector from './VersePopupSelector'
 import BibleDropDown, { SelectType } from './BibleDropDown'
-import { SelectedValueContext } from '.'
+import { SelectedValueContext } from './BibleSelector'
 
 interface VerseDropDownProps {}
 

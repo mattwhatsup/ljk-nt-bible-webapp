@@ -1,5 +1,5 @@
-import { Box, Text } from '@chakra-ui/react'
-import BibleSelector from '@/components/BibleSelector'
+import { Box } from '@chakra-ui/react'
+import BibleSelector from '@/components/BibleSelector/BibleSelector'
 type Props = {}
 
 export default function BookNav({}: Props) {

@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import BookPopupSelector from './BookPopupSelector'
 import BibleDropDown, { SelectType } from './BibleDropDown'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
-import { SelectedValueContext } from '.'
+import { SelectedValueContext } from './BibleSelector'
 
 interface BookDropDownProps {}
 

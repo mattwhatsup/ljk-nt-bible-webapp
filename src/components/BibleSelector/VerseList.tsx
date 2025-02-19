@@ -1,6 +1,6 @@
 import { FunctionComponent, HTMLAttributes, useContext } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
-import { SelectedValueContext } from '.'
+import { SelectedValueContext } from './BibleSelector'
 import BibleSelectorItem from './BibleSelectorItem'
 
 interface VerseListProps extends HTMLAttributes<HTMLDivElement> {
@@ -15,7 +15,7 @@ const VerseList: FunctionComponent<VerseListProps> = ({
   const { selected, setSelected } = useContext(SelectedValueContext)!
 
   const verseCount = data.chapterVersesCount.find(
-    (v) => v.book_id === selected?.book && v.chapter === selected?.chapter,
+    v => v.book_id === selected?.book && v.chapter === selected?.chapter,
   )!.verses_count
 
   return (
