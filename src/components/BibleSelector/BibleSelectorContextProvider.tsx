@@ -7,20 +7,23 @@ import type { ChapterVersesCount, DataBook } from '../../app/api'
 export const BibleSelectorContext = createContext<{
   books: Array<DataBook>
   chapterVersesCount: Array<ChapterVersesCount>
+  isNTOnly: boolean
 } | null>(null)
 
 interface BibleSelectorContextProviderProps {
   children: ReactNode
+  isNTOnly: boolean
 }
 
 const BibleSelectorContextProvider: FunctionComponent<
   BibleSelectorContextProviderProps
-> = ({ children }) => {
+> = ({ children, isNTOnly }) => {
   return (
     <BibleSelectorContext.Provider
       value={{
         books: allBooks as Array<DataBook>,
         chapterVersesCount: allChapterVersesCount as Array<ChapterVersesCount>,
+        isNTOnly,
       }}
     >
       {children}

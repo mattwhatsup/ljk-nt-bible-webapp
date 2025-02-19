@@ -11,7 +11,7 @@ const BookDropDown: FunctionComponent<BookDropDownProps> = () => {
   const { books } = useContext(BibleSelectorContext)!
   const { selected } = useContext(SelectedValueContext)!
   const label = selected?.book
-    ? books.find(book => book.id === selected.book)!.name_cn
+    ? books.find(book => book.abbr_en.toLowerCase() === selected.book)!.name_cn
     : '<选择书>'
 
   return (

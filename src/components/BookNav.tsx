@@ -18,7 +18,7 @@ export default function BookNav({}: Props) {
       <Box width={'2xl'}>
         <BibleSelector
           selected={{
-            book: 783907,
+            book: 'eph',
             chapter: 1,
             verse: 2,
           }}

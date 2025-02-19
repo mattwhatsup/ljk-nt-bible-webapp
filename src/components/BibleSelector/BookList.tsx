@@ -39,10 +39,12 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
   const context = useContext(SelectedValueContext)
   const selected = context?.selected
   const data = useContext(BibleSelectorContext)
-  const groups = [
-    { type: OtOrNt.ot, name: '旧约' },
-    { type: OtOrNt.nt, name: '新约' },
-  ]
+  const groups = data!.isNTOnly
+    ? [{ type: OtOrNt.nt, name: '新约' }]
+    : [
+        { type: OtOrNt.ot, name: '旧约' },
+        { type: OtOrNt.nt, name: '新约' },
+      ]
   return (
     <div>
       {groups.map(group => (
@@ -58,19 +60,21 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
               return (
                 books.length > 0 && (
                   <>
-                    <Box
-                      fontSize={'lg'}
-                      mt={2}
-                      position={'sticky'}
-                      top={0}
-                      bg={'white'}
-                    >
-                      {group.name}
-                    </Box>
+                    {groups.length > 1 ? (
+                      <Box
+                        fontSize={'lg'}
+                        mt={2}
+                        position={'sticky'}
+                        top={0}
+                        bg={'white'}
+                      >
+                        {group.name}
+                      </Box>
+                    ) : null}
                     <ul className={`book-${style} mt-2`}>
                       {books.map(book => (
                         <BibleSelectorItem
-                          active={selected?.book === book.id}
+                          active={selected?.book === book.abbr_en.toLowerCase()}
                           key={book.id}
                           label={
                             style === ListStyle.grid
@@ -81,7 +85,7 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
                             if (context) {
                               context.setSelected({
                                 ...selected,
-                                book: book.id,
+                                book: book.abbr_en.toLowerCase(),
                               })
                             }
                           }}

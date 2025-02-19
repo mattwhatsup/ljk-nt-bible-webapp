@@ -1,4 +1,5 @@
-import { FunctionComponent, HTMLAttributes, useContext } from 'react'
+import type { FunctionComponent, HTMLAttributes } from 'react'
+import { useContext } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import BibleSelectorItem from './BibleSelectorItem'
@@ -10,7 +11,7 @@ const ChapterList: FunctionComponent<ChapterListProps> = ({ className }) => {
   const { selected, setSelected } = useContext(SelectedValueContext)!
 
   const capterCount = data.books.find(
-    book => book.id === selected!.book,
+    book => book.abbr_en.toLowerCase() === selected!.book,
   )!.chapter_count
 
   return (

@@ -22,7 +22,7 @@ export enum SelectType {
 }
 
 export type SelectValue = {
-  book?: number
+  book?: string
   chapter?: number
   verse?: number
 }

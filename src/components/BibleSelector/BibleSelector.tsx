@@ -2,7 +2,6 @@ import type { FunctionComponent } from 'react'
 import { createContext } from 'react'
 import BookDropDown from './BookDropDown'
 import ChapterDropDown from './ChapterDropDown'
-import VerseDropDown from './VerseDropDown'
 import './BibleSelector.css'
 import BibleSelectorContextProvider from './BibleSelectorContextProvider'
 import type { SelectValue } from './BibleDropDown'
@@ -62,7 +61,7 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
 }
 
 const Wrapper: FunctionComponent<BibleSelectorProps> = props => (
-  <BibleSelectorContextProvider>
+  <BibleSelectorContextProvider isNTOnly={true}>
     <BibleSelector {...props} />
   </BibleSelectorContextProvider>
 )

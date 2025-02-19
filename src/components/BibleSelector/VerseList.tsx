@@ -16,7 +16,9 @@ const VerseList: FunctionComponent<VerseListProps> = ({
   const { selected, setSelected } = useContext(SelectedValueContext)!
 
   const verseCount = data.chapterVersesCount.find(
-    v => v.book_id === selected?.book && v.chapter === selected?.chapter,
+    v =>
+      v.book_sn.toLowerCase() === selected?.book &&
+      v.chapter === selected?.chapter,
   )!.verses_count
 
   return (

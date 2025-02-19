@@ -1,7 +1,7 @@
 [
   {
     "abbr_cn": "创",
-    "abbr_en": "Gen",
+    "abbr_en": "gen",
     "abbr_tr": "創",
     "chapter_count": 50,
     "display_order": 1,
@@ -15,7 +15,7 @@
   },
   {
     "abbr_cn": "出",
-    "abbr_en": "Exod",
+    "abbr_en": "exo",
     "abbr_tr": "出",
     "chapter_count": 40,
     "display_order": 2,
@@ -29,7 +29,7 @@
   },
   {
     "abbr_cn": "利",
-    "abbr_en": "Lev",
+    "abbr_en": "lev",
     "abbr_tr": "利",
     "chapter_count": 27,
     "display_order": 3,
@@ -43,7 +43,7 @@
   },
   {
     "abbr_cn": "民",
-    "abbr_en": "Num",
+    "abbr_en": "num",
     "abbr_tr": "民",
     "chapter_count": 36,
     "display_order": 4,
@@ -57,7 +57,7 @@
   },
   {
     "abbr_cn": "申",
-    "abbr_en": "Deut",
+    "abbr_en": "deu",
     "abbr_tr": "申",
     "chapter_count": 34,
     "display_order": 5,
@@ -71,7 +71,7 @@
   },
   {
     "abbr_cn": "书",
-    "abbr_en": "Josh",
+    "abbr_en": "jos",
     "abbr_tr": "書",
     "chapter_count": 24,
     "display_order": 6,
@@ -85,7 +85,7 @@
   },
   {
     "abbr_cn": "士",
-    "abbr_en": "Judg",
+    "abbr_en": "jdg",
     "abbr_tr": "士",
     "chapter_count": 21,
     "display_order": 7,
@@ -99,7 +99,7 @@
   },
   {
     "abbr_cn": "得",
-    "abbr_en": "Ruth",
+    "abbr_en": "rut",
     "abbr_tr": "得",
     "chapter_count": 4,
     "display_order": 8,
@@ -113,7 +113,7 @@
   },
   {
     "abbr_cn": "撒上",
-    "abbr_en": "1Sam",
+    "abbr_en": "1sa",
     "abbr_tr": "撒上",
     "chapter_count": 31,
     "display_order": 9,
@@ -127,7 +127,7 @@
   },
   {
     "abbr_cn": "撒下",
-    "abbr_en": "2Sam",
+    "abbr_en": "2sa",
     "abbr_tr": "撒下",
     "chapter_count": 24,
     "display_order": 10,
@@ -141,7 +141,7 @@
   },
   {
     "abbr_cn": "王上",
-    "abbr_en": "1Kgs",
+    "abbr_en": "1kg",
     "abbr_tr": "王上",
     "chapter_count": 22,
     "display_order": 11,
@@ -155,7 +155,7 @@
   },
   {
     "abbr_cn": "王下",
-    "abbr_en": "2Kgs",
+    "abbr_en": "2kg",
     "abbr_tr": "王下 ",
     "chapter_count": 25,
     "display_order": 12,
@@ -197,7 +197,7 @@
   },
   {
     "abbr_cn": "拉",
-    "abbr_en": "Ezra",
+    "abbr_en": "ezr",
     "abbr_tr": "拉",
     "chapter_count": 10,
     "display_order": 15,
@@ -211,7 +211,7 @@
   },
   {
     "abbr_cn": "尼",
-    "abbr_en": "Neh",
+    "abbr_en": "neh",
     "abbr_tr": "尼",
     "chapter_count": 13,
     "display_order": 16,
@@ -225,7 +225,7 @@
   },
   {
     "abbr_cn": "斯",
-    "abbr_en": "Esth",
+    "abbr_en": "est",
     "abbr_tr": "斯",
     "chapter_count": 10,
     "display_order": 17,
@@ -239,7 +239,7 @@
   },
   {
     "abbr_cn": "伯",
-    "abbr_en": "Job",
+    "abbr_en": "job",
     "abbr_tr": "伯",
     "chapter_count": 42,
     "display_order": 18,
@@ -253,7 +253,7 @@
   },
   {
     "abbr_cn": "诗",
-    "abbr_en": "Ps",
+    "abbr_en": "psa",
     "abbr_tr": "詩",
     "chapter_count": 150,
     "display_order": 19,
@@ -267,7 +267,7 @@
   },
   {
     "abbr_cn": "箴",
-    "abbr_en": "Prov",
+    "abbr_en": "prv",
     "abbr_tr": "箴",
     "chapter_count": 31,
     "display_order": 20,
@@ -295,7 +295,7 @@
   },
   {
     "abbr_cn": "雅",
-    "abbr_en": "Song",
+    "abbr_en": "son",
     "abbr_tr": "雅",
     "chapter_count": 8,
     "display_order": 22,
@@ -309,7 +309,7 @@
   },
   {
     "abbr_cn": "赛",
-    "abbr_en": "Isa",
+    "abbr_en": "isa",
     "abbr_tr": "賽",
     "chapter_count": 66,
     "display_order": 23,
@@ -323,7 +323,7 @@
   },
   {
     "abbr_cn": "耶",
-    "abbr_en": "Jer",
+    "abbr_en": "jer",
     "abbr_tr": "耶",
     "chapter_count": 52,
     "display_order": 24,
@@ -337,7 +337,7 @@
   },
   {
     "abbr_cn": "哀",
-    "abbr_en": "Lam",
+    "abbr_en": "lam",
     "abbr_tr": "哀",
     "chapter_count": 5,
     "display_order": 25,
@@ -351,7 +351,7 @@
   },
   {
     "abbr_cn": "结",
-    "abbr_en": "Ezek",
+    "abbr_en": "eze",
     "abbr_tr": "結",
     "chapter_count": 48,
     "display_order": 26,
@@ -365,7 +365,7 @@
   },
   {
     "abbr_cn": "但",
-    "abbr_en": "Dan",
+    "abbr_en": "dan",
     "abbr_tr": "但",
     "chapter_count": 12,
     "display_order": 27,
@@ -379,7 +379,7 @@
   },
   {
     "abbr_cn": "何",
-    "abbr_en": "Hos",
+    "abbr_en": "hos",
     "abbr_tr": "何",
     "chapter_count": 14,
     "display_order": 28,
@@ -393,7 +393,7 @@
   },
   {
     "abbr_cn": "珥",
-    "abbr_en": "Joel",
+    "abbr_en": "joe",
     "abbr_tr": "珥",
     "chapter_count": 3,
     "display_order": 29,
@@ -407,7 +407,7 @@
   },
   {
     "abbr_cn": "摩",
-    "abbr_en": "Amos",
+    "abbr_en": "amos",
     "abbr_tr": "摩",
     "chapter_count": 9,
     "display_order": 30,
@@ -421,7 +421,7 @@
   },
   {
     "abbr_cn": "俄",
-    "abbr_en": "Obad",
+    "abbr_en": "obd",
     "abbr_tr": "俄",
     "chapter_count": 1,
     "display_order": 31,
@@ -435,7 +435,7 @@
   },
   {
     "abbr_cn": "拿",
-    "abbr_en": "Jonah",
+    "abbr_en": "jon",
     "abbr_tr": "拿",
     "chapter_count": 4,
     "display_order": 32,
@@ -449,7 +449,7 @@
   },
   {
     "abbr_cn": "弥",
-    "abbr_en": "Mic",
+    "abbr_en": "mic",
     "abbr_tr": "彌",
     "chapter_count": 7,
     "display_order": 33,
@@ -463,7 +463,7 @@
   },
   {
     "abbr_cn": "鸿",
-    "abbr_en": "Nah",
+    "abbr_en": "nah",
     "abbr_tr": "鴻",
     "chapter_count": 3,
     "display_order": 34,
@@ -477,7 +477,7 @@
   },
   {
     "abbr_cn": "哈",
-    "abbr_en": "Hab",
+    "abbr_en": "hab",
     "abbr_tr": "哈",
     "chapter_count": 3,
     "display_order": 35,
@@ -491,7 +491,7 @@
   },
   {
     "abbr_cn": "番",
-    "abbr_en": "Zeph",
+    "abbr_en": "zep",
     "abbr_tr": "番",
     "chapter_count": 3,
     "display_order": 36,
@@ -505,7 +505,7 @@
   },
   {
     "abbr_cn": "该",
-    "abbr_en": "Hag",
+    "abbr_en": "hag",
     "abbr_tr": "該",
     "chapter_count": 2,
     "display_order": 37,
@@ -519,7 +519,7 @@
   },
   {
     "abbr_cn": "亚",
-    "abbr_en": "Zech",
+    "abbr_en": "zec",
     "abbr_tr": "亞",
     "chapter_count": 14,
     "display_order": 38,
@@ -533,7 +533,7 @@
   },
   {
     "abbr_cn": "玛",
-    "abbr_en": "Mal",
+    "abbr_en": "mal",
     "abbr_tr": "瑪",
     "chapter_count": 4,
     "display_order": 39,
@@ -547,7 +547,7 @@
   },
   {
     "abbr_cn": "太",
-    "abbr_en": "Matt",
+    "abbr_en": "mt",
     "abbr_tr": "太",
     "chapter_count": 28,
     "display_order": 40,
@@ -561,7 +561,7 @@
   },
   {
     "abbr_cn": "可",
-    "abbr_en": "Mark",
+    "abbr_en": "mk",
     "abbr_tr": "可",
     "chapter_count": 16,
     "display_order": 41,
@@ -575,7 +575,7 @@
   },
   {
     "abbr_cn": "路",
-    "abbr_en": "Luke",
+    "abbr_en": "lk",
     "abbr_tr": "路",
     "chapter_count": 24,
     "display_order": 42,
@@ -589,7 +589,7 @@
   },
   {
     "abbr_cn": "约",
-    "abbr_en": "John",
+    "abbr_en": "joh",
     "abbr_tr": "約",
     "chapter_count": 21,
     "display_order": 43,
@@ -603,7 +603,7 @@
   },
   {
     "abbr_cn": "徒",
-    "abbr_en": "Acts",
+    "abbr_en": "act",
     "abbr_tr": "徒",
     "chapter_count": 28,
     "display_order": 44,
@@ -617,7 +617,7 @@
   },
   {
     "abbr_cn": "罗",
-    "abbr_en": "Rom",
+    "abbr_en": "rom",
     "abbr_tr": "羅",
     "chapter_count": 16,
     "display_order": 45,
@@ -631,7 +631,7 @@
   },
   {
     "abbr_cn": "林前",
-    "abbr_en": "1Cor",
+    "abbr_en": "1co",
     "abbr_tr": "林前",
     "chapter_count": 16,
     "display_order": 46,
@@ -645,7 +645,7 @@
   },
   {
     "abbr_cn": "林后",
-    "abbr_en": "2Cor",
+    "abbr_en": "2co",
     "abbr_tr": "林後",
     "chapter_count": 13,
     "display_order": 47,
@@ -659,7 +659,7 @@
   },
   {
     "abbr_cn": "加",
-    "abbr_en": "Gal",
+    "abbr_en": "gal",
     "abbr_tr": "加",
     "chapter_count": 6,
     "display_order": 48,
@@ -673,7 +673,7 @@
   },
   {
     "abbr_cn": "弗",
-    "abbr_en": "Eph",
+    "abbr_en": "eph",
     "abbr_tr": "弗",
     "chapter_count": 6,
     "display_order": 49,
@@ -687,7 +687,7 @@
   },
   {
     "abbr_cn": "腓",
-    "abbr_en": "Phil",
+    "abbr_en": "phi",
     "abbr_tr": "腓",
     "chapter_count": 4,
     "display_order": 50,
@@ -701,7 +701,7 @@
   },
   {
     "abbr_cn": "西",
-    "abbr_en": "Col",
+    "abbr_en": "col",
     "abbr_tr": "西",
     "chapter_count": 4,
     "display_order": 51,
@@ -715,7 +715,7 @@
   },
   {
     "abbr_cn": "帖前",
-    "abbr_en": "1Thess",
+    "abbr_en": "1th",
     "abbr_tr": "帖前",
     "chapter_count": 5,
     "display_order": 52,
@@ -729,7 +729,7 @@
   },
   {
     "abbr_cn": "帖后",
-    "abbr_en": "2Thess",
+    "abbr_en": "2th",
     "abbr_tr": "帖後",
     "chapter_count": 3,
     "display_order": 53,
@@ -743,7 +743,7 @@
   },
   {
     "abbr_cn": "提前",
-    "abbr_en": "1Tim",
+    "abbr_en": "1ti",
     "abbr_tr": "提前",
     "chapter_count": 6,
     "display_order": 54,
@@ -757,7 +757,7 @@
   },
   {
     "abbr_cn": "提后",
-    "abbr_en": "2Tim",
+    "abbr_en": "2ti",
     "abbr_tr": "提後",
     "chapter_count": 4,
     "display_order": 55,
@@ -771,7 +771,7 @@
   },
   {
     "abbr_cn": "多",
-    "abbr_en": "Titus",
+    "abbr_en": "tit",
     "abbr_tr": "多",
     "chapter_count": 3,
     "display_order": 56,
@@ -785,7 +785,7 @@
   },
   {
     "abbr_cn": "门",
-    "abbr_en": "Phlm",
+    "abbr_en": "phm",
     "abbr_tr": "門",
     "chapter_count": 1,
     "display_order": 57,
@@ -799,7 +799,7 @@
   },
   {
     "abbr_cn": "来",
-    "abbr_en": "Heb",
+    "abbr_en": "heb",
     "abbr_tr": "來",
     "chapter_count": 13,
     "display_order": 58,
@@ -813,7 +813,7 @@
   },
   {
     "abbr_cn": "雅",
-    "abbr_en": "Jas",
+    "abbr_en": "jas",
     "abbr_tr": "雅",
     "chapter_count": 5,
     "display_order": 59,
@@ -827,7 +827,7 @@
   },
   {
     "abbr_cn": "彼前",
-    "abbr_en": "1Pet",
+    "abbr_en": "1pe",
     "abbr_tr": "彼前",
     "chapter_count": 5,
     "display_order": 60,
@@ -841,7 +841,7 @@
   },
   {
     "abbr_cn": "彼后",
-    "abbr_en": "2Pet",
+    "abbr_en": "2pe",
     "abbr_tr": "彼後",
     "chapter_count": 3,
     "display_order": 61,
@@ -855,7 +855,7 @@
   },
   {
     "abbr_cn": "约一",
-    "abbr_en": "1John",
+    "abbr_en": "1jo",
     "abbr_tr": "約壹",
     "chapter_count": 5,
     "display_order": 62,
@@ -869,7 +869,7 @@
   },
   {
     "abbr_cn": "约二",
-    "abbr_en": "2John",
+    "abbr_en": "2jo",
     "abbr_tr": "約貳",
     "chapter_count": 1,
     "display_order": 63,
@@ -883,7 +883,7 @@
   },
   {
     "abbr_cn": "约三",
-    "abbr_en": "3John",
+    "abbr_en": "3jo",
     "abbr_tr": "約參",
     "chapter_count": 1,
     "display_order": 64,
@@ -897,7 +897,7 @@
   },
   {
     "abbr_cn": "犹",
-    "abbr_en": "Jude",
+    "abbr_en": "jud",
     "abbr_tr": "猶",
     "chapter_count": 1,
     "display_order": 65,
@@ -911,7 +911,7 @@
   },
   {
     "abbr_cn": "启",
-    "abbr_en": "Rev",
+    "abbr_en": "rev",
     "abbr_tr": "啟",
     "chapter_count": 22,
     "display_order": 66,
