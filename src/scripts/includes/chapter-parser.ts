@@ -4,24 +4,32 @@ export type BookChapterNode = {
 }
 export type VerseNode = {
   type: 'verse'
-  paragraph: 'inline' | 'paragraph' | 'psalm'
+  paragraph: 'inline' | 'paragraph' | 'reference'
   verseIndex: string
-  contents: VerseConentNode[]
+  contents: VerseContentNode[]
 }
-export type VerseConentNode = {
-  lineBreak: 'inline' | 'psalm' | 'line'
+export type VerseContentNode = {
+  lineBreak: 'inline' | 'reference' | 'line'
   content: string
 }
 export type CommentNode = {
   type: 'comment'
   contents: string[]
 }
+export type CommentListNode = {
+  type: 'comment-list'
+  contents: string[]
+}
 
-type BookNode = BookChapterNode | VerseNode | CommentNode
+export type BibleItemNode =
+  | BookChapterNode
+  | VerseNode
+  | CommentNode
+  | CommentListNode
 
 export const chapterParser = (chapterSection: Element) => {
   // console.log(chapterSection.innerHTML, '****')
-  const ret: BookNode[] = []
+  const ret: BibleItemNode[] = []
   chapterSection.childNodes.forEach(node => {
     if (node.nodeType === 1) {
       const element = node as Element
@@ -39,28 +47,37 @@ export const chapterParser = (chapterSection: Element) => {
       ) {
         ret.push({
           type: 'comment',
-          contents: [element.textContent!],
+          contents: [element.innerHTML!],
+        })
+      } else if (
+        element.tagName.toUpperCase() === 'OL' &&
+        element.className === 'comment-list'
+      ) {
+        ret.push({
+          type: 'comment-list',
+          contents: [element.innerHTML!],
         })
       } else if (
         element.tagName.toUpperCase() === 'P' &&
         element.className === 'para'
       ) {
-        iterateParagraph(element.firstChild, ret)
+        iterateParagraph(element.firstChild!, ret)
       } else if (
         element.tagName.toUpperCase() === 'DIV' &&
         element.className === 'ot-refs'
       ) {
-        iteratePsalmParagraph(element.firstChild, ret)
+        iteratePsalmParagraph(element.firstChild!, ret)
       }
     }
   })
+
   return ret
 }
 
-const getLastBookNode = (bookNodes: BookNode[]) => {
+const getLastBookNode = (bookNodes: BibleItemNode[]) => {
   return bookNodes[bookNodes.length - 1]
 }
-const iterateParagraph = (node: Node, bookNodes: BookNode[]) => {
+const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
   let firstTime = true
   while (node) {
     const lastBookNode = getLastBookNode(bookNodes)
@@ -81,6 +98,7 @@ const iterateParagraph = (node: Node, bookNodes: BookNode[]) => {
         })
       }
     } else if (node.nodeType === 3 && node.textContent!.trim() !== '') {
+      // console.log(lastBookNode)
       ;(lastBookNode as VerseNode).contents.push({
         lineBreak: 'inline',
         content: node.textContent!,
@@ -90,11 +108,11 @@ const iterateParagraph = (node: Node, bookNodes: BookNode[]) => {
     if (firstTime && node.textContent!.trim() !== '') {
       firstTime = false
     }
-    node = node.nextSibling
+    node = node.nextSibling!
   }
 }
 
-const iteratePsalmParagraph = (node: Node, bookNodes: BookNode[]) => {
+const iteratePsalmParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
   let firstTime = true
 
   while (node) {
@@ -104,7 +122,7 @@ const iteratePsalmParagraph = (node: Node, bookNodes: BookNode[]) => {
       if (element.tagName.toUpperCase() === 'SUP') {
         const newNode: VerseNode = {
           type: 'verse',
-          paragraph: firstTime ? 'psalm' : 'inline',
+          paragraph: firstTime ? 'reference' : 'inline',
           verseIndex: element.textContent!,
           contents: [],
         }
@@ -122,13 +140,13 @@ const iteratePsalmParagraph = (node: Node, bookNodes: BookNode[]) => {
       }
     } else if (node.nodeType === 3 && node.textContent!.trim() !== '') {
       ;(lastBookNode as VerseNode).contents.push({
-        lineBreak: firstTime ? 'psalm' : 'inline',
+        lineBreak: firstTime ? 'reference' : 'inline',
         content: node.textContent!,
       })
     }
     if (firstTime && node.textContent!.trim() !== '') {
       firstTime = false
     }
-    node = node.nextSibling
+    node = node.nextSibling!
   }
 }
