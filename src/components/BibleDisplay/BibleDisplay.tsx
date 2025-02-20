@@ -9,9 +9,13 @@ import Paragraph from './Paragraph'
 import Reference from './Reference'
 import Line from './Line'
 import VerseNo from './VerseNo'
-import { cloneElement } from 'react'
+import { cloneElement, useEffect, useRef } from 'react'
 import './BibleDisplay.css'
 import CommentList from './CommonList'
+import {
+  underlineManagerRegister,
+  underlineManagerUnregister,
+} from './underline-manager'
 
 type Props = {
   data: BibleItemNode[]
@@ -54,6 +58,7 @@ function renderChapter(items: BibleItemNode[]) {
             <VerseNo
               verseNo={item.verseIndex}
               key={`verse-no-${item.verseIndex}`}
+              verse={item.verseIndex}
             />,
           )
           _item.contents.forEach((subItem, subIndex) => {
@@ -63,6 +68,7 @@ function renderChapter(items: BibleItemNode[]) {
                   <Line
                     key={`l-${item.verseIndex}-${subIndex}`}
                     content={subItem.content}
+                    verse={item.verseIndex}
                   />,
                 )
                 break
@@ -72,7 +78,11 @@ function renderChapter(items: BibleItemNode[]) {
               case 'reference':
                 paragraphNode = <Reference key={`${index}-${subIndex}`} />
                 paragraphChildren = [
-                  <Line key={subIndex} content={subItem.content} />,
+                  <Line
+                    key={subIndex}
+                    content={subItem.content}
+                    verse={item.verseIndex}
+                  />,
                 ]
                 nodes.push({ node: paragraphNode, children: paragraphChildren })
                 break
@@ -91,8 +101,16 @@ function renderChapter(items: BibleItemNode[]) {
 }
 
 export default function BibleDisplay({ data }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const currentRef = containerRef.current!
+    underlineManagerRegister(currentRef!)
+    return () => underlineManagerUnregister(currentRef)
+  }, [containerRef])
+
   return (
-    <Box userSelect={'none'} className="content-display">
+    <Box userSelect={'none'} className="content-display" ref={containerRef}>
       {renderChapter(data)}
     </Box>
   )
