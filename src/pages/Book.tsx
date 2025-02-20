@@ -16,7 +16,7 @@ export default function Book({}: Props) {
       const chapters = await (
         await axios.get<BibleItemNode[][]>('/resources/cn-1co.json')
       ).data
-      setContents(chapters[15])
+      setContents(chapters[0])
     }
 
     fetchData()

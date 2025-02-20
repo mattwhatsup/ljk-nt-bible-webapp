@@ -6,5 +6,5 @@ type Props = {
 }
 
 export default function ChapterTitle({ data }: Props) {
-  return <Heading>第{data.chapterIndex}章</Heading>
+  return <Heading className="chapter-title">第{data.chapterIndex}章</Heading>
 }

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'comment-font';
+  src: url(./fonts/comment.ttf);
+}
+@font-face {
+  font-family: 'content-font';
+  src: url(./fonts/content.otf);
+}
+@font-face {
+  font-family: 'title-font';
+  src: url(./fonts/title.ttf);
+}
+
+@font-face {
+  font-family: 'greekfont';
+  src: url(./fonts/segoeuisl.ttf);
+}
+@font-face {
+  font-family: 'hebrewfont';
+  src: url(./fonts/Helvetica.ttf);
+}

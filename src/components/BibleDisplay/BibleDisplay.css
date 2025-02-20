@@ -1,6 +1,10 @@
+@import url('./fonts.css');
+
 p.para {
   line-height: 2em;
   text-indent: 2em;
+  font-family:
+    content-font, greekfont, Arial, hebrewfont, sans-serif !important;
 }
 
 .comment {
@@ -28,13 +32,10 @@ span.hebrew {
   font-size: 1.05rem;
   background-color: unset;
   font-family: hebrewfont, sans-serif;
-  /* font-family: Arial, hebrewfont, sans-serif; */
-  /* font-family: Arial, Helvetica, sans-serif; */
 }
 mark.greek,
 span.greek {
   background-color: unset;
-  /* font-family: Arial; */
   font-size: 0.8rem;
   font-family: greekfont;
 }

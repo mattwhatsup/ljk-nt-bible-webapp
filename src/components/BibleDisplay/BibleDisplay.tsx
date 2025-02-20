@@ -91,5 +91,5 @@ function renderChapter(items: BibleItemNode[]) {
 }
 
 export default function BibleDisplay({ data }: Props) {
-  return <Box>{renderChapter(data)}</Box>
+  return <Box userSelect={'none'}>{renderChapter(data)}</Box>
 }

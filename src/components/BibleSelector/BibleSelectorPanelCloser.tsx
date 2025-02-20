@@ -13,7 +13,8 @@ const BibleSelectorPanelCloser: FunctionComponent<
     <Icon
       id="close-trigger"
       position={'absolute'}
-      right={'0.5rem'}
+      right={'0.2rem'}
+      top={'-0.5rem'}
       color={'gray.400'}
       fontSize={'xs'}
       cursor={'pointer'}

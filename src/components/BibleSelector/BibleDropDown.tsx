@@ -59,9 +59,9 @@ const BibleDropDown: FunctionComponent<
         <PopoverArrow />
         <PopoverBody>
           <Box position={'relative'}>
-            <PopoverCloseTrigger>
+            {/* <PopoverCloseTrigger>
               <BibleSelectorPanelCloser />
-            </PopoverCloseTrigger>
+            </PopoverCloseTrigger> */}
             {cloneElement(children, selectorProps)}
           </Box>
         </PopoverBody>
