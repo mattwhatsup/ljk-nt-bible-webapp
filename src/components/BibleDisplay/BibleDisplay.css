@@ -1,5 +1,9 @@
 @import url('./fonts.css');
 
+.content-display > * {
+  margin-bottom: 1.25em;
+}
+
 p.para {
   line-height: 2em;
   text-indent: 2em;
