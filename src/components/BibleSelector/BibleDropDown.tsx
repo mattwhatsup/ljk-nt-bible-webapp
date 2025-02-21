@@ -1,5 +1,5 @@
 import type { FunctionComponent, ReactElement } from 'react'
-import { cloneElement } from 'react'
+import { cloneElement, useContext, useEffect, useRef, useState } from 'react'
 import { Box, Button, PopoverCloseTrigger } from '@chakra-ui/react'
 import {
   PopoverArrow,
@@ -9,6 +9,19 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
+import { BibleSelectorContext } from './BibleSelectorContextProvider'
+import { SelectedValueContext } from './BibleSelector'
+
+function isSelectedValueComplete(
+  selected: SelectValue,
+  showVerseSelector: boolean,
+) {
+  return !!(
+    selected.book &&
+    selected.chapter &&
+    (showVerseSelector ? selected.verse : true)
+  )
+}
 
 interface BibleDropDownProps {
   label: String
@@ -35,6 +48,17 @@ export interface BibleSelectorProps {
 const BibleDropDown: FunctionComponent<
   BibleDropDownProps & BibleSelectorProps
 > = ({ label, children, ...selectorProps }) => {
+  const { selected } = useContext(SelectedValueContext)!
+  const { showVerseSelector } = useContext(BibleSelectorContext)!
+  const closeTriggerRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    if (
+      closeTriggerRef.current &&
+      isSelectedValueComplete(selected!, showVerseSelector)
+    ) {
+      closeTriggerRef.current.click()
+    }
+  }, [selected, showVerseSelector])
   return (
     <PopoverRoot positioning={{ placement: 'bottom-start' }} modal>
       <PopoverTrigger asChild>
@@ -59,9 +83,9 @@ const BibleDropDown: FunctionComponent<
         <PopoverArrow />
         <PopoverBody>
           <Box position={'relative'}>
-            {/* <PopoverCloseTrigger>
+            <PopoverCloseTrigger ref={closeTriggerRef}>
               <BibleSelectorPanelCloser />
-            </PopoverCloseTrigger> */}
+            </PopoverCloseTrigger>
             {cloneElement(children, selectorProps)}
           </Box>
         </PopoverBody>

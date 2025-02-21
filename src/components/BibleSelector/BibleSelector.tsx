@@ -61,7 +61,7 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
 }
 
 const Wrapper: FunctionComponent<BibleSelectorProps> = props => (
-  <BibleSelectorContextProvider isNTOnly={true}>
+  <BibleSelectorContextProvider isNTOnly={true} showVerseSelector={false}>
     <BibleSelector {...props} />
   </BibleSelectorContextProvider>
 )

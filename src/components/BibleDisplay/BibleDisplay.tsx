@@ -9,13 +9,9 @@ import Paragraph from './Paragraph'
 import Reference from './Reference'
 import Line from './Line'
 import VerseNo from './VerseNo'
-import { cloneElement, useEffect, useRef } from 'react'
+import { cloneElement } from 'react'
 import './BibleDisplay.css'
 import CommentList from './CommonList'
-import {
-  underlineManagerRegister,
-  underlineManagerUnregister,
-} from './underline-manager'
 
 type Props = {
   data: BibleItemNode[]
@@ -100,17 +96,43 @@ function renderChapter(items: BibleItemNode[]) {
   )
 }
 
+function findMatchedParentNode(
+  element: Element | null,
+  matchFn: (element: Element) => boolean,
+) {
+  while (element && !matchFn(element)) {
+    element = element.parentElement
+  }
+  return element
+}
+
 export default function BibleDisplay({ data }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const currentRef = containerRef.current!
-    underlineManagerRegister(currentRef!)
-    return () => underlineManagerUnregister(currentRef)
-  }, [containerRef])
-
   return (
-    <Box userSelect={'none'} className="content-display" ref={containerRef}>
+    <Box
+      userSelect={'none'}
+      className="content-display"
+      onClick={event => {
+        let { target, shiftKey } = event
+        if (target instanceof HTMLElement) {
+          const el = findMatchedParentNode(target, el => {
+            return (
+              el.classList.contains('verse-no') ||
+              el.classList.contains('verse-line')
+            )
+          })
+
+          if (el) {
+            console.log(
+              'Verse No.',
+              el.getAttribute('data-verse'),
+              'has been clicked',
+              'and shiftKey=',
+              shiftKey,
+            )
+          }
+        }
+      }}
+    >
       {renderChapter(data)}
     </Box>
   )
