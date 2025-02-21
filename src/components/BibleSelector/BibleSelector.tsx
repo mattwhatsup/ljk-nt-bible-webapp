@@ -1,12 +1,15 @@
 import type { FunctionComponent } from 'react'
-import { createContext } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import BookDropDown from './BookDropDown'
 import ChapterDropDown from './ChapterDropDown'
 import './BibleSelector.css'
-import BibleSelectorContextProvider from './BibleSelectorContextProvider'
+import BibleSelectorContextProvider, {
+  BibleSelectorContext,
+} from './BibleSelectorContextProvider'
 import type { SelectValue } from './BibleDropDown'
 import { Box, Icon } from '@chakra-ui/react'
 import { FaChevronRight } from 'react-icons/fa'
+import { isSelectedValueComplete } from './utils'
 
 export const SelectedValueContext = createContext<
   | {
@@ -17,26 +20,42 @@ export const SelectedValueContext = createContext<
 >(undefined)
 interface BibleSelectorProps {
   onChange?: (selected: SelectValue) => void
+  onClose?: Function
   selected?: SelectValue
 }
 
 const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
   selected,
   onChange,
+  onClose,
 }) => {
+  const [selectedState, setSelectedState] = useState<SelectValue>(selected!)
+  const { showVerseSelector } = useContext(BibleSelectorContext)!
+
+  useEffect(() => {
+    if (selected) {
+      setSelectedState(selected)
+    }
+  }, [selected])
+
   return (
     <SelectedValueContext.Provider
       value={{
-        selected,
+        selected: selectedState,
         setSelected: newSelected => {
-          if (selected?.book !== newSelected.book) {
+          if (selectedState?.book !== newSelected.book) {
             newSelected.chapter = undefined
             newSelected.verse = undefined
           }
-          if (selected?.chapter !== newSelected.chapter) {
+          if (selectedState?.chapter !== newSelected.chapter) {
             newSelected.verse = undefined
           }
-          onChange?.(newSelected)
+
+          if (isSelectedValueComplete(newSelected, showVerseSelector)) {
+            onChange?.(newSelected)
+          } else {
+            setSelectedState(newSelected)
+          }
         },
       }}
     >
@@ -46,13 +65,29 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
         userSelect={'none'}
         cursor={'default'}
       >
-        <BookDropDown />
+        <BookDropDown
+          onClose={() => {
+            if (!isSelectedValueComplete(selectedState, showVerseSelector)) {
+              setSelectedState(selected!)
+            }
+            onClose?.()
+          }}
+        />
         {selected?.book && (
           <>
             <Icon color={'whiteAlpha.800'}>
               <FaChevronRight />
             </Icon>
-            <ChapterDropDown />
+            <ChapterDropDown
+              onClose={() => {
+                if (
+                  !isSelectedValueComplete(selectedState, showVerseSelector)
+                ) {
+                  setSelectedState(selected!)
+                }
+                onClose?.()
+              }}
+            />
           </>
         )}
       </Box>

@@ -4,14 +4,22 @@ import ChapterPopupSelector from './ChapterPopupSelector'
 import BibleDropDown, { SelectType } from './BibleDropDown'
 import { SelectedValueContext } from './BibleSelector'
 
-interface ChapterDropDownProps {}
+interface ChapterDropDownProps {
+  onClose?: Function
+}
 
-const ChapterDropDown: FunctionComponent<ChapterDropDownProps> = () => {
+const ChapterDropDown: FunctionComponent<ChapterDropDownProps> = ({
+  onClose,
+}) => {
   const { selected } = useContext(SelectedValueContext)!
   const label = selected?.chapter ? `${selected.chapter}章` : '<选择章>'
 
   return (
-    <BibleDropDown label={label} selectType={SelectType.Chapter}>
+    <BibleDropDown
+      label={label}
+      selectType={SelectType.Chapter}
+      onClose={onClose}
+    >
       <ChapterPopupSelector />
     </BibleDropDown>
   )

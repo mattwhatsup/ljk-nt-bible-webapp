@@ -5,9 +5,11 @@ import BibleDropDown, { SelectType } from './BibleDropDown'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 
-interface BookDropDownProps {}
+interface BookDropDownProps {
+  onClose?: Function
+}
 
-const BookDropDown: FunctionComponent<BookDropDownProps> = () => {
+const BookDropDown: FunctionComponent<BookDropDownProps> = ({ onClose }) => {
   const { books } = useContext(BibleSelectorContext)!
   const { selected } = useContext(SelectedValueContext)!
   const label = selected?.book
@@ -15,7 +17,7 @@ const BookDropDown: FunctionComponent<BookDropDownProps> = () => {
     : '<选择书>'
 
   return (
-    <BibleDropDown label={label} selectType={SelectType.Book}>
+    <BibleDropDown label={label} selectType={SelectType.Book} onClose={onClose}>
       <BookPopupSelector />
     </BibleDropDown>
   )

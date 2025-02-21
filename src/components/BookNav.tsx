@@ -31,7 +31,6 @@ export default function BookNav({}: Props) {
         <BibleSelector
           selected={selected}
           onChange={(selected: SelectValue) => {
-            console.log(selected)
             const newBook = selected.book
             const newChapter = selected.chapter
             if (newBook) {
