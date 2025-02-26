@@ -12,7 +12,14 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
       {forBook && <BookNav />}
       <Container maxW="2xl" px={0} pt={20 + (forBook ? 20 : 0)}>
         <Box as="main" py={4}>
-          <Box borderWidth="1px" borderRadius="lg" p={4}>
+          <Box
+            borderWidth="1px"
+            borderRadius="lg"
+            {...({
+              maxContentDown: { padding: '1rem 2rem' },
+              maxContent: { padding: '1rem' },
+            } as any)}
+          >
             {children}
           </Box>
         </Box>

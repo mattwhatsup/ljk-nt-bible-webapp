@@ -4,26 +4,28 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
+import TurnPage from '@/components/TurnPage'
 
 type Props = {}
 
 export default function Book({}: Props) {
-  // const { book, chapter } = useParams<{ book: string; chapter?: string }>()
+  const { book, chapter } = useParams<{ book: string; chapter?: string }>()
   const [contents, setContents] = useState<BibleItemNode[]>()
 
   useEffect(() => {
     const fetchData = async () => {
       const chapters = await (
-        await axios.get<BibleItemNode[][]>('/resources/cn-1co.json')
+        await axios.get<BibleItemNode[][]>(`/resources/cn-${book}.json`)
       ).data
-      setContents(chapters[14])
+      setContents(chapters[(parseInt(chapter || '') || 1) - 1])
     }
 
     fetchData()
-  }, [])
+  }, [book, chapter])
 
   return (
     <Box>
+      <TurnPage />
       {contents ? (
         <BibleDisplay data={contents} />
       ) : (
