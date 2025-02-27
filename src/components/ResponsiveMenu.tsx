@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Flex, IconButton, Button, Stack } from '@chakra-ui/react'
 import {
   DrawerBackdrop,
@@ -32,6 +31,8 @@ const ResponsiveMenu = () => {
       width={'full'}
       bg={'teal.500'}
       justifyContent={'center'}
+      position={'fixed'}
+      zIndex={100}
     >
       <Flex
         as="nav"

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import { store } from './app/store'
 import { Provider as ChakraProvider } from '@/components/ui/provider'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 
 const container = document.getElementById('root')
@@ -13,11 +14,13 @@ if (container) {
 
   root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <ChakraProvider>
-          <App />
-        </ChakraProvider>
-      </Provider>
+      <Router>
+        <Provider store={store}>
+          <ChakraProvider>
+            <App />
+          </ChakraProvider>
+        </Provider>
+      </Router>
     </React.StrictMode>,
   )
 } else {

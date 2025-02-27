@@ -1,27 +1,33 @@
-// filepath: /Users/mattzhou/Documents/Bible/梁木老师翻译的圣经/ljk-nt-bible-webapp/src/components/Layout.tsx
-import React from 'react'
-import { Box, Container, Heading, Text, Stack } from '@chakra-ui/react'
+import { Box, Container, Text } from '@chakra-ui/react'
+import BookNav from './BookNav'
 
 interface LayoutProps {
-  children: React.ReactNode
+  children?: React.ReactNode
+  forBook?: boolean
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
   return (
-    <Container maxW="2xl" px={0}>
-      <Box as="header" py={4}>
-        <Heading as="h1">圣经阅读 WebApp</Heading>
-      </Box>
-      <Box as="main" py={4}>
-        {children}
-      </Box>
-      <Box as="footer" py={4}>
-        <Text>© 2025 圣经阅读 WebApp</Text>
-      </Box>
-      <Stack hideFrom="md">
-        <Text>This text will be hidden from the `md` breakpoint</Text>
-      </Stack>
-    </Container>
+    <>
+      {forBook && <BookNav />}
+      <Container maxW="2xl" px={0} pt={20 + (forBook ? 20 : 0)}>
+        <Box as="main" py={4}>
+          <Box
+            borderWidth="1px"
+            borderRadius="lg"
+            {...({
+              maxContentDown: { padding: '1rem 2rem' },
+              maxContent: { padding: '1rem' },
+            } as any)}
+          >
+            {children}
+          </Box>
+        </Box>
+        <Box as="footer" py={4}>
+          <Text>© 2025 新约圣经梁家铿译本 WebApp</Text>
+        </Box>
+      </Container>
+    </>
   )
 }
 
