@@ -1,5 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import { fetchBookChapters, type BookName } from './bookApi'
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import type { RootState } from '@/app/store'
@@ -84,11 +84,15 @@ export const bookSlice = createSlice({
 
 export default bookSlice.reducer
 
-export const selectChapter = (
-  state: RootState,
+const selectBooks = (state: RootState) => state.books
+
+export const makeSelectChapter = (
   lang: 'cn' | 'tw',
   bookName: BookName,
   chapterIndex: number,
-) => {
-  return state.books[lang]?.[bookName]?.chapters[chapterIndex - 1] || null
-}
+) =>
+  createSelector([selectBooks], books => ({
+    contents: books[lang]?.[bookName]?.chapters[chapterIndex - 1] || null,
+    loading: books[lang]?.[bookName]?.loading || false,
+    error: books[lang]?.[bookName]?.error || null,
+  }))

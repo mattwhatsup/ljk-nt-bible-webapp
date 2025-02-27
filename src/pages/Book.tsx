@@ -1,38 +1,45 @@
-import { Box, Spinner, VStack, Text } from '@chakra-ui/react'
+import { Box, Spinner, VStack, Text, useSelect } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
 import TurnPage from '@/components/TurnPage'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { fetchChapters, makeSelectChapter } from '@/features/book/bookSlice'
+import type { BookName } from '@/features/book/bookApi'
 
-type Props = {}
-
-export default function Book({}: Props) {
+export default function Book() {
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
-  const [contents, setContents] = useState<BibleItemNode[]>()
+  const dispatch = useAppDispatch()
+  const selectChapter = makeSelectChapter(
+    'cn',
+    book as BookName,
+    parseInt(chapter || ''),
+  )
+  const { contents, loading, error } = useAppSelector(selectChapter)
 
   useEffect(() => {
-    const fetchData = async () => {
-      const chapters = await (
-        await axios.get<BibleItemNode[][]>(`/resources/cn-${book}.json`)
-      ).data
-      setContents(chapters[(parseInt(chapter || '') || 1) - 1])
-    }
-
-    fetchData()
-  }, [book, chapter])
+    dispatch(fetchChapters({ lang: 'cn', bookName: book as BookName }))
+  }, [book, chapter, dispatch])
 
   return (
     <Box>
-      <TurnPage />
       {contents ? (
-        <BibleDisplay data={contents} />
+        <>
+          <TurnPage />
+          <BibleDisplay data={contents} />
+        </>
       ) : (
-        <VStack colorPalette="teal">
-          <Spinner color="colorPalette.600" />
-          <Text color="colorPalette.600">Loading...</Text>
-        </VStack>
+        <>
+          {loading && (
+            <VStack colorPalette="teal">
+              <Spinner color="colorPalette.600" />
+              <Text color="colorPalette.600">Loading...</Text>
+            </VStack>
+          )}
+          {error && <Text color="colorPalette.600">Error: {error}</Text>}
+        </>
       )}
     </Box>
   )
