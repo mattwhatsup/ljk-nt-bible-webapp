@@ -71,7 +71,7 @@ export type BookName =
 
 export async function fetchBookChapters(lang: 'cn' | 'tw', bookName: BookName) {
   const chapters = await (
-    await axios.get<BibleItemNode[][]>(`/resources/${lang}-${bookName}.json`)
+    await axios.get<BibleItemNode[][]>(`./resources/${lang}-${bookName}.json`)
   ).data
   return chapters
 }
