@@ -69,7 +69,7 @@ function renderChapter(items: BibleItemNode[]) {
                 )
                 break
               case 'line':
-                paragraphChildren.push(<br key={`br-${subIndex}`} />)
+                paragraphChildren.push(<br key={`br-${index}-${subIndex}`} />)
                 break
               case 'reference':
                 paragraphNode = <Reference key={`${index}-${subIndex}`} />
