@@ -6,7 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base: '',
+  base: '', // 生成resource的根目录
   server: {
     open: true,
     port: 3000,

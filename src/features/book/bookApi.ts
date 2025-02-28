@@ -1,5 +1,8 @@
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import axios from 'axios'
+import allBooks from '@/components/BibleSelector/all-books.json'
+
+const books = allBooks.filter(book => book.ot_or_nt === 'Nt')
 
 export type BookName =
   | 'gen'
@@ -74,4 +77,61 @@ export async function fetchBookChapters(lang: 'cn' | 'tw', bookName: BookName) {
     await axios.get<BibleItemNode[][]>(`./resources/${lang}-${bookName}.json`)
   ).data
   return chapters
+}
+
+export function previous(bookName: BookName, chapterIndex: number) {
+  const currentBookIndex = books.findIndex(book => book.abbr_en === bookName)
+
+  if (chapterIndex > 1) {
+    return {
+      bookName,
+      chapterIndex: chapterIndex - 1,
+    }
+  }
+
+  if (currentBookIndex === 0) {
+    return {
+      bookName: books[books.length - 1].abbr_en,
+      chapterIndex: books[books.length - 1].chapter_count,
+    }
+  } else {
+    return {
+      bookName: books[currentBookIndex - 1].abbr_en,
+      chapterIndex: books[currentBookIndex - 1].chapter_count,
+    }
+  }
+}
+
+export function next(bookName: BookName, chapterIndex: number) {
+  const currentBookIndex = books.findIndex(book => book.abbr_en === bookName)
+  const currentBook = books[currentBookIndex]
+
+  if (chapterIndex < currentBook.chapter_count) {
+    return {
+      bookName,
+      chapterIndex: chapterIndex + 1,
+    }
+  }
+
+  if (currentBookIndex === books.length - 1) {
+    return {
+      bookName: books[0].abbr_en,
+      chapterIndex: 1,
+    }
+  } else {
+    return {
+      bookName: books[currentBookIndex + 1].abbr_en,
+      chapterIndex: 1,
+    }
+  }
+}
+
+export function makeChapterRoutePath({
+  bookName,
+  chapterIndex,
+}: {
+  bookName: string
+  chapterIndex: number
+}) {
+  return `/book/${bookName}/${chapterIndex}`
 }
