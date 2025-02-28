@@ -28,3 +28,4 @@ repo/*
 
 public/*
 !public/.dir
+!public/404.html
