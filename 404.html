@@ -2,23 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
-    <script>
-      var basePath = '/ljk-nt-bible-webapp'
-      ;(function () {
-        var pathname = window.location.pathname
-
-        // GitHub Pages 404 页面会拦截所有 React Router 的路由
-        // 这里检查路径是否非根路径，如果是，则重定向到 index.html
-        if (pathname !== basePath + '/') {
-          window.history.replaceState(null, '', basePath + '/')
-          window.location.replace(basePath + '/') // 重新加载 React 应用
-        }
-      })()
-    </script>
+    <title>React Redux App</title>
+    <script type="module" crossorigin src="/ljk-nt-bible-webapp/assets/index-D003eEdi.js"></script>
+    <link rel="stylesheet" crossorigin href="/ljk-nt-bible-webapp/assets/index-CWHTLlFx.css">
   </head>
   <body>
-    <p>Redirecting...</p>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
   </body>
 </html>
