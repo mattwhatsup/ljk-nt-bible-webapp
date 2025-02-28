@@ -1,6 +1,6 @@
 import { Box, Spinner, VStack, Text, useSelect } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
@@ -22,6 +22,11 @@ export default function Book() {
   useEffect(() => {
     dispatch(fetchChapters({ lang: 'cn', bookName: book as BookName }))
   }, [book, chapter, dispatch])
+
+  const location = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   return (
     <Box>
