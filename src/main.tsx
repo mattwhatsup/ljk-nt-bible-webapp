@@ -4,13 +4,11 @@ import { Provider } from 'react-redux'
 import App from './App'
 import { store } from './app/store'
 import { Provider as ChakraProvider } from '@/components/ui/provider'
-import { BrowserRouter, HashRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 import ErrorBoundary from './components/ErrorBoundary'
 
 const container = document.getElementById('root')
-const Router =
-  process.env.NODE_ENV === 'development' ? BrowserRouter : HashRouter
 
 if (container) {
   const root = createRoot(container)
@@ -18,7 +16,7 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Router
-      // basename={process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/'}
+        basename={process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/'}
       >
         <Provider store={store}>
           <ChakraProvider>

@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit",
     "preprocess": "npx tsx src/scripts/preprocess.ts",
     "build": "tsc && vite build",
-    "gh-build": "cross-env NODE_ENV=gh tsc && cross-env NODE_ENV=gh vite build && cross-env NODE_ENV=gh node src/scripts/inject-env.js",
+    "gh-build": "cross-env NODE_ENV=gh tsc && cross-env NODE_ENV=gh vite build && cross-env NODE_ENV=gh node src/scripts/copy-index.js",
     "predeploy": "npm run gh-build",
     "deploy": "gh-pages -d dist"
   },
