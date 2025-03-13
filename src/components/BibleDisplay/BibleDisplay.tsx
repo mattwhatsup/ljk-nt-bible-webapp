@@ -1,5 +1,5 @@
 import type {
-  BibleItemNode,
+  BibleItemNodeWithVerseList,
   VerseNode,
 } from '@/scripts/includes/chapter-parser'
 import { Box } from '@chakra-ui/react'
@@ -14,10 +14,10 @@ import './BibleDisplay.css'
 import CommentList from './CommonList'
 
 type Props = {
-  data: BibleItemNode[]
+  data: BibleItemNodeWithVerseList[]
 }
 
-function renderChapter(items: BibleItemNode[]) {
+function renderChapter(chapter: BibleItemNodeWithVerseList) {
   type _Node = {
     node: JSX.Element
     children?: JSX.Element[]
@@ -27,7 +27,7 @@ function renderChapter(items: BibleItemNode[]) {
   let paragraphNode: JSX.Element | undefined = undefined
   let paragraphChildren = [] as JSX.Element[]
 
-  items.forEach((item, index) => {
+  chapter.nodeData.forEach((item, index) => {
     switch (true) {
       case item.type === 'chapter':
         nodes.push({ node: <ChapterTitle key={`c-${index}`} data={item} /> })

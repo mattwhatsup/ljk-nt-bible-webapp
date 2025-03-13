@@ -1,4 +1,4 @@
-import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
+import type { BibleItemNodeWithVerseList } from '@/scripts/includes/chapter-parser'
 import axios from 'axios'
 import allBooks from '@/components/BibleSelector/all-books.json'
 
@@ -74,7 +74,7 @@ export type BookName =
 
 export async function fetchBookChapters(lang: 'cn' | 'tw', bookName: BookName) {
   const chapters = await (
-    await axios.get<BibleItemNode[][]>(
+    await axios.get<BibleItemNodeWithVerseList[]>(
       `${process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/'}resources/${lang}-${bookName}.json`,
     )
   ).data

@@ -1,12 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import { fetchBookChapters, type BookName } from './bookApi'
-import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
+import type { BibleItemNodeWithVerseList } from '@/scripts/includes/chapter-parser'
 import type { RootState } from '@/app/store'
 import { selectLanguage } from '../settings/settingsSlice'
 
 export interface BookState {
-  chapters: BibleItemNode[][]
+  chapters: BibleItemNodeWithVerseList[]
   loading: boolean
   error: string | null
 }
@@ -54,7 +54,7 @@ export const bookSlice = createSlice({
         (
           state,
           action: PayloadAction<
-            BibleItemNode[][],
+            BibleItemNodeWithVerseList[],
             string,
             {
               arg: {
