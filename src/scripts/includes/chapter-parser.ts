@@ -79,7 +79,9 @@ export const chapterParser = (chapterSection: Element) => {
   })
 
   return {
-    verseList: [],
+    verseList: [...chapterSection.querySelectorAll('sup')].map(
+      sup => sup.textContent?.trim() || '',
+    ),
     nodeData,
   }
 }
