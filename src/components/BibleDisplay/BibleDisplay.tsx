@@ -14,7 +14,7 @@ import './BibleDisplay.css'
 import CommentList from './CommonList'
 
 type Props = {
-  data: BibleItemNodeWithVerseList[]
+  data: BibleItemNodeWithVerseList
 }
 
 function renderChapter(chapter: BibleItemNodeWithVerseList) {
