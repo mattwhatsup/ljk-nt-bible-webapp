@@ -6,7 +6,10 @@ import TurnPage from '@/components/TurnPage'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { fetchChapters, makeSelectChapter } from '@/features/book/bookSlice'
 import type { BookName } from '@/features/book/bookApi'
-import { selectLanguage } from '@/features/settings/settingsSlice'
+import {
+  selectLanguage,
+  selectShowComments,
+} from '@/features/settings/settingsSlice'
 
 export default function Book() {
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
@@ -17,6 +20,7 @@ export default function Book() {
   )
   const { contents, loading, error } = useAppSelector(selectChapter)
   const language = useAppSelector(selectLanguage)
+  const showComments = useAppSelector(selectShowComments)
 
   useEffect(() => {
     dispatch(fetchChapters({ lang: language, bookName: book as BookName }))
@@ -26,6 +30,17 @@ export default function Book() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
+
+  useEffect(() => {
+    document.getElementById('custom-style')!.innerHTML = `
+      .comment {
+        display: ${showComments ? 'block' : 'none'};
+      }
+      cite {
+        display: ${showComments ? 'inline' : 'none'};
+      }
+    `
+  }, [showComments])
 
   return (
     <Box>
