@@ -1,4 +1,5 @@
-import { Box } from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
+import { SegmentGroup } from '@chakra-ui/react'
 import { Switch } from './ui/switch'
 import BibleSelector from '@/components/BibleSelector/BibleSelector'
 import type { SelectValue } from './BibleSelector/BibleDropDown'
@@ -42,11 +43,21 @@ export default function BookNav({}: Props) {
           }}
         />
 
-        <Box>
+        <HStack>
           <Switch colorPalette={'blue'} defaultChecked mr={1} color={'white'}>
             显示注释
           </Switch>
-        </Box>
+
+          <SegmentGroup.Root defaultValue="cn" size={'sm'}>
+            <SegmentGroup.Indicator />
+            <SegmentGroup.Items
+              items={[
+                { value: 'cn', label: '简' },
+                { value: 'tw', label: '繁' },
+              ]}
+            />
+          </SegmentGroup.Root>
+        </HStack>
       </Box>
     </Box>
   )
