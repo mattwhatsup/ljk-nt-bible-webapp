@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import { fetchBookChapters, type BookName } from './bookApi'
 import type { BibleItemNode } from '@/scripts/includes/chapter-parser'
 import type { RootState } from '@/app/store'
+import { selectLanguage } from '../settings/settingsSlice'
 
 export interface BookState {
   chapters: BibleItemNode[][]
@@ -86,12 +87,8 @@ export default bookSlice.reducer
 
 const selectBooks = (state: RootState) => state.books
 
-export const makeSelectChapter = (
-  lang: 'cn' | 'tw',
-  bookName: BookName,
-  chapterIndex: number,
-) =>
-  createSelector([selectBooks], books => ({
+export const makeSelectChapter = (bookName: BookName, chapterIndex: number) =>
+  createSelector([selectBooks, selectLanguage], (books, lang) => ({
     contents: books[lang]?.[bookName]?.chapters[chapterIndex - 1] || null,
     loading: books[lang]?.[bookName]?.loading || false,
     error: books[lang]?.[bookName]?.error || null,

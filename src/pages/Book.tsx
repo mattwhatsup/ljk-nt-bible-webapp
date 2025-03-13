@@ -6,20 +6,21 @@ import TurnPage from '@/components/TurnPage'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { fetchChapters, makeSelectChapter } from '@/features/book/bookSlice'
 import type { BookName } from '@/features/book/bookApi'
+import { selectLanguage } from '@/features/settings/settingsSlice'
 
 export default function Book() {
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
   const dispatch = useAppDispatch()
   const selectChapter = makeSelectChapter(
-    'cn',
     book as BookName,
     parseInt(chapter || ''),
   )
   const { contents, loading, error } = useAppSelector(selectChapter)
+  const language = useAppSelector(selectLanguage)
 
   useEffect(() => {
-    dispatch(fetchChapters({ lang: 'cn', bookName: book as BookName }))
-  }, [book, chapter, dispatch])
+    dispatch(fetchChapters({ lang: language, bookName: book as BookName }))
+  }, [book, chapter, language, dispatch])
 
   const location = useLocation()
   useEffect(() => {

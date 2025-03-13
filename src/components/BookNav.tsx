@@ -4,6 +4,13 @@ import { Switch } from './ui/switch'
 import BibleSelector from '@/components/BibleSelector/BibleSelector'
 import type { SelectValue } from './BibleSelector/BibleDropDown'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import {
+  selectLanguage,
+  selectShowComments,
+  setLanguage,
+  setShowComments,
+} from '@/features/settings/settingsSlice'
 
 type Props = {}
 
@@ -15,6 +22,10 @@ export default function BookNav({}: Props) {
     book,
     chapter: chapter ? parseInt(chapter) : undefined,
   }
+
+  const dispatch = useAppDispatch()
+  const showComments = useAppSelector(selectShowComments)
+  const language = useAppSelector(selectLanguage)
 
   return (
     <Box
@@ -44,11 +55,26 @@ export default function BookNav({}: Props) {
         />
 
         <HStack>
-          <Switch colorPalette={'blue'} defaultChecked mr={1} color={'white'}>
+          <Switch
+            colorPalette={'blue'}
+            checked={showComments}
+            mr={1}
+            color={'white'}
+            onChange={() => {
+              dispatch(setShowComments(!showComments))
+            }}
+          >
             显示注释
           </Switch>
 
-          <SegmentGroup.Root defaultValue="cn" size={'sm'}>
+          <SegmentGroup.Root
+            value={language}
+            size={'sm'}
+            onValueChange={({ value }) => {
+              // @ts-ignore
+              dispatch(setLanguage(value))
+            }}
+          >
             <SegmentGroup.Indicator />
             <SegmentGroup.Items
               items={[
