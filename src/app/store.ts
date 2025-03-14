@@ -7,6 +7,7 @@ import { bookSlice } from '@/features/book/bookSlice'
 import { settingsSlice } from '@/features/settings/settingsSlice'
 import localStorageMiddleware from './localStorageMiddleware'
 import { choosenSlice } from '@/features/choosen/choosenSlice'
+import { statusSlice } from '@/features/status/statusSlice'
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
@@ -16,6 +17,7 @@ const rootReducer = combineSlices(
   quotesApiSlice,
   settingsSlice,
   choosenSlice,
+  statusSlice,
 )
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>

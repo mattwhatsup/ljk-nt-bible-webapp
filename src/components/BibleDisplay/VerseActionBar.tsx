@@ -13,6 +13,7 @@ import { FaRegCopy, FaRegTrashAlt } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { toaster, Toaster } from '../ui/toaster'
 import { Tooltip } from '../ui/tooltip'
+import { selectIsJumpToDialogOpen } from '@/features/status/statusSlice'
 
 type Props = {}
 
@@ -28,6 +29,7 @@ export default function VerseActionBar({}: Props) {
   const chapterData = useAppSelector(
     makeSelectChapter(book as BookName, parseInt(chapter || '1')),
   ).contents!.nodeData
+  const isJumpToDialogOpen = useAppSelector(selectIsJumpToDialogOpen)
 
   const handleCopy = useCallback(() => {
     if (!selectedVerses.length) return
@@ -76,6 +78,7 @@ export default function VerseActionBar({}: Props) {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (isJumpToDialogOpen) return
       if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
         handleCopy()
       } else if (event.key === 'Escape') {
@@ -96,6 +99,7 @@ export default function VerseActionBar({}: Props) {
     dispatch,
     handleCopy,
     handleCancel,
+    isJumpToDialogOpen,
   ])
 
   return (
