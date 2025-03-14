@@ -12,6 +12,10 @@ import VerseNo from './VerseNo'
 import { cloneElement } from 'react'
 import './BibleDisplay.css'
 import CommentList from './CommonList'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { selectVerseThunkAction } from '@/features/choosen/choosenSlice'
+import { useParams } from 'react-router-dom'
+import { selectLanguage } from '@/features/settings/settingsSlice'
 
 type Props = {
   data: BibleItemNodeWithVerseList
@@ -107,6 +111,10 @@ function findMatchedParentNode(
 }
 
 export default function BibleDisplay({ data }: Props) {
+  const dispatch = useAppDispatch()
+  const { book, chapter } = useParams<{ book: string; chapter?: string }>()
+  const language = useAppSelector(selectLanguage)
+
   return (
     <Box
       userSelect={'none'}
@@ -122,12 +130,24 @@ export default function BibleDisplay({ data }: Props) {
           })
 
           if (el) {
-            console.log(
-              'Verse No.',
-              el.getAttribute('data-verse'),
-              'has been clicked',
-              'and shiftKey=',
-              shiftKey,
+            // console.log(
+            //   language,
+            //   book,
+            //   chapter,
+            //   'Verse No.',
+            //   el.getAttribute('data-verse'),
+            //   'has been clicked',
+            //   'and shiftKey=',
+            //   shiftKey,
+            // )
+            dispatch(
+              selectVerseThunkAction({
+                lang: language,
+                book: book!,
+                chapter: parseInt(chapter || '1'),
+                verse: el.getAttribute('data-verse') || '1',
+                shiftKey,
+              }),
             )
           }
         }

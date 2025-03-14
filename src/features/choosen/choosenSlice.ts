@@ -58,16 +58,25 @@ export const choosenSlice = createSlice({
       }
       const verses = new Set(state.selectedVerses[key])
       if (shiftKey && state.lastSelectedVerse[key]) {
-        // @todo
+        let a = verseList.indexOf(state.lastSelectedVerse[key])
+        let b = verseList.indexOf(verse)
+        if (a > b) {
+          ;[a, b] = [b, a]
+        }
+        verseList.slice(a, b + 1).forEach(v => {
+          verses.add(v)
+        })
+        state.lastSelectedVerse[key] = verse
       } else {
         if (verses.has(verse)) {
           verses.delete(verse)
+          delete state.lastSelectedVerse[key]
         } else {
           verses.add(verse)
+          state.lastSelectedVerse[key] = verse
         }
-        state.selectedVerses[key] = Array.from(verses)
-        state.lastSelectedVerse[key] = verse
       }
+      state.selectedVerses[key] = Array.from(verses)
     })
   },
 })
