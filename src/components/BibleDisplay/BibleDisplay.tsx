@@ -19,6 +19,7 @@ import {
 } from '@/features/choosen/choosenSlice'
 import { useParams } from 'react-router-dom'
 import { selectLanguage } from '@/features/settings/settingsSlice'
+import VerseActionBar from './VerseActionBar'
 
 type Props = {
   data: BibleItemNodeWithVerseList
@@ -166,6 +167,7 @@ export default function BibleDisplay({ data }: Props) {
       }}
     >
       {renderChapter(data, selectedVerses)}
+      <VerseActionBar />
     </Box>
   )
 }
