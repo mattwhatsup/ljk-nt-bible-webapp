@@ -12,6 +12,7 @@ import { useCallback, useEffect } from 'react'
 import { FaRegCopy, FaRegTrashAlt } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { toaster, Toaster } from '../ui/toaster'
+import { Tooltip } from '../ui/tooltip'
 
 type Props = {}
 
@@ -104,17 +105,21 @@ export default function VerseActionBar({}: Props) {
           <ActionBar.Positioner>
             <ActionBar.Content>
               <ActionBar.SelectionTrigger>
-                选中 {selectedVerses.length}
+                已选中 {selectedVerses.length}
               </ActionBar.SelectionTrigger>
               <ActionBar.Separator />
-              <Button variant="outline" size="sm" onClick={handleCopy}>
-                <FaRegCopy />
-                复制 Ctrl+C
-              </Button>
-              <Button variant="outline" size="sm" onClick={handleCancel}>
-                <FaRegTrashAlt />
-                清除 Esc
-              </Button>
+              <Tooltip showArrow content="复制选中经文 Ctrl+C/Cmd+C">
+                <Button variant="outline" size="sm" onClick={handleCopy}>
+                  <FaRegCopy />
+                  复制
+                </Button>
+              </Tooltip>
+              <Tooltip showArrow content="清除选中经文 Esc">
+                <Button variant="outline" size="sm" onClick={handleCancel}>
+                  <FaRegTrashAlt />
+                  清除
+                </Button>
+              </Tooltip>
             </ActionBar.Content>
           </ActionBar.Positioner>
         </Portal>
