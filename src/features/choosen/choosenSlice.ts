@@ -76,7 +76,9 @@ export const choosenSlice = createSlice({
           state.lastSelectedVerse[key] = verse
         }
       }
-      state.selectedVerses[key] = Array.from(verses)
+      state.selectedVerses[key] = verseList.filter(verseIndex =>
+        verses.has(verseIndex),
+      )
     })
   },
 })
