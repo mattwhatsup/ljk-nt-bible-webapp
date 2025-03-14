@@ -9,14 +9,7 @@ import type { DataBook } from '@/app/data-types'
 const allBooks = _allBooks as Array<DataBook>
 
 export function copyToClipboard(text: string) {
-  navigator.clipboard.writeText(text).then(
-    () => {
-      console.log('Text copied to clipboard')
-    },
-    err => {
-      console.error('Could not copy text: ', err)
-    },
-  )
+  return navigator.clipboard.writeText(text)
 }
 
 export function getSelectedVersesText(

@@ -167,6 +167,7 @@ export default function BibleDisplay({ data }: Props) {
       }}
     >
       {renderChapter(data, selectedVerses)}
+      {/* {selectedVerses.length > 0 && <VerseActionBar />} */}
       <VerseActionBar />
     </Box>
   )
