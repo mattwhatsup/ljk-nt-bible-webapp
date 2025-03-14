@@ -1,5 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '@/app/store'
 import type { BookName } from '../book/bookApi'
 
@@ -84,10 +84,13 @@ export const choosenSlice = createSlice({
 export const { clearSelectedVerses } = choosenSlice.actions
 
 // Selectors
-export const selectSelectedVerses = (
-  state: RootState,
-  book: string,
-  chapter: number,
-) => state.choosen.selectedVerses[`${book}-${chapter}`] || []
+
+export const selectSelectedVerses = (state: RootState) =>
+  state.choosen.selectedVerses
+export const makeChapterVersesSelector = (book: string, chapter: number) =>
+  createSelector([selectSelectedVerses], selectedVerses => {
+    const key = `${book}-${chapter}`
+    return selectedVerses[key] || []
+  })
 
 export default choosenSlice.reducer

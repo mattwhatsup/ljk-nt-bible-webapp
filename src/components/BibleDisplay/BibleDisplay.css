@@ -66,3 +66,10 @@ span.affix {
   line-height: 2em;
   margin-bottom: 1rem;
 }
+.selected {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: cornflowerblue;
+
+  text-decoration-skip-ink: all;
+}

@@ -13,7 +13,10 @@ import { cloneElement } from 'react'
 import './BibleDisplay.css'
 import CommentList from './CommonList'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
-import { selectVerseThunkAction } from '@/features/choosen/choosenSlice'
+import {
+  makeChapterVersesSelector,
+  selectVerseThunkAction,
+} from '@/features/choosen/choosenSlice'
 import { useParams } from 'react-router-dom'
 import { selectLanguage } from '@/features/settings/settingsSlice'
 
@@ -21,7 +24,10 @@ type Props = {
   data: BibleItemNodeWithVerseList
 }
 
-function renderChapter(chapter: BibleItemNodeWithVerseList) {
+function renderChapter(
+  chapter: BibleItemNodeWithVerseList,
+  selectedVerses: string[],
+) {
   type _Node = {
     node: JSX.Element
     children?: JSX.Element[]
@@ -45,6 +51,7 @@ function renderChapter(chapter: BibleItemNodeWithVerseList) {
       case item.type === 'verse':
         {
           let _item = item as VerseNode
+          const selected = selectedVerses.includes(_item.verseIndex)
           if (item.paragraph === 'paragraph') {
             paragraphNode = <Paragraph key={`p-${index}-${_item.verseIndex}`} />
             paragraphChildren = []
@@ -59,6 +66,7 @@ function renderChapter(chapter: BibleItemNodeWithVerseList) {
               verseNo={item.verseIndex}
               key={`verse-no-${item.verseIndex}`}
               verse={item.verseIndex}
+              selected={selected}
             />,
           )
           _item.contents.forEach((subItem, subIndex) => {
@@ -69,6 +77,7 @@ function renderChapter(chapter: BibleItemNodeWithVerseList) {
                     key={`l-${item.verseIndex}-${subIndex}`}
                     content={subItem.content}
                     verse={item.verseIndex}
+                    selected={selected}
                   />,
                 )
                 break
@@ -82,6 +91,7 @@ function renderChapter(chapter: BibleItemNodeWithVerseList) {
                     key={subIndex}
                     content={subItem.content}
                     verse={item.verseIndex}
+                    selected={selected}
                   />,
                 ]
                 nodes.push({ node: paragraphNode, children: paragraphChildren })
@@ -114,6 +124,11 @@ export default function BibleDisplay({ data }: Props) {
   const dispatch = useAppDispatch()
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
   const language = useAppSelector(selectLanguage)
+  const chapterVersesSelector = makeChapterVersesSelector(
+    book!,
+    parseInt(chapter || '1'),
+  )
+  const selectedVerses = useAppSelector(chapterVersesSelector)
 
   return (
     <Box
@@ -130,16 +145,13 @@ export default function BibleDisplay({ data }: Props) {
           })
 
           if (el) {
-            // console.log(
-            //   language,
-            //   book,
-            //   chapter,
-            //   'Verse No.',
-            //   el.getAttribute('data-verse'),
-            //   'has been clicked',
-            //   'and shiftKey=',
-            //   shiftKey,
-            // )
+            console.log({
+              lang: language,
+              book: book!,
+              chapter: parseInt(chapter || '1'),
+              verse: el.getAttribute('data-verse') || '1',
+              shiftKey,
+            })
             dispatch(
               selectVerseThunkAction({
                 lang: language,
@@ -153,7 +165,7 @@ export default function BibleDisplay({ data }: Props) {
         }
       }}
     >
-      {renderChapter(data)}
+      {renderChapter(data, selectedVerses)}
     </Box>
   )
 }
