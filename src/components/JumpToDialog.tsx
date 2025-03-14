@@ -14,12 +14,15 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import { useEffect, useRef } from 'react'
+import type { SelectInstance } from 'react-select'
+import type { ColourOption } from './JumpToSearchInput'
+import JumpToSearchInput from './JumpToSearchInput'
 type Props = {}
 
 export default function JumpToDialog({}: Props) {
   const dispatch = useAppDispatch()
   const open = useAppSelector(selectIsJumpToDialogOpen)
-  const ref = useRef<HTMLInputElement>(null)
+  const selectRef = useRef<SelectInstance<ColourOption>>(null)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -39,41 +42,24 @@ export default function JumpToDialog({}: Props) {
   }, [dispatch])
 
   return (
-    // <Dialog.RootProvider
-    //   value={dialog}
-    //   onExitComplete={() => dispatch(closeJumpToDialog())}
-    // >
-    <Dialog.Root initialFocusEl={() => ref.current} open={open}>
+    // @ts-ignore
+    <Dialog.Root initialFocusEl={() => selectRef.current} open={open}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Dialog Title</Dialog.Title>
+              <Dialog.Title>快速跳转</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body pb="4">
               <Stack gap="4">
                 <Field.Root>
-                  <Field.Label>First Name</Field.Label>
-                  <Input placeholder="First Name" />
-                </Field.Root>
-                <Field.Root>
-                  <Field.Label>Last Name</Field.Label>
-                  <Input ref={ref} placeholder="Focus First" />
+                  <Field.Label>查询：</Field.Label>
+                  <JumpToSearchInput ref={selectRef} />
                 </Field.Root>
               </Stack>
             </Dialog.Body>
-            <Dialog.Footer justifyContent="center">
-              <Dialog.ActionTrigger asChild>
-                <Button
-                  variant="outline"
-                  onClick={() => dispatch(closeJumpToDialog())}
-                >
-                  Cancel
-                </Button>
-              </Dialog.ActionTrigger>
-              <Button>Save</Button>
-            </Dialog.Footer>
+
             <Dialog.CloseTrigger asChild>
               <CloseButton
                 size="sm"
@@ -84,6 +70,5 @@ export default function JumpToDialog({}: Props) {
         </Dialog.Positioner>
       </Portal>
     </Dialog.Root>
-    // </Dialog.RootProvider>
   )
 }
