@@ -20,7 +20,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { selectLanguage } from '@/features/settings/settingsSlice'
 import VerseActionBar from './VerseActionBar'
-import JumpToDialog from '../JumpToDialog'
+import JumpToDialog from '../JumpToDialog/JumpToDialog'
 
 type Props = {
   data: BibleItemNodeWithVerseList

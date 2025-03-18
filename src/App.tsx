@@ -3,7 +3,6 @@ import ResponsiveMenu from './components/ResponsiveMenu'
 import { Routes, Route, Navigate, useParams, Outlet } from 'react-router-dom'
 import About from './pages/About'
 import Book from './pages/Book'
-import Chapter from './pages/Chapter'
 
 const App = () => {
   return (
@@ -15,9 +14,9 @@ const App = () => {
         <Route element={<OtherLayout />}>
           <Route path="/about" element={<About />} />
         </Route>
-        <Route path="/book/:book/:chapter?" element={<BookLayout />}>
+        <Route path="/book/:book/:chapter/:verse?" element={<BookLayout />}>
           <Route index element={<Book />} />
-          <Route path=":chapter" element={<Chapter />} />
+          {/* <Route path=":chapter" element={<Chapter />} /> */}
         </Route>
       </Routes>
     </div>
