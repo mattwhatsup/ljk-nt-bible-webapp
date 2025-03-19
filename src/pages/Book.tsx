@@ -11,15 +11,16 @@ import {
 } from '@/features/book/bookSlice'
 import type { BookName } from '@/features/book/bookApi'
 import {
+  selectAfterNavigateKeepSelection,
+  selectJumpToSelect,
   selectLanguage,
   selectShowComments,
 } from '@/features/settings/settingsSlice'
 import {
   clearLastSelectedVerse,
+  clearSelectedVerses,
   jumpToSelectVerseThunkAction,
-  selectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
-import { useSelector } from 'react-redux'
 
 export default function Book() {
   const { book, chapter, verse } = useParams<{
@@ -35,8 +36,12 @@ export default function Book() {
   const { contents, loading, error } = useAppSelector(selectChapter)
   const language = useAppSelector(selectLanguage)
   const showComments = useAppSelector(selectShowComments)
+  const jumpToSelect = useAppSelector(selectJumpToSelect)
+  const afterNavigateKeepSelection = useAppSelector(
+    selectAfterNavigateKeepSelection,
+  )
 
-  const verseValue = useSelector(
+  const verseValue = useAppSelector(
     makeSelectVerseLocationValue(
       book as BookName,
       parseInt(chapter || ''),
@@ -69,7 +74,7 @@ export default function Book() {
         })
       })
     }
-  }, [location.pathname, verseValue])
+  }, [location.pathname, verseValue, jumpToSelect])
 
   useEffect(() => {
     document.getElementById('custom-style')!.innerHTML = `
@@ -84,7 +89,7 @@ export default function Book() {
 
   // 路由带verse参数时，自动选中
   useEffect(() => {
-    if (verse && contents) {
+    if (verse && contents && jumpToSelect) {
       dispatch(
         jumpToSelectVerseThunkAction({
           book: book as BookName,
@@ -93,7 +98,7 @@ export default function Book() {
         }),
       )
     }
-  }, [verse, dispatch, book, chapter, contents, verseValue])
+  }, [verse, dispatch, book, chapter, contents, verseValue, jumpToSelect])
 
   // 路由跳转时清除lastSelectedVerse
   useEffect(() => {
@@ -104,8 +109,17 @@ export default function Book() {
           chapter: parseInt(chapter || ''),
         }),
       )
+
+      if (!afterNavigateKeepSelection) {
+        dispatch(
+          clearSelectedVerses({
+            book: book!,
+            chapter: parseInt(chapter || ''),
+          }),
+        )
+      }
     }
-  }, [book, chapter, dispatch])
+  }, [book, chapter, dispatch, afterNavigateKeepSelection])
 
   return (
     <Box>
