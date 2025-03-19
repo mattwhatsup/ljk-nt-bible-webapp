@@ -157,7 +157,7 @@ export default function JumpToDialog({}: Props) {
                 <Field.Root>
                   <Input
                     ref={ref}
-                    placeholder="输入查询"
+                    placeholder="输入格式：书 章:节，书名可输入部分中英文自动匹配，如 mt 28 13"
                     onKeyUp={handleKeyUp}
                     onKeyDown={handleKeyDown}
                     onBlur={() => {
