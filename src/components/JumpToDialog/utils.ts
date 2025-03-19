@@ -62,7 +62,7 @@ export const makeSearchResults = (
       name_cn: book.name_cn,
       abbr: book.abbr_en,
       chapter: supposeChapter || 1,
-      verse: supposeVerse || 1,
+      verse: supposeVerse,
       chapter_count: +book.chapter_count,
     }))
     .filter(selctor => {
@@ -78,6 +78,9 @@ export const makeSearchResults = (
     })
 
   return filteredBooks.map(book => {
-    return { ...book, title: `${book.name_cn} ${book.chapter}:${book.verse}` }
+    return {
+      ...book,
+      title: `${book.name_cn} ${book.chapter}${book.verse > 0 ? `:${book.verse}` : ''}`,
+    }
   })
 }

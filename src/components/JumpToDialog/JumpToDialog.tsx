@@ -34,6 +34,7 @@ export default function JumpToDialog({}: Props) {
   }>({ selectedIndex: 0, items: [] })
   const jumpToSelect = useAppSelector(selectJumpToSelect)
 
+  // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'j') {
@@ -77,7 +78,7 @@ export default function JumpToDialog({}: Props) {
     } else {
       const value = event.currentTarget.value
       if (value.trim() === '') {
-        setList({ selectedIndex: 0, items: [] })
+        setList({ selectedIndex: 0, items: [] }) // 重制初始值
         return
       }
       const search = parseSearch(value)!
@@ -86,8 +87,8 @@ export default function JumpToDialog({}: Props) {
         search.chapter,
         search.verse,
       ).map(result => ({
-        label: `${result.name_cn} ${result.chapter}:${result.verse}`,
-        value: `${result.abbr} ${result.chapter} ${result.verse}`,
+        label: `${result.name_cn} ${result.chapter}${result.verse > 0 ? `:${result.verse}` : ''}`,
+        value: `${result.abbr} ${result.chapter} ${result.verse > 0 ? `${result.verse}` : ''}`,
       }))
 
       setList({ selectedIndex: 0, items })
