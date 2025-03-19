@@ -15,8 +15,12 @@ import {
 } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import JumpToDialogMenu from './JumpToDialogMenu'
-import { makeSearchResults, parseSearch } from './utils'
-import { useNavigate } from 'react-router-dom'
+import {
+  makeAmbiguouslySearchResults,
+  makePreciselySearchResults,
+  parseSearch,
+} from './utils'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   selectJumpToSelect,
   setJumpToSelect,
@@ -33,6 +37,9 @@ export default function JumpToDialog({}: Props) {
     items: { label: string; value: string }[]
   }>({ selectedIndex: 0, items: [] })
   const jumpToSelect = useAppSelector(selectJumpToSelect)
+  const { book: currentBook } = useParams<{
+    book: string
+  }>()
 
   // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
@@ -82,11 +89,22 @@ export default function JumpToDialog({}: Props) {
         return
       }
       const search = parseSearch(value)!
-      const items = makeSearchResults(
-        search.bookFilter,
-        search.chapter,
-        search.verse,
-      ).map(result => ({
+      const items = (() => {
+        if (search.bookFilter === '[current]' && currentBook) {
+          search.bookFilter = currentBook
+          return makePreciselySearchResults(
+            search.bookFilter,
+            search.chapter,
+            search.verse,
+          )
+        } else {
+          return makeAmbiguouslySearchResults(
+            search.bookFilter,
+            search.chapter,
+            search.verse,
+          )
+        }
+      })().map(result => ({
         label: `${result.name_cn} ${result.chapter}章${result.verse > 0 ? `${result.verse}节` : ''}`,
         value: `${result.abbr} ${result.chapter} ${result.verse > 0 ? `${result.verse}` : ''}`,
       }))

@@ -2,15 +2,26 @@ import allBooksJSON from '@/components/BibleSelector/all-books.json'
 import chapterVerseCountMappingJSON from '@/components/BibleSelector/all-chapter-verses-count.json'
 import type { DataBook, ChapterVersesCount } from '../../app/data-types'
 import escapeStringRegexp from 'escape-string-regexp'
-import { BookName } from '@/features/book/bookApi'
 
 const allBooks: DataBook[] = allBooksJSON as DataBook[]
 const chapterVerseCountMapping: ChapterVersesCount[] =
   chapterVerseCountMappingJSON as ChapterVersesCount[]
 
 export const parseSearch = (text: string) => {
-  const standardPattern = (text: string) => {
-    const regex = /([^\s]*)\s*(?:(\d*)[::\s.,]?(\d*))?/i
+  text = text.trim()
+  const partialPattern = (text: string) => {
+    const regex = /^(\d*)\s*[::\s.,]?\s*(\d*)$/i
+    const match = text.match(regex)
+    if (match) {
+      return {
+        bookFilter: '[current]',
+        chapter: +match[1] || 0,
+        verse: +match[2] || 0,
+      }
+    }
+  }
+  const fullPattern = (text: string) => {
+    const regex = /([^\s]*)\s*(?:(\d*)\s*[::\s.,]?\s*(\d*))?/i
     const match = text.match(regex)
     if (match) {
       return {
@@ -21,8 +32,9 @@ export const parseSearch = (text: string) => {
     }
   }
 
-  const match = standardPattern(text)
-  if (match) return match
+  // const match = fullPattern(text)
+  // if (match) return match
+  return partialPattern(text) || fullPattern(text)
 }
 
 const matchName = (input: string, books: DataBook[]) => {
@@ -94,7 +106,40 @@ const filterBooks = (input: string, books: DataBook[]) => {
   return [...ret]
 }
 
-export const makeSearchResults = (
+export const makePreciselySearchResults = (
+  supposeBook: string,
+  supposeChapter: number,
+  supposeVerse: number,
+) => {
+  const filteredBooks = allBooks
+    .filter(book => book.ot_or_nt === 'Nt')
+    .filter(book => book.abbr_en === supposeBook)
+    .map(book => ({
+      id: book.id,
+      name_en: book.name_en,
+      name_tw: book.name_tr,
+      name_cn: book.name_cn,
+      abbr: book.abbr_en,
+      chapter: supposeChapter || 1,
+      verse: supposeVerse,
+      chapter_count: +book.chapter_count,
+    }))
+    .filter(selctor => {
+      return (
+        selctor.chapter_count >= selctor.chapter &&
+        chapterVerseCountMapping.find(
+          item =>
+            item.book_id === selctor.id &&
+            item.chapter === selctor.chapter &&
+            item.verses_count >= selctor.verse,
+        )
+      )
+    })
+
+  return filteredBooks
+}
+
+export const makeAmbiguouslySearchResults = (
   supposeBook: string,
   supposeChapter: number,
   supposeVerse: number,
@@ -125,10 +170,5 @@ export const makeSearchResults = (
       )
     })
 
-  return filteredBooks.map(book => {
-    return {
-      ...book,
-      title: `${book.name_cn} ${book.chapter}${book.verse > 0 ? `:${book.verse}` : ''}`,
-    }
-  })
+  return filteredBooks
 }
