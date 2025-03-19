@@ -173,6 +173,7 @@ export default function JumpToDialog({}: Props) {
                     selectedValue={list.items[list.selectedIndex]?.value}
                     onSelect={s => {
                       dispatch(closeJumpToDialog())
+                      console.log(s)
                       jumpTo(s)
                     }}
                   />

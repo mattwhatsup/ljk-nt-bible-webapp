@@ -25,16 +25,19 @@ export default function JumpToDialogMenu({
           return anchorRef.current!.getBoundingClientRect()
         },
       }}
-      onSelect={({ value }) => {
-        onSelect?.(value)
-      }}
       highlightedValue={selectedValue}
       open={items.length > 0}
       size={'md'}
     >
       <MenuContent portalRef={portalRef} maxH={'10rem'}>
         {items.map(item => (
-          <MenuItem value={item.value} key={item.value}>
+          <MenuItem
+            value={item.value}
+            key={item.value}
+            onClick={() => {
+              onSelect?.(item.value)
+            }}
+          >
             {item.label}
           </MenuItem>
         ))}
