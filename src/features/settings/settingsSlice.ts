@@ -3,11 +3,11 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface SettingsState {
-  theme: 'light' | 'dark'
-  language: 'cn' | 'tw'
-  showComments: boolean
-  jumpToSelect: boolean
-  afterNavigateKeepSelection: boolean
+  theme: 'light' | 'dark' // 浅色 or 深色
+  language: 'cn' | 'tw' // 简体中文 or 繁体中文
+  showComments: boolean // 是否显示注释
+  jumpToSelect: boolean // 是否跳转后选中
+  afterNavigateKeepSelection: boolean // 是否在跳转后保留选择
 }
 
 const defaultState: SettingsState = {

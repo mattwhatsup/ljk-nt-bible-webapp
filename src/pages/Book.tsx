@@ -1,4 +1,12 @@
-import { Box, Spinner, VStack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Spinner,
+  VStack,
+  Text,
+  Skeleton,
+  SkeletonText,
+  HStack,
+} from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
@@ -122,7 +130,7 @@ export default function Book() {
   }, [book, chapter, dispatch, afterNavigateKeepSelection])
 
   return (
-    <Box>
+    <Box position="relative">
       {contents ? (
         <>
           <TurnPage />
@@ -132,8 +140,20 @@ export default function Book() {
         <>
           {loading && (
             <VStack colorPalette="teal">
-              <Spinner color="colorPalette.600" />
-              <Text color="colorPalette.600">Loading...</Text>
+              <SkeletonText noOfLines={5} gap={4} variant={'pulse'} />
+              <SkeletonText noOfLines={2} gap={4} variant={'pulse'} />
+              <SkeletonText noOfLines={7} gap={4} variant={'pulse'} />
+              <SkeletonText noOfLines={3} gap={4} variant={'pulse'} />
+              <SkeletonText noOfLines={4} gap={4} variant={'pulse'} />
+              <HStack
+                position={'absolute'}
+                left="50%"
+                top="50%"
+                transform="translate(-50%, -50%)"
+              >
+                <Spinner color="colorPalette.600" />
+                <Text color="colorPalette.600">Loading...</Text>
+              </HStack>
             </VStack>
           )}
           {error && <Text color="colorPalette.600">Error: {error}</Text>}
