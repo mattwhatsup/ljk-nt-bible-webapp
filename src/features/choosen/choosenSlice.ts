@@ -121,16 +121,16 @@ export const choosenSlice = createSlice({
             .verseList
 
         const key = `${book}-${chapter}`
-        // if (!state.selectedVerses[key]) {
-        //   state.selectedVerses[key] = []
-        // }
-        // const verses = new Set(state.selectedVerses[key])
-        // verses.add(verse)
-        // state.selectedVerses[key] = verseList.filter(verseIndex =>
-        //   verses.has(verseIndex),
-        // )
+        if (!state.selectedVerses[key]) {
+          state.selectedVerses[key] = []
+        }
+        const verses = new Set(state.selectedVerses[key])
+        verses.add(verse)
+        state.selectedVerses[key] = verseList.filter(verseIndex =>
+          verses.has(verseIndex),
+        )
 
-        state.selectedVerses[key] = [verse]
+        // state.selectedVerses[key] = [verse]
       })
   },
 })

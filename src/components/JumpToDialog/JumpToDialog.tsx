@@ -5,6 +5,7 @@ import {
   selectIsJumpToDialogOpen,
 } from '@/features/status/statusSlice'
 import {
+  Checkbox,
   CloseButton,
   Dialog,
   Field,
@@ -16,6 +17,10 @@ import { useEffect, useRef, useState } from 'react'
 import JumpToDialogMenu from './JumpToDialogMenu'
 import { makeSearchResults, parseSearch } from './utils'
 import { useNavigate } from 'react-router-dom'
+import {
+  selectJumpToSelect,
+  setJumpToSelect,
+} from '@/features/settings/settingsSlice'
 type Props = {}
 
 export default function JumpToDialog({}: Props) {
@@ -27,6 +32,7 @@ export default function JumpToDialog({}: Props) {
     selectedIndex: number
     items: { label: string; value: string }[]
   }>({ selectedIndex: 0, items: [] })
+  const jumpToSelect = useAppSelector(selectJumpToSelect)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -113,6 +119,21 @@ export default function JumpToDialog({}: Props) {
             </Dialog.Header>
             <Dialog.Body pb="4">
               <Stack gap="4">
+                <Field.Root>
+                  <Checkbox.Root
+                    variant={'outline'}
+                    checked={jumpToSelect}
+                    onCheckedChange={({ checked }) => {
+                      dispatch(setJumpToSelect(!!checked))
+                    }}
+                  >
+                    <Checkbox.HiddenInput />
+                    <Checkbox.Control />
+                    <Checkbox.Label>
+                      跳转指定某一节时，直接选中该节经文
+                    </Checkbox.Label>
+                  </Checkbox.Root>
+                </Field.Root>
                 <Field.Root>
                   <Input
                     ref={ref}
