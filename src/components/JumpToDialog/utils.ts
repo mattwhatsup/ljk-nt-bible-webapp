@@ -2,34 +2,71 @@ import allBooksJSON from '@/components/BibleSelector/all-books.json'
 import chapterVerseCountMappingJSON from '@/components/BibleSelector/all-chapter-verses-count.json'
 import type { DataBook, ChapterVersesCount } from '../../app/data-types'
 import escapeStringRegexp from 'escape-string-regexp'
+import { BookName } from '@/features/book/bookApi'
 
 const allBooks: DataBook[] = allBooksJSON as DataBook[]
 const chapterVerseCountMapping: ChapterVersesCount[] =
   chapterVerseCountMappingJSON as ChapterVersesCount[]
 
-const standardPattern = (text: string) => {
-  const regex = /([^\s]*)\s*(?:(\d*)[::\s.,]?(\d*))?/i
-  const match = text.match(regex)
-  if (match) {
-    return {
-      bookFilter: match[1],
-      chapter: +match[2] || 0,
-      verse: +match[3] || 0,
+export const parseSearch = (text: string) => {
+  const standardPattern = (text: string) => {
+    const regex = /([^\s]*)\s*(?:(\d*)[::\s.,]?(\d*))?/i
+    const match = text.match(regex)
+    if (match) {
+      return {
+        bookFilter: match[1],
+        chapter: +match[2] || 0,
+        verse: +match[3] || 0,
+      }
     }
   }
-}
-export const parseSearch = (text: string) => {
-  const patterns = [standardPattern]
 
-  for (let i = 0; i < patterns.length; i++) {
-    const match = patterns[i](text)
-    if (match) return match
+  const match = standardPattern(text)
+  if (match) return match
+}
+
+const matchName = (input: string, books: DataBook[]) => {
+  type RetType = {
+    book: DataBook
+    weight: number // 权重
   }
+  const nameTypes = [
+    'name_en',
+    'name_cn',
+    'name_tr',
+    'abbr_en',
+    'abbr_cn',
+    'abbr_tr',
+    'pinyin_initial',
+    'pinyin',
+  ]
+  const ret: RetType[] = []
+
+  const insertIntoRet = (book: DataBook, weight: number) => {
+    const find = ret.find(r => r.book.id === book.id)
+    if (find) {
+      find.weight = find.weight > weight ? find.weight : weight
+    } else {
+      ret.push({ book, weight })
+    }
+  }
+
+  nameTypes.forEach(name => {
+    books.forEach(book => {
+      if (book[name] === input.toLowerCase()) {
+        insertIntoRet(book, 3)
+      } else if ((book[name] as string).startsWith(input.toLowerCase())) {
+        insertIntoRet(book, 2)
+      } else if ((book[name] as string).includes(input.toLowerCase())) {
+        insertIntoRet(book, 1)
+      }
+    })
+  })
+
+  return [...ret].sort((a, b) => b.weight - a.weight).map(r => r.book)
 }
 
-const filterBooks = (input: string, books: DataBook[]) => {
-  if (!input) return books
-
+const looseMatchName = (input: string, books: DataBook[]) => {
   const chars = input.split('').map(c => escapeStringRegexp(c))
 
   const newFilter = chars.join('.*')
@@ -39,11 +76,22 @@ const filterBooks = (input: string, books: DataBook[]) => {
 
     return (
       book.name_cn.match(regex) ||
+      book.name_tr.match(regex) ||
       book.name_en.match(regex) ||
       book.pinyin.match(regex) ||
       book.pinyin_initial.match(regex)
     )
   })
+}
+
+const filterBooks = (input: string, books: DataBook[]) => {
+  if (!input.trim()) return []
+
+  const match1 = matchName(input, books)
+  const match2 = looseMatchName(input, books)
+  const ret = new Set([...match1, ...match2])
+
+  return [...ret]
 }
 
 export const makeSearchResults = (

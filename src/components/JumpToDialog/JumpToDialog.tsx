@@ -87,7 +87,7 @@ export default function JumpToDialog({}: Props) {
         search.chapter,
         search.verse,
       ).map(result => ({
-        label: `${result.name_cn} ${result.chapter}${result.verse > 0 ? `:${result.verse}` : ''}`,
+        label: `${result.name_cn} ${result.chapter}章${result.verse > 0 ? `${result.verse}节` : ''}`,
         value: `${result.abbr} ${result.chapter} ${result.verse > 0 ? `${result.verse}` : ''}`,
       }))
 
