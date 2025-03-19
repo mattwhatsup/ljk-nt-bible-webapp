@@ -3,11 +3,10 @@ import {
   Spinner,
   VStack,
   Text,
-  Skeleton,
   SkeletonText,
   HStack,
 } from '@chakra-ui/react'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
 import TurnPage from '@/components/TurnPage'
@@ -109,6 +108,12 @@ export default function Book() {
   }, [verse, dispatch, book, chapter, contents, verseValue, jumpToSelect])
 
   // 路由跳转时清除lastSelectedVerse
+  const afterNavigateKeepSelectionRef = useRef(afterNavigateKeepSelection)
+
+  useEffect(() => {
+    afterNavigateKeepSelectionRef.current = afterNavigateKeepSelection
+  })
+
   useEffect(() => {
     return () => {
       dispatch(
@@ -118,7 +123,7 @@ export default function Book() {
         }),
       )
 
-      if (!afterNavigateKeepSelection) {
+      if (!afterNavigateKeepSelectionRef.current) {
         dispatch(
           clearSelectedVerses({
             book: book!,
@@ -127,7 +132,7 @@ export default function Book() {
         )
       }
     }
-  }, [book, chapter, dispatch, afterNavigateKeepSelection])
+  }, [book, chapter, dispatch])
 
   return (
     <Box position="relative">

@@ -5,9 +5,13 @@ import {
   clearSelectedVerses,
   makeChapterVersesSelector,
 } from '@/features/choosen/choosenSlice'
-import { selectLanguage } from '@/features/settings/settingsSlice'
+import {
+  selectAfterNavigateKeepSelection,
+  selectLanguage,
+  setAfterNavigateKeepSelection,
+} from '@/features/settings/settingsSlice'
 import { copyToClipboard, getSelectedVersesText } from '@/utils/copy-utils'
-import { ActionBar, Button, Portal } from '@chakra-ui/react'
+import { ActionBar, Button, Portal, Checkbox } from '@chakra-ui/react'
 import { useCallback, useEffect } from 'react'
 import { FaRegCopy, FaRegTrashAlt } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
@@ -30,6 +34,9 @@ export default function VerseActionBar({}: Props) {
     makeSelectChapter(book as BookName, parseInt(chapter || '1')),
   ).contents!.nodeData
   const isJumpToDialogOpen = useAppSelector(selectIsJumpToDialogOpen)
+  const afterNavigateKeepSelection = useAppSelector(
+    selectAfterNavigateKeepSelection,
+  )
 
   const handleCopy = useCallback(() => {
     if (!selectedVerses.length) return
@@ -124,6 +131,20 @@ export default function VerseActionBar({}: Props) {
                   清除
                 </Button>
               </Tooltip>
+
+              <Checkbox.Root
+                variant={'outline'}
+                checked={afterNavigateKeepSelection}
+                onCheckedChange={({ checked }) => {
+                  dispatch(setAfterNavigateKeepSelection(!!checked))
+                }}
+              >
+                <Checkbox.HiddenInput />
+                <Checkbox.Control />
+                <Tooltip showArrow content="当导航离开本页时返回仍然选中">
+                  <Checkbox.Label>保持选中</Checkbox.Label>
+                </Tooltip>
+              </Checkbox.Root>
             </ActionBar.Content>
           </ActionBar.Positioner>
         </Portal>
