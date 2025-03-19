@@ -93,3 +93,25 @@ export const makeSelectChapter = (bookName: BookName, chapterIndex: number) =>
     loading: books[lang]?.[bookName]?.loading || false,
     error: books[lang]?.[bookName]?.error || null,
   }))
+
+// 查找某个verse的verseValue
+export const makeSelectVerseLocationValue = (
+  bookName: BookName,
+  chapterIndex: number,
+  verse: number,
+) =>
+  createSelector([selectBooks, selectLanguage], (books, lang) => {
+    const data = books[lang]?.[bookName]?.chapters[chapterIndex - 1]
+    if (data) {
+      let { verseList } = data
+      const verseVaule = verseList.find(v => {
+        let [begin, end] = v.split('-')
+        if (end === undefined) {
+          end = begin
+        }
+        return verse >= parseInt(begin) && verse <= parseInt(end)
+      })
+      return verseVaule
+    }
+    return
+  })

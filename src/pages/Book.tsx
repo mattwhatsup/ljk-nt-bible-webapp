@@ -4,16 +4,22 @@ import { useLocation, useParams } from 'react-router-dom'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
 import TurnPage from '@/components/TurnPage'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
-import { fetchChapters, makeSelectChapter } from '@/features/book/bookSlice'
+import {
+  fetchChapters,
+  makeSelectChapter,
+  makeSelectVerseLocationValue,
+} from '@/features/book/bookSlice'
 import type { BookName } from '@/features/book/bookApi'
 import {
   selectLanguage,
   selectShowComments,
 } from '@/features/settings/settingsSlice'
 import {
+  clearLastSelectedVerse,
   jumpToSelectVerseThunkAction,
   selectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
+import { useSelector } from 'react-redux'
 
 export default function Book() {
   const { book, chapter, verse } = useParams<{
@@ -50,17 +56,37 @@ export default function Book() {
     `
   }, [showComments])
 
+  const verseValue = useSelector(
+    makeSelectVerseLocationValue(
+      book as BookName,
+      parseInt(chapter || ''),
+      parseInt(verse || ''),
+    ),
+  )
+  // 路由带verse参数时，自动选中
   useEffect(() => {
     if (verse && contents) {
       dispatch(
         jumpToSelectVerseThunkAction({
           book: book as BookName,
           chapter: parseInt(chapter || ''),
-          verse,
+          verse: verseValue!,
         }),
       )
     }
-  }, [verse, dispatch, book, chapter, contents])
+  }, [verse, dispatch, book, chapter, contents, verseValue])
+
+  // 路由跳转时清除lastSelectedVerse
+  useEffect(() => {
+    return () => {
+      dispatch(
+        clearLastSelectedVerse({
+          book: book!,
+          chapter: parseInt(chapter || ''),
+        }),
+      )
+    }
+  }, [book, chapter, dispatch])
 
   return (
     <Box>

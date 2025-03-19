@@ -62,6 +62,14 @@ export const choosenSlice = createSlice({
       delete state.selectedVerses[key]
       delete state.lastSelectedVerse[key]
     },
+    clearLastSelectedVerse(
+      state,
+      action: PayloadAction<{ book: string; chapter: number }>,
+    ) {
+      const { book, chapter } = action.payload
+      const key = `${book}-${chapter}`
+      delete state.lastSelectedVerse[key]
+    },
   },
   extraReducers: builder => {
     builder
@@ -127,7 +135,8 @@ export const choosenSlice = createSlice({
   },
 })
 
-export const { clearSelectedVerses } = choosenSlice.actions
+export const { clearSelectedVerses, clearLastSelectedVerse } =
+  choosenSlice.actions
 
 // Selectors
 
