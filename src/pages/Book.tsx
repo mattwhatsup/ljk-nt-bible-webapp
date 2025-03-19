@@ -36,14 +36,40 @@ export default function Book() {
   const language = useAppSelector(selectLanguage)
   const showComments = useAppSelector(selectShowComments)
 
+  const verseValue = useSelector(
+    makeSelectVerseLocationValue(
+      book as BookName,
+      parseInt(chapter || ''),
+      parseInt(verse || ''),
+    ),
+  )
+
   useEffect(() => {
     dispatch(fetchChapters({ lang: language, bookName: book as BookName }))
   }, [book, chapter, language, dispatch])
 
   const location = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    if (!verseValue) {
+      window.scrollTo(0, 0)
+    } else {
+      // 高亮跳转的verse
+      const els = document.querySelectorAll(`[data-verse='${verseValue}']`)
+      const el1 = els[0]
+      if (el1) {
+        el1.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+
+      els.forEach(el => {
+        setTimeout(() => {
+          el.classList.add('jumpto-emphasis')
+          setTimeout(() => {
+            el.classList.remove('jumpto-emphasis')
+          }, 3000)
+        })
+      })
+    }
+  }, [location.pathname, verseValue])
 
   useEffect(() => {
     document.getElementById('custom-style')!.innerHTML = `
@@ -56,13 +82,6 @@ export default function Book() {
     `
   }, [showComments])
 
-  const verseValue = useSelector(
-    makeSelectVerseLocationValue(
-      book as BookName,
-      parseInt(chapter || ''),
-      parseInt(verse || ''),
-    ),
-  )
   // 路由带verse参数时，自动选中
   useEffect(() => {
     if (verse && contents) {
