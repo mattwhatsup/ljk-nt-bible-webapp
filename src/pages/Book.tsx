@@ -10,9 +10,17 @@ import {
   selectLanguage,
   selectShowComments,
 } from '@/features/settings/settingsSlice'
+import {
+  jumpToSelectVerseThunkAction,
+  selectVerseThunkAction,
+} from '@/features/choosen/choosenSlice'
 
 export default function Book() {
-  const { book, chapter } = useParams<{ book: string; chapter?: string }>()
+  const { book, chapter, verse } = useParams<{
+    book: string
+    chapter: string
+    verse?: string
+  }>()
   const dispatch = useAppDispatch()
   const selectChapter = makeSelectChapter(
     book as BookName,
@@ -41,6 +49,18 @@ export default function Book() {
       }
     `
   }, [showComments])
+
+  useEffect(() => {
+    if (verse && contents) {
+      dispatch(
+        jumpToSelectVerseThunkAction({
+          book: book as BookName,
+          chapter: parseInt(chapter || ''),
+          verse,
+        }),
+      )
+    }
+  }, [verse, dispatch, book, chapter, contents])
 
   return (
     <Box>

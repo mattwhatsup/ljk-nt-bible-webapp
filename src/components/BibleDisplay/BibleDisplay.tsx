@@ -147,16 +147,15 @@ export default function BibleDisplay({ data }: Props) {
           })
 
           if (el) {
-            console.log({
-              lang: language,
-              book: book!,
-              chapter: parseInt(chapter || '1'),
-              verse: el.getAttribute('data-verse') || '1',
-              shiftKey,
-            })
+            // console.log({
+            //   lang: language,
+            //   book: book!,
+            //   chapter: parseInt(chapter || '1'),
+            //   verse: el.getAttribute('data-verse') || '1',
+            //   shiftKey,
+            // })
             dispatch(
               selectVerseThunkAction({
-                lang: language,
                 book: book!,
                 chapter: parseInt(chapter || '1'),
                 verse: el.getAttribute('data-verse') || '1',
