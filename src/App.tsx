@@ -3,6 +3,7 @@ import ResponsiveMenu from './components/ResponsiveMenu'
 import { Routes, Route, Navigate, useParams, Outlet } from 'react-router-dom'
 import About from './pages/About'
 import Book from './pages/Book'
+import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         </Route>
         <Route path="/book/:book/:chapter/:verse?" element={<BookLayout />}>
           <Route index element={<Book />} />
+
           {/* <Route path=":chapter" element={<Chapter />} /> */}
         </Route>
       </Routes>
@@ -29,6 +31,7 @@ const BookLayout = () => {
   return (
     <Layout forBook>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }
@@ -37,6 +40,7 @@ const OtherLayout = () => {
   return (
     <Layout>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }

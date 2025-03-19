@@ -34,7 +34,7 @@ export const parseSearch = (text: string) => {
 
   // const match = fullPattern(text)
   // if (match) return match
-  return partialPattern(text) || fullPattern(text)
+  return { partial: partialPattern(text), full: fullPattern(text) }
 }
 
 const matchName = (input: string, books: DataBook[]) => {

@@ -39,6 +39,7 @@ export default function JumpToDialog({}: Props) {
   const jumpToSelect = useAppSelector(selectJumpToSelect)
   const { book: currentBook } = useParams<{
     book: string
+    chapter?: string
   }>()
 
   // 唤醒/关闭 快速跳转窗口
@@ -90,18 +91,18 @@ export default function JumpToDialog({}: Props) {
       }
       const search = parseSearch(value)!
       const items = (() => {
-        if (search.bookFilter === '[current]' && currentBook) {
-          search.bookFilter = currentBook
+        if (search.partial?.bookFilter === '[current]' && currentBook) {
+          search.partial.bookFilter = currentBook
           return makePreciselySearchResults(
-            search.bookFilter,
-            search.chapter,
-            search.verse,
+            search.partial.bookFilter,
+            search.partial.chapter,
+            search.partial.verse,
           )
         } else {
           return makeAmbiguouslySearchResults(
-            search.bookFilter,
-            search.chapter,
-            search.verse,
+            search.full!.bookFilter,
+            search.full!.chapter,
+            search.full!.verse,
           )
         }
       })().map(result => ({
