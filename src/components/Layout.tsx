@@ -13,12 +13,13 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
       <Container maxW="2xl" px={0} pt={20 + (forBook ? 20 : 0)}>
         <Box as="main" py={4}>
           <Box
-            borderWidth="1px"
+            // borderWidth="1px"
             borderRadius="lg"
             {...({
-              maxContentDown: { padding: '1rem 2rem' },
+              maxContentDown: { padding: '1rem 2rem' }, // maxContent是自己定义的，在provider.tsx中
               maxContent: { padding: '1rem' },
             } as any)}
+            borderWidth={{ base: '1px', maxContentDown: '0' }}
           >
             {children}
           </Box>
