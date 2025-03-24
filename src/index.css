@@ -11,3 +11,31 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@keyframes highlight {
+  0% {
+    background-color: rgba(255, 255, 0, 0); /* 完全透明 */
+  }
+  15% {
+    background-color: rgba(255, 240, 0, 0.6); /* 快速达到黄色高亮 */
+  }
+  30% {
+    background-color: rgba(255, 255, 0, 0.4); /* 回退一半透明度 */
+  }
+  45% {
+    background-color: rgba(255, 245, 0, 1); /* 再次增强高亮 */
+  }
+  60% {
+    background-color: rgba(255, 255, 0, 0.2); /* 渐弱 */
+  }
+  75% {
+    background-color: rgba(255, 230, 0, 0.8); /* 二次增强 */
+  }
+  100% {
+    background-color: rgba(255, 255, 0, 0); /* 回到透明 */
+  }
+}
+
+.jumpto-emphasis {
+  animation: highlight 3s ease-in-out infinite; /* 添加无限循环 */
+}

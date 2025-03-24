@@ -1,10 +1,15 @@
-import { Icon, IconButton } from '@chakra-ui/react'
-import React from 'react'
+import type { BookName } from '@/features/book/bookApi'
+import { makeChapterRoutePath, next, previous } from '@/features/book/bookApi'
+import { IconButton } from '@chakra-ui/react'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { useNavigate, useParams } from 'react-router-dom'
 
 type Props = {}
 
 export default function TurnPage({}: Props) {
+  const { book, chapter } = useParams<{ book: string; chapter?: string }>()
+  const nav = useNavigate()
+
   return (
     <>
       <IconButton
@@ -23,6 +28,9 @@ export default function TurnPage({}: Props) {
         size={{ mdDown: 'xs', md: 'md' }}
         bg={'white'}
         _hover={{ bg: 'gray.100' }}
+        onClick={() =>
+          nav(makeChapterRoutePath(previous(book as BookName, Number(chapter))))
+        }
       >
         <FaAngleLeft />
       </IconButton>
@@ -42,6 +50,9 @@ export default function TurnPage({}: Props) {
         size={{ mdDown: 'xs', md: 'md' }}
         bg={'white'}
         _hover={{ bg: 'gray.100' }}
+        onClick={() =>
+          nav(makeChapterRoutePath(next(book as BookName, Number(chapter))))
+        }
       >
         <FaAngleRight />
       </IconButton>

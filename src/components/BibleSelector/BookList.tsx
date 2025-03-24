@@ -1,7 +1,7 @@
 import type { FunctionComponent, HTMLAttributes } from 'react'
 import { Fragment, useContext, useEffect, useRef, useState } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
-import { OtOrNt } from '../../app/api'
+import { OtOrNt } from '../../app/data-types'
 import { SelectedValueContext } from './BibleSelector'
 import { book_filter } from '../../utils/book-filter'
 import BibleSelectorItem from './BibleSelectorItem'

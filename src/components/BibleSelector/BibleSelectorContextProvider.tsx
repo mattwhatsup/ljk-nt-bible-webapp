@@ -2,7 +2,7 @@ import type { FunctionComponent, ReactNode } from 'react'
 import { createContext } from 'react'
 import allBooks from './all-books.json'
 import allChapterVersesCount from './all-chapter-verses-count.json'
-import type { ChapterVersesCount, DataBook } from '../../app/api'
+import type { ChapterVersesCount, DataBook } from '../../app/data-types'
 
 export const BibleSelectorContext = createContext<{
   books: Array<DataBook>

@@ -1,4 +1,13 @@
-import { Box, Flex, IconButton, Button, Stack } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  IconButton,
+  Button,
+  Stack,
+  HStack,
+  Icon,
+  Kbd,
+} from '@chakra-ui/react'
 import {
   DrawerBackdrop,
   DrawerBody,
@@ -12,11 +21,14 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
-import { GoInfo } from 'react-icons/go'
+import { GoInfo, GoSearch } from 'react-icons/go'
 import { BsAt } from 'react-icons/bs'
 import { FiImage } from 'react-icons/fi'
+import { ImCommand, ImCtrl } from 'react-icons/im'
+import { useAppDispatch } from '@/app/hooks'
+import { openJumpToDialog } from '@/features/status/statusSlice'
 
-const MenuItems = ({ children }: { children: React.ReactNode }) => (
+const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box mt={{ base: 4, md: 0 }} mr={2} display="block">
     {children}
   </Box>
@@ -24,6 +36,7 @@ const MenuItems = ({ children }: { children: React.ReactNode }) => (
 
 const ResponsiveMenu = () => {
   const [open, setOpen] = useState(false)
+  const dispatch = useAppDispatch()
 
   return (
     <Box
@@ -82,39 +95,57 @@ const ResponsiveMenu = () => {
           display={{ base: 'none', md: 'flex' }}
           width={{ md: 'auto' }}
           alignItems="center"
+          justifyContent={'space-between'}
           flexGrow={1}
           py="1.2rem"
         >
-          <MenuItems>
-            <IconButton
-              colorScheme={'purple'}
-              px={'1em'}
-              color={'white'}
-              bg={'transparent'}
-              aria-pressed={true}
-              _active={{ bg: 'teal.600' }}
-              _hover={{ bg: 'teal.600' }}
-              variant={'outline'}
-            >
-              <CgReadme /> 阅读
-            </IconButton>
-          </MenuItems>
-          <MenuItems>
-            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-              <GoInfo /> 关于
-            </IconButton>
-          </MenuItems>
-          <MenuItems>
-            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-              <BsAt /> 引用
-            </IconButton>
-          </MenuItems>
+          <HStack>
+            <MenuItem>
+              <IconButton
+                colorScheme={'purple'}
+                px={'1em'}
+                color={'white'}
+                bg={'transparent'}
+                aria-pressed={true}
+                _active={{ bg: 'teal.600' }}
+                _hover={{ bg: 'teal.600' }}
+                variant={'outline'}
+              >
+                <CgReadme /> 阅读
+              </IconButton>
+            </MenuItem>
+            <MenuItem>
+              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+                <GoInfo /> 关于
+              </IconButton>
+            </MenuItem>
+            <MenuItem>
+              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+                <BsAt /> 引用
+              </IconButton>
+            </MenuItem>
 
-          <MenuItems>
-            <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-              <FiImage /> 插图
-            </IconButton>
-          </MenuItems>
+            <MenuItem>
+              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+                <FiImage /> 插图
+              </IconButton>
+            </MenuItem>
+          </HStack>
+          <Button
+            display={'inline-flex'}
+            colorPalette={'teal'}
+            variant={'outline'}
+            size={'xs'}
+            onClick={() => dispatch(openJumpToDialog())}
+          >
+            <Icon>
+              <GoSearch />
+            </Icon>
+            快速跳转
+            <Kbd>
+              {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
+            </Kbd>
+          </Button>
         </Box>
       </Flex>
     </Box>

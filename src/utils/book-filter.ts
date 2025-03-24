@@ -1,4 +1,4 @@
-import type { DataBook } from '../app/api'
+import type { DataBook } from '../app/data-types'
 
 export function book_filter(book: DataBook, filterText: string) {
   filterText = filterText.toLowerCase()

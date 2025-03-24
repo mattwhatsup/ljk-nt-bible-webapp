@@ -1,3 +1,5 @@
+import VerseList from '@/components/BibleSelector/VerseList'
+
 export type BookChapterNode = {
   type: 'chapter'
   chapterIndex: string
@@ -27,9 +29,14 @@ export type BibleItemNode =
   | CommentNode
   | CommentListNode
 
+export type BibleItemNodeWithVerseList = {
+  verseList: string[]
+  nodeData: BibleItemNode[]
+}
+
 export const chapterParser = (chapterSection: Element) => {
   // console.log(chapterSection.innerHTML, '****')
-  const ret: BibleItemNode[] = []
+  const nodeData: BibleItemNode[] = []
   chapterSection.childNodes.forEach(node => {
     if (node.nodeType === 1) {
       const element = node as Element
@@ -37,7 +44,7 @@ export const chapterParser = (chapterSection: Element) => {
         element.tagName.toUpperCase() === 'H4' &&
         element.className === 'chapter'
       ) {
-        ret.push({
+        nodeData.push({
           type: 'chapter',
           chapterIndex: element.getAttribute('data-chapter')!,
         })
@@ -45,7 +52,7 @@ export const chapterParser = (chapterSection: Element) => {
         element.tagName.toUpperCase() === 'P' &&
         element.className === 'comment'
       ) {
-        ret.push({
+        nodeData.push({
           type: 'comment',
           contents: [element.innerHTML!],
         })
@@ -53,7 +60,7 @@ export const chapterParser = (chapterSection: Element) => {
         element.tagName.toUpperCase() === 'OL' &&
         element.className === 'comment-list'
       ) {
-        ret.push({
+        nodeData.push({
           type: 'comment-list',
           contents: [element.innerHTML!],
         })
@@ -61,17 +68,22 @@ export const chapterParser = (chapterSection: Element) => {
         element.tagName.toUpperCase() === 'P' &&
         element.className === 'para'
       ) {
-        iterateParagraph(element.firstChild!, ret)
+        iterateParagraph(element.firstChild!, nodeData)
       } else if (
         element.tagName.toUpperCase() === 'DIV' &&
         element.className === 'ot-refs'
       ) {
-        iteratePsalmParagraph(element.firstChild!, ret)
+        iteratePsalmParagraph(element.firstChild!, nodeData)
       }
     }
   })
 
-  return ret
+  return {
+    verseList: [...chapterSection.querySelectorAll('sup')].map(
+      sup => sup.textContent?.trim() || '',
+    ),
+    nodeData,
+  }
 }
 
 const getLastBookNode = (bookNodes: BibleItemNode[]) => {

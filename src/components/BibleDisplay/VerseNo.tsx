@@ -1,12 +1,15 @@
 type Props = {
   verseNo: string
   verse?: string
+  selected: boolean
 }
 
-export default function VerseNo({ verseNo, verse }: Props) {
+export default function VerseNo({ verseNo, verse, selected }: Props) {
   return (
-    <sup data-verse={verse} className="verse-no">
-      {verseNo}
-    </sup>
+    <span className={selected ? 'selected' : ''}>
+      <sup data-verse={verse} className={`verse-no `}>
+        {verseNo}
+      </sup>
+    </span>
   )
 }
