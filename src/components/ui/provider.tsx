@@ -14,7 +14,7 @@ const config = defineConfig({
       tablet: '992px',
       desktop: '1200px',
       wide: '1400px',
-      maxContent: '672px',
+      maxContent: '672px', // 2xl
     },
   },
 })

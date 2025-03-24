@@ -29,9 +29,7 @@ import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
-  <Box mt={{ base: 4, md: 0 }} mr={2} display="block">
-    {children}
-  </Box>
+  <Box display="block">{children}</Box>
 )
 
 const ResponsiveMenu = () => {
@@ -63,13 +61,13 @@ const ResponsiveMenu = () => {
           <DrawerBackdrop />
           <DrawerTrigger asChild>
             <Box
-              display={{ base: 'block', md: 'none' }}
+              display={{ base: 'block', ...{ maxContent: 'none' } }}
               onClick={() => setOpen(true)}
               padding={'1.2rem'}
             >
               <IconButton
                 variant="outline"
-                aria-label="Open Menu"
+                aria-label="打开菜单"
                 color={'white'}
               >
                 <GiHamburgerMenu />
@@ -92,7 +90,7 @@ const ResponsiveMenu = () => {
         </DrawerRoot>
 
         <Box
-          display={{ base: 'none', md: 'flex' }}
+          display={{ base: 'none', ...{ maxContent: 'flex' } }}
           width={{ md: 'auto' }}
           alignItems="center"
           justifyContent={'space-between'}
