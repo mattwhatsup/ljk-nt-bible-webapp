@@ -1,6 +1,15 @@
 import type { FunctionComponent, ReactElement } from 'react'
 import { cloneElement, useContext, useEffect, useRef } from 'react'
-import { Box, Button, PopoverCloseTrigger } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  PopoverCloseTrigger,
+  useBreakpointValue,
+  Drawer,
+  Kbd,
+  Portal,
+  CloseButton,
+} from '@chakra-ui/react'
 import {
   PopoverArrow,
   PopoverBody,
@@ -50,7 +59,9 @@ const BibleDropDown: FunctionComponent<
       closeTriggerRef.current.click()
     }
   }, [selected, showVerseSelector])
-  return (
+  const isMobile = useBreakpointValue({ base: true, maxContent: false })
+
+  const popover = (
     <PopoverRoot
       positioning={{ placement: 'bottom-start' }}
       modal
@@ -89,6 +100,43 @@ const BibleDropDown: FunctionComponent<
       </PopoverContent>
     </PopoverRoot>
   )
+  const drawer = (
+    <Drawer.Root size={'full'}>
+      <Drawer.Trigger asChild>
+        <Button
+          size="sm"
+          variant="plain"
+          focusRing={'none'}
+          color={'whiteAlpha.800'}
+          _hover={{
+            textDecoration: 'underline',
+            textUnderlineOffset: '2px',
+            textDecorationColor: 'black.400',
+            textDecorationThickness: '2px',
+            color: 'white',
+          }}
+        >
+          {label}
+        </Button>
+      </Drawer.Trigger>
+      <Portal>
+        <Drawer.Backdrop />
+        <Drawer.Positioner>
+          <Drawer.Content animationDuration={'0.1s'}>
+            <Drawer.Header>
+              <Drawer.Title>Drawer Title</Drawer.Title>
+            </Drawer.Header>
+            <Drawer.Body>{cloneElement(children, selectorProps)}</Drawer.Body>
+
+            <Drawer.CloseTrigger asChild ref={closeTriggerRef}>
+              <CloseButton size="sm" />
+            </Drawer.CloseTrigger>
+          </Drawer.Content>
+        </Drawer.Positioner>
+      </Portal>
+    </Drawer.Root>
+  )
+  return isMobile ? drawer : popover
 }
 
 export default BibleDropDown
