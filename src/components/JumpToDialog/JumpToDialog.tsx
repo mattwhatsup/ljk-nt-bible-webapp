@@ -129,6 +129,9 @@ export default function JumpToDialog({}: Props) {
       onExitComplete={() => {
         setList({ selectedIndex: 0, items: [] })
       }}
+      onPointerDownOutside={() => {
+        dispatch(closeJumpToDialog())
+      }}
     >
       <Portal>
         <Dialog.Backdrop />
