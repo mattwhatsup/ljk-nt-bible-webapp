@@ -74,15 +74,15 @@ const ResponsiveMenu = () => {
               </IconButton>
             </Box>
           </DrawerTrigger>
-          <DrawerContent animationDuration={'0.1s'}>
+          <DrawerContent animationDuration={'0.1s'} colorPalette={'teal'}>
             <DrawerHeader>
-              <DrawerTitle>Drawer Title</DrawerTitle>
+              <DrawerTitle>请选择...</DrawerTitle>
             </DrawerHeader>
             <DrawerBody>
               <Stack>
-                <Button w="100%">Home</Button>
-                <Button w="100%">About</Button>
-                <Button w="100%">Contact</Button>
+                <Button w="100%">阅读</Button>
+                <Button w="100%">关于</Button>
+                <Button w="100%">插图</Button>
               </Stack>
             </DrawerBody>
             <DrawerCloseTrigger />
