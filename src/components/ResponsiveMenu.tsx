@@ -35,6 +35,23 @@ const MenuItem = ({ children }: { children: React.ReactNode }) => (
 const ResponsiveMenu = () => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
+  const jumpToButton = (
+    <Button
+      display={'inline-flex'}
+      colorPalette={'teal'}
+      variant={'outline'}
+      size={'xs'}
+      onClick={() => dispatch(openJumpToDialog())}
+    >
+      <Icon>
+        <GoSearch />
+      </Icon>
+      快速跳转
+      <Kbd>
+        {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
+      </Kbd>
+    </Button>
+  )
 
   return (
     <Box
@@ -59,21 +76,29 @@ const ResponsiveMenu = () => {
           placement={'top'}
         >
           <DrawerBackdrop />
-          <DrawerTrigger asChild>
-            <Box
-              display={{ base: 'block', ...{ maxContent: 'none' } }}
-              onClick={() => setOpen(true)}
-              padding={'1.2rem'}
-            >
-              <IconButton
-                variant="outline"
-                aria-label="打开菜单"
-                color={'white'}
+          <HStack
+            justifyContent={'space-between'}
+            width={'full'}
+            display={{ ...{ base: 'flex', maxContent: 'none' } }}
+            // hideBelow={'maxContent'}
+          >
+            <DrawerTrigger asChild>
+              <Box
+                display={{ base: 'block', ...{ maxContent: 'none' } }}
+                onClick={() => setOpen(true)}
+                padding={'1.2rem'}
               >
-                <GiHamburgerMenu />
-              </IconButton>
-            </Box>
-          </DrawerTrigger>
+                <IconButton
+                  variant="outline"
+                  aria-label="打开菜单"
+                  color={'white'}
+                >
+                  <GiHamburgerMenu />
+                </IconButton>
+              </Box>
+            </DrawerTrigger>
+            {jumpToButton}
+          </HStack>
           <DrawerContent animationDuration={'0.1s'} colorPalette={'teal'}>
             <DrawerHeader>
               <DrawerTitle>请选择...</DrawerTitle>
@@ -129,21 +154,7 @@ const ResponsiveMenu = () => {
               </IconButton>
             </MenuItem>
           </HStack>
-          <Button
-            display={'inline-flex'}
-            colorPalette={'teal'}
-            variant={'outline'}
-            size={'xs'}
-            onClick={() => dispatch(openJumpToDialog())}
-          >
-            <Icon>
-              <GoSearch />
-            </Icon>
-            快速跳转
-            <Kbd>
-              {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
-            </Kbd>
-          </Button>
+          {jumpToButton}
         </Box>
       </Flex>
     </Box>
