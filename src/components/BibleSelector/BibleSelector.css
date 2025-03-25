@@ -122,6 +122,9 @@
 .list-height {
   height: 23rem; /* 23rem = 368px，bibleselector内部的list高度 */
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .overflow-y-auto {
   overflow-y: auto;
 }

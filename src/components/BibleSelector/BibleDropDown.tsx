@@ -6,7 +6,6 @@ import {
   PopoverCloseTrigger,
   useBreakpointValue,
   Drawer,
-  Kbd,
   Portal,
   CloseButton,
 } from '@chakra-ui/react'
@@ -47,7 +46,7 @@ export interface BibleSelectorProps {
 
 const BibleDropDown: FunctionComponent<
   BibleDropDownProps & BibleSelectorProps
-> = ({ label, children, onClose, ...selectorProps }) => {
+> = ({ label, children, onClose, selectType, ...selectorProps }) => {
   const { selected } = useContext(SelectedValueContext)!
   const { showVerseSelector } = useContext(BibleSelectorContext)!
   const closeTriggerRef = useRef<HTMLButtonElement>(null)
@@ -68,6 +67,7 @@ const BibleDropDown: FunctionComponent<
       onExitComplete={() => {
         onClose?.()
       }}
+      unmountOnExit
     >
       <PopoverTrigger asChild>
         <Button
@@ -101,7 +101,7 @@ const BibleDropDown: FunctionComponent<
     </PopoverRoot>
   )
   const drawer = (
-    <Drawer.Root size={'full'}>
+    <Drawer.Root size={'full'} onExitComplete={() => onClose?.()} unmountOnExit>
       <Drawer.Trigger asChild>
         <Button
           size="sm"
@@ -124,9 +124,14 @@ const BibleDropDown: FunctionComponent<
         <Drawer.Positioner>
           <Drawer.Content animationDuration={'0.1s'}>
             <Drawer.Header>
-              <Drawer.Title>Drawer Title</Drawer.Title>
+              <Drawer.Title>选择书卷和章</Drawer.Title>
             </Drawer.Header>
-            <Drawer.Body>{cloneElement(children, selectorProps)}</Drawer.Body>
+            <Drawer.Body display={'flex'} flexDirection={'column'}>
+              {cloneElement(children, {
+                ...selectorProps,
+                tabView: selectType === SelectType.Book ? 'books' : 'chapters',
+              })}
+            </Drawer.Body>
 
             <Drawer.CloseTrigger asChild ref={closeTriggerRef}>
               <CloseButton size="sm" />
