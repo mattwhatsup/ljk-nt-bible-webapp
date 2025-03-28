@@ -101,7 +101,7 @@ const BibleDropDown: FunctionComponent<
     </PopoverRoot>
   )
   const drawer = (
-    <Drawer.Root size={'full'} onExitComplete={() => onClose?.()} unmountOnExit>
+    <Drawer.Root size={'sm'} onExitComplete={() => onClose?.()} unmountOnExit>
       <Drawer.Trigger asChild>
         <Button
           size="sm"

@@ -11,7 +11,7 @@ export type VerseNode = {
   contents: VerseContentNode[]
 }
 export type VerseContentNode = {
-  lineBreak: 'inline' | 'reference' | 'line'
+  lineBreak: 'inline' | 'reference' | 'line' | 'paragraph'
   content: string
 }
 export type CommentNode = {
@@ -110,9 +110,11 @@ const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         })
       }
     } else if (node.nodeType === 3 && node.textContent!.trim() !== '') {
-      // console.log(lastBookNode)
+      console.log(node.textContent, node.nodeType)
+
+      console.log(lastBookNode)
       ;(lastBookNode as VerseNode).contents.push({
-        lineBreak: 'inline',
+        lineBreak: firstTime ? 'paragraph' : 'inline',
         content: node.textContent!,
       })
     }

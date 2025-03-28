@@ -17,7 +17,8 @@
     "build": "tsc && vite build",
     "gh-build": "cross-env NODE_ENV=gh tsc && cross-env NODE_ENV=gh vite build && cross-env NODE_ENV=gh node src/scripts/copy-index.js",
     "predeploy": "npm run gh-build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "repo:refresh": "cd ./repo/ljk-nt-bible && git pull origin main && cd -"
   },
   "dependencies": {
     "@babel/standalone": "^7.26.8",
