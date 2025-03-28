@@ -98,6 +98,18 @@ function renderChapter(
                 ]
                 nodes.push({ node: paragraphNode, children: paragraphChildren })
                 break
+              case 'paragraph':
+                paragraphNode = <Paragraph key={`${index}-${subIndex}`} />
+                paragraphChildren = [
+                  <Line
+                    key={subIndex}
+                    content={subItem.content}
+                    verse={item.verseIndex}
+                    selected={selected}
+                  />,
+                ]
+                nodes.push({ node: paragraphNode, children: paragraphChildren })
+                break
             }
           })
         }

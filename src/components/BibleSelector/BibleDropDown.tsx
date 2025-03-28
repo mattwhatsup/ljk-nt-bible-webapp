@@ -1,6 +1,14 @@
 import type { FunctionComponent, ReactElement } from 'react'
 import { cloneElement, useContext, useEffect, useRef } from 'react'
-import { Box, Button, PopoverCloseTrigger } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  PopoverCloseTrigger,
+  useBreakpointValue,
+  Drawer,
+  Portal,
+  CloseButton,
+} from '@chakra-ui/react'
 import {
   PopoverArrow,
   PopoverBody,
@@ -38,7 +46,7 @@ export interface BibleSelectorProps {
 
 const BibleDropDown: FunctionComponent<
   BibleDropDownProps & BibleSelectorProps
-> = ({ label, children, onClose, ...selectorProps }) => {
+> = ({ label, children, onClose, selectType, ...selectorProps }) => {
   const { selected } = useContext(SelectedValueContext)!
   const { showVerseSelector } = useContext(BibleSelectorContext)!
   const closeTriggerRef = useRef<HTMLButtonElement>(null)
@@ -50,13 +58,16 @@ const BibleDropDown: FunctionComponent<
       closeTriggerRef.current.click()
     }
   }, [selected, showVerseSelector])
-  return (
+  const isMobile = useBreakpointValue({ base: true, maxContent: false })
+
+  const popover = (
     <PopoverRoot
       positioning={{ placement: 'bottom-start' }}
       modal
       onExitComplete={() => {
         onClose?.()
       }}
+      unmountOnExit
     >
       <PopoverTrigger asChild>
         <Button
@@ -89,6 +100,48 @@ const BibleDropDown: FunctionComponent<
       </PopoverContent>
     </PopoverRoot>
   )
+  const drawer = (
+    <Drawer.Root size={'sm'} onExitComplete={() => onClose?.()} unmountOnExit>
+      <Drawer.Trigger asChild>
+        <Button
+          size="sm"
+          variant="plain"
+          focusRing={'none'}
+          color={'whiteAlpha.800'}
+          _hover={{
+            textDecoration: 'underline',
+            textUnderlineOffset: '2px',
+            textDecorationColor: 'black.400',
+            textDecorationThickness: '2px',
+            color: 'white',
+          }}
+        >
+          {label}
+        </Button>
+      </Drawer.Trigger>
+      <Portal>
+        <Drawer.Backdrop />
+        <Drawer.Positioner>
+          <Drawer.Content animationDuration={'0.1s'}>
+            <Drawer.Header>
+              <Drawer.Title>选择书卷和章</Drawer.Title>
+            </Drawer.Header>
+            <Drawer.Body display={'flex'} flexDirection={'column'}>
+              {cloneElement(children, {
+                ...selectorProps,
+                tabView: selectType === SelectType.Book ? 'books' : 'chapters',
+              })}
+            </Drawer.Body>
+
+            <Drawer.CloseTrigger asChild ref={closeTriggerRef}>
+              <CloseButton size="sm" />
+            </Drawer.CloseTrigger>
+          </Drawer.Content>
+        </Drawer.Positioner>
+      </Portal>
+    </Drawer.Root>
+  )
+  return isMobile ? drawer : popover
 }
 
 export default BibleDropDown

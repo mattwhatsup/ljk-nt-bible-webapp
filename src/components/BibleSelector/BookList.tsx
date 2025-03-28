@@ -15,7 +15,9 @@ enum ListStyle {
   list = 'list',
 }
 
-interface BookListProps extends HTMLAttributes<HTMLDivElement> {}
+interface BookListProps extends HTMLAttributes<HTMLDivElement> {
+  ignoreHeader?: boolean
+}
 
 function readListStyleFromLocalStorage() {
   const v = localStorage.getItem('BibleSelectorBookListStyle')
@@ -103,7 +105,10 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
   )
 }
 
-const BookList: FunctionComponent<BookListProps> = ({ className }) => {
+const BookList: FunctionComponent<BookListProps> = ({
+  className,
+  ignoreHeader,
+}) => {
   const listDiv = useRef<HTMLDivElement>(null)
   const [listStyle, setListStyle] = useState(readListStyleFromLocalStorage())
   const [filterText, setFilterText] = useState('')
@@ -122,14 +127,20 @@ const BookList: FunctionComponent<BookListProps> = ({ className }) => {
   }, [listStyle])
 
   return (
-    <div className={className}>
+    <Box
+      className={className}
+      display={'flex'}
+      flexDirection={'column'}
+      flex={1}
+      minHeight={0}
+    >
       <HStack
         display={'flex'}
         alignItems={'center'}
         className="book-list-header"
         gap={3}
       >
-        <span className="font-bold">书</span>
+        {!ignoreHeader && <span className="font-bold">书</span>}
         <InputGroup flex="1" startElement={<FaSearch />}>
           <Input
             rounded={'2em'}
@@ -162,14 +173,26 @@ const BookList: FunctionComponent<BookListProps> = ({ className }) => {
           </Icon>
         </label>
       </HStack>
+
       <Box
         mt={2}
-        className="list-height overflow-y-auto list-content "
+        className={`${ignoreHeader ? 'flex-1' : 'list-height'} overflow-y-auto list-content `}
         ref={listDiv}
+        position={'relative'}
       >
-        <ListView style={listStyle} filterText={filterText} />
+        <Box
+          position={'absolute'}
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          zIndex={1}
+          overflowY={'auto'}
+        >
+          <ListView style={listStyle} filterText={filterText} />
+        </Box>
       </Box>
-    </div>
+    </Box>
   )
 }
 

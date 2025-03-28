@@ -7,12 +7,15 @@ import type { BibleSelectorProps } from './BibleDropDown'
 import { SelectedValueContext } from './BibleSelector'
 import { Box, HStack } from '@chakra-ui/react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
+import BookPopupSelector from './BookPopupSelector'
 
-interface ChapterPopupSelectorProps extends HTMLAttributes<HTMLDivElement> {}
+interface ChapterPopupSelectorProps extends HTMLAttributes<HTMLDivElement> {
+  tabView?: string
+}
 
 const ChapterPopupSelector: FunctionComponent<
   ChapterPopupSelectorProps & Partial<BibleSelectorProps>
-> = () => {
+> = ({ tabView }) => {
   const { selected } = useContext(SelectedValueContext)!
   const { showVerseSelector } = useContext(BibleSelectorContext)!
 
@@ -22,7 +25,9 @@ const ChapterPopupSelector: FunctionComponent<
     2: '28rem',
   } as Record<number, string>
 
-  return (
+  return tabView ? (
+    <BookPopupSelector tabView={tabView} />
+  ) : (
     <Box position={'relative'} rounded={'md'} width={widths[cols]}>
       <HStack>
         <ChapterList className="flex-1" />

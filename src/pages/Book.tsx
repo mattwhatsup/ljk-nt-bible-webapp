@@ -28,6 +28,7 @@ import {
   clearSelectedVerses,
   jumpToSelectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
+import { sleep } from '@/utils/comm'
 
 export default function Book() {
   const { book, chapter, verse } = useParams<{
@@ -63,21 +64,30 @@ export default function Book() {
   const location = useLocation()
   useEffect(() => {
     if (!verseValue) {
-      window.scrollTo(0, 0)
+      sleep(200).then(() => {
+        // window.scrollTo(0, 0)
+        document
+          .querySelector('.chapter-title')!
+          .scrollIntoView({ behavior: 'instant', block: 'center' })
+      })
     } else {
       // 高亮跳转的verse
-      const els = document.querySelectorAll(`[data-verse='${verseValue}']`)
-      const el1 = els[0]
-      if (el1) {
-        el1.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
+      sleep(200).then(() => {
+        const els = document.querySelectorAll(`[data-verse='${verseValue}']`)
+        const el1 = els[0]
+        if (el1) {
+          el1.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
 
-      els.forEach(el => {
-        setTimeout(() => {
-          el.classList.add('jumpto-emphasis')
-          setTimeout(() => {
-            el.classList.remove('jumpto-emphasis')
-          }, 3000)
+        els.forEach(el => {
+          sleep(0)
+            .then(() => {
+              el.classList.add('jumpto-emphasis')
+              return sleep(3000)
+            })
+            .then(() => {
+              el.classList.remove('jumpto-emphasis')
+            })
         })
       })
     }
