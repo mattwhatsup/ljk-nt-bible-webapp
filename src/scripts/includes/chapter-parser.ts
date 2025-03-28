@@ -110,9 +110,8 @@ const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         })
       }
     } else if (node.nodeType === 3 && node.textContent!.trim() !== '') {
-      console.log(node.textContent, node.nodeType)
-
-      console.log(lastBookNode)
+      // console.log(node.textContent, node.nodeType)
+      // console.log(lastBookNode)
       ;(lastBookNode as VerseNode).contents.push({
         lineBreak: firstTime ? 'paragraph' : 'inline',
         content: node.textContent!,
