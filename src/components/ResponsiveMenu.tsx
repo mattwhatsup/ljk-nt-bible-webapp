@@ -27,6 +27,7 @@ import { FiImage } from 'react-icons/fi'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
+import { useT } from '@/features/settings/settingsSlice'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -46,7 +47,7 @@ const ResponsiveMenu = () => {
       <Icon>
         <GoSearch />
       </Icon>
-      快速跳转
+      {useT(['快速跳转', '快速跳轉'])}
       <Kbd>
         {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
       </Kbd>
@@ -90,7 +91,7 @@ const ResponsiveMenu = () => {
               >
                 <IconButton
                   variant="outline"
-                  aria-label="打开菜单"
+                  aria-label={useT(['打开菜单', '打開菜單'])}
                   color={'white'}
                 >
                   <GiHamburgerMenu />
@@ -101,13 +102,13 @@ const ResponsiveMenu = () => {
           </HStack>
           <DrawerContent animationDuration={'0.1s'} colorPalette={'teal'}>
             <DrawerHeader>
-              <DrawerTitle>请选择...</DrawerTitle>
+              <DrawerTitle>{useT(['请选择...', '請選擇...'])}</DrawerTitle>
             </DrawerHeader>
             <DrawerBody>
               <Stack>
-                <Button w="100%">阅读</Button>
-                <Button w="100%">关于</Button>
-                <Button w="100%">插图</Button>
+                <Button w="100%">{useT(['阅读', '閱讀'])}</Button>
+                <Button w="100%">{useT(['关于', '關於'])}</Button>
+                <Button w="100%">{useT(['插图', '插圖'])}</Button>
               </Stack>
             </DrawerBody>
             <DrawerCloseTrigger />
@@ -134,23 +135,23 @@ const ResponsiveMenu = () => {
                 _hover={{ bg: 'teal.600' }}
                 variant={'outline'}
               >
-                <CgReadme /> 阅读
+                <CgReadme /> {useT(['阅读', '閱讀'])}
               </IconButton>
             </MenuItem>
             <MenuItem>
               <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-                <GoInfo /> 关于
+                <GoInfo /> {useT(['关于', '關於'])}
               </IconButton>
             </MenuItem>
             <MenuItem>
               <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-                <BsAt /> 引用
+                <BsAt /> {useT(['引用', '引用'])}
               </IconButton>
             </MenuItem>
 
             <MenuItem>
               <IconButton px={'1em'} color={'white'} bg={'transparent'}>
-                <FiImage /> 插图
+                <FiImage /> {useT(['插图', '插圖'])}
               </IconButton>
             </MenuItem>
           </HStack>

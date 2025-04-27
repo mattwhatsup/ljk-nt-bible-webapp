@@ -1,5 +1,6 @@
 import { Box, Container, Text } from '@chakra-ui/react'
 import BookNav from './BookNav'
+import { useT } from '@/features/settings/settingsSlice'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -25,7 +26,12 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
           </Box>
         </Box>
         <Box as="footer" py={4}>
-          <Text>© 2025 新约圣经梁家铿译本 WebApp</Text>
+          <Text>
+            {useT([
+              '© 2025 新约圣经梁家铿译本 WebApp',
+              '© 2025 新約聖經梁家鏗譯本 WebApp',
+            ])}
+          </Text>
         </Box>
       </Container>
     </>

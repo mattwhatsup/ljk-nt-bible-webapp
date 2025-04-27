@@ -6,9 +6,12 @@ import {
   makeChapterVersesSelector,
 } from '@/features/choosen/choosenSlice'
 import {
+  _T,
   selectAfterNavigateKeepSelection,
   selectLanguage,
   setAfterNavigateKeepSelection,
+  useLanguage,
+  useT,
 } from '@/features/settings/settingsSlice'
 import { copyToClipboard, getSelectedVersesText } from '@/utils/copy-utils'
 import { ActionBar, Button, Portal, Checkbox } from '@chakra-ui/react'
@@ -24,7 +27,7 @@ type Props = {}
 export default function VerseActionBar({}: Props) {
   const dispatch = useAppDispatch()
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
-  const language = useAppSelector(selectLanguage)
+  const language = useLanguage()
   const chapterVersesSelector = makeChapterVersesSelector(
     book!,
     parseInt(chapter || '1'),
@@ -51,13 +54,19 @@ export default function VerseActionBar({}: Props) {
     )
       .then(() => {
         toaster.create({
-          title: `已复制 ${selectedVerses.length} 节经文`,
+          title: _T(
+            [
+              `已复制 ${selectedVerses.length} 节经文`,
+              `已複製 ${selectedVerses.length} 節經文`,
+            ],
+            language,
+          ),
           type: 'success',
         })
       })
       .catch(() => {
         toaster.create({
-          title: '复制失败',
+          title: _T(['复制失败', '複製失敗'], language),
           type: 'error',
         })
       })
@@ -72,7 +81,13 @@ export default function VerseActionBar({}: Props) {
   const handleCancel = useCallback(() => {
     if (!selectedVerses.length) return
     toaster.create({
-      title: `已取消选择 ${selectedVerses.length} 节经文`,
+      title: _T(
+        [
+          `已取消 ${selectedVerses.length} 节经文`,
+          `已取消 ${selectedVerses.length} 節經文`,
+        ],
+        language,
+      ),
       type: 'success',
     })
     dispatch(
@@ -81,7 +96,7 @@ export default function VerseActionBar({}: Props) {
         chapter: parseInt(chapter || '1'),
       }),
     )
-  }, [book, chapter, dispatch, selectedVerses.length])
+  }, [book, chapter, dispatch, language, selectedVerses.length])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -116,19 +131,28 @@ export default function VerseActionBar({}: Props) {
           <ActionBar.Positioner>
             <ActionBar.Content>
               <ActionBar.SelectionTrigger>
-                已选中 {selectedVerses.length}
+                {useT(['已选中', '已選中'])} {selectedVerses.length}
               </ActionBar.SelectionTrigger>
               <ActionBar.Separator />
-              <Tooltip showArrow content="复制选中经文 Ctrl+C/Cmd+C">
+              <Tooltip
+                showArrow
+                content={useT([
+                  '复制选中经文 Ctrl+C/Cmd+C',
+                  '復制選中經文 Ctrl+C/Cmd+C',
+                ])}
+              >
                 <Button variant="outline" size="sm" onClick={handleCopy}>
                   <FaRegCopy />
-                  复制
+                  {useT(['复制', '複製'])}
                 </Button>
               </Tooltip>
-              <Tooltip showArrow content="清除选中经文 Esc">
+              <Tooltip
+                showArrow
+                content={useT(['"清除选中经文 Esc"', '清除選中經文 Esc'])}
+              >
                 <Button variant="outline" size="sm" onClick={handleCancel}>
                   <FaRegTrashAlt />
-                  清除
+                  {useT(['清除', '清除'])}
                 </Button>
               </Tooltip>
 
@@ -141,8 +165,16 @@ export default function VerseActionBar({}: Props) {
               >
                 <Checkbox.HiddenInput />
                 <Checkbox.Control />
-                <Tooltip showArrow content="当导航离开本页时返回仍然选中">
-                  <Checkbox.Label>保持选中</Checkbox.Label>
+                <Tooltip
+                  showArrow
+                  content={useT([
+                    '当导航离开本页时返回仍然选中',
+                    '當導航離開本頁時返回仍然選中',
+                  ])}
+                >
+                  <Checkbox.Label>
+                    {useT(['保持选中', '保持選中'])}
+                  </Checkbox.Label>
                 </Tooltip>
               </Checkbox.Root>
             </ActionBar.Content>

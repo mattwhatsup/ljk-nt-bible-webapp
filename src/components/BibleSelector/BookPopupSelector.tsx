@@ -8,6 +8,7 @@ import './BibleSelector.css'
 import { SelectedValueContext } from './BibleSelector'
 import { Box, Stack, Tabs } from '@chakra-ui/react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
+import { _T, useLanguage, useT } from '@/features/settings/settingsSlice'
 
 interface BookPopupSelectorProps extends HTMLAttributes<HTMLDivElement> {
   tabView?: string
@@ -20,6 +21,7 @@ const BookPopupSelector: FunctionComponent<
   const { showVerseSelector } = useContext(BibleSelectorContext)!
   const chapterTabRef = useRef<HTMLButtonElement>(null)
   const prevBookRef = useRef(selected?.book)
+  const language = useLanguage()
 
   const cols =
     1 +
@@ -50,7 +52,9 @@ const BookPopupSelector: FunctionComponent<
       flexDirection={'column'}
     >
       <Tabs.List>
-        <Tabs.Trigger value="books">书卷</Tabs.Trigger>
+        <Tabs.Trigger value="books">
+          {_T(['书卷', '書卷'], language)}
+        </Tabs.Trigger>
         {selected?.book && (
           <Tabs.Trigger value="chapters" ref={chapterTabRef}>
             章

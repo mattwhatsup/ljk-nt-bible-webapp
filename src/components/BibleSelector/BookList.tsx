@@ -9,6 +9,7 @@ import { Box, HStack, Icon, Input } from '@chakra-ui/react'
 import { FaSearch, FaTh } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
 import { InputGroup } from '../ui/input-group'
+import { _T, useLanguage, useT } from '@/features/settings/settingsSlice'
 
 enum ListStyle {
   grid = 'grid',
@@ -41,11 +42,12 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
   const context = useContext(SelectedValueContext)
   const selected = context?.selected
   const data = useContext(BibleSelectorContext)
+  const language = useLanguage()
   const groups = data!.isNTOnly
-    ? [{ type: OtOrNt.nt, name: '新约' }]
+    ? [{ type: OtOrNt.nt, name: _T(['新约', '新約'], language) }]
     : [
-        { type: OtOrNt.ot, name: '旧约' },
-        { type: OtOrNt.nt, name: '新约' },
+        { type: OtOrNt.ot, name: _T(['旧约', '舊約'], language) },
+        { type: OtOrNt.nt, name: _T(['新约', '新約'], language) },
       ]
   return (
     <div>
@@ -80,8 +82,8 @@ const ListView: FunctionComponent<ListViewProps> = ({ style, filterText }) => {
                           key={book.id}
                           label={
                             style === ListStyle.grid
-                              ? book.abbr_cn
-                              : book.name_cn
+                              ? book[`abbr_${language === 'cn' ? 'cn' : 'tr'}`]
+                              : book[`name_${language === 'cn' ? 'cn' : 'tr'}`]
                           }
                           onClick={() => {
                             if (context) {
@@ -112,6 +114,7 @@ const BookList: FunctionComponent<BookListProps> = ({
   const listDiv = useRef<HTMLDivElement>(null)
   const [listStyle, setListStyle] = useState(readListStyleFromLocalStorage())
   const [filterText, setFilterText] = useState('')
+  const language = useLanguage()
 
   useEffect(() => {
     // 重制滚动条
@@ -140,11 +143,13 @@ const BookList: FunctionComponent<BookListProps> = ({
         className="book-list-header"
         gap={3}
       >
-        {!ignoreHeader && <span className="font-bold">书</span>}
+        {!ignoreHeader && (
+          <span className="font-bold">{_T(['书', '書'], language)}</span>
+        )}
         <InputGroup flex="1" startElement={<FaSearch />}>
           <Input
             rounded={'2em'}
-            placeholder="搜索"
+            placeholder={useT(['搜索', '搜尋'])}
             fontSize={'0.875rem'}
             lineHeight={'1.25rem'}
             height={'1.25rem'}

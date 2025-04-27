@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import BibleSelectorItem from './BibleSelectorItem'
+import { useT } from '@/features/settings/settingsSlice'
 
 interface VerseListProps extends HTMLAttributes<HTMLDivElement> {
   closeHandler?: Function
@@ -24,7 +25,7 @@ const VerseList: FunctionComponent<VerseListProps> = ({
   return (
     <div className={className}>
       <div className="flex items-center book-list-header leading-[31px]">
-        <span className=" font-bold">节</span>
+        <span className=" font-bold">{useT(['节', '節'])}</span>
       </div>
       <div className="list-height overflow-y-auto list-content">
         <ul className="book-grid mt-2">
