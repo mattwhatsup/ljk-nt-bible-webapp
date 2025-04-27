@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/app/hooks'
 import type { RootState } from '@/app/store'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
@@ -73,3 +74,8 @@ export const selectJumpToSelect = (state: RootState) =>
   state.settings.jumpToSelect
 export const selectAfterNavigateKeepSelection = (state: RootState) =>
   state.settings.afterNavigateKeepSelection
+
+export const useLanguage = () => {
+  const language = useAppSelector(selectLanguage)
+  return language
+}
