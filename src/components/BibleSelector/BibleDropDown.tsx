@@ -20,6 +20,7 @@ import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import { isSelectedValueComplete } from './utils'
+import { useT } from '@/features/settings/settingsSlice'
 
 interface BibleDropDownProps {
   label: String
@@ -124,7 +125,9 @@ const BibleDropDown: FunctionComponent<
         <Drawer.Positioner>
           <Drawer.Content animationDuration={'0.1s'}>
             <Drawer.Header>
-              <Drawer.Title>选择书卷和章</Drawer.Title>
+              <Drawer.Title>
+                {useT(['选择书卷和章', '選擇書卷和章'])}
+              </Drawer.Title>
             </Drawer.Header>
             <Drawer.Body display={'flex'} flexDirection={'column'}>
               {cloneElement(children, {

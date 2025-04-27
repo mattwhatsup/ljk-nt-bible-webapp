@@ -10,6 +10,7 @@ import {
   selectShowComments,
   setLanguage,
   setShowComments,
+  useT,
 } from '@/features/settings/settingsSlice'
 
 type Props = {}
@@ -64,7 +65,7 @@ export default function BookNav({}: Props) {
               dispatch(setShowComments(!showComments))
             }}
           >
-            显示注释
+            {useT(['显示注释', '顯示注釋'])}
           </Switch>
 
           <SegmentGroup.Root

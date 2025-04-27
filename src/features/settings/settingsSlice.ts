@@ -79,14 +79,15 @@ export const useLanguage = () => {
   const language = useAppSelector(selectLanguage)
   return language
 }
-// 双语
-export const useT = (texts: readonly [string, string]) => {
-  if (texts.length !== 2) {
-    throw new Error('texts array must have exactly 2 elements')
-  }
-  const lang = useLanguage()
+
+export const _T = (texts: readonly [string, string], lang: 'cn' | 'tw') => {
   if (lang === 'cn') {
     return texts[0]
   }
   return texts[1]
+}
+// 双语
+export const useT = (texts: readonly [string, string]) => {
+  const lang = useLanguage()
+  return _T(texts, lang)
 }
