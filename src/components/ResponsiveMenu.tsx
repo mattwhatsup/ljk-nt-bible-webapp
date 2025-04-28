@@ -21,13 +21,14 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
-import { GoInfo, GoSearch } from 'react-icons/go'
+import { GoGear, GoInfo, GoSearch } from 'react-icons/go'
 import { BsAt } from 'react-icons/bs'
 import { FiImage } from 'react-icons/fi'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
 import { useT } from '@/features/settings/settingsSlice'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -36,6 +37,9 @@ const MenuItem = ({ children }: { children: React.ReactNode }) => (
 const ResponsiveMenu = () => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const jumpToButton = (
     <Button
       display={'inline-flex'}
@@ -155,7 +159,23 @@ const ResponsiveMenu = () => {
               </IconButton>
             </MenuItem>
           </HStack>
-          {jumpToButton}
+          <HStack>
+            <IconButton
+              aria-label="settings"
+              size={'xs'}
+              variant={'ghost'}
+              color={'white'}
+              _hover={{ color: 'black' }}
+              onClick={() => {
+                navigate('/settings', {
+                  state: { backgroundLocation: location },
+                })
+              }}
+            >
+              <GoGear />
+            </IconButton>
+            {jumpToButton}
+          </HStack>
         </Box>
       </Flex>
     </Box>
