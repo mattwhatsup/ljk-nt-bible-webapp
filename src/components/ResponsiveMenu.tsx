@@ -167,9 +167,11 @@ const ResponsiveMenu = () => {
               color={'white'}
               _hover={{ color: 'black' }}
               onClick={() => {
-                navigate('/settings', {
-                  state: { backgroundLocation: location },
-                })
+                if (location.pathname !== '/settings') {
+                  navigate('/settings', {
+                    state: { backgroundLocation: location },
+                  })
+                }
               }}
             >
               <GoGear />
