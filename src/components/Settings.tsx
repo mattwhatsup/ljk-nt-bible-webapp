@@ -9,20 +9,28 @@ import {
   Separator,
 } from '@chakra-ui/react'
 import { Field, Input, Stack, Switch } from '@chakra-ui/react'
-import { useT } from '@/features/settings/settingsSlice'
+import {
+  setLanguage,
+  setShowComments,
+  useLanguage,
+  useShowComments,
+  useT,
+} from '@/features/settings/settingsSlice'
 import { Select, createListCollection } from '@chakra-ui/react'
+import { useAppDispatch } from '@/app/hooks'
 
 type Props = {}
 
 function Content({}: Props) {
+  const dispatch = useAppDispatch()
   const languages = createListCollection({
     items: [
       {
-        label: '简体中文',
+        label: useT(['简体中文', '簡體中文']),
         value: 'cn',
       },
       {
-        label: '繁体中文',
+        label: useT(['繁体中文', '繁體中文']),
         value: 'tw',
       },
     ],
@@ -30,11 +38,11 @@ function Content({}: Props) {
   const themes = createListCollection({
     items: [
       {
-        label: '浅色',
+        label: useT(['浅色', '淺色']),
         value: 'light',
       },
       {
-        label: '深色',
+        label: useT(['深色', '深色']),
         value: 'dark',
       },
     ],
@@ -54,14 +62,15 @@ function Content({}: Props) {
         value: 'lg',
       },
       {
-        label: '特大',
+        label: useT(['超大', '超大']),
         value: 'xl',
       },
     ],
   })
+  const language = useLanguage()
 
   return (
-    <Stack gap="2" css={{ '--field-label-width': '96px' }}>
+    <Stack gap="4" css={{ '--field-label-width': '96px' }}>
       <Heading size={'2xl'}>设置</Heading>
       <Separator marginBottom={'4'} size={'xs'} />
       <Field.Root orientation="horizontal">
@@ -69,7 +78,11 @@ function Content({}: Props) {
         <Select.Root
           collection={languages}
           size="sm"
-          positioning={{ sameWidth: true, overlap: true }}
+          positioning={{ sameWidth: true }}
+          defaultValue={[language]}
+          onValueChange={value => {
+            dispatch(setLanguage(value.value[0] as 'cn' | 'tw'))
+          }}
         >
           <Select.HiddenSelect />
           <Select.Control>
@@ -96,8 +109,16 @@ function Content({}: Props) {
       </Field.Root>
 
       <Field.Root orientation="horizontal">
-        <Field.Label>Email</Field.Label>
-        <Input placeholder="me@example.com" flex="1" />
+        <Field.Label>{useT(['显示注释', '顯示注釋'])}</Field.Label>
+        <Switch.Root
+          defaultChecked={useShowComments()}
+          onCheckedChange={({ checked }) => {
+            dispatch(setShowComments(checked))
+          }}
+        >
+          <Switch.HiddenInput />
+          <Switch.Control />
+        </Switch.Root>
       </Field.Root>
 
       <Field.Root orientation="horizontal">
