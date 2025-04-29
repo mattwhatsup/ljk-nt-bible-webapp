@@ -9,6 +9,8 @@ interface SettingsState {
   showComments: boolean // 是否显示注释
   jumpToSelect: boolean // 是否跳转后选中
   afterNavigateKeepSelection: boolean // 是否在跳转后保留选择
+  textSize: 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30 // 字体大小
+  uiSize: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const defaultState: SettingsState = {
@@ -17,6 +19,8 @@ const defaultState: SettingsState = {
   showComments: true,
   jumpToSelect: false,
   afterNavigateKeepSelection: true,
+  textSize: 14,
+  uiSize: 'md',
 }
 
 const loadState = (): SettingsState => {
