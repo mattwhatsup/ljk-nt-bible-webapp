@@ -10,8 +10,10 @@ import {
 } from '@chakra-ui/react'
 import { Field, Input, Stack, Switch } from '@chakra-ui/react'
 import {
+  setColorPalette,
   setLanguage,
   setShowComments,
+  useColorPalette,
   useLanguage,
   useShowComments,
   useT,
@@ -35,18 +37,52 @@ function Content({}: Props) {
       },
     ],
   })
-  const themes = createListCollection({
+  const colorPalettes = createListCollection({
     items: [
       {
-        label: useT(['浅色', '淺色']),
-        value: 'light',
+        label: useT(['灰色', '灰色']),
+        value: 'gray',
       },
       {
-        label: useT(['深色', '深色']),
-        value: 'dark',
+        label: useT(['红色', '紅色']),
+        value: 'red',
+      },
+      {
+        label: useT(['橙色', '橙色']),
+        value: 'orange',
+      },
+      {
+        label: useT(['黄色', '黃色']),
+        value: 'yellow',
+      },
+      {
+        label: useT(['绿色', '綠色']),
+        value: 'green',
+      },
+      {
+        label: useT(['蓝绿色', '藍綠色']),
+        value: 'teal',
+      },
+      {
+        label: useT(['蓝色', '藍色']),
+        value: 'blue',
+      },
+      {
+        label: useT(['青色', '青色']),
+        value: 'cyan',
+      },
+      {
+        label: useT(['紫色', '紫色']),
+        value: 'purple',
+      },
+      {
+        label: useT(['粉色', '粉色']),
+        value: 'pink',
       },
     ],
   })
+  const colorPalette = useColorPalette()
+
   const uiSizes = createListCollection({
     items: [
       {
@@ -73,6 +109,45 @@ function Content({}: Props) {
     <Stack gap="4" css={{ '--field-label-width': '96px' }}>
       <Heading size={'2xl'}>设置</Heading>
       <Separator marginBottom={'4'} size={'xs'} />
+
+      {/* 色调 */}
+      <Field.Root orientation="horizontal">
+        <Field.Label>{useT(['色调', '色調'])}</Field.Label>
+        <Select.Root
+          collection={colorPalettes}
+          size="sm"
+          positioning={{ sameWidth: true }}
+          defaultValue={[colorPalette]}
+          onValueChange={value => {
+            // @ts-ignore
+            dispatch(setColorPalette(value.value[0]))
+          }}
+        >
+          <Select.HiddenSelect />
+          <Select.Control>
+            <Select.Trigger>
+              <Select.ValueText placeholder={useT(['选择色调', '選擇色調'])} />
+            </Select.Trigger>
+            <Select.IndicatorGroup>
+              <Select.Indicator />
+            </Select.IndicatorGroup>
+          </Select.Control>
+          <Portal>
+            <Select.Positioner>
+              <Select.Content zIndex={10000}>
+                {colorPalettes.items.map(lang => (
+                  <Select.Item item={lang} key={lang.value}>
+                    {lang.label}
+                    <Select.ItemIndicator />
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Positioner>
+          </Portal>
+        </Select.Root>
+      </Field.Root>
+
+      {/* 语言 */}
       <Field.Root orientation="horizontal">
         <Field.Label>{useT(['语言', '語言'])}</Field.Label>
         <Select.Root
@@ -87,7 +162,7 @@ function Content({}: Props) {
           <Select.HiddenSelect />
           <Select.Control>
             <Select.Trigger>
-              <Select.ValueText placeholder="Select framework" />
+              <Select.ValueText placeholder={useT(['选择语言', '選擇語言'])} />
             </Select.Trigger>
             <Select.IndicatorGroup>
               <Select.Indicator />

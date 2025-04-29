@@ -4,7 +4,17 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface SettingsState {
-  theme: 'light' | 'dark' // 浅色 or 深色
+  colorPalette:
+    | 'gray'
+    | 'red'
+    | 'orange'
+    | 'yellow'
+    | 'green'
+    | 'teal'
+    | 'blue'
+    | 'cyan'
+    | 'purple'
+    | 'pink'
   language: 'cn' | 'tw' // 简体中文 or 繁体中文
   showComments: boolean // 是否显示注释
   jumpToSelect: boolean // 是否跳转后选中
@@ -14,7 +24,7 @@ interface SettingsState {
 }
 
 const defaultState: SettingsState = {
-  theme: 'light',
+  colorPalette: 'gray',
   language: 'cn',
   showComments: true,
   jumpToSelect: false,
@@ -42,8 +52,22 @@ export const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
-    setTheme(state, action: PayloadAction<'light' | 'dark'>) {
-      state.theme = action.payload
+    setColorPalette(
+      state,
+      action: PayloadAction<
+        | 'gray'
+        | 'red'
+        | 'orange'
+        | 'yellow'
+        | 'green'
+        | 'teal'
+        | 'blue'
+        | 'cyan'
+        | 'purple'
+        | 'pink'
+      >,
+    ) {
+      state.colorPalette = action.payload
     },
     setLanguage(state, action: PayloadAction<'cn' | 'tw'>) {
       state.language = action.payload
@@ -61,7 +85,7 @@ export const settingsSlice = createSlice({
 })
 
 export const {
-  setTheme,
+  setColorPalette,
   setLanguage,
   setShowComments,
   setJumpToSelect,
@@ -70,7 +94,14 @@ export const {
 
 export default settingsSlice.reducer
 
-export const selectTheme = (state: RootState) => state.settings.theme
+export const selectColorPalette = (state: RootState) =>
+  state.settings.colorPalette
+
+export const useColorPalette = () => {
+  const colorPalette = useAppSelector(selectColorPalette)
+  return colorPalette
+}
+export const selectTextSize = (state: RootState) => state.settings.textSize
 export const selectLanguage = (state: RootState) => state.settings.language
 export const selectShowComments = (state: RootState) =>
   state.settings.showComments
