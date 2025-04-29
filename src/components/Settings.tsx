@@ -29,6 +29,7 @@ export default function Settings({}: Props) {
         }}
         restoreFocus={false}
         size={'md'}
+        motionPreset={'slide-in-top'}
       >
         <Portal>
           <Dialog.Backdrop />
@@ -41,7 +42,7 @@ export default function Settings({}: Props) {
                 </Dialog.Description>
                 <Content />
               </Dialog.Body>
-              <Dialog.CloseTrigger top="0" insetEnd="-12" asChild>
+              <Dialog.CloseTrigger asChild>
                 <CloseButton bg="bg" size="sm" />
               </Dialog.CloseTrigger>
             </Dialog.Content>

@@ -58,6 +58,29 @@ const ResponsiveMenu = () => {
     </Button>
   )
 
+  const settingButton = (
+    <IconButton
+      aria-label="settings"
+      size={'xs'}
+      variant={'ghost'}
+      color={'white'}
+      _hover={{ color: 'black' }}
+      onClick={() => {
+        if (location.pathname !== '/settings') {
+          if (window.innerWidth < 768) {
+            navigate('/settings')
+          } else {
+            navigate('/settings', {
+              state: { backgroundLocation: location },
+            })
+          }
+        }
+      }}
+    >
+      <GoGear />
+    </IconButton>
+  )
+
   return (
     <Box
       display={'flex'}
@@ -102,7 +125,10 @@ const ResponsiveMenu = () => {
                 </IconButton>
               </Box>
             </DrawerTrigger>
-            {jumpToButton}
+            <HStack>
+              {settingButton}
+              {jumpToButton}
+            </HStack>
           </HStack>
           <DrawerContent animationDuration={'0.1s'} colorPalette={'teal'}>
             <DrawerHeader>
@@ -160,22 +186,7 @@ const ResponsiveMenu = () => {
             </MenuItem>
           </HStack>
           <HStack>
-            <IconButton
-              aria-label="settings"
-              size={'xs'}
-              variant={'ghost'}
-              color={'white'}
-              _hover={{ color: 'black' }}
-              onClick={() => {
-                if (location.pathname !== '/settings') {
-                  navigate('/settings', {
-                    state: { backgroundLocation: location },
-                  })
-                }
-              }}
-            >
-              <GoGear />
-            </IconButton>
+            {settingButton}
             {jumpToButton}
           </HStack>
         </Box>
