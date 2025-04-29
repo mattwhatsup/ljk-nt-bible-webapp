@@ -42,6 +42,10 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       )}
+
+      <Routes>
+        <Route path="*" element={<AllLayout />} />
+      </Routes>
     </div>
   )
 }
@@ -54,7 +58,6 @@ const BookLayout = () => {
   return (
     <Layout forBook>
       <Outlet />
-      <JumpToDialog />
     </Layout>
   )
 }
@@ -63,9 +66,12 @@ const OtherLayout = () => {
   return (
     <Layout>
       <Outlet />
-      <JumpToDialog />
     </Layout>
   )
+}
+
+const AllLayout = () => {
+  return <JumpToDialog />
 }
 
 export default App

@@ -109,6 +109,8 @@ export const selectShowComments = (state: RootState) =>
 export const useShowComments = () => useAppSelector(selectShowComments)
 export const selectJumpToSelect = (state: RootState) =>
   state.settings.jumpToSelect
+
+export const useJumpToSelect = () => useAppSelector(selectJumpToSelect)
 export const selectAfterNavigateKeepSelection = (state: RootState) =>
   state.settings.afterNavigateKeepSelection
 

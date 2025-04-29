@@ -11,9 +11,11 @@ import {
 import { Field, Input, Stack, Switch } from '@chakra-ui/react'
 import {
   setColorPalette,
+  setJumpToSelect,
   setLanguage,
   setShowComments,
   useColorPalette,
+  useJumpToSelect,
   useLanguage,
   useShowComments,
   useT,
@@ -106,9 +108,9 @@ function Content({}: Props) {
   const language = useLanguage()
 
   return (
-    <Stack gap="4" css={{ '--field-label-width': '96px' }}>
+    <Stack gap="8" css={{ '--field-label-width': '200px' }}>
       <Heading size={'2xl'}>设置</Heading>
-      <Separator marginBottom={'4'} size={'xs'} />
+      <Separator size={'xs'} />
 
       {/* 色调 */}
       <Field.Root orientation="horizontal">
@@ -183,6 +185,7 @@ function Content({}: Props) {
         </Select.Root>
       </Field.Root>
 
+      {/* 显示注释 */}
       <Field.Root orientation="horizontal">
         <Field.Label>{useT(['显示注释', '顯示注釋'])}</Field.Label>
         <Switch.Root
@@ -196,9 +199,17 @@ function Content({}: Props) {
         </Switch.Root>
       </Field.Root>
 
+      {/* 跳转选中 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>Hide email</Field.Label>
-        <Switch.Root>
+        <Field.Label>
+          {useT(['快速跳转后选中经文', '快速跳轉後選中經文'])}
+        </Field.Label>
+        <Switch.Root
+          defaultChecked={useJumpToSelect()}
+          onCheckedChange={({ checked }) => {
+            dispatch(setJumpToSelect(checked))
+          }}
+        >
           <Switch.HiddenInput />
           <Switch.Control />
         </Switch.Root>
