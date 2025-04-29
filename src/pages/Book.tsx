@@ -7,7 +7,7 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import { useEffect, useRef } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
 import TurnPage from '@/components/TurnPage'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
@@ -62,10 +62,15 @@ export default function Book() {
   }, [book, chapter, language, dispatch])
 
   const location = useLocation()
+  const navigate = useNavigate()
+
   useEffect(() => {
     if (!verseValue) {
       sleep(200).then(() => {
         // window.scrollTo(0, 0)
+        if (location.state?.preventRender) {
+          return
+        }
         document
           .querySelector('.chapter-title')!
           .scrollIntoView({ behavior: 'instant', block: 'center' })
@@ -87,11 +92,25 @@ export default function Book() {
             })
             .then(() => {
               el.classList.remove('jumpto-emphasis')
+
+              navigate(`/book/${book}/${chapter}`, {
+                replace: true,
+                preventScrollReset: true,
+                state: { preventRender: true },
+              })
             })
         })
       })
     }
-  }, [location.pathname, verseValue, jumpToSelect])
+  }, [
+    location.pathname,
+    verseValue,
+    jumpToSelect,
+    navigate,
+    book,
+    chapter,
+    location.state?.preventRender,
+  ])
 
   useEffect(() => {
     document.getElementById('custom-style')!.innerHTML = `

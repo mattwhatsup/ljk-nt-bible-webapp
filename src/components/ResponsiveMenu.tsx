@@ -28,7 +28,7 @@ import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
 import { useT } from '@/features/settings/settingsSlice'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
