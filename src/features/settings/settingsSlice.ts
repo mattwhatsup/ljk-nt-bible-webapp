@@ -164,8 +164,14 @@ type SizeType = (typeof sizes)[number]
 
 const uiTypes = ['button', 'text'] as const
 type UiType = (typeof uiTypes)[number]
-export const useUiSizeClassName = (
+export const useUiSizeClassName = (base: SizeType, uiType: UiType) => {
+  return getUiSizeClassName(base, useUiSize(), uiType)
+}
+
+export const getUiSizeClassName = (
   base: SizeType,
   enlarged: UiSize,
   uiType: UiType,
-) => {}
+) => {
+  return base
+}
