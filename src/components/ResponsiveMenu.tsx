@@ -27,7 +27,7 @@ import { FiImage } from 'react-icons/fi'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
-import { useT } from '@/features/settings/settingsSlice'
+import { useColorPalette, useT } from '@/features/settings/settingsSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
@@ -43,7 +43,9 @@ const ResponsiveMenu = () => {
   const jumpToButton = (
     <Button
       display={'inline-flex'}
-      colorPalette={'teal'}
+      colorPalette={useColorPalette()}
+      color={'white'}
+      _hover={{ color: `${useColorPalette()}.700` }}
       variant={'outline'}
       size={'xs'}
       onClick={() => dispatch(openJumpToDialog())}
@@ -64,7 +66,7 @@ const ResponsiveMenu = () => {
       size={'sm'}
       variant={'ghost'}
       color={'white'}
-      _hover={{ color: 'black' }}
+      _hover={{ color: `${useColorPalette()}.700` }}
       onClick={() => {
         if (location.pathname !== '/settings') {
           if (window.innerWidth < 768) {
@@ -85,7 +87,7 @@ const ResponsiveMenu = () => {
     <Box
       display={'flex'}
       width={'full'}
-      bg={'teal.500'}
+      bg={`${useColorPalette()}.500`}
       justifyContent={'center'}
       position={'fixed'}
       zIndex={100}
@@ -130,7 +132,10 @@ const ResponsiveMenu = () => {
               {jumpToButton}
             </HStack>
           </HStack>
-          <DrawerContent animationDuration={'0.1s'} colorPalette={'teal'}>
+          <DrawerContent
+            animationDuration={'0.1s'}
+            colorPalette={useColorPalette()}
+          >
             <DrawerHeader>
               <DrawerTitle>{useT(['请选择...', '請選擇...'])}</DrawerTitle>
             </DrawerHeader>
@@ -156,13 +161,13 @@ const ResponsiveMenu = () => {
           <HStack paddingLeft={'0.2rem'}>
             <MenuItem>
               <IconButton
-                colorScheme={'purple'}
+                colorScheme={useColorPalette()}
                 px={'1em'}
                 color={'white'}
                 bg={'transparent'}
                 aria-pressed={true}
-                _active={{ bg: 'teal.600' }}
-                _hover={{ bg: 'teal.600' }}
+                _active={{ bg: `${useColorPalette()}.600` }}
+                _hover={{ bg: `${useColorPalette()}.600` }}
                 variant={'outline'}
               >
                 <CgReadme /> {useT(['阅读', '閱讀'])}

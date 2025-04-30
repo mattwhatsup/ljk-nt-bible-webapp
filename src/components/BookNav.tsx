@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react'
 import BibleSelector from '@/components/BibleSelector/BibleSelector'
 import type { SelectValue } from './BibleSelector/BibleDropDown'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useColorPalette } from '@/features/settings/settingsSlice'
 
 type Props = {}
 
@@ -22,7 +23,7 @@ export default function BookNav({}: Props) {
       pt={20}
       position={'fixed'}
       width={'full'}
-      bg={'teal.500'}
+      bg={`${useColorPalette()}.500`}
       justifyContent={'center'}
       zIndex={99}
     >

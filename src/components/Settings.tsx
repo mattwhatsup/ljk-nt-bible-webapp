@@ -280,6 +280,7 @@ function Content({}: Props) {
       <Field.Root orientation="horizontal">
         <Field.Label>{useT(['显示注释', '顯示注釋'])}</Field.Label>
         <Switch.Root
+          colorPalette={useColorPalette()}
           defaultChecked={useShowComments()}
           onCheckedChange={({ checked }) => {
             dispatch(setShowComments(checked))
@@ -296,6 +297,7 @@ function Content({}: Props) {
           {useT(['快速跳转后选中经文', '快速跳轉後選中經文'])}
         </Field.Label>
         <Switch.Root
+          colorPalette={useColorPalette()}
           defaultChecked={useJumpToSelect()}
           onCheckedChange={({ checked }) => {
             dispatch(setJumpToSelect(checked))
@@ -310,6 +312,7 @@ function Content({}: Props) {
       <Field.Root orientation="horizontal">
         <Field.Label>{useT(['保持选中经文', '保持選中經文'])}</Field.Label>
         <Switch.Root
+          colorPalette={useColorPalette()}
           defaultChecked={useAfterNavigateKeepSelection()}
           onCheckedChange={({ checked }) => {
             dispatch(setAfterNavigateKeepSelection(checked))

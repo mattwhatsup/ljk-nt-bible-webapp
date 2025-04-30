@@ -22,6 +22,7 @@ import {
   selectJumpToSelect,
   selectLanguage,
   selectShowComments,
+  useColorPalette,
 } from '@/features/settings/settingsSlice'
 import {
   clearLastSelectedVerse,
@@ -63,6 +64,7 @@ export default function Book() {
 
   const location = useLocation()
   const navigate = useNavigate()
+  const colorPalette = useColorPalette()
 
   useEffect(() => {
     if (!verseValue) {
@@ -173,7 +175,7 @@ export default function Book() {
       ) : (
         <>
           {loading && (
-            <VStack colorPalette="teal">
+            <VStack colorPalette={colorPalette}>
               <SkeletonText noOfLines={5} gap={4} variant={'pulse'} />
               <SkeletonText noOfLines={2} gap={4} variant={'pulse'} />
               <SkeletonText noOfLines={7} gap={4} variant={'pulse'} />
@@ -185,12 +187,12 @@ export default function Book() {
                 top="50%"
                 transform="translate(-50%, -50%)"
               >
-                <Spinner color="colorPalette.600" />
-                <Text color="colorPalette.600">Loading...</Text>
+                <Spinner color={`${colorPalette}.600`} />
+                <Text color={`${colorPalette}.600`}>Loading...</Text>
               </HStack>
             </VStack>
           )}
-          {error && <Text color="colorPalette.600">Error: {error}</Text>}
+          {error && <Text color={`${colorPalette}.600`}>Error: {error}</Text>}
         </>
       )}
     </Box>
