@@ -1,12 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import {
-  CloseButton,
-  Dialog,
-  Heading,
-  Portal,
-  Separator,
-} from '@chakra-ui/react'
-import { Field, Input, Stack, Switch } from '@chakra-ui/react'
+import { CloseButton, Dialog, Portal } from '@chakra-ui/react'
+import { Field, Stack, Switch } from '@chakra-ui/react'
 import type { TextSize, UiSize } from '@/features/settings/settingsSlice'
 import {
   getUiSizeClassName,
@@ -25,7 +19,6 @@ import {
   useT,
   useTextSize,
   useUiSize,
-  useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { Select, createListCollection } from '@chakra-ui/react'
 import { useAppDispatch } from '@/app/hooks'

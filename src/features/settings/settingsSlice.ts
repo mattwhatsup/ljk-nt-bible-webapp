@@ -102,13 +102,13 @@ export const selectColorPalette = (state: RootState) =>
 
 export const useColorPalette = () => {
   const colorPalette = useAppSelector(selectColorPalette)
-  return colorPalette
+  return colorPalette || 'gray'
 }
 export const selectTextSize = (state: RootState) => state.settings.textSize
 
 export const useTextSize = () => {
   const textSize = useAppSelector(selectTextSize)
-  return textSize
+  return textSize || 16
 }
 
 export const selectUiSize = (state: RootState) => state.settings.uiSize
