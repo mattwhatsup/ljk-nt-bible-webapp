@@ -61,7 +61,7 @@ const ResponsiveMenu = () => {
   const settingButton = (
     <IconButton
       aria-label="settings"
-      size={'xs'}
+      size={'sm'}
       variant={'ghost'}
       color={'white'}
       _hover={{ color: 'black' }}
@@ -125,7 +125,7 @@ const ResponsiveMenu = () => {
                 </IconButton>
               </Box>
             </DrawerTrigger>
-            <HStack>
+            <HStack paddingRight={'1.2rem'}>
               {settingButton}
               {jumpToButton}
             </HStack>
@@ -153,7 +153,7 @@ const ResponsiveMenu = () => {
           flexGrow={1}
           py="1.2rem"
         >
-          <HStack>
+          <HStack paddingLeft={'0.2rem'}>
             <MenuItem>
               <IconButton
                 colorScheme={'purple'}
@@ -185,7 +185,7 @@ const ResponsiveMenu = () => {
               </IconButton>
             </MenuItem>
           </HStack>
-          <HStack>
+          <HStack paddingRight={'0.2rem'}>
             {settingButton}
             {jumpToButton}
           </HStack>
