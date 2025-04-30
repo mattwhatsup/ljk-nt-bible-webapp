@@ -103,20 +103,20 @@ function Content({}: Props) {
   const uiSizes = createListCollection({
     items: [
       {
-        label: '小',
-        value: 'sm',
+        label: '正常',
+        value: '0',
       },
       {
-        label: '中',
-        value: 'md',
+        label: '加大',
+        value: '1',
       },
       {
-        label: '大',
-        value: 'lg',
+        label: '超大',
+        value: '2',
       },
       {
-        label: useT(['超大', '超大']),
-        value: 'xl',
+        label: '更大',
+        value: '3',
       },
     ],
   })
@@ -247,9 +247,9 @@ function Content({}: Props) {
           collection={uiSizes}
           size="sm"
           positioning={{ sameWidth: true }}
-          defaultValue={[useUiSize()]}
+          defaultValue={[useUiSize() + '']}
           onValueChange={value => {
-            dispatch(setUiSize(value.value[0] as UiSize))
+            dispatch(setUiSize(+value.value[0] as UiSize))
           }}
         >
           <Select.HiddenSelect />

@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 export type TextSize = 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30
-export type UiSize = 'sm' | 'md' | 'lg' | 'xl'
+export type UiSize = 0 | 1 | 2 | 3
 export type ColorPaletteType =
   | 'gray'
   | 'red'
@@ -33,7 +33,7 @@ const defaultState: SettingsState = {
   jumpToSelect: false,
   afterNavigateKeepSelection: true,
   textSize: 14,
-  uiSize: 'md',
+  uiSize: 0,
 }
 
 const loadState = (): SettingsState => {
