@@ -59,7 +59,7 @@ const BibleDropDown: FunctionComponent<
       closeTriggerRef.current.click()
     }
   }, [selected, showVerseSelector])
-  const isMobile = useBreakpointValue({ base: true, maxContent: false })
+  const isMobile = useBreakpointValue({ base: true, maxContent: false }) // 响应式布局
 
   const popover = (
     <PopoverRoot

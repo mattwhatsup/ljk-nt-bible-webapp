@@ -9,6 +9,7 @@ import {
 import { Field, Input, Stack, Switch } from '@chakra-ui/react'
 import type { TextSize, UiSize } from '@/features/settings/settingsSlice'
 import {
+  getUiSizeClassName,
   setAfterNavigateKeepSelection,
   setColorPalette,
   setJumpToSelect,
@@ -24,6 +25,7 @@ import {
   useT,
   useTextSize,
   useUiSize,
+  useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { Select, createListCollection } from '@chakra-ui/react'
 import { useAppDispatch } from '@/app/hooks'
@@ -115,21 +117,25 @@ function Content({}: Props) {
         value: '2',
       },
       {
-        label: '更大',
+        label: '巨大',
         value: '3',
       },
     ],
   })
   const language = useLanguage()
+  const uiSize = useUiSize()
 
   return (
     <Stack gap="8" css={{ '--field-label-width': '200px' }}>
       {/* 色调 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['色调', '色調'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['色调', '色調'])}
+        </Field.Label>
         <Select.Root
           collection={colorPalettes}
-          size="sm"
+          // @ts-ignore
+          size={getUiSizeClassName('sm', uiSize, 'control')}
           positioning={{ sameWidth: true }}
           defaultValue={[colorPalette]}
           onValueChange={value => {
@@ -165,10 +171,13 @@ function Content({}: Props) {
 
       {/* 语言 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['语言', '語言'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['语言', '語言'])}
+        </Field.Label>
         <Select.Root
           collection={languages}
-          size="sm"
+          // @ts-ignore
+          size={getUiSizeClassName('sm', uiSize, 'control')}
           positioning={{ sameWidth: true }}
           defaultValue={[language]}
           onValueChange={value => {
@@ -201,10 +210,13 @@ function Content({}: Props) {
 
       {/* 经文字体大小 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['经文字体大小', '經文字體大小'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['经文字体大小', '經文字體大小'])}
+        </Field.Label>
         <Select.Root
           collection={textSizes}
-          size="sm"
+          // @ts-ignore
+          size={getUiSizeClassName('sm', uiSize, 'control')}
           positioning={{ sameWidth: true }}
           defaultValue={[useTextSize() + '']}
           onValueChange={value => {
@@ -239,10 +251,13 @@ function Content({}: Props) {
 
       {/* 界面文字大小 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['界面文字大小', '界面文字大小'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['界面文字大小', '界面文字大小'])}
+        </Field.Label>
         <Select.Root
           collection={uiSizes}
-          size="sm"
+          // @ts-ignore
+          size={getUiSizeClassName('sm', uiSize, 'control')}
           positioning={{ sameWidth: true }}
           defaultValue={[useUiSize() + '']}
           onValueChange={value => {
@@ -275,8 +290,12 @@ function Content({}: Props) {
 
       {/* 显示注释 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['显示注释', '顯示注釋'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['显示注释', '顯示注釋'])}
+        </Field.Label>
         <Switch.Root
+          // @ts-ignore
+          size={getUiSizeClassName('md', uiSize, 'control')}
           colorPalette={useColorPalette()}
           defaultChecked={useShowComments()}
           onCheckedChange={({ checked }) => {
@@ -290,10 +309,12 @@ function Content({}: Props) {
 
       {/* 跳转选中 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>
-          {useT(['快速跳转后选中经文', '快速跳轉後選中經文'])}
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['跳转后选中经文', '跳轉後選中經文'])}
         </Field.Label>
         <Switch.Root
+          // @ts-ignore
+          size={getUiSizeClassName('md', uiSize, 'control')}
           colorPalette={useColorPalette()}
           defaultChecked={useJumpToSelect()}
           onCheckedChange={({ checked }) => {
@@ -307,8 +328,12 @@ function Content({}: Props) {
 
       {/* 保持选中经文 */}
       <Field.Root orientation="horizontal">
-        <Field.Label>{useT(['保持选中经文', '保持選中經文'])}</Field.Label>
+        <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
+          {useT(['保持选中经文', '保持選中經文'])}
+        </Field.Label>
         <Switch.Root
+          // @ts-ignore
+          size={getUiSizeClassName('md', uiSize, 'control')}
           colorPalette={useColorPalette()}
           defaultChecked={useAfterNavigateKeepSelection()}
           onCheckedChange={({ checked }) => {
@@ -327,6 +352,7 @@ export default function Settings({}: Props) {
   const state = location.state as { backgroundLocation?: Location }
   const navigate = useNavigate()
   const title = useT(['设置', '設置'])
+  const uiSize = useUiSize()
 
   if (!state?.backgroundLocation) {
     return <Content />
@@ -347,7 +373,11 @@ export default function Settings({}: Props) {
           <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Header>
-                <Dialog.Title fontSize={'3xl'}>{title}</Dialog.Title>
+                <Dialog.Title
+                  fontSize={getUiSizeClassName('lg', uiSize, 'text')}
+                >
+                  {title}
+                </Dialog.Title>
               </Dialog.Header>
               <Dialog.Body pt="4">
                 <Content />

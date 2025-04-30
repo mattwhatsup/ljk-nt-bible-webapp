@@ -162,7 +162,7 @@ const sizes = [
 ] as const
 type SizeType = (typeof sizes)[number]
 
-const uiTypes = ['button', 'text'] as const
+const uiTypes = ['button', 'text', 'control'] as const
 type UiType = (typeof uiTypes)[number]
 export const useUiSizeClassName = (base: SizeType, uiType: UiType) => {
   return getUiSizeClassName(base, useUiSize(), uiType)
@@ -173,5 +173,23 @@ export const getUiSizeClassName = (
   enlarged: UiSize,
   uiType: UiType,
 ) => {
-  return base
+  const sizeIndex = sizes.indexOf(base)
+  const enlargedIndex = sizeIndex + enlarged
+
+  let maxIndex = sizes.length - 1
+  switch (uiType) {
+    case 'button':
+      maxIndex = 4 // xl
+      break
+    case 'control':
+      maxIndex = 3 // lg
+      break
+    case 'text':
+      maxIndex = sizes.length - 1 // 7xl
+      break
+    default:
+      break
+  }
+
+  return sizes[enlargedIndex > maxIndex ? maxIndex : enlargedIndex]
 }

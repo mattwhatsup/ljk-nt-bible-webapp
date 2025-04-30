@@ -15,6 +15,7 @@ const config = defineConfig({
       desktop: '1200px',
       wide: '1400px',
       maxContent: '672px', // 2xl
+      // 响应式布局
     },
   },
 })

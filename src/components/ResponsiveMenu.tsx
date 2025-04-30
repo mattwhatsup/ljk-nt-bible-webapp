@@ -109,12 +109,12 @@ const ResponsiveMenu = () => {
           <HStack
             justifyContent={'space-between'}
             width={'full'}
-            display={{ ...{ base: 'flex', maxContent: 'none' } }}
+            display={{ ...{ base: 'flex', maxContent: 'none' } }} // 响应式布局
             // hideBelow={'maxContent'}
           >
             <DrawerTrigger asChild>
               <Box
-                display={{ base: 'block', ...{ maxContent: 'none' } }}
+                display={{ base: 'block', ...{ maxContent: 'none' } }} // 响应式布局
                 onClick={() => setOpen(true)}
                 padding={'1.2rem'}
               >
@@ -151,7 +151,7 @@ const ResponsiveMenu = () => {
         </DrawerRoot>
 
         <Box
-          display={{ base: 'none', ...{ maxContent: 'flex' } }}
+          display={{ base: 'none', ...{ maxContent: 'flex' } }} // 响应式布局
           width={{ md: 'auto' }}
           alignItems="center"
           justifyContent={'space-between'}

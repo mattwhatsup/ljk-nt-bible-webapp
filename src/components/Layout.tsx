@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
               maxContentDown: { padding: '1rem 2rem' }, // maxContent是自己定义的，在provider.tsx中
               maxContent: { padding: '1rem' },
             } as any)}
-            borderWidth={{ base: '1px', maxContentDown: '0' }}
+            borderWidth={{ base: '1px', maxContentDown: '0' }} // 响应式布局
           >
             {children}
           </Box>
