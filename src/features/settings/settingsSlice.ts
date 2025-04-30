@@ -3,19 +3,25 @@ import type { RootState } from '@/app/store'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-export type TextSize = 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 26 | 28 | 30
-export type UiSize = 0 | 1 | 2 | 3
-export type ColorPaletteType =
-  | 'gray'
-  | 'red'
-  | 'orange'
-  | 'yellow'
-  | 'green'
-  | 'teal'
-  | 'blue'
-  | 'cyan'
-  | 'purple'
-  | 'pink'
+const textSizes = [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30] as const
+export type TextSize = (typeof textSizes)[number]
+
+const uiSizes = [0, 1, 2, 3] as const
+export type UiSize = (typeof uiSizes)[number]
+
+const colorPaletteTypes = [
+  'gray',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'blue',
+  'cyan',
+  'purple',
+  'pink',
+] as const
+export type ColorPaletteType = (typeof colorPaletteTypes)[number]
 interface SettingsState {
   colorPalette: ColorPaletteType
   language: 'cn' | 'tw' // 简体中文 or 繁体中文
@@ -141,3 +147,25 @@ export const useT = (texts: readonly [string, string]) => {
   const lang = useLanguage()
   return _T(texts, lang)
 }
+const sizes = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+] as const
+type SizeType = (typeof sizes)[number]
+
+const uiTypes = ['button', 'text'] as const
+type UiType = (typeof uiTypes)[number]
+export const useUiSizeClassName = (
+  base: SizeType,
+  enlarged: UiSize,
+  uiType: UiType,
+) => {}

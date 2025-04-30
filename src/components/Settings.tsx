@@ -124,9 +124,6 @@ function Content({}: Props) {
 
   return (
     <Stack gap="8" css={{ '--field-label-width': '200px' }}>
-      <Heading size={'2xl'}>设置</Heading>
-      <Separator size={'xs'} />
-
       {/* 色调 */}
       <Field.Root orientation="horizontal">
         <Field.Label>{useT(['色调', '色調'])}</Field.Label>
@@ -329,6 +326,7 @@ export default function Settings({}: Props) {
   const location = useLocation()
   const state = location.state as { backgroundLocation?: Location }
   const navigate = useNavigate()
+  const title = useT(['设置', '設置'])
 
   if (!state?.backgroundLocation) {
     return <Content />
@@ -348,6 +346,9 @@ export default function Settings({}: Props) {
           <Dialog.Backdrop />
           <Dialog.Positioner>
             <Dialog.Content>
+              <Dialog.Header>
+                <Dialog.Title fontSize={'3xl'}>{title}</Dialog.Title>
+              </Dialog.Header>
               <Dialog.Body pt="4">
                 <Content />
               </Dialog.Body>
