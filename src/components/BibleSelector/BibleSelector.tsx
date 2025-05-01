@@ -10,7 +10,11 @@ import type { SelectValue } from './BibleDropDown'
 import { Box, Icon } from '@chakra-ui/react'
 import { FaChevronRight } from 'react-icons/fa'
 import { isSelectedValueComplete } from './utils'
-import { useColorPalette } from '@/features/settings/settingsSlice'
+import {
+  getUiSizeClassName,
+  useColorPalette,
+  useUiSize,
+} from '@/features/settings/settingsSlice'
 
 export const SelectedValueContext = createContext<
   | {
@@ -32,6 +36,7 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
 }) => {
   const [selectedState, setSelectedState] = useState<SelectValue>(selected!)
   const { showVerseSelector } = useContext(BibleSelectorContext)!
+  const uiSize = useUiSize()
 
   useEffect(() => {
     if (selected) {
@@ -95,7 +100,11 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
         />
         {selected?.book && (
           <>
-            <Icon color={'whiteAlpha.800'}>
+            <Icon
+              color={'whiteAlpha.800'}
+              // @ts-ignore
+              size={getUiSizeClassName('sm', uiSize, 'button')}
+            >
               <FaChevronRight />
             </Icon>
             <ChapterDropDown

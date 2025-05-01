@@ -1,4 +1,7 @@
-import { useColorPalette } from '@/features/settings/settingsSlice'
+import {
+  useColorPalette,
+  useUiSizeClassName,
+} from '@/features/settings/settingsSlice'
 import { Box } from '@chakra-ui/react'
 import type { FunctionComponent, MouseEvent } from 'react'
 
@@ -21,6 +24,7 @@ const BibleSelectorItem: FunctionComponent<BibleSelectorItemProps> = ({
         backgroundColor: `${useColorPalette()}.50`,
       }}
       onClick={onClick}
+      fontSize={useUiSizeClassName('sm', 'text')}
     >
       <span>{label}</span>
     </Box>

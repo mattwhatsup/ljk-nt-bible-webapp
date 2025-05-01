@@ -6,9 +6,15 @@ import VerseList from './VerseList'
 import type { BibleSelectorProps } from './BibleDropDown'
 import './BibleSelector.css'
 import { SelectedValueContext } from './BibleSelector'
-import { Box, Stack, Tabs } from '@chakra-ui/react'
+import { Box, Stack, Tabs, Text } from '@chakra-ui/react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
-import { _T, useLanguage, useT } from '@/features/settings/settingsSlice'
+import {
+  _T,
+  getUiSizeClassName,
+  useLanguage,
+  useT,
+  useUiSize,
+} from '@/features/settings/settingsSlice'
 
 interface BookPopupSelectorProps extends HTMLAttributes<HTMLDivElement> {
   tabView?: string
@@ -22,6 +28,7 @@ const BookPopupSelector: FunctionComponent<
   const chapterTabRef = useRef<HTMLButtonElement>(null)
   const prevBookRef = useRef(selected?.book)
   const language = useLanguage()
+  const uiSize = useUiSize()
 
   const cols =
     1 +
@@ -50,14 +57,18 @@ const BookPopupSelector: FunctionComponent<
       flex={1}
       display={'flex'}
       flexDirection={'column'}
+      // @ts-ignore
+      size={getUiSizeClassName('sm', uiSize, 'control')}
     >
       <Tabs.List>
         <Tabs.Trigger value="books">
-          {_T(['书卷', '書卷'], language)}
+          <Text fontSize={getUiSizeClassName('sm', uiSize, 'text')}>
+            {_T(['书卷', '書卷'], language)}
+          </Text>
         </Tabs.Trigger>
         {selected?.book && (
           <Tabs.Trigger value="chapters" ref={chapterTabRef}>
-            章
+            <Text fontSize={getUiSizeClassName('sm', uiSize, 'text')}>章</Text>
           </Tabs.Trigger>
         )}
       </Tabs.List>

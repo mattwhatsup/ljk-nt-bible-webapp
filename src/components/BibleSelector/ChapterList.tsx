@@ -3,6 +3,11 @@ import { useContext } from 'react'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import BibleSelectorItem from './BibleSelectorItem'
+import {
+  getUiSizeClassName,
+  useUiSize,
+} from '@/features/settings/settingsSlice'
+import { Box, Text } from '@chakra-ui/react'
 
 interface ChapterListProps extends HTMLAttributes<HTMLDivElement> {
   ignoreHeader?: boolean
@@ -14,6 +19,7 @@ const ChapterList: FunctionComponent<ChapterListProps> = ({
 }) => {
   const data = useContext(BibleSelectorContext)!
   const { selected, setSelected } = useContext(SelectedValueContext)!
+  const uiSize = useUiSize()
 
   const capterCount = data.books.find(
     book => book.abbr_en.toLowerCase() === selected!.book,
@@ -22,9 +28,17 @@ const ChapterList: FunctionComponent<ChapterListProps> = ({
   return (
     <div className={className}>
       {!ignoreHeader && (
-        <div className="flex items-center book-list-header leading-[31px]">
-          <span className=" font-bold">章</span>
-        </div>
+        <Box
+          className="flex items-center book-list-header leading-[31px]"
+          marginTop={2}
+        >
+          <Text
+            className=" font-bold"
+            fontSize={getUiSizeClassName('md', uiSize, 'text')}
+          >
+            章
+          </Text>
+        </Box>
       )}
       <div className="list-height overflow-y-auto list-content">
         <ul className="book-grid mt-2 ">

@@ -135,6 +135,7 @@ function Content({}: Props) {
             // @ts-ignore
             dispatch(setColorPalette(value.value[0]))
           }}
+          colorPalette={useColorPalette()}
         >
           <Select.HiddenSelect />
           <Select.Control>
@@ -176,6 +177,7 @@ function Content({}: Props) {
           onValueChange={value => {
             dispatch(setLanguage(value.value[0] as 'cn' | 'tw'))
           }}
+          colorPalette={useColorPalette()}
         >
           <Select.HiddenSelect />
           <Select.Control>
@@ -215,6 +217,7 @@ function Content({}: Props) {
           onValueChange={value => {
             dispatch(setTextSize(+value.value[0] as TextSize))
           }}
+          colorPalette={useColorPalette()}
         >
           <Select.HiddenSelect />
           <Select.Control>
@@ -256,6 +259,7 @@ function Content({}: Props) {
           onValueChange={value => {
             dispatch(setUiSize(+value.value[0] as UiSize))
           }}
+          colorPalette={useColorPalette()}
         >
           <Select.HiddenSelect />
           <Select.Control>
