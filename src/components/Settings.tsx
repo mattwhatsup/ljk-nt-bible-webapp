@@ -11,6 +11,7 @@ import {
   setShowComments,
   setTextSize,
   setUiSize,
+  textSizes as _textSizes,
   useAfterNavigateKeepSelection,
   useColorPalette,
   useJumpToSelect,
@@ -88,10 +89,17 @@ function Content({}: Props) {
   })
   const colorPalette = useColorPalette()
 
+  // const textSizes = createListCollection({
+  //   items: [...Array(11)].map((_, index) => ({
+  //     label: `${index * 2 + 10}`,
+  //     value: `${index * 2 + 10}`,
+  //   })),
+  // })
+
   const textSizes = createListCollection({
-    items: [...Array(11)].map((_, index) => ({
-      label: `${index * 2 + 10}`,
-      value: `${index * 2 + 10}`,
+    items: _textSizes.map(value => ({
+      label: `${value}`,
+      value: `${value}`,
     })),
   })
 
