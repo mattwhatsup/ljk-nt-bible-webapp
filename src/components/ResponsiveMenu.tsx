@@ -27,7 +27,11 @@ import { FiImage } from 'react-icons/fi'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
-import { useColorPalette, useT } from '@/features/settings/settingsSlice'
+import {
+  useColorPalette,
+  useT,
+  useUiSizeClassName,
+} from '@/features/settings/settingsSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
@@ -41,23 +45,39 @@ const ResponsiveMenu = () => {
   const location = useLocation()
 
   const jumpToButton = (
-    <Button
-      display={'inline-flex'}
-      colorPalette={useColorPalette()}
-      color={'white'}
-      _hover={{ color: `${useColorPalette()}.700` }}
-      variant={'outline'}
-      size={'xs'}
-      onClick={() => dispatch(openJumpToDialog())}
-    >
-      <Icon>
+    <>
+      <Button
+        // @ts-ignore
+        display={{ maxContentDown: 'none', base: 'inline-flex' }} // 响应式布局
+        colorPalette={useColorPalette()}
+        color={'white'}
+        _hover={{ color: `${useColorPalette()}.700` }}
+        variant={'outline'}
+        size={'xs'}
+        // @ts-ignore
+        fontSize={useUiSizeClassName('xs', 'button')}
+        onClick={() => dispatch(openJumpToDialog())}
+      >
+        <Icon>
+          <GoSearch />
+        </Icon>
+        {useT(['快速跳转', '快速跳轉'])}
+        <Kbd>
+          {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
+        </Kbd>
+      </Button>
+      <IconButton
+        aria-label="jump to"
+        display={{ base: 'none', ...{ maxContentDown: 'inline-flex' } }} // 响应式布局
+        size={'sm'}
+        variant={'ghost'}
+        color={'white'}
+        _hover={{ color: `${useColorPalette()}.700` }}
+        onClick={() => dispatch(openJumpToDialog())}
+      >
         <GoSearch />
-      </Icon>
-      {useT(['快速跳转', '快速跳轉'])}
-      <Kbd>
-        {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
-      </Kbd>
-    </Button>
+      </IconButton>
+    </>
   )
 
   const settingButton = (
@@ -100,6 +120,7 @@ const ResponsiveMenu = () => {
         color="white"
         width={'2xl'}
       >
+        {/* 小屏幕时 */}
         <DrawerRoot
           open={open}
           onOpenChange={e => setOpen(e.open)}
@@ -112,24 +133,25 @@ const ResponsiveMenu = () => {
             display={{ ...{ base: 'flex', maxContent: 'none' } }} // 响应式布局
             // hideBelow={'maxContent'}
           >
-            <DrawerTrigger asChild>
-              <Box
-                display={{ base: 'block', ...{ maxContent: 'none' } }} // 响应式布局
-                onClick={() => setOpen(true)}
-                padding={'1.2rem'}
-              >
-                <IconButton
-                  variant="outline"
-                  aria-label={useT(['打开菜单', '打開菜單'])}
-                  color={'white'}
-                >
-                  <GiHamburgerMenu />
-                </IconButton>
-              </Box>
-            </DrawerTrigger>
+            <Box>{/** 占位符 */}</Box>
             <HStack paddingRight={'1.2rem'}>
               {settingButton}
               {jumpToButton}
+              <DrawerTrigger asChild>
+                <Box
+                  display={{ base: 'block', ...{ maxContent: 'none' } }} // 响应式布局
+                  onClick={() => setOpen(true)}
+                  padding={'1.2rem'}
+                >
+                  <IconButton
+                    variant="outline"
+                    aria-label={useT(['打开菜单', '打開菜單'])}
+                    color={'white'}
+                  >
+                    <GiHamburgerMenu />
+                  </IconButton>
+                </Box>
+              </DrawerTrigger>
             </HStack>
           </HStack>
           <DrawerContent
@@ -137,19 +159,43 @@ const ResponsiveMenu = () => {
             colorPalette={useColorPalette()}
           >
             <DrawerHeader>
-              <DrawerTitle>{useT(['请选择...', '請選擇...'])}</DrawerTitle>
+              <DrawerTitle fontSize={useUiSizeClassName('md', 'text')}>
+                {useT(['请选择...', '請選擇...'])}
+              </DrawerTitle>
             </DrawerHeader>
             <DrawerBody>
               <Stack>
-                <Button w="100%">{useT(['阅读', '閱讀'])}</Button>
-                <Button w="100%">{useT(['关于', '關於'])}</Button>
-                <Button w="100%">{useT(['插图', '插圖'])}</Button>
+                <Button
+                  w="100%"
+                  // @ts-ignore
+                  fontSize={useUiSizeClassName('md', 'button')}
+                  onClick={() => {
+                    navigate('/')
+                    setOpen(false)
+                  }}
+                >
+                  {useT(['阅读', '閱讀'])}
+                </Button>
+                <Button
+                  w="100%"
+                  // @ts-ignore
+                  fontSize={useUiSizeClassName('md', 'button')}
+                >
+                  {useT(['关于', '關於'])}
+                </Button>
+                <Button
+                  w="100%"
+                  // @ts-ignore
+                  fontSize={useUiSizeClassName('md', 'button')}
+                >
+                  {useT(['插图', '插圖'])}
+                </Button>
               </Stack>
             </DrawerBody>
             <DrawerCloseTrigger />
           </DrawerContent>
         </DrawerRoot>
-
+        {/* 大屏时 */}
         <Box
           display={{ base: 'none', ...{ maxContent: 'flex' } }} // 响应式布局
           width={{ md: 'auto' }}
@@ -169,23 +215,47 @@ const ResponsiveMenu = () => {
                 _active={{ bg: `${useColorPalette()}.600` }}
                 _hover={{ bg: `${useColorPalette()}.600` }}
                 variant={'outline'}
+                // @ts-ignore
+                fontSize={useUiSizeClassName('sm', 'button')}
+                onClick={() => {
+                  navigate('/')
+                }}
               >
                 <CgReadme /> {useT(['阅读', '閱讀'])}
               </IconButton>
             </MenuItem>
             <MenuItem>
-              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <IconButton
+                px={'1em'}
+                color={'white'}
+                bg={'transparent'}
+                // @ts-ignore
+                fontSize={useUiSizeClassName('sm', 'button')}
+              >
                 <GoInfo /> {useT(['关于', '關於'])}
               </IconButton>
             </MenuItem>
             <MenuItem>
-              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <IconButton
+                px={'1em'}
+                color={'white'}
+                bg={'transparent'}
+                // @ts-ignore
+                fontSize={useUiSizeClassName('sm', 'button')}
+              >
                 <BsAt /> {useT(['引用', '引用'])}
               </IconButton>
             </MenuItem>
 
             <MenuItem>
-              <IconButton px={'1em'} color={'white'} bg={'transparent'}>
+              <IconButton
+                px={'1em'}
+                color={'white'}
+                bg={'transparent'}
+                size={'xs'}
+                // @ts-ignore
+                fontSize={useUiSizeClassName('sm', 'button')}
+              >
                 <FiImage /> {useT(['插图', '插圖'])}
               </IconButton>
             </MenuItem>
