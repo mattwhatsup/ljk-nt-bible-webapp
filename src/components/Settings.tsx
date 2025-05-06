@@ -372,6 +372,9 @@ export default function Settings({}: Props) {
         restoreFocus={false}
         size={'md'}
         motionPreset={'slide-in-top'}
+        onEscapeKeyDown={e => {
+          e.stopPropagation()
+        }}
       >
         <Portal>
           <Dialog.Backdrop />

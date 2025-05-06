@@ -146,6 +146,9 @@ export default function JumpToDialog({}: Props) {
       onPointerDownOutside={() => {
         dispatch(closeJumpToDialog())
       }}
+      onEscapeKeyDown={e => {
+        e.stopPropagation()
+      }}
     >
       <Portal>
         <Dialog.Backdrop />

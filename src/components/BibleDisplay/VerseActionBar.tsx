@@ -10,6 +10,7 @@ import {
   selectAfterNavigateKeepSelection,
   selectLanguage,
   setAfterNavigateKeepSelection,
+  useColorPalette,
   useLanguage,
   useT,
 } from '@/features/settings/settingsSlice'
@@ -129,8 +130,8 @@ export default function VerseActionBar({}: Props) {
       <ActionBar.Root open={selectedVerses.length > 0}>
         <Portal>
           <ActionBar.Positioner>
-            <ActionBar.Content>
-              <ActionBar.SelectionTrigger>
+            <ActionBar.Content bgColor={`${useColorPalette()}.500`}>
+              <ActionBar.SelectionTrigger color="white">
                 {useT(['已选中', '已選中'])} {selectedVerses.length}
               </ActionBar.SelectionTrigger>
               <ActionBar.Separator />
@@ -141,7 +142,12 @@ export default function VerseActionBar({}: Props) {
                   '復制選中經文 Ctrl+C/Cmd+C',
                 ])}
               >
-                <Button variant="outline" size="sm" onClick={handleCopy}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  color="white"
+                >
                   <FaRegCopy />
                   {useT(['复制', '複製'])}
                 </Button>
@@ -150,7 +156,12 @@ export default function VerseActionBar({}: Props) {
                 showArrow
                 content={useT(['"清除选中经文 Esc"', '清除選中經文 Esc'])}
               >
-                <Button variant="outline" size="sm" onClick={handleCancel}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCancel}
+                  color="white"
+                >
                   <FaRegTrashAlt />
                   {useT(['清除', '清除'])}
                 </Button>
@@ -162,9 +173,10 @@ export default function VerseActionBar({}: Props) {
                 onCheckedChange={({ checked }) => {
                   dispatch(setAfterNavigateKeepSelection(!!checked))
                 }}
+                color="white"
               >
                 <Checkbox.HiddenInput />
-                <Checkbox.Control />
+                <Checkbox.Control color="white" borderColor={'white'} />
                 <Tooltip
                   showArrow
                   content={useT([

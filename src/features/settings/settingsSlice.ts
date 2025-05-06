@@ -38,7 +38,7 @@ const defaultState: SettingsState = {
   showComments: true,
   jumpToSelect: false,
   afterNavigateKeepSelection: true,
-  textSize: 14,
+  textSize: 16,
   uiSize: 0,
 }
 
