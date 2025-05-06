@@ -7,7 +7,7 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import { useEffect, useRef } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import BibleDisplay from '@/components/BibleDisplay/BibleDisplay'
 import TurnPage from '@/components/TurnPage'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
@@ -22,6 +22,7 @@ import {
   selectJumpToSelect,
   selectLanguage,
   selectShowComments,
+  useColorPalette,
 } from '@/features/settings/settingsSlice'
 import {
   clearLastSelectedVerse,
@@ -62,10 +63,16 @@ export default function Book() {
   }, [book, chapter, language, dispatch])
 
   const location = useLocation()
+  const navigate = useNavigate()
+  const colorPalette = useColorPalette()
+
   useEffect(() => {
     if (!verseValue) {
       sleep(200).then(() => {
         // window.scrollTo(0, 0)
+        if (location.state?.preventRender) {
+          return
+        }
         document
           .querySelector('.chapter-title')!
           .scrollIntoView({ behavior: 'instant', block: 'center' })
@@ -87,11 +94,25 @@ export default function Book() {
             })
             .then(() => {
               el.classList.remove('jumpto-emphasis')
+
+              navigate(`/book/${book}/${chapter}`, {
+                replace: true,
+                preventScrollReset: true,
+                state: { preventRender: true },
+              })
             })
         })
       })
     }
-  }, [location.pathname, verseValue, jumpToSelect])
+  }, [
+    location.pathname,
+    verseValue,
+    jumpToSelect,
+    navigate,
+    book,
+    chapter,
+    location.state?.preventRender,
+  ])
 
   useEffect(() => {
     document.getElementById('custom-style')!.innerHTML = `
@@ -154,7 +175,7 @@ export default function Book() {
       ) : (
         <>
           {loading && (
-            <VStack colorPalette="teal">
+            <VStack colorPalette={colorPalette}>
               <SkeletonText noOfLines={5} gap={4} variant={'pulse'} />
               <SkeletonText noOfLines={2} gap={4} variant={'pulse'} />
               <SkeletonText noOfLines={7} gap={4} variant={'pulse'} />
@@ -166,12 +187,12 @@ export default function Book() {
                 top="50%"
                 transform="translate(-50%, -50%)"
               >
-                <Spinner color="colorPalette.600" />
-                <Text color="colorPalette.600">Loading...</Text>
+                <Spinner color={`${colorPalette}.600`} />
+                <Text color={`${colorPalette}.600`}>Loading...</Text>
               </HStack>
             </VStack>
           )}
-          {error && <Text color="colorPalette.600">Error: {error}</Text>}
+          {error && <Text color={`${colorPalette}.600`}>Error: {error}</Text>}
         </>
       )}
     </Box>

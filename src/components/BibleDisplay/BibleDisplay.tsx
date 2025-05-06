@@ -18,9 +18,8 @@ import {
   selectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
 import { useParams } from 'react-router-dom'
-import { selectLanguage } from '@/features/settings/settingsSlice'
 import VerseActionBar from './VerseActionBar'
-import JumpToDialog from '../JumpToDialog/JumpToDialog'
+import { useTextSize } from '@/features/settings/settingsSlice'
 
 type Props = {
   data: BibleItemNodeWithVerseList
@@ -137,7 +136,6 @@ function findMatchedParentNode(
 export default function BibleDisplay({ data }: Props) {
   const dispatch = useAppDispatch()
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
-  const language = useAppSelector(selectLanguage)
   const chapterVersesSelector = makeChapterVersesSelector(
     book!,
     parseInt(chapter || '1'),
@@ -178,6 +176,9 @@ export default function BibleDisplay({ data }: Props) {
         }
       }}
     >
+      <style>{`
+        .content-display {font-size: ${useTextSize()}px;}
+      `}</style>
       {renderChapter(data, selectedVerses)}
       {/* {selectedVerses.length > 0 && <VerseActionBar />} */}
       <VerseActionBar />

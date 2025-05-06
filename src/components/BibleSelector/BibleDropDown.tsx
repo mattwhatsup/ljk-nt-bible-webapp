@@ -20,7 +20,7 @@ import BibleSelectorPanelCloser from './BibleSelectorPanelCloser'
 import { BibleSelectorContext } from './BibleSelectorContextProvider'
 import { SelectedValueContext } from './BibleSelector'
 import { isSelectedValueComplete } from './utils'
-import { useT } from '@/features/settings/settingsSlice'
+import { useT, useUiSizeClassName } from '@/features/settings/settingsSlice'
 
 interface BibleDropDownProps {
   label: String
@@ -59,7 +59,7 @@ const BibleDropDown: FunctionComponent<
       closeTriggerRef.current.click()
     }
   }, [selected, showVerseSelector])
-  const isMobile = useBreakpointValue({ base: true, maxContent: false })
+  const isMobile = useBreakpointValue({ base: true, maxContent: false }) // 响应式布局
 
   const popover = (
     <PopoverRoot
@@ -72,7 +72,8 @@ const BibleDropDown: FunctionComponent<
     >
       <PopoverTrigger asChild>
         <Button
-          size="sm"
+          // @ts-ignore
+          fontSize={useUiSizeClassName('sm', 'button')}
           variant="plain"
           focusRing={'none'}
           color={'whiteAlpha.800'}
@@ -105,7 +106,8 @@ const BibleDropDown: FunctionComponent<
     <Drawer.Root size={'sm'} onExitComplete={() => onClose?.()} unmountOnExit>
       <Drawer.Trigger asChild>
         <Button
-          size="sm"
+          // @ts-ignore
+          fontSize={useUiSizeClassName('sm', 'button')}
           variant="plain"
           focusRing={'none'}
           color={'whiteAlpha.800'}
@@ -125,7 +127,7 @@ const BibleDropDown: FunctionComponent<
         <Drawer.Positioner>
           <Drawer.Content animationDuration={'0.1s'}>
             <Drawer.Header>
-              <Drawer.Title>
+              <Drawer.Title fontSize={useUiSizeClassName('md', 'text')}>
                 {useT(['选择书卷和章', '選擇書卷和章'])}
               </Drawer.Title>
             </Drawer.Header>

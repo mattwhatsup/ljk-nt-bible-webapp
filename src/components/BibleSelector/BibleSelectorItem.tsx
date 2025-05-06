@@ -1,3 +1,7 @@
+import {
+  useColorPalette,
+  useUiSizeClassName,
+} from '@/features/settings/settingsSlice'
 import { Box } from '@chakra-ui/react'
 import type { FunctionComponent, MouseEvent } from 'react'
 
@@ -15,11 +19,12 @@ const BibleSelectorItem: FunctionComponent<BibleSelectorItemProps> = ({
   return (
     <Box
       as="li"
-      className={`hover:bg-gray-50 ${active ? 'active' : ''}`}
+      className={`${active ? 'active' : ''}`}
       _hover={{
-        backgroundColor: 'gray.50',
+        backgroundColor: `${useColorPalette()}.50`,
       }}
       onClick={onClick}
+      fontSize={useUiSizeClassName('sm', 'text')}
     >
       <span>{label}</span>
     </Box>

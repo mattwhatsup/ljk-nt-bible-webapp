@@ -5,11 +5,17 @@ import { OtOrNt } from '../../app/data-types'
 import { SelectedValueContext } from './BibleSelector'
 import { book_filter } from '../../utils/book-filter'
 import BibleSelectorItem from './BibleSelectorItem'
-import { Box, HStack, Icon, Input } from '@chakra-ui/react'
+import { Box, HStack, Icon, Input, Text } from '@chakra-ui/react'
 import { FaSearch, FaTh } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
 import { InputGroup } from '../ui/input-group'
-import { _T, useLanguage, useT } from '@/features/settings/settingsSlice'
+import {
+  _T,
+  getUiSizeClassName,
+  useLanguage,
+  useT,
+  useUiSize,
+} from '@/features/settings/settingsSlice'
 
 enum ListStyle {
   grid = 'grid',
@@ -115,6 +121,7 @@ const BookList: FunctionComponent<BookListProps> = ({
   const [listStyle, setListStyle] = useState(readListStyleFromLocalStorage())
   const [filterText, setFilterText] = useState('')
   const language = useLanguage()
+  const uiSize = useUiSize()
 
   useEffect(() => {
     // 重制滚动条
@@ -144,15 +151,20 @@ const BookList: FunctionComponent<BookListProps> = ({
         gap={3}
       >
         {!ignoreHeader && (
-          <span className="font-bold">{_T(['书', '書'], language)}</span>
+          <Text
+            className="font-bold"
+            fontSize={getUiSizeClassName('md', uiSize, 'text')}
+          >
+            {_T(['书', '書'], language)}
+          </Text>
         )}
         <InputGroup flex="1" startElement={<FaSearch />}>
           <Input
             rounded={'2em'}
             placeholder={useT(['搜索', '搜尋'])}
-            fontSize={'0.875rem'}
-            lineHeight={'1.25rem'}
-            height={'1.25rem'}
+            fontSize={getUiSizeClassName('sm', uiSize, 'control')}
+            // lineHeight={'1.25rem'}
+            // height={'1.25rem'}
             padding={0}
             width={'full'}
             value={filterText}
@@ -170,10 +182,20 @@ const BookList: FunctionComponent<BookListProps> = ({
             }}
             checked={listStyle === ListStyle.list}
           />
-          <Icon className="swap-on" aria-hidden="true">
+          <Icon
+            className="swap-on"
+            aria-hidden="true"
+            // @ts-ignore
+            size={getUiSizeClassName('sm', uiSize, 'button')}
+          >
             <FaTh />
           </Icon>
-          <Icon className="swap-off" aria-hidden="true">
+          <Icon
+            className="swap-off"
+            aria-hidden="true"
+            // @ts-ignore
+            size={getUiSizeClassName('sm', uiSize, 'button')}
+          >
             <FaBars />
           </Icon>
         </label>

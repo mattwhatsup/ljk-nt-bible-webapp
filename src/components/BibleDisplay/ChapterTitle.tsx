@@ -6,5 +6,14 @@ type Props = {
 }
 
 export default function ChapterTitle({ data }: Props) {
-  return <Heading className="chapter-title">第{data.chapterIndex}章</Heading>
+  return (
+    <Heading
+      className="chapter-title"
+      fontSize={'1.6em'}
+      lineHeight={'2em'}
+      textAlign={'center'}
+    >
+      第{data.chapterIndex}章
+    </Heading>
+  )
 }

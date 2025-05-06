@@ -20,7 +20,7 @@ import {
   makePreciselySearchResults,
   parseSearch,
 } from './utils'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
   selectJumpToSelect,
   setJumpToSelect,
@@ -44,12 +44,23 @@ export default function JumpToDialog({}: Props) {
     chapter?: string
   }>()
   const language = useLanguage()
+  const location = useLocation()
 
   // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'j') {
         event.preventDefault()
+        console.log(
+          location.pathname === '/settings' &&
+            location.state?.backgroundLocation,
+        )
+        if (
+          location.pathname === '/settings' &&
+          location.state?.backgroundLocation
+        ) {
+          return
+        }
         dispatch(openJumpToDialog())
       }
 
@@ -61,7 +72,7 @@ export default function JumpToDialog({}: Props) {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [dispatch])
+  }, [dispatch, location.pathname, location.state])
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
@@ -134,6 +145,9 @@ export default function JumpToDialog({}: Props) {
       }}
       onPointerDownOutside={() => {
         dispatch(closeJumpToDialog())
+      }}
+      onEscapeKeyDown={e => {
+        e.stopPropagation()
       }}
     >
       <Portal>
