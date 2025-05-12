@@ -1,7 +1,14 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { outputResource, readResource, removeResources } from './includes/io'
+import {
+  outputBookResource,
+  read,
+  readBookResource,
+  removeResources,
+  write,
+} from './includes/io'
 import { books, langs } from './includes/consts'
+import { convertBibliography, convertPreface } from './includes/other-parser'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -15,8 +22,17 @@ removeResources(outputDir)
 //
 
 langs.forEach(lang => {
+  const dir = path.join(repoDir, `zh-${lang}-c`, 'html')
   books.forEach(book => {
-    const dir = path.join(repoDir, `zh-${lang}-c`, 'html')
-    outputResource(outputDir, book, lang, readResource(dir, book))
+    outputBookResource(outputDir, book, lang, readBookResource(dir, book))
   })
+
+  write(
+    path.join(outputDir, `${lang}-preface.json`),
+    convertPreface(read(path.join(dir, 'preface.html'))),
+  )
+  write(
+    path.join(outputDir, `${lang}-bibliography.json`),
+    convertBibliography(read(path.join(dir, 'bibliography.html'))),
+  )
 })
