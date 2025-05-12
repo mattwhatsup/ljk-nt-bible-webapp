@@ -46,6 +46,7 @@ export default function JumpToDialog({}: Props) {
     book: string
     chapter?: string
   }>()
+  console.log(currentBook)
   const language = useLanguage()
   const location = useLocation()
   const uiSize = useUiSize()
@@ -80,7 +81,7 @@ export default function JumpToDialog({}: Props) {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      event.preventDefault() // 这会阻止光标移动
+      event.preventDefault() // 这会阻止Input内部的光标移动
     }
   }
 

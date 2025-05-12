@@ -10,7 +10,7 @@ const chapterVerseCountMapping: ChapterVersesCount[] =
 export const parseSearch = (text: string) => {
   text = text.trim()
   const partialPattern = (text: string) => {
-    const regex = /^(\d*)\s*[::\s.,]?\s*(\d*)$/i
+    const regex = /^(\d*)\s*[::\s.,]?\s*(\d*)$/i // 如 1:1, 1,2, 1.1
     const match = text.match(regex)
     if (match) {
       return {

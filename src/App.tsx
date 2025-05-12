@@ -58,6 +58,7 @@ const BookLayout = () => {
   return (
     <Layout forBook>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }
@@ -66,12 +67,13 @@ const OtherLayout = () => {
   return (
     <Layout>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }
 
 const AllLayout = () => {
-  return <JumpToDialog />
+  return <></>
 }
 
 export default App
