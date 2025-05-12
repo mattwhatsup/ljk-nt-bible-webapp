@@ -12,6 +12,7 @@ import {
   useColorPalette,
   useLanguage,
   useT,
+  useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { copyToClipboard, getSelectedVersesText } from '@/utils/copy-utils'
 import { ActionBar, Button, Portal, Checkbox } from '@chakra-ui/react'
@@ -130,7 +131,10 @@ export default function VerseActionBar({}: Props) {
         <Portal>
           <ActionBar.Positioner>
             <ActionBar.Content bgColor={`${useColorPalette()}.500`}>
-              <ActionBar.SelectionTrigger color="white">
+              <ActionBar.SelectionTrigger
+                color="white"
+                fontSize={useUiSizeClassName('sm', 'button')}
+              >
                 {useT(['已选中', '已選中'])} {selectedVerses.length}
               </ActionBar.SelectionTrigger>
               <ActionBar.Separator />
@@ -143,7 +147,8 @@ export default function VerseActionBar({}: Props) {
               >
                 <Button
                   variant="outline"
-                  size="sm"
+                  // @ts-ignore
+                  size={useUiSizeClassName('sm', 'button')}
                   onClick={handleCopy}
                   color="white"
                 >
@@ -157,7 +162,8 @@ export default function VerseActionBar({}: Props) {
               >
                 <Button
                   variant="outline"
-                  size="sm"
+                  // @ts-ignore
+                  size={useUiSizeClassName('sm', 'button')}
                   onClick={handleCancel}
                   color="white"
                 >
@@ -173,6 +179,8 @@ export default function VerseActionBar({}: Props) {
                   dispatch(setAfterNavigateKeepSelection(!!checked))
                 }}
                 color="white"
+                // @ts-ignore
+                size={useUiSizeClassName('sm', 'control')}
               >
                 <Checkbox.HiddenInput />
                 <Checkbox.Control color="white" borderColor={'white'} />
