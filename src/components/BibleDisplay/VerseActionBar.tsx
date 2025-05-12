@@ -8,7 +8,6 @@ import {
 import {
   _T,
   selectAfterNavigateKeepSelection,
-  selectLanguage,
   setAfterNavigateKeepSelection,
   useColorPalette,
   useLanguage,
