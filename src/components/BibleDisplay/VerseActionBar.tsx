@@ -151,6 +151,9 @@ export default function VerseActionBar({}: Props) {
                   size={useUiSizeClassName('sm', 'button')}
                   onClick={handleCopy}
                   color="white"
+                  _hover={{
+                    backgroundColor: `${useColorPalette()}.400`,
+                  }}
                 >
                   <FaRegCopy />
                   {useT(['复制', '複製'])}
@@ -166,6 +169,9 @@ export default function VerseActionBar({}: Props) {
                   size={useUiSizeClassName('sm', 'button')}
                   onClick={handleCancel}
                   color="white"
+                  _hover={{
+                    backgroundColor: `${useColorPalette()}.400`,
+                  }}
                 >
                   <FaRegTrashAlt />
                   {useT(['清除', '清除'])}
