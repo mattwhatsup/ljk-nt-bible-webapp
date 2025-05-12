@@ -13,6 +13,9 @@ import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
 import NoMatch from './NoMatch'
+import InfoLayout from './pages/InfoLayout'
+import Preface from './pages/Preface'
+import Bibliography from './pages/Bibliography'
 
 const App = () => {
   let location = useLocation()
@@ -31,7 +34,11 @@ const App = () => {
         </Route>
 
         <Route element={<OtherLayout />}>
-          <Route path="/about" element={<About />} />
+          <Route path="/info" element={<InfoLayout />}>
+            <Route index element={<Navigate to="preface" />} />
+            <Route path="preface" element={<Preface />} />
+            <Route path="bibliography" element={<Bibliography />} />
+          </Route>
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
