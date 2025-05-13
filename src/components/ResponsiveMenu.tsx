@@ -183,15 +183,23 @@ const ResponsiveMenu = () => {
                   w="100%"
                   // @ts-ignore
                   fontSize={useUiSizeClassName('md', 'button')}
+                  onClick={() => {
+                    navigate('/info')
+                    setOpen(false)
+                  }}
                 >
-                  {useT(['关于', '關於'])}
+                  {useT(['资料', '資訊'])}
                 </Button>
                 <Button
                   w="100%"
                   // @ts-ignore
                   fontSize={useUiSizeClassName('md', 'button')}
+                  onClick={() => {
+                    navigate('/logs')
+                    setOpen(false)
+                  }}
                 >
-                  {useT(['插图', '插圖'])}
+                  {useT(['日志', '日志'])}
                 </Button>
               </Stack>
             </DrawerBody>
@@ -207,7 +215,7 @@ const ResponsiveMenu = () => {
           flexGrow={1}
           py="1.2rem"
         >
-          <HStack paddingLeft={'0.2rem'} gap={'4px'}>
+          <HStack paddingLeft={'0.2rem'}>
             <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
             <MenuItem>
               <IconButton
@@ -218,6 +226,7 @@ const ResponsiveMenu = () => {
                 aria-pressed={true}
                 _active={{ bg: `${useColorPalette()}.600` }}
                 _hover={{ bg: `${useColorPalette()}.600` }}
+                paddingX={'0.7em'}
                 variant={'outline'}
                 // @ts-ignore
                 fontSize={useUiSizeClassName('sm', 'button')}
@@ -233,10 +242,16 @@ const ResponsiveMenu = () => {
                 px={'1em'}
                 color={'white'}
                 bg={'transparent'}
+                _active={{ bg: `${useColorPalette()}.600` }}
+                _hover={{ bg: `${useColorPalette()}.600` }}
+                paddingX={'0.7em'}
                 // @ts-ignore
                 fontSize={useUiSizeClassName('sm', 'button')}
+                onClick={() => {
+                  navigate('/info')
+                }}
               >
-                <GoInfo /> {useT(['关于', '關於'])}
+                <GoInfo /> {useT(['资料', '資訊'])}
               </IconButton>
             </MenuItem>
 
@@ -245,11 +260,16 @@ const ResponsiveMenu = () => {
                 px={'1em'}
                 color={'white'}
                 bg={'transparent'}
-                size={'xs'}
+                _active={{ bg: `${useColorPalette()}.600` }}
+                _hover={{ bg: `${useColorPalette()}.600` }}
+                paddingX={'0.7em'}
                 // @ts-ignore
                 fontSize={useUiSizeClassName('sm', 'button')}
+                onClick={() => {
+                  navigate('/logs')
+                }}
               >
-                <FiImage /> {useT(['插图', '插圖'])}
+                <FiImage /> {useT(['日志', '日志'])}
               </IconButton>
             </MenuItem>
           </HStack>

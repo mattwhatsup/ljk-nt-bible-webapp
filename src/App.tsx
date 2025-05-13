@@ -16,6 +16,7 @@ import NoMatch from './NoMatch'
 import InfoLayout from './pages/InfoLayout'
 import Preface from './pages/Preface'
 import Bibliography from './pages/Bibliography'
+import Logs from './pages/Logs'
 
 const App = () => {
   let location = useLocation()
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="preface" element={<Preface />} />
             <Route path="bibliography" element={<Bibliography />} />
           </Route>
+          <Route path="/logs" element={<Logs />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
