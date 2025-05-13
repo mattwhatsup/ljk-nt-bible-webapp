@@ -21,9 +21,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
-import { GoGear, GoInfo, GoSearch } from 'react-icons/go'
-import { BsAt } from 'react-icons/bs'
-import { FiImage } from 'react-icons/fi'
+import { GoGear, GoSearch } from 'react-icons/go'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
@@ -34,6 +32,8 @@ import {
 } from '@/features/settings/settingsSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Logo from '@/logo-bible.svg?react'
+import { RiArchiveDrawerLine } from 'react-icons/ri'
+import { MdOutlineInfo } from 'react-icons/md'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -251,7 +251,7 @@ const ResponsiveMenu = () => {
                   navigate('/info')
                 }}
               >
-                <GoInfo /> {useT(['资料', '資訊'])}
+                <MdOutlineInfo /> {useT(['资料', '資訊'])}
               </IconButton>
             </MenuItem>
 
@@ -269,7 +269,7 @@ const ResponsiveMenu = () => {
                   navigate('/logs')
                 }}
               >
-                <FiImage /> {useT(['日志', '日志'])}
+                <RiArchiveDrawerLine /> {useT(['日志', '日志'])}
               </IconButton>
             </MenuItem>
           </HStack>
