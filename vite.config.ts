@@ -1,12 +1,13 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import svgr from 'vite-plugin-svgr'
 
 // console.log(process.env.NODE_ENV)
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [react(), tsconfigPaths(), svgr()],
   base: process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/',
   server: {
     open: true,

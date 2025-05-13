@@ -33,6 +33,7 @@ import {
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { useLocation, useNavigate } from 'react-router-dom'
+import Logo from '@/logo-bible.svg?react'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -61,7 +62,7 @@ const ResponsiveMenu = () => {
         <Icon>
           <GoSearch />
         </Icon>
-        {useT(['快速跳转', '快速跳轉'])}
+        {useT(['跳转', '跳轉'])}
         <Kbd>
           {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
         </Kbd>
@@ -133,7 +134,9 @@ const ResponsiveMenu = () => {
             display={{ ...{ base: 'flex', maxContent: 'none' } }} // 响应式布局
             // hideBelow={'maxContent'}
           >
-            <Box>{/** 占位符 */}</Box>
+            <Box>
+              <Logo height={'36px'} viewBox="5 0 199 46" />
+            </Box>
             <HStack paddingRight={'1.2rem'}>
               {settingButton}
               {jumpToButton}
@@ -204,7 +207,8 @@ const ResponsiveMenu = () => {
           flexGrow={1}
           py="1.2rem"
         >
-          <HStack paddingLeft={'0.2rem'}>
+          <HStack paddingLeft={'0.2rem'} gap={'4px'}>
+            <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
             <MenuItem>
               <IconButton
                 colorScheme={useColorPalette()}
@@ -235,17 +239,6 @@ const ResponsiveMenu = () => {
                 <GoInfo /> {useT(['关于', '關於'])}
               </IconButton>
             </MenuItem>
-            <MenuItem>
-              <IconButton
-                px={'1em'}
-                color={'white'}
-                bg={'transparent'}
-                // @ts-ignore
-                fontSize={useUiSizeClassName('sm', 'button')}
-              >
-                <BsAt /> {useT(['引用', '引用'])}
-              </IconButton>
-            </MenuItem>
 
             <MenuItem>
               <IconButton
@@ -260,7 +253,7 @@ const ResponsiveMenu = () => {
               </IconButton>
             </MenuItem>
           </HStack>
-          <HStack paddingRight={'0.2rem'}>
+          <HStack paddingRight={'0.2rem'} gap={'4px'}>
             {settingButton}
             {jumpToButton}
           </HStack>
