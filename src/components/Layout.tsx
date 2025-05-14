@@ -11,7 +11,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
-  const [version, setVersion] = useState<string | null>(null)
+  const [version, setVersion] = useState<string | null>('0.0')
   useEffect(() => {
     fetchContent('cn', 'history').then(content => {
       setVersion(
