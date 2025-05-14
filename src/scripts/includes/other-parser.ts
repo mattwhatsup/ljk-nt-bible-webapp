@@ -41,7 +41,7 @@ export interface HistoryData {
 export const convertHistory = (yaml: string): string => {
   try {
     const data = load(yaml)
-    return JSON.stringify(data)
+    return JSON.stringify({ content: data })
   } catch (e) {
     console.error('Error parsing YAML:', e)
     return JSON.stringify({ error: 'Failed to parse YAML' })
