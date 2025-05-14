@@ -46,7 +46,6 @@ export default function JumpToDialog({}: Props) {
     book: string
     chapter?: string
   }>()
-  console.log(currentBook)
   const language = useLanguage()
   const location = useLocation()
   const uiSize = useUiSize()

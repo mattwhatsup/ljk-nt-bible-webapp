@@ -8,7 +8,6 @@ import {
   Outlet,
   useLocation,
 } from 'react-router-dom'
-import About from './pages/About'
 import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
