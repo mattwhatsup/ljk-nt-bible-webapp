@@ -9,11 +9,12 @@ export default function ChapterTitle({ data }: Props) {
   return (
     <Heading
       className="chapter-title"
-      fontSize={'1.6em'}
-      lineHeight={'2em'}
+      fontSize={'2.2em'}
+      // lineHeight={'2em'}
+      paddingTop={'0.5em'}
       textAlign={'center'}
     >
-      第{data.chapterIndex}章
+      第 {data.chapterIndex} 章
     </Heading>
   )
 }

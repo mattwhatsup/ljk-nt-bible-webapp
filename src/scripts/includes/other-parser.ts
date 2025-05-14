@@ -3,7 +3,7 @@ import { JSDOM } from 'jsdom'
 export const convertPreface = (html: string) => {
   const dom = new JSDOM(html)
   const children = [...dom.window.document.querySelector('body')!.children]
-    .slice(1)
+    // .slice(1)
     .map(node => {
       return node.outerHTML
     })
@@ -16,7 +16,7 @@ export const convertPreface = (html: string) => {
 export const convertBibliography = (html: string) => {
   const dom = new JSDOM(html)
   const children = [...dom.window.document.querySelector('body')!.children]
-    .slice(1)
+    // .slice(1)
     .map(node => {
       return node.outerHTML
     })

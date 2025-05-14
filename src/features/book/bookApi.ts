@@ -137,3 +137,11 @@ export function makeChapterRoutePath({
 }) {
   return `/book/${bookName}/${chapterIndex}`
 }
+
+export async function fetchContent(lang: 'cn' | 'tw', name: string) {
+  return await (
+    await axios.get<{ content: string }>(
+      `${process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/'}resources/${lang}-${name}.json`,
+    )
+  ).data.content
+}
