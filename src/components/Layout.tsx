@@ -1,4 +1,4 @@
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Container, HStack, Separator, Text } from '@chakra-ui/react'
 import BookNav from './BookNav'
 import { useT } from '@/features/settings/settingsSlice'
 
@@ -25,7 +25,13 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
             {children}
           </Box>
         </Box>
-        <Box as="footer" py={4}>
+        <Box
+          as="footer"
+          py={4}
+          {...{
+            maxContentDown: { display: 'none' }, // maxContent是自己定义的，在provider.tsx中
+          }}
+        >
           <Text>
             {useT([
               '© 2025 新约圣经梁家铿译本 WebApp',
@@ -33,6 +39,22 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
             ])}
           </Text>
         </Box>
+
+        <HStack
+          {...{
+            maxContentDown: { display: 'flex', padding: '1rem' }, // maxContent是自己定义的，在provider.tsx中
+            maxContent: { display: 'none' },
+          }}
+        >
+          <Separator flex="1" />
+          <Text flexShrink="0">
+            {useT([
+              '© 2025 新约圣经梁家铿译本 WebApp',
+              '© 2025 新約聖經梁家鏗譯本 WebApp',
+            ])}
+          </Text>
+          <Separator flex="1" />
+        </HStack>
       </Container>
     </>
   )
