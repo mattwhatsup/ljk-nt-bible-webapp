@@ -8,7 +8,11 @@ import {
   write,
 } from './includes/io'
 import { books, langs } from './includes/consts'
-import { convertBibliography, convertPreface } from './includes/other-parser'
+import {
+  convertBibliography,
+  convertHistory,
+  convertPreface,
+} from './includes/other-parser'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -34,5 +38,12 @@ langs.forEach(lang => {
   write(
     path.join(outputDir, `${lang}-bibliography.json`),
     convertBibliography(read(path.join(dir, 'bibliography.html'))),
+  )
+
+  write(
+    path.join(outputDir, `${lang}-history.json`),
+    convertHistory(
+      read(path.join(path.join(repoDir, `zh-${lang}-c`), 'history.yaml')),
+    ),
   )
 })

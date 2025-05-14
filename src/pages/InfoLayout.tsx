@@ -1,4 +1,4 @@
-import { useT } from '@/features/settings/settingsSlice'
+import { useT, useUiSizeClassName } from '@/features/settings/settingsSlice'
 import { Tabs } from '@chakra-ui/react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import './info.css'
@@ -30,6 +30,8 @@ export default function InfoLayout({}: Props) {
             navigate('/info/preface')
           }
         }}
+        // @ts-ignore
+        size={useUiSizeClassName('sm', 'control')}
       >
         <Tabs.List>
           <Tabs.Trigger value="preface">{useT(['自序', '自序'])}</Tabs.Trigger>
