@@ -32,14 +32,14 @@ export default function InfoLayout({}: Props) {
         }}
       >
         <Tabs.List>
-          <Tabs.Trigger value="preface">{useT(['序言', '序言'])}</Tabs.Trigger>
+          <Tabs.Trigger value="preface">{useT(['自序', '自序'])}</Tabs.Trigger>
           <Tabs.Trigger value="bibliography">
             {useT(['引用书目', '引用書目'])}
           </Tabs.Trigger>
         </Tabs.List>
 
-        <Tabs.Content value="preface">First panel</Tabs.Content>
-        <Tabs.Content value="bibliography">Second panel</Tabs.Content>
+        <Tabs.Content value="preface"></Tabs.Content>
+        <Tabs.Content value="bibliography"></Tabs.Content>
       </Tabs.Root>
       <Outlet />
     </div>
