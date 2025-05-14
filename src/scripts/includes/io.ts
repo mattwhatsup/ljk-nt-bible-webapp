@@ -26,7 +26,7 @@ export function outputBookResource(
   fs.writeFileSync(filePath, content)
 }
 
-function replaceHTML(dom: JSDOM) {
+export function replaceHTML(dom: JSDOM) {
   dom.window.document.querySelectorAll('div.line').forEach(a => {
     a.replaceWith(...a.childNodes, dom.window.document.createElement('br'))
   })
