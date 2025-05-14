@@ -22,10 +22,13 @@ import {
 } from './utils'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
+  getUiSizeClassName,
   selectJumpToSelect,
   setJumpToSelect,
   useLanguage,
   useT,
+  useUiSize,
+  useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 type Props = {}
 
@@ -45,6 +48,7 @@ export default function JumpToDialog({}: Props) {
   }>()
   const language = useLanguage()
   const location = useLocation()
+  const uiSize = useUiSize()
 
   // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
@@ -76,7 +80,7 @@ export default function JumpToDialog({}: Props) {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      event.preventDefault() // 这会阻止光标移动
+      event.preventDefault() // 这会阻止Input内部的光标移动
     }
   }
 
@@ -155,7 +159,9 @@ export default function JumpToDialog({}: Props) {
         <Dialog.Positioner>
           <Dialog.Content ref={contentRef}>
             <Dialog.Header>
-              <Dialog.Title>{useT(['快速跳转', '快速跳轉'])}</Dialog.Title>
+              <Dialog.Title fontSize={getUiSizeClassName('lg', uiSize, 'text')}>
+                {useT(['快速跳转', '快速跳轉'])}
+              </Dialog.Title>
             </Dialog.Header>
             <Dialog.Body pb="4">
               <Stack gap="4">
@@ -169,7 +175,9 @@ export default function JumpToDialog({}: Props) {
                   >
                     <Checkbox.HiddenInput />
                     <Checkbox.Control />
-                    <Checkbox.Label>
+                    <Checkbox.Label
+                      fontSize={getUiSizeClassName('md', uiSize, 'text')}
+                    >
                       {useT([
                         '跳转指定某一节时，直接选中该节经文',
                         '跳轉指定某一節時，直接選中該節經文',
@@ -180,6 +188,8 @@ export default function JumpToDialog({}: Props) {
                 <Field.Root>
                   <Input
                     ref={ref}
+                    // @ts-ignore
+                    size={useUiSizeClassName('md', 'control')}
                     placeholder={useT([
                       '输入格式：书 章:节，书名可输入部分中英文自动匹配，如 mt 28 13',
                       '輸入格式：書 章:節，書名可輸入部分中英文自動匹配，如 mt 28 13',

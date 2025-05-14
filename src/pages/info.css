@@ -1,0 +1,99 @@
+@import url('../components/BibleDisplay/fonts.css');
+
+.preface-title {
+  text-align: center;
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+p.preface-title,
+.preface-sub,
+.preface-para,
+.preface-para2,
+.nav-list,
+.nav-book-page,
+.part-nav,
+.nav-info,
+.book-nav {
+  font-family:
+    content-font, greekfont, Arial, hebrewfont, sans-serif !important;
+  line-height: 2em;
+}
+
+/* p.sample-para, */
+.preface-para,
+.preface-para2,
+.preface-sub {
+  text-indent: 2rem;
+  line-height: 2em;
+}
+
+p.preface-para,
+p.preface-title,
+.preface-para,
+.preface-para2,
+.preface-sub,
+.nav-book-page,
+.nav-list,
+.nav-info,
+.remark,
+.ot-refs {
+  /* font-family: greekfont, Arial, hebrewfont, preface-font, sans-serif !important; */
+  font-family:
+    content-font, greekfont, Arial, hebrewfont, sans-serif !important;
+  /* font-weight: lighter; */
+}
+.preface-para2 {
+  /* white-space: break-spaces; */
+  tab-size: 16;
+}
+p.sample-para {
+  font-family:
+    comment-font, greekfont, Arial, hebrewfont, sans-serif !important;
+}
+p.sample-para-indent {
+  text-indent: 2rem;
+}
+
+.preface-sub {
+  font-weight: bold;
+  font-size: 120%;
+  text-indent: 0 !important;
+  padding-top: 1em;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1em;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.col-sm-2 {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.col-sm-10 {
+  flex: 0 0 auto;
+  width: 83.33333333%;
+}
+
+.col-sm-10 .comment {
+  text-indent: 0em;
+  padding-top: 1em;
+  padding-left: 0em;
+}
+
+.text-end {
+  text-align: right !important;
+}

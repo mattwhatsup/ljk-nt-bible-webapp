@@ -27,4 +27,4 @@ export const books = [
   'jud',
   'rev',
 ]
-export const langs = ['cn', 'tw']
+export const langs = ['cn', 'tw'] as const

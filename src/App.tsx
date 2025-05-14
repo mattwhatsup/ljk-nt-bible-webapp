@@ -8,11 +8,14 @@ import {
   Outlet,
   useLocation,
 } from 'react-router-dom'
-import About from './pages/About'
 import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
 import NoMatch from './NoMatch'
+import InfoLayout from './pages/InfoLayout'
+import Preface from './pages/Preface'
+import Bibliography from './pages/Bibliography'
+import Logs from './pages/Logs'
 
 const App = () => {
   let location = useLocation()
@@ -31,7 +34,12 @@ const App = () => {
         </Route>
 
         <Route element={<OtherLayout />}>
-          <Route path="/about" element={<About />} />
+          <Route path="/info" element={<InfoLayout />}>
+            <Route index element={<Navigate to="preface" />} />
+            <Route path="preface" element={<Preface />} />
+            <Route path="bibliography" element={<Bibliography />} />
+          </Route>
+          <Route path="/logs" element={<Logs />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
@@ -58,6 +66,7 @@ const BookLayout = () => {
   return (
     <Layout forBook>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }
@@ -66,12 +75,13 @@ const OtherLayout = () => {
   return (
     <Layout>
       <Outlet />
+      <JumpToDialog />
     </Layout>
   )
 }
 
 const AllLayout = () => {
-  return <JumpToDialog />
+  return <></>
 }
 
 export default App

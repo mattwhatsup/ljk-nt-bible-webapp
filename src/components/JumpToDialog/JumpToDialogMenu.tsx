@@ -1,5 +1,10 @@
 import type { RefObject } from 'react'
 import { MenuContent, MenuItem, MenuRoot } from '@/components/ui/menu'
+import {
+  getUiSizeClassName,
+  useUiSize,
+  useUiSizeClassName,
+} from '@/features/settings/settingsSlice'
 
 type Props = {
   portalRef: RefObject<HTMLElement>
@@ -16,6 +21,7 @@ export default function JumpToDialogMenu({
   items,
   onSelect,
 }: Props) {
+  const uiSize = useUiSize()
   return (
     <MenuRoot
       positioning={{
@@ -27,7 +33,6 @@ export default function JumpToDialogMenu({
       }}
       highlightedValue={selectedValue}
       open={items.length > 0}
-      size={'md'}
     >
       <MenuContent portalRef={portalRef} maxH={'10rem'}>
         {items.map(item => (
@@ -37,6 +42,7 @@ export default function JumpToDialogMenu({
             onClick={() => {
               onSelect?.(item.value)
             }}
+            fontSize={getUiSizeClassName('md', uiSize, 'control')}
           >
             {item.label}
           </MenuItem>

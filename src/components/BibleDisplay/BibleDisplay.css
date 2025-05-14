@@ -1,7 +1,7 @@
 @import url('./fonts.css');
 
 .content-display > * {
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 p.para {

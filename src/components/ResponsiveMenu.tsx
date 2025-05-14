@@ -21,9 +21,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
-import { GoGear, GoInfo, GoSearch } from 'react-icons/go'
-import { BsAt } from 'react-icons/bs'
-import { FiImage } from 'react-icons/fi'
+import { GoGear, GoSearch } from 'react-icons/go'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
@@ -32,7 +30,10 @@ import {
   useT,
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useMatch, useNavigate } from 'react-router-dom'
+import Logo from '@/logo-bible.svg?react'
+import { RiArchiveDrawerLine } from 'react-icons/ri'
+import { MdOutlineInfo } from 'react-icons/md'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -43,6 +44,16 @@ const ResponsiveMenu = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+
+  const isReadingActive = useMatch('/book/*') !== null
+  const isInfoActive = useMatch('/info/*') !== null
+  const isLogsActive = useMatch('/logs/*') !== null
+
+  console.log({
+    isReadingActive,
+    isInfoActive,
+    isLogsActive,
+  })
 
   const jumpToButton = (
     <>
@@ -61,7 +72,7 @@ const ResponsiveMenu = () => {
         <Icon>
           <GoSearch />
         </Icon>
-        {useT(['快速跳转', '快速跳轉'])}
+        {useT(['跳转', '跳轉'])}
         <Kbd>
           {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
         </Kbd>
@@ -103,6 +114,159 @@ const ResponsiveMenu = () => {
     </IconButton>
   )
 
+  const drawer = (
+    <DrawerRoot
+      open={open}
+      onOpenChange={e => setOpen(e.open)}
+      placement={'top'}
+    >
+      <DrawerBackdrop />
+      <HStack
+        justifyContent={'space-between'}
+        width={'full'}
+        display={{ ...{ base: 'flex', maxContent: 'none' } }} // 响应式布局
+        // hideBelow={'maxContent'}
+      >
+        <Box>
+          <Logo height={'36px'} viewBox="5 0 199 46" />
+        </Box>
+        <HStack paddingRight={'1.2rem'}>
+          {settingButton}
+          {jumpToButton}
+          <DrawerTrigger asChild>
+            <Box
+              display={{ base: 'block', ...{ maxContent: 'none' } }} // 响应式布局
+              onClick={() => setOpen(true)}
+              padding={'1.2rem'}
+            >
+              <IconButton
+                variant="outline"
+                aria-label={useT(['打开菜单', '打開菜單'])}
+                color={'white'}
+              >
+                <GiHamburgerMenu />
+              </IconButton>
+            </Box>
+          </DrawerTrigger>
+        </HStack>
+      </HStack>
+      <DrawerContent
+        animationDuration={'0.1s'}
+        colorPalette={useColorPalette()}
+      >
+        <DrawerHeader>
+          <DrawerTitle fontSize={useUiSizeClassName('md', 'text')}>
+            {useT(['请选择...', '請選擇...'])}
+          </DrawerTitle>
+        </DrawerHeader>
+        <DrawerBody>
+          <Stack>
+            <Button
+              w="100%"
+              // @ts-ignore
+              fontSize={useUiSizeClassName('md', 'button')}
+              onClick={() => {
+                navigate('/')
+                setOpen(false)
+              }}
+              variant={isReadingActive ? 'solid' : 'surface'}
+            >
+              {useT(['阅读', '閱讀'])}
+            </Button>
+            <Button
+              w="100%"
+              // @ts-ignore
+              fontSize={useUiSizeClassName('md', 'button')}
+              onClick={() => {
+                navigate('/info')
+                setOpen(false)
+              }}
+              variant={isInfoActive ? 'solid' : 'surface'}
+            >
+              {useT(['资料', '資訊'])}
+            </Button>
+            <Button
+              w="100%"
+              // @ts-ignore
+              fontSize={useUiSizeClassName('md', 'button')}
+              onClick={() => {
+                navigate('/logs')
+                setOpen(false)
+              }}
+              variant={isLogsActive ? 'solid' : 'surface'}
+            >
+              {useT(['日志', '日志'])}
+            </Button>
+          </Stack>
+        </DrawerBody>
+        <DrawerCloseTrigger />
+      </DrawerContent>
+    </DrawerRoot>
+  )
+
+  const menu = (
+    <HStack paddingLeft={'0.2rem'}>
+      <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
+      <MenuItem>
+        <IconButton
+          colorScheme={useColorPalette()}
+          px={'1em'}
+          color={'white'}
+          bg={'transparent'}
+          aria-pressed={true}
+          _active={{ bg: `${useColorPalette()}.600` }}
+          _hover={{ bg: `${useColorPalette()}.600` }}
+          paddingX={'0.7em'}
+          variant={isReadingActive ? 'outline' : 'ghost'}
+          // @ts-ignore
+          fontSize={useUiSizeClassName('sm', 'button')}
+          onClick={() => {
+            navigate('/')
+          }}
+        >
+          <CgReadme /> {useT(['阅读', '閱讀'])}
+        </IconButton>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          px={'1em'}
+          color={'white'}
+          bg={'transparent'}
+          _active={{ bg: `${useColorPalette()}.600` }}
+          _hover={{ bg: `${useColorPalette()}.600` }}
+          paddingX={'0.7em'}
+          variant={isInfoActive ? 'outline' : 'ghost'}
+          // @ts-ignore
+          fontSize={useUiSizeClassName('sm', 'button')}
+          onClick={() => {
+            navigate('/info')
+          }}
+        >
+          <MdOutlineInfo /> {useT(['资料', '資訊'])}
+        </IconButton>
+      </MenuItem>
+
+      <MenuItem>
+        <IconButton
+          px={'1em'}
+          color={'white'}
+          bg={'transparent'}
+          _active={{ bg: `${useColorPalette()}.600` }}
+          _hover={{ bg: `${useColorPalette()}.600` }}
+          paddingX={'0.7em'}
+          variant={isLogsActive ? 'outline' : 'ghost'}
+          // @ts-ignore
+          fontSize={useUiSizeClassName('sm', 'button')}
+          onClick={() => {
+            navigate('/logs')
+          }}
+        >
+          <RiArchiveDrawerLine /> {useT(['日志', '日志'])}
+        </IconButton>
+      </MenuItem>
+    </HStack>
+  )
+
   return (
     <Box
       display={'flex'}
@@ -121,80 +285,7 @@ const ResponsiveMenu = () => {
         width={'2xl'}
       >
         {/* 小屏幕时 */}
-        <DrawerRoot
-          open={open}
-          onOpenChange={e => setOpen(e.open)}
-          placement={'top'}
-        >
-          <DrawerBackdrop />
-          <HStack
-            justifyContent={'space-between'}
-            width={'full'}
-            display={{ ...{ base: 'flex', maxContent: 'none' } }} // 响应式布局
-            // hideBelow={'maxContent'}
-          >
-            <Box>{/** 占位符 */}</Box>
-            <HStack paddingRight={'1.2rem'}>
-              {settingButton}
-              {jumpToButton}
-              <DrawerTrigger asChild>
-                <Box
-                  display={{ base: 'block', ...{ maxContent: 'none' } }} // 响应式布局
-                  onClick={() => setOpen(true)}
-                  padding={'1.2rem'}
-                >
-                  <IconButton
-                    variant="outline"
-                    aria-label={useT(['打开菜单', '打開菜單'])}
-                    color={'white'}
-                  >
-                    <GiHamburgerMenu />
-                  </IconButton>
-                </Box>
-              </DrawerTrigger>
-            </HStack>
-          </HStack>
-          <DrawerContent
-            animationDuration={'0.1s'}
-            colorPalette={useColorPalette()}
-          >
-            <DrawerHeader>
-              <DrawerTitle fontSize={useUiSizeClassName('md', 'text')}>
-                {useT(['请选择...', '請選擇...'])}
-              </DrawerTitle>
-            </DrawerHeader>
-            <DrawerBody>
-              <Stack>
-                <Button
-                  w="100%"
-                  // @ts-ignore
-                  fontSize={useUiSizeClassName('md', 'button')}
-                  onClick={() => {
-                    navigate('/')
-                    setOpen(false)
-                  }}
-                >
-                  {useT(['阅读', '閱讀'])}
-                </Button>
-                <Button
-                  w="100%"
-                  // @ts-ignore
-                  fontSize={useUiSizeClassName('md', 'button')}
-                >
-                  {useT(['关于', '關於'])}
-                </Button>
-                <Button
-                  w="100%"
-                  // @ts-ignore
-                  fontSize={useUiSizeClassName('md', 'button')}
-                >
-                  {useT(['插图', '插圖'])}
-                </Button>
-              </Stack>
-            </DrawerBody>
-            <DrawerCloseTrigger />
-          </DrawerContent>
-        </DrawerRoot>
+        {drawer}
         {/* 大屏时 */}
         <Box
           display={{ base: 'none', ...{ maxContent: 'flex' } }} // 响应式布局
@@ -204,63 +295,8 @@ const ResponsiveMenu = () => {
           flexGrow={1}
           py="1.2rem"
         >
-          <HStack paddingLeft={'0.2rem'}>
-            <MenuItem>
-              <IconButton
-                colorScheme={useColorPalette()}
-                px={'1em'}
-                color={'white'}
-                bg={'transparent'}
-                aria-pressed={true}
-                _active={{ bg: `${useColorPalette()}.600` }}
-                _hover={{ bg: `${useColorPalette()}.600` }}
-                variant={'outline'}
-                // @ts-ignore
-                fontSize={useUiSizeClassName('sm', 'button')}
-                onClick={() => {
-                  navigate('/')
-                }}
-              >
-                <CgReadme /> {useT(['阅读', '閱讀'])}
-              </IconButton>
-            </MenuItem>
-            <MenuItem>
-              <IconButton
-                px={'1em'}
-                color={'white'}
-                bg={'transparent'}
-                // @ts-ignore
-                fontSize={useUiSizeClassName('sm', 'button')}
-              >
-                <GoInfo /> {useT(['关于', '關於'])}
-              </IconButton>
-            </MenuItem>
-            <MenuItem>
-              <IconButton
-                px={'1em'}
-                color={'white'}
-                bg={'transparent'}
-                // @ts-ignore
-                fontSize={useUiSizeClassName('sm', 'button')}
-              >
-                <BsAt /> {useT(['引用', '引用'])}
-              </IconButton>
-            </MenuItem>
-
-            <MenuItem>
-              <IconButton
-                px={'1em'}
-                color={'white'}
-                bg={'transparent'}
-                size={'xs'}
-                // @ts-ignore
-                fontSize={useUiSizeClassName('sm', 'button')}
-              >
-                <FiImage /> {useT(['插图', '插圖'])}
-              </IconButton>
-            </MenuItem>
-          </HStack>
-          <HStack paddingRight={'0.2rem'}>
+          {menu}
+          <HStack paddingRight={'0.2rem'} gap={'4px'}>
             {settingButton}
             {jumpToButton}
           </HStack>
