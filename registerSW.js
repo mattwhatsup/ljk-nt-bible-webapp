@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/ljk-nt-bible-webapp/sw.js', { scope: '/ljk-nt-bible-webapp/' })})}
