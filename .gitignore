@@ -26,6 +26,6 @@ dist-ssr
 repo/*
 !repo/.dir
 
-public/*
+public/resources/*
 !public/.dir
 !public/404.html
