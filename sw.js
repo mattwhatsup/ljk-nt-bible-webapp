@@ -109,10 +109,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "01a4cd97d457afb7c2b7c5c2828f05ba"
   }, {
     "url": "web-app-manifest-192x192.png",
-    "revision": "cf822853bbf7a6d5fc0b83a32d310789"
+    "revision": "bba748bd41a30b46c6c37e1da059208c"
   }, {
     "url": "web-app-manifest-512x512.png",
-    "revision": "d985829e7c690479b8d10b1e0b85cf79"
+    "revision": "1501e832e9946feba2cb38585cad02b5"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "0ac91cd8bc3d2db2fa097d7618e2cc4a"
@@ -481,10 +481,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "69ced9a8cd3ccd595b2e5fad35312a28"
   }, {
     "url": "web-app-manifest-192x192.png",
-    "revision": "cf822853bbf7a6d5fc0b83a32d310789"
+    "revision": "bba748bd41a30b46c6c37e1da059208c"
   }, {
     "url": "web-app-manifest-512x512.png",
-    "revision": "d985829e7c690479b8d10b1e0b85cf79"
+    "revision": "1501e832e9946feba2cb38585cad02b5"
   }, {
     "url": "manifest.webmanifest",
     "revision": "cea2c37f0d693bb73515cea0eb9c9cdb"
