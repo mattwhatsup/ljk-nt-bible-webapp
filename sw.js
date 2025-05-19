@@ -81,7 +81,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon.png",
     "revision": "43ff7b31a0acb47db42e678df0b86dd7"
   }, {
-    "url": "assets/index-B0nVd5_-.js",
+    "url": "assets/index-DY5qh7cW.js",
     "revision": null
   }, {
     "url": "assets/index-oa8OvAR6.css",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
   }, {
     "url": "index.html",
-    "revision": "8824d25b907f1b7c3d84c302a83481fb"
+    "revision": "21a1faf5c017237309a9be211d4fa765"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
