@@ -193,3 +193,24 @@ export const getUiSizeClassName = (
 
   return sizes[enlargedIndex > maxIndex ? maxIndex : enlargedIndex]
 }
+
+export const colorPaletteToHex = {
+  gray: '#71717a',
+  red: '#ef4444',
+  orange: '#f97316',
+  yellow: '#eab308',
+  green: '#22c55e',
+  teal: '#14b8a6',
+  blue: '#3b82f6',
+  cyan: '#06b6d4',
+  purple: '#a855f7',
+  pink: '#ec4899',
+} as const
+
+export const updateThemeColor = (color: ColorPaletteType) => {
+  const colorHex = colorPaletteToHex[color] || '#ffffff'
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', colorHex)
+  }
+}

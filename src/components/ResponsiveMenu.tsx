@@ -30,7 +30,7 @@ import {
   useT,
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
-import { useLocation, useMatch, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
 import Logo from '@/logo-bible.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
@@ -128,7 +128,9 @@ const ResponsiveMenu = () => {
         // hideBelow={'maxContent'}
       >
         <Box>
-          <Logo height={'36px'} viewBox="5 0 199 46" />
+          <Link to="/">
+            <Logo height={'36px'} viewBox="5 0 199 46" />
+          </Link>
         </Box>
         <HStack paddingRight={'1.2rem'}>
           {settingButton}
@@ -206,7 +208,9 @@ const ResponsiveMenu = () => {
 
   const menu = (
     <HStack paddingLeft={'0.2rem'}>
-      <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
+      <Link to="/">
+        <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
+      </Link>
       <MenuItem>
         <IconButton
           colorScheme={useColorPalette()}
