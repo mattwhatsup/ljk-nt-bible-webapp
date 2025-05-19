@@ -88,13 +88,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": null
   }, {
     "url": "favicon-96x96.png",
-    "revision": "529d24a0a13ac4bae5c49b40be117998"
+    "revision": "0cc4049d109db636987b51d003d2f611"
   }, {
     "url": "favicon.ico",
-    "revision": "69ced9a8cd3ccd595b2e5fad35312a28"
+    "revision": "f6b870dbd2c28caf09a2bfb1f9ecc061"
   }, {
     "url": "favicon.svg",
-    "revision": "039ceb16c1ff2548b6c0f40df839e007"
+    "revision": "5b18e5c1f8ba1aac7345e361cc721b77"
   }, {
     "url": "index.html",
     "revision": "687f987689362de3113a7461ac0f0ef4"
@@ -478,7 +478,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "43ff7b31a0acb47db42e678df0b86dd7"
   }, {
     "url": "favicon.ico",
-    "revision": "69ced9a8cd3ccd595b2e5fad35312a28"
+    "revision": "f6b870dbd2c28caf09a2bfb1f9ecc061"
   }, {
     "url": "web-app-manifest-192x192.png",
     "revision": "bba748bd41a30b46c6c37e1da059208c"
