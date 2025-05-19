@@ -81,7 +81,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon.png",
     "revision": "43ff7b31a0acb47db42e678df0b86dd7"
   }, {
-    "url": "assets/index-C8098vaa.js",
+    "url": "assets/index-B0nVd5_-.js",
     "revision": null
   }, {
     "url": "assets/index-oa8OvAR6.css",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
   }, {
     "url": "index.html",
-    "revision": "e3ef6ec44d77b9e71d69cbac50a9d84f"
+    "revision": "8824d25b907f1b7c3d84c302a83481fb"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -480,16 +480,22 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "favicon.ico",
     "revision": "69ced9a8cd3ccd595b2e5fad35312a28"
   }, {
+    "url": "web-app-manifest-192x192.png",
+    "revision": "cf822853bbf7a6d5fc0b83a32d310789"
+  }, {
+    "url": "web-app-manifest-512x512.png",
+    "revision": "d985829e7c690479b8d10b1e0b85cf79"
+  }, {
     "url": "manifest.webmanifest",
-    "revision": "ac3489a1437c173141854fe6bb1381f4"
+    "revision": "cea2c37f0d693bb73515cea0eb9c9cdb"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html")));
   workbox.registerRoute(({
     url
   }) => {
-    const base = "/ljk-nt-bible-webapp" ;
-    return url.pathname.startsWith(`${base}/resources/`);
+    const base2 = "/ljk-nt-bible-webapp" ;
+    return url.pathname.startsWith(`${base2}/resources/`);
   }, new workbox.NetworkFirst({
     "cacheName": "static-resources",
     plugins: [new workbox.ExpirationPlugin({
