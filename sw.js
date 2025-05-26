@@ -81,10 +81,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon.png",
     "revision": "43ff7b31a0acb47db42e678df0b86dd7"
   }, {
-    "url": "assets/index-C4AwHxnG.js",
+    "url": "assets/index-BkELcrnv.js",
     "revision": null
   }, {
-    "url": "assets/index-oa8OvAR6.css",
+    "url": "assets/index-C4zg-Xzb.css",
     "revision": null
   }, {
     "url": "favicon-96x96.png",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "5b18e5c1f8ba1aac7345e361cc721b77"
   }, {
     "url": "index.html",
-    "revision": "687f987689362de3113a7461ac0f0ef4"
+    "revision": "412081ac2e515bc5cef3c9267ae66f95"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -184,7 +184,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a3cf2b7b7fb02c69279ff9a4e31891ab"
   }, {
     "url": "resources/cn-mt.json",
-    "revision": "62733ed766f47c056a4099846193a4ca"
+    "revision": "6efc4599c99dfd29c430eac6910a364f"
   }, {
     "url": "resources/cn-phi.json",
     "revision": "8563029ee0e8ec6ffa0c07117307a359"
@@ -274,7 +274,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "5082a50a22f548100c7f86b219f4af2f"
   }, {
     "url": "resources/tw-mt.json",
-    "revision": "b8cf3cbfa4c27f698b620cc089a2a542"
+    "revision": "178e74902fbdc27b51b2fee8f850fa5f"
   }, {
     "url": "resources/tw-phi.json",
     "revision": "af5e76214b2e074d982b1d8fe36b3770"
