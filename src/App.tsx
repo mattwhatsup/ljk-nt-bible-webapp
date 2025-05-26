@@ -16,11 +16,22 @@ import InfoLayout from './pages/InfoLayout'
 import Preface from './pages/Preface'
 import Bibliography from './pages/Bibliography'
 import Logs from './pages/Logs'
+import {
+  updateThemeColor,
+  useColorPalette,
+} from './features/settings/settingsSlice'
+import { useEffect } from 'react'
 
 const App = () => {
   let location = useLocation()
 
   let state = location.state as { backgroundLocation?: Location }
+
+  const colorPalette = useColorPalette()
+
+  useEffect(() => {
+    updateThemeColor(colorPalette)
+  }, [colorPalette])
 
   return (
     <div className="App">
