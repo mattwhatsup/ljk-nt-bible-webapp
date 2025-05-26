@@ -33,14 +33,14 @@ span.hebrew {
 }
 mark.hebrew,
 span.hebrew {
-  font-size: 1.05rem;
+  font-size: 1.05em;
   background-color: unset;
   font-family: hebrewfont, sans-serif;
 }
 mark.greek,
 span.greek {
   background-color: unset;
-  font-size: 0.8rem;
+  font-size: 1.05em;
   font-family: greekfont;
 }
 sup {
@@ -51,7 +51,7 @@ cite,
 span.affix {
   font-family: comment-font, greekfont, Arial, hebrewfont, sans-serif;
   font-style: normal;
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 .para.addition {
   font-size: 0.7em;
@@ -71,4 +71,11 @@ span.affix {
   text-decoration-style: wavy;
   text-decoration-color: cornflowerblue;
   text-decoration-skip-ink: all;
+}
+.remark {
+  font-family: content-font, greekfont, Arial, hebrewfont, sans-serif;
+  font-size: 0.8em;
+}
+.sample-para + .sample-para {
+  margin-top: 1em;
 }

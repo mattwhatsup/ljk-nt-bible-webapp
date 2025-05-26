@@ -36,7 +36,7 @@ export default function InfoLayout({}: Props) {
         <Tabs.List>
           <Tabs.Trigger value="preface">{useT(['自序', '自序'])}</Tabs.Trigger>
           <Tabs.Trigger value="bibliography">
-            {useT(['引用书目', '引用書目'])}
+            {useT(['参考书目', '參考書目'])}
           </Tabs.Trigger>
         </Tabs.List>
 
