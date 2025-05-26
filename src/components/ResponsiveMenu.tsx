@@ -129,7 +129,7 @@ const ResponsiveMenu = () => {
       >
         <Box>
           <Link to="/">
-            <Logo height={'36px'} viewBox="5 0 199 46" />
+            <Logo className="logo" viewBox="5 0 199 46" />
           </Link>
         </Box>
         <HStack paddingRight={'1.2rem'}>

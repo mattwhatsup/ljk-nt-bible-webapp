@@ -1,7 +1,6 @@
 import { useT, useUiSizeClassName } from '@/features/settings/settingsSlice'
 import { Tabs } from '@chakra-ui/react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import './info.css'
 
 type Props = {}
 

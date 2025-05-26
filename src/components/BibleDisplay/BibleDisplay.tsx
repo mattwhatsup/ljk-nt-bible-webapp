@@ -10,7 +10,6 @@ import Reference from './Reference'
 import Line from './Line'
 import VerseNo from './VerseNo'
 import { cloneElement } from 'react'
-import './BibleDisplay.css'
 import CommentList from './CommonList'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import {
