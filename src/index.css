@@ -237,4 +237,10 @@ p.sample-para-indent {
   .logo {
     height: 28px;
   }
+  .comment-list {
+    padding-left: 4em;
+  }
+  .comment {
+    padding-left: 2em;
+  }
 }
