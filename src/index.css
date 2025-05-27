@@ -244,3 +244,6 @@ p.sample-para-indent {
     height: 28px;
   }
 }
+i {
+  font-style: italic;
+}
