@@ -113,6 +113,12 @@ span.affix {
   .ot-refs {
     padding-left: 2em;
   }
+  .comment-list {
+    padding-left: 4em;
+  }
+  .comment {
+    padding-left: 2em;
+  }
 }
 
 .selected {
@@ -236,11 +242,5 @@ p.sample-para-indent {
 @media screen and (max-width: 360px) {
   .logo {
     height: 28px;
-  }
-  .comment-list {
-    padding-left: 4em;
-  }
-  .comment {
-    padding-left: 2em;
   }
 }
