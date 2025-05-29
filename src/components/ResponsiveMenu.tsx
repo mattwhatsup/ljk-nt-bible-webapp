@@ -129,7 +129,12 @@ const ResponsiveMenu = () => {
       >
         <Box>
           <Link to="/">
-            <Logo className="logo" viewBox="5 0 199 46" />
+            <Logo
+              className="logo"
+              width="157px"
+              height="52px"
+              viewBox="0 0 157 52"
+            />
           </Link>
         </Box>
         <HStack paddingRight={'1.2rem'}>
@@ -209,7 +214,12 @@ const ResponsiveMenu = () => {
   const menu = (
     <HStack paddingLeft={'0.2rem'}>
       <Link to="/">
-        <Logo height={'36px'} width={'174px'} viewBox="0 0 199 46" />
+        <Logo
+          className="logo"
+          width="157px"
+          height="52px"
+          viewBox="0 0 157 52"
+        />
       </Link>
       <MenuItem>
         <IconButton

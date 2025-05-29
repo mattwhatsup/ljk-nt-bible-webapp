@@ -75,7 +75,7 @@ span.hebrew {
 }
 mark.hebrew,
 span.hebrew {
-  font-size: 1.05em;
+  font-size: 1.23em;
   background-color: unset;
   font-family: hebrewfont, sans-serif;
 }
@@ -237,11 +237,17 @@ p.sample-para-indent {
   text-align: right !important;
 }
 .logo {
-  height: 36px;
+  height: 50px;
+}
+@media screen and (max-width: 672px) {
+  .logo {
+    margin-left: 10px;
+  }
 }
 @media screen and (max-width: 360px) {
   .logo {
-    height: 28px;
+    height: 40px;
+    margin-left: 10px;
   }
 }
 i {
