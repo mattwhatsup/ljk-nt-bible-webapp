@@ -214,7 +214,7 @@ function Content({}: Props) {
       {/* 经文字体大小 */}
       <Field.Root orientation="horizontal">
         <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
-          {useT(['经文字体大小', '經文字體大小'])}
+          {useT(['正文字体大小', '正文字體大小'])}
         </Field.Label>
         <Select.Root
           collection={textSizes}
