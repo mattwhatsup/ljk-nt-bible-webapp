@@ -31,7 +31,7 @@ import {
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
-import Logo from '@/logo-bible.svg?react'
+import Logo from '@/logo-title.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
 
@@ -132,8 +132,8 @@ const ResponsiveMenu = () => {
             <Logo
               className="logo"
               width="157px"
-              height="52px"
-              viewBox="0 0 157 52"
+              height="54px"
+              viewBox="0 0 157 54"
             />
           </Link>
         </Box>
@@ -217,8 +217,8 @@ const ResponsiveMenu = () => {
         <Logo
           className="logo"
           width="157px"
-          height="52px"
-          viewBox="0 0 157 52"
+          height="54px"
+          viewBox="0 0 157 54"
         />
       </Link>
       <MenuItem>
