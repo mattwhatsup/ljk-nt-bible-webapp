@@ -135,9 +135,9 @@ export default function VerseActionBar({}: Props) {
                 color="white"
                 fontSize={useUiSizeClassName('sm', 'button')}
               >
-                {useT(['已选中', '已選中'])} {selectedVerses.length}
+                {useT(['已选', '已選'])} {selectedVerses.length}
               </ActionBar.SelectionTrigger>
-              <ActionBar.Separator />
+
               <Tooltip
                 showArrow
                 content={useT([
@@ -156,7 +156,6 @@ export default function VerseActionBar({}: Props) {
                   }}
                 >
                   <FaRegCopy />
-                  {useT(['复制', '複製'])}
                 </Button>
               </Tooltip>
               <Tooltip
@@ -174,7 +173,6 @@ export default function VerseActionBar({}: Props) {
                   }}
                 >
                   <FaRegTrashAlt />
-                  {useT(['清除', '清除'])}
                 </Button>
               </Tooltip>
 
@@ -197,9 +195,7 @@ export default function VerseActionBar({}: Props) {
                     '當導航離開本頁時返回仍然選中',
                   ])}
                 >
-                  <Checkbox.Label>
-                    {useT(['保持选中', '保持選中'])}
-                  </Checkbox.Label>
+                  <Checkbox.Label>{useT(['保持', '保持'])}</Checkbox.Label>
                 </Tooltip>
               </Checkbox.Root>
             </ActionBar.Content>
