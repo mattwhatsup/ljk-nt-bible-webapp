@@ -202,7 +202,7 @@ const ResponsiveMenu = () => {
               }}
               variant={isLogsActive ? 'solid' : 'surface'}
             >
-              {useT(['日志', '日志'])}
+              {useT(['更新记录', '更新記錄'])}
             </Button>
           </Stack>
         </DrawerBody>
@@ -275,7 +275,7 @@ const ResponsiveMenu = () => {
             navigate('/logs')
           }}
         >
-          <RiArchiveDrawerLine /> {useT(['日志', '日志'])}
+          <RiArchiveDrawerLine /> {useT(['更新记录', '更新記錄'])}
         </IconButton>
       </MenuItem>
     </HStack>
