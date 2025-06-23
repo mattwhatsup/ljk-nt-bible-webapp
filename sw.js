@@ -81,10 +81,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon.png",
     "revision": "43ff7b31a0acb47db42e678df0b86dd7"
   }, {
-    "url": "assets/index-Bz1CpYBC.js",
+    "url": "assets/index-BVvJP3KU.css",
     "revision": null
   }, {
-    "url": "assets/index-EoGUPtF9.css",
+    "url": "assets/index-CybA-b95.js",
     "revision": null
   }, {
     "url": "favicon-96x96.png",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "5b18e5c1f8ba1aac7345e361cc721b77"
   }, {
     "url": "index.html",
-    "revision": "79d4e6a6eb5fd20c02f8ced32b03d38b"
+    "revision": "3a88538878e3aafb26f079b0efa26b93"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -115,22 +115,22 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1501e832e9946feba2cb38585cad02b5"
   }, {
     "url": "resources/cn-1co.json",
-    "revision": "0ac91cd8bc3d2db2fa097d7618e2cc4a"
+    "revision": "48b54c30df768dd13127e813059aedf6"
   }, {
     "url": "resources/cn-1jo.json",
-    "revision": "01fb20470d4555f72286b3e4283ca51f"
+    "revision": "33bd4dc5df70b6c3531f4e96c03dec4d"
   }, {
     "url": "resources/cn-1pe.json",
     "revision": "841fce28194e71d6aa5b043d99a2645e"
   }, {
     "url": "resources/cn-1th.json",
-    "revision": "c2f985a9a78f18980ec339c33d8a03a6"
+    "revision": "f34f314e3e0b567204f733863c80693e"
   }, {
     "url": "resources/cn-1ti.json",
-    "revision": "13e5b96d14e0f2b8dd7d89fd32dd5128"
+    "revision": "40cad78950e0d4ccdbedb53f57adfd37"
   }, {
     "url": "resources/cn-2co.json",
-    "revision": "5eebe7b0ea795d921bd7a0c81673fbff"
+    "revision": "547910ca694008a4bf25b5214c449b1b"
   }, {
     "url": "resources/cn-2jo.json",
     "revision": "a11e8d94024b48bff2b607c6b4a6b39d"
@@ -148,79 +148,79 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "55400003d457ab9a69278f9ba7ff4dba"
   }, {
     "url": "resources/cn-act.json",
-    "revision": "4c9ff3e2c15a08b9adb5024f215809c0"
+    "revision": "fefbe812776b4e5b594e956650e7fa32"
   }, {
     "url": "resources/cn-bibliography.json",
     "revision": "743b7cb656342bb9f6d9bbfa30e8d525"
   }, {
     "url": "resources/cn-col.json",
-    "revision": "9ac0136fbf2ed019d3e2a4b70ffd2ef9"
+    "revision": "7d8054d5f3c3d5433ae097282918f409"
   }, {
     "url": "resources/cn-eph.json",
-    "revision": "69d6d88fd5e2665536c114bd0f73696b"
+    "revision": "038c55088fe2402827935ec84f69a974"
   }, {
     "url": "resources/cn-gal.json",
-    "revision": "b4cd9c7e582f2618c51494e1dc0186d0"
+    "revision": "e654190c975c4fac0b0d74a8735b59af"
   }, {
     "url": "resources/cn-heb.json",
     "revision": "0fb7a433201fcd3ea1fa6f09e2e775de"
   }, {
     "url": "resources/cn-history.json",
-    "revision": "ce582cdfc90ab9e265380deaff318b8b"
+    "revision": "1bf26861aaa09733cc62d078fcf424c4"
   }, {
     "url": "resources/cn-jas.json",
     "revision": "76099fa224f0b4fc124440d3c884b3fc"
   }, {
     "url": "resources/cn-joh.json",
-    "revision": "b7bfd6406bf921b5ec5ee7546872ea91"
+    "revision": "984da6e38f981349af097cfc02f855ec"
   }, {
     "url": "resources/cn-jud.json",
     "revision": "2bd707c11e279c97fef4be52568ece0e"
   }, {
     "url": "resources/cn-lk.json",
-    "revision": "900cabc967fa2722ecce30347813b42a"
+    "revision": "faa49ab87ae8ad5338c5f06864d97bed"
   }, {
     "url": "resources/cn-mk.json",
-    "revision": "a3cf2b7b7fb02c69279ff9a4e31891ab"
+    "revision": "baf5a737f431e398fb6f80ec276ca542"
   }, {
     "url": "resources/cn-mt.json",
-    "revision": "6efc4599c99dfd29c430eac6910a364f"
+    "revision": "0b4c5545355d00cbdc0f20c3e07c4cbf"
   }, {
     "url": "resources/cn-phi.json",
-    "revision": "8563029ee0e8ec6ffa0c07117307a359"
+    "revision": "8a3774cd617f1c5c5fb0f8b47933bd1e"
   }, {
     "url": "resources/cn-phm.json",
-    "revision": "5b93af2fc9f21039a657891d292df892"
+    "revision": "b6db46ed721c9e7eeb5469d7d48ab990"
   }, {
     "url": "resources/cn-preface.json",
-    "revision": "7ffff396b6ae10428ad3b67e7fafff41"
+    "revision": "ecf15d965384760597e761f71337f511"
   }, {
     "url": "resources/cn-rev.json",
     "revision": "545bd1ee188fe633536496e90570e80c"
   }, {
     "url": "resources/cn-rom.json",
-    "revision": "c494293245a635c101fd62d09cd52510"
+    "revision": "8b2f202e4ef42c542553cb6f7dbb8dfc"
   }, {
     "url": "resources/cn-tit.json",
-    "revision": "00fba124ee1eb522765a18a2e2158085"
+    "revision": "69d90dc0fc4b58c6824b28dae5c64ead"
   }, {
     "url": "resources/tw-1co.json",
-    "revision": "954989cde04ca843801d9a4c277611b6"
+    "revision": "411de3aff2690fd3d9fd448689adf827"
   }, {
     "url": "resources/tw-1jo.json",
-    "revision": "ac4fd63c9938b33179c97b1f65551345"
+    "revision": "c22598d05fb02bdb61369ad235561c36"
   }, {
     "url": "resources/tw-1pe.json",
     "revision": "f66ac351d8edd36cc77c5852a04db5d7"
   }, {
     "url": "resources/tw-1th.json",
-    "revision": "d347e539bd23da15e278b721276e066a"
+    "revision": "7be3048202c8877ac10f36f53ae57340"
   }, {
     "url": "resources/tw-1ti.json",
-    "revision": "d11fbfc513c4759dfc24a8a7e4613bed"
+    "revision": "23a91e752c5d29b8b99b77e7f724f7c3"
   }, {
     "url": "resources/tw-2co.json",
-    "revision": "bc80329f0344f5c3e3c1f60b09292855"
+    "revision": "a3da4c1827dc2959fab7cea96ddee367"
   }, {
     "url": "resources/tw-2jo.json",
     "revision": "c75660adff8987c30bf6e00e4227531e"
@@ -238,25 +238,25 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8a74152a215cbba2bb46d025bf237988"
   }, {
     "url": "resources/tw-act.json",
-    "revision": "2c2af35dd5b2f26c475dd9c568c0adcb"
+    "revision": "2654ede1b65b251855a4495188f2684b"
   }, {
     "url": "resources/tw-bibliography.json",
-    "revision": "cba72ba2747efc34d87a335541034d30"
+    "revision": "ac2e3728d1de4e3b0c6cd81f14523995"
   }, {
     "url": "resources/tw-col.json",
-    "revision": "d2295088603e60096faf4f6f60f54eca"
+    "revision": "d88fb6f6746a89edeeb8da7fec7a9765"
   }, {
     "url": "resources/tw-eph.json",
-    "revision": "8691a6cff9f3c27f3de4cd90f9bfdd71"
+    "revision": "8424934d1d70dc238d8f1e40fb9aae46"
   }, {
     "url": "resources/tw-gal.json",
-    "revision": "566abda02daf4a7efa174fa679e017f8"
+    "revision": "bb83aae2ab5efc56f5e99c493be82eb8"
   }, {
     "url": "resources/tw-heb.json",
     "revision": "a8c447219e0f572da127e522a9d68641"
   }, {
     "url": "resources/tw-history.json",
-    "revision": "ce582cdfc90ab9e265380deaff318b8b"
+    "revision": "56f2dba2129bcd8a846d0ba9bdd257b0"
   }, {
     "url": "resources/tw-jas.json",
     "revision": "57e4c8419e3e2ee35bdda78666b933f8"
@@ -268,31 +268,31 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "daeda16a531f5f984a8c581eef7f1186"
   }, {
     "url": "resources/tw-lk.json",
-    "revision": "93503501c9316122759e935bd5939662"
+    "revision": "732a7166afe0ac4c3ac86c1216f7b389"
   }, {
     "url": "resources/tw-mk.json",
-    "revision": "5082a50a22f548100c7f86b219f4af2f"
+    "revision": "d216008b279dc8475ed2a19333666905"
   }, {
     "url": "resources/tw-mt.json",
     "revision": "178e74902fbdc27b51b2fee8f850fa5f"
   }, {
     "url": "resources/tw-phi.json",
-    "revision": "af5e76214b2e074d982b1d8fe36b3770"
+    "revision": "f031097a646fb3fc16ff80ee9ec9ba0e"
   }, {
     "url": "resources/tw-phm.json",
-    "revision": "aacdacb3596d266fc78da47be32297cb"
+    "revision": "48bddf1042bf7f9c7951ace20f257a99"
   }, {
     "url": "resources/tw-preface.json",
-    "revision": "c7225cfb0db75c5af69eeeee6ecc0616"
+    "revision": "36bc1ef2170f3b3d6c1a989410f0c7ac"
   }, {
     "url": "resources/tw-rev.json",
-    "revision": "440abaca4312ec03d2a3f2780f13c50d"
+    "revision": "0949c71d377730c4bd2823a31a8f7b84"
   }, {
     "url": "resources/tw-rom.json",
-    "revision": "f0c43fe71bc06a416da9a8e6620341c8"
+    "revision": "af490c88c398c9fa37948b5636379281"
   }, {
     "url": "resources/tw-tit.json",
-    "revision": "e92c9d21df6aa49b286c2f7b975b4f4e"
+    "revision": "ca12e81a364da584827cef0715d90176"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "0.0.0"
