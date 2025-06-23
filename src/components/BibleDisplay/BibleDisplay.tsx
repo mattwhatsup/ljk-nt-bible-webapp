@@ -48,6 +48,9 @@ function renderChapter(
       case item.type === 'comment-list':
         nodes.push({ node: <CommentList key={index} data={item} /> })
         break
+      case item.type === 'ul-comment-list':
+        nodes.push({ node: <CommentList key={index} data={item} ul /> })
+        break
       case item.type === 'verse':
         {
           let _item = item as VerseNode

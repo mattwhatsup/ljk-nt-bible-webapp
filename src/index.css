@@ -61,12 +61,16 @@ p.para {
   line-height: 2em;
 }
 
-.comment-list {
+.comment-list,
+.ul-comment-list {
   font-family: content-font, greekfont, Arial, hebrewfont, sans-serif;
   padding-left: 8em;
   font-size: 0.8em;
   line-height: 2em;
   list-style-type: decimal;
+}
+.ul-comment-list {
+  list-style-type: disc;
 }
 mark,
 span.greek,

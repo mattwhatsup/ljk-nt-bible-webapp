@@ -22,12 +22,17 @@ export type CommentListNode = {
   type: 'comment-list'
   contents: string[]
 }
+export type ULCommentListNode = {
+  type: 'ul-comment-list'
+  contents: string[]
+}
 
 export type BibleItemNode =
   | BookChapterNode
   | VerseNode
   | CommentNode
   | CommentListNode
+  | ULCommentListNode
 
 export type BibleItemNodeWithVerseList = {
   verseList: string[]
@@ -62,6 +67,14 @@ export const chapterParser = (chapterSection: Element) => {
       ) {
         nodeData.push({
           type: 'comment-list',
+          contents: [element.innerHTML!],
+        })
+      } else if (
+        element.tagName.toUpperCase() === 'UL' &&
+        element.className === 'comment-list'
+      ) {
+        nodeData.push({
+          type: 'ul-comment-list',
           contents: [element.innerHTML!],
         })
       } else if (

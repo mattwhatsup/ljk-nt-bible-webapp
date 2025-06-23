@@ -119,6 +119,9 @@ export default function Book() {
       .comment {
         display: ${showComments ? 'block' : 'none'};
       }
+      .comment-list, .ul-comment-list {
+        display: ${showComments ? 'block' : 'none'};
+      }
       cite {
         display: ${showComments ? 'inline' : 'none'};
       }
