@@ -31,7 +31,7 @@ import {
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
-import Logo from '@/logo-title.svg?react'
+import Logo from '@/logo-new.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
 
