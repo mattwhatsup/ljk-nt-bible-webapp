@@ -242,6 +242,7 @@ p.sample-para-indent {
 }
 .logo {
   height: 48px;
+  color: black;
 }
 @media screen and (max-width: 672px) {
   .logo {
