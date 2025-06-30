@@ -115,13 +115,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1501e832e9946feba2cb38585cad02b5"
   }, {
     "url": "resources/cn-1co.json",
-    "revision": "48b54c30df768dd13127e813059aedf6"
+    "revision": "3952e267c0044ba6d9b000cd624481a1"
   }, {
     "url": "resources/cn-1jo.json",
     "revision": "6e31ad5ef99e92354513ac7815008a32"
   }, {
     "url": "resources/cn-1pe.json",
-    "revision": "62161c114899223c4f7652bc3d49b540"
+    "revision": "7dc438504db754df01e9e2c17abe22b8"
   }, {
     "url": "resources/cn-1th.json",
     "revision": "f34f314e3e0b567204f733863c80693e"
@@ -157,16 +157,16 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "7d8054d5f3c3d5433ae097282918f409"
   }, {
     "url": "resources/cn-eph.json",
-    "revision": "e690643d81232af04ac1b9b2288b4464"
+    "revision": "c1ce9eb931d9395eaf1eea7fcbb4a36f"
   }, {
     "url": "resources/cn-gal.json",
-    "revision": "1932014aa0fdaba778405f3d7ea284e4"
+    "revision": "3b75259295685498a60369e775f8dccd"
   }, {
     "url": "resources/cn-heb.json",
-    "revision": "37cc162b0e27416d16116236893a8f99"
+    "revision": "cebe6dc85c52a6e782b3fcb2dd827c0c"
   }, {
     "url": "resources/cn-history.json",
-    "revision": "72f4eefbebdefa2cf5d1159396bb95d4"
+    "revision": "1bf26861aaa09733cc62d078fcf424c4"
   }, {
     "url": "resources/cn-jas.json",
     "revision": "db64c9ad3d2f900138c2305a92bf725e"
@@ -190,13 +190,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8f510e64917f244cfb6420095ffdb996"
   }, {
     "url": "resources/cn-phm.json",
-    "revision": "c4c43d294b46c9a0a18662fe36724773"
+    "revision": "2757307380319b37bbe884a01737bd4a"
   }, {
     "url": "resources/cn-preface.json",
-    "revision": "7ce0000a9afa8aac78bc82bb6a7cf884"
+    "revision": "44d9d8e92e06a695070f9b2e725f79cd"
   }, {
     "url": "resources/cn-rev.json",
-    "revision": "f17349d9018c0e41e9c5412d25d3e12e"
+    "revision": "57cb56038912c5049db2fcb96499d9bf"
   }, {
     "url": "resources/cn-rom.json",
     "revision": "8b2f202e4ef42c542553cb6f7dbb8dfc"
@@ -205,19 +205,19 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "69d90dc0fc4b58c6824b28dae5c64ead"
   }, {
     "url": "resources/tw-1co.json",
-    "revision": "411de3aff2690fd3d9fd448689adf827"
+    "revision": "b16912e8b01793880d845de277744848"
   }, {
     "url": "resources/tw-1jo.json",
     "revision": "47e688443d87cc76f2f08d21029d62df"
   }, {
     "url": "resources/tw-1pe.json",
-    "revision": "f6dad4dc6931b430a9c27957cea7d282"
+    "revision": "d7cc383ec6eb68ea6ec11831dadccb63"
   }, {
     "url": "resources/tw-1th.json",
     "revision": "7be3048202c8877ac10f36f53ae57340"
   }, {
     "url": "resources/tw-1ti.json",
-    "revision": "67f8353843e2d92309721e92d1bbcf9a"
+    "revision": "a4da261b24f44e30177f69cdce2e05c0"
   }, {
     "url": "resources/tw-2co.json",
     "revision": "a3da4c1827dc2959fab7cea96ddee367"
@@ -247,22 +247,22 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "d88fb6f6746a89edeeb8da7fec7a9765"
   }, {
     "url": "resources/tw-eph.json",
-    "revision": "d39348fe2cd3800cab00bf84f96b4930"
+    "revision": "f9ecfebcc24735c225cb0e13777ac1c9"
   }, {
     "url": "resources/tw-gal.json",
-    "revision": "91ddb3f8c0d481f886dd59fe1234e03d"
+    "revision": "157605b1c9d66dcbd54b2ba8540cefac"
   }, {
     "url": "resources/tw-heb.json",
-    "revision": "ca76b1bc9b9a9f777a05bde36de529b3"
+    "revision": "16654915a3293ca1a00e486eb5bb5641"
   }, {
     "url": "resources/tw-history.json",
-    "revision": "72f4eefbebdefa2cf5d1159396bb95d4"
+    "revision": "56f2dba2129bcd8a846d0ba9bdd257b0"
   }, {
     "url": "resources/tw-jas.json",
     "revision": "7ce20f3db0ef5b18a5c2f89bfe4f8b0e"
   }, {
     "url": "resources/tw-joh.json",
-    "revision": "8651768755de1040f8bb27db6532894b"
+    "revision": "ba891b5851627086831f544629f60b6e"
   }, {
     "url": "resources/tw-jud.json",
     "revision": "c0a2b957b826875234d3032f297d75bd"
@@ -283,10 +283,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "48bddf1042bf7f9c7951ace20f257a99"
   }, {
     "url": "resources/tw-preface.json",
-    "revision": "749a0ba72c82141c1c04a66fbd01aab9"
+    "revision": "45d0a82898fb83706dbae32225d0aa52"
   }, {
     "url": "resources/tw-rev.json",
-    "revision": "1f64fc39188f10dece1708de8dcfdcb4"
+    "revision": "2bf6d3696f247b1b4a7a49d76790374e"
   }, {
     "url": "resources/tw-rom.json",
     "revision": "af490c88c398c9fa37948b5636379281"
