@@ -46,13 +46,13 @@ const ResponsiveMenu = () => {
   const location = useLocation()
 
   const isReadingActive = useMatch('/book/*') !== null
-  const isInfoActive = useMatch('/info/*') !== null
-  const isLogsActive = useMatch('/logs/*') !== null
+  const isAboutActive = useMatch('/about/*') !== null
+  const isBibliographyActive = useMatch('/bibliography/*') !== null
 
   console.log({
     isReadingActive,
-    isInfoActive,
-    isLogsActive,
+    isAboutActive,
+    isBibliographyActive,
   })
 
   const jumpToButton = (
@@ -185,24 +185,24 @@ const ResponsiveMenu = () => {
               // @ts-ignore
               fontSize={useUiSizeClassName('md', 'button')}
               onClick={() => {
-                navigate('/info')
+                navigate('/about')
                 setOpen(false)
               }}
-              variant={isInfoActive ? 'solid' : 'surface'}
+              variant={isAboutActive ? 'solid' : 'surface'}
             >
-              {useT(['资料', '資訊'])}
+              {useT(['关于', '關於'])}
             </Button>
             <Button
               w="100%"
               // @ts-ignore
               fontSize={useUiSizeClassName('md', 'button')}
               onClick={() => {
-                navigate('/logs')
+                navigate('/bibliography')
                 setOpen(false)
               }}
-              variant={isLogsActive ? 'solid' : 'surface'}
+              variant={isBibliographyActive ? 'solid' : 'surface'}
             >
-              {useT(['更新记录', '更新記錄'])}
+              {useT(['参考书目', '參考書目'])}
             </Button>
           </Stack>
         </DrawerBody>
@@ -249,14 +249,14 @@ const ResponsiveMenu = () => {
           _active={{ bg: `${useColorPalette()}.600` }}
           _hover={{ bg: `${useColorPalette()}.600` }}
           paddingX={'0.7em'}
-          variant={isInfoActive ? 'outline' : 'ghost'}
+          variant={isAboutActive ? 'outline' : 'ghost'}
           // @ts-ignore
           fontSize={useUiSizeClassName('sm', 'button')}
           onClick={() => {
-            navigate('/info')
+            navigate('/about')
           }}
         >
-          <MdOutlineInfo /> {useT(['资料', '資訊'])}
+          <MdOutlineInfo /> {useT(['关于', '關於'])}
         </IconButton>
       </MenuItem>
 
@@ -268,14 +268,14 @@ const ResponsiveMenu = () => {
           _active={{ bg: `${useColorPalette()}.600` }}
           _hover={{ bg: `${useColorPalette()}.600` }}
           paddingX={'0.7em'}
-          variant={isLogsActive ? 'outline' : 'ghost'}
+          variant={isBibliographyActive ? 'outline' : 'ghost'}
           // @ts-ignore
           fontSize={useUiSizeClassName('sm', 'button')}
           onClick={() => {
-            navigate('/logs')
+            navigate('/bibliography')
           }}
         >
-          <RiArchiveDrawerLine /> {useT(['更新记录', '更新記錄'])}
+          <RiArchiveDrawerLine /> {useT(['参考书目', '參考書目'])}
         </IconButton>
       </MenuItem>
     </HStack>

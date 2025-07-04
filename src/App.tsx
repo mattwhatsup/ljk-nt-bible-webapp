@@ -12,7 +12,7 @@ import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
 import NoMatch from './NoMatch'
-import InfoLayout from './pages/InfoLayout'
+import AboutLayout from './pages/AboutLayout'
 import Preface from './pages/Preface'
 import Bibliography from './pages/Bibliography'
 import Logs from './pages/Logs'
@@ -21,6 +21,7 @@ import {
   useColorPalette,
 } from './features/settings/settingsSlice'
 import { useEffect } from 'react'
+import Article from './pages/Article'
 
 const App = () => {
   let location = useLocation()
@@ -45,12 +46,20 @@ const App = () => {
         </Route>
 
         <Route element={<OtherLayout />}>
-          <Route path="/info" element={<InfoLayout />}>
-            <Route index element={<Navigate to="preface" />} />
-            <Route path="preface" element={<Preface />} />
-            <Route path="bibliography" element={<Bibliography />} />
+          <Route path="/about" element={<AboutLayout />}>
+            <Route index element={<Navigate to="author-bio" />} />
+            <Route
+              path="author-bio"
+              element={<Article resourceName="author-bio" />}
+            />
+            <Route
+              path="preface"
+              element={<Article resourceName="preface" />}
+            />
+
+            <Route path="logs" element={<Logs />} />
           </Route>
-          <Route path="/logs" element={<Logs />} />
+          <Route path="/bibliography" element={<Bibliography />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
