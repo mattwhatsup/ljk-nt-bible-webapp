@@ -151,7 +151,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9f32924524a30d6a26a8657fab6919fc"
   }, {
     "url": "resources/cn-author-bio.json",
-    "revision": "2ca48da205c453a3cd32710eb56f52c7"
+    "revision": "65d1cad20a9cec8f75a1b868310f1b0f"
   }, {
     "url": "resources/cn-bibliography.json",
     "revision": "743b7cb656342bb9f6d9bbfa30e8d525"
@@ -244,7 +244,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "bdf5d684b19e10e1417366a525137ebf"
   }, {
     "url": "resources/tw-author-bio.json",
-    "revision": "5e8dc2746ee6ae2f185eb0177299acc1"
+    "revision": "88d5fcc709ff0fbadae5dc8e42a2759f"
   }, {
     "url": "resources/tw-bibliography.json",
     "revision": "ac2e3728d1de4e3b0c6cd81f14523995"
