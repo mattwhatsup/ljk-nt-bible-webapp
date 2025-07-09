@@ -115,10 +115,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1501e832e9946feba2cb38585cad02b5"
   }, {
     "url": "resources/cn-1co.json",
-    "revision": "c40273d9c8e6d2f02233b92b69e1e8e5"
+    "revision": "81643088f01a13bedf07fae168a33b40"
   }, {
     "url": "resources/cn-1jo.json",
-    "revision": "bdd409fdd9a1c8590344a18d666cd1a0"
+    "revision": "681ad173b69491dbc28626830277a4db"
   }, {
     "url": "resources/cn-1pe.json",
     "revision": "7dc438504db754df01e9e2c17abe22b8"
@@ -151,7 +151,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9f32924524a30d6a26a8657fab6919fc"
   }, {
     "url": "resources/cn-author-bio.json",
-    "revision": "65d1cad20a9cec8f75a1b868310f1b0f"
+    "revision": "434f4c8cd466f9f32d300ba84d42cc77"
   }, {
     "url": "resources/cn-bibliography.json",
     "revision": "743b7cb656342bb9f6d9bbfa30e8d525"
@@ -160,7 +160,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "0b21a87efdc879a7e7c4af14969a5f7f"
   }, {
     "url": "resources/cn-eph.json",
-    "revision": "c635e619335e9b16e5948960ed9645ee"
+    "revision": "e4138057290a16c7d497e83de2d13022"
   }, {
     "url": "resources/cn-gal.json",
     "revision": "a9aecb750fdf006219438178934ba011"
@@ -196,7 +196,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "5ba49b9a4dc79e0ae4614876732863d7"
   }, {
     "url": "resources/cn-preface.json",
-    "revision": "428b6663125cd2474bd4650188a2a476"
+    "revision": "a60762a3f65b653fe206cab4bcffd280"
   }, {
     "url": "resources/cn-rev.json",
     "revision": "af31d7af0f84adb48084f4955f7c6779"
@@ -208,10 +208,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "69d90dc0fc4b58c6824b28dae5c64ead"
   }, {
     "url": "resources/tw-1co.json",
-    "revision": "2f981c055db6d483d74c5ae760cda54c"
+    "revision": "5a243db9001c87c6b67ab6f6547c473d"
   }, {
     "url": "resources/tw-1jo.json",
-    "revision": "d0c7cdf276a5c8d733f26d9bd79f33a4"
+    "revision": "8774c967867f746caf57a9240ee4f10a"
   }, {
     "url": "resources/tw-1pe.json",
     "revision": "d7cc383ec6eb68ea6ec11831dadccb63"
@@ -244,16 +244,16 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "bdf5d684b19e10e1417366a525137ebf"
   }, {
     "url": "resources/tw-author-bio.json",
-    "revision": "88d5fcc709ff0fbadae5dc8e42a2759f"
+    "revision": "10a5fbda27770eefe8f23d090a61d3dc"
   }, {
     "url": "resources/tw-bibliography.json",
     "revision": "ac2e3728d1de4e3b0c6cd81f14523995"
   }, {
     "url": "resources/tw-col.json",
-    "revision": "c631e191fc7251eea3316960a76b269f"
+    "revision": "3d3e4ecd7d79d0b79045d1f01ad24eea"
   }, {
     "url": "resources/tw-eph.json",
-    "revision": "d88b7b0973631909ba4eb75d6c027472"
+    "revision": "0241608d679e0e1a8e5ade9b3446cf24"
   }, {
     "url": "resources/tw-gal.json",
     "revision": "0991df6407883dd5cf5f29c9dabb0b7a"
@@ -289,7 +289,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "0654619bd3704f413f3b9afb8c753b06"
   }, {
     "url": "resources/tw-preface.json",
-    "revision": "00204cb4250d89d7bf5f831fa2019677"
+    "revision": "8fc7ba0d4968c2582e725de61b0a53ab"
   }, {
     "url": "resources/tw-rev.json",
     "revision": "d2b24c1b5fea5466c14abd101cb07531"
@@ -298,7 +298,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "44e5af5df4f8d9fb51012c12b5f9c5a2"
   }, {
     "url": "resources/tw-tit.json",
-    "revision": "ca12e81a364da584827cef0715d90176"
+    "revision": "27972f8068847a55d9ae3678f316fde2"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "0.0.0"
