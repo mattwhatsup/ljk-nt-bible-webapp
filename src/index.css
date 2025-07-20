@@ -282,3 +282,57 @@ i {
     margin-right: auto;
   }
 }
+
+/* 让父容器有透视感 */
+.book-flip-parent {
+  perspective: 1200px;
+  perspective-origin: 50% 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 动画本体 */
+.book-flip {
+  animation: bookFlip 0.9s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  transform-origin: left center;
+  will-change: transform, opacity;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.book-flip-parent img,
+.book-flip {
+  width: 100%;
+  height: 100%;
+  max-width: 480px; /* 你希望的最大宽度 */
+  max-height: 90vh; /* 保证上下有留白 */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0.4rem;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes bookFlip {
+  0% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  }
+  /* 40% {
+    transform: rotateY(-40deg) scale(1.03);
+    opacity: 0.95;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    transform: rotateY(-100deg) scale(1.08);
+    opacity: 0.6;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  } */
+  100% {
+    transform: rotateY(-120deg) scale(1.12);
+    opacity: 0;
+    box-shadow: none;
+  }
+}

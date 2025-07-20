@@ -22,6 +22,7 @@ import {
 } from './features/settings/settingsSlice'
 import { useEffect } from 'react'
 import Article from './pages/Article'
+import FrontPage from './pages/FrontPage'
 
 const App = () => {
   let location = useLocation()
@@ -38,7 +39,7 @@ const App = () => {
     <div className="App">
       <ResponsiveMenu />
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<Navigate to="/book/mt/1" />} />
+        <Route path="/" element={<FrontPage />} />
         <Route path="/book/:book/:chapter/:verse?" element={<BookLayout />}>
           <Route index element={<Book />} />
 

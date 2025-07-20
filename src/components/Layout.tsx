@@ -8,9 +8,14 @@ import type { HistoryData } from '@/scripts/includes/other-parser'
 interface LayoutProps {
   children?: React.ReactNode
   forBook?: boolean
+  disableFrameset?: boolean
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  forBook,
+  disableFrameset = false,
+}) => {
   const [version, setVersion] = useState<string | null>('0.0')
   useEffect(() => {
     fetchContent('cn', 'history').then(content => {
@@ -27,12 +32,17 @@ const Layout: React.FC<LayoutProps> = ({ children, forBook }) => {
         <Box as="main" py={4}>
           <Box
             // borderWidth="1px"
-            borderRadius="lg"
-            {...({
-              maxContentDown: { padding: '1rem 2rem' }, // maxContent是自己定义的，在provider.tsx中
-              maxContent: { padding: '1rem' },
-            } as any)}
-            borderWidth={{ base: '1px', maxContentDown: '0' }} // 响应式布局
+            {...(disableFrameset
+              ? {
+                  padding: '1rem',
+                  // marginTop: '-1rem',
+                }
+              : ({
+                  borderRadius: 'lg',
+                  maxContentDown: { padding: '1rem 2rem' }, // maxContent是自己定义的，在provider.tsx中
+                  maxContent: { padding: '1rem' },
+                  borderWidth: { base: '1px', maxContentDown: '0' }, // 响应式布局
+                } as any))}
           >
             {children}
           </Box>

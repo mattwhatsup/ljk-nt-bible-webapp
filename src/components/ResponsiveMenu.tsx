@@ -173,7 +173,7 @@ const ResponsiveMenu = () => {
               // @ts-ignore
               fontSize={useUiSizeClassName('md', 'button')}
               onClick={() => {
-                navigate('/')
+                navigate('/book/mt/1')
                 setOpen(false)
               }}
               variant={isReadingActive ? 'solid' : 'surface'}
@@ -235,7 +235,7 @@ const ResponsiveMenu = () => {
           // @ts-ignore
           fontSize={useUiSizeClassName('sm', 'button')}
           onClick={() => {
-            navigate('/')
+            navigate('/book/mt/1')
           }}
         >
           <CgReadme /> {useT(['阅读', '閱讀'])}
