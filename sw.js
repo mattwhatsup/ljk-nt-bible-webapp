@@ -79,7 +79,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "apple-touch-icon.png",
-    "revision": "43ff7b31a0acb47db42e678df0b86dd7"
+    "revision": "f21611b452a0a3106ebb9c829ac160e8"
   }, {
     "url": "assets/index-CVwW1kPv.css",
     "revision": null
@@ -88,13 +88,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": null
   }, {
     "url": "favicon-96x96.png",
-    "revision": "0cc4049d109db636987b51d003d2f611"
+    "revision": "1f3188f47d481f203881c43c914a6d02"
   }, {
     "url": "favicon.ico",
-    "revision": "f6b870dbd2c28caf09a2bfb1f9ecc061"
+    "revision": "5b12c32d7859d1875896457bbf46e932"
   }, {
     "url": "favicon.svg",
-    "revision": "5b18e5c1f8ba1aac7345e361cc721b77"
+    "revision": "bc25ce440fd26506cb11c8311a4c8ac0"
   }, {
     "url": "index.html",
     "revision": "7569a4cf4a3f2c07501183f3a6769fd6"
@@ -109,10 +109,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "01a4cd97d457afb7c2b7c5c2828f05ba"
   }, {
     "url": "web-app-manifest-192x192.png",
-    "revision": "bba748bd41a30b46c6c37e1da059208c"
+    "revision": "9c9d233a1b4468044dd4d1a47f329524"
   }, {
     "url": "web-app-manifest-512x512.png",
-    "revision": "1501e832e9946feba2cb38585cad02b5"
+    "revision": "12ca137a497102fb7f36b1a21773052b"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "aca665a75a388661cdf3b85df58382e0"
@@ -487,16 +487,16 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "0.0.0"
   }, {
     "url": "apple-touch-icon.png",
-    "revision": "43ff7b31a0acb47db42e678df0b86dd7"
+    "revision": "f21611b452a0a3106ebb9c829ac160e8"
   }, {
     "url": "favicon.ico",
-    "revision": "f6b870dbd2c28caf09a2bfb1f9ecc061"
+    "revision": "5b12c32d7859d1875896457bbf46e932"
   }, {
     "url": "web-app-manifest-192x192.png",
-    "revision": "bba748bd41a30b46c6c37e1da059208c"
+    "revision": "9c9d233a1b4468044dd4d1a47f329524"
   }, {
     "url": "web-app-manifest-512x512.png",
-    "revision": "1501e832e9946feba2cb38585cad02b5"
+    "revision": "12ca137a497102fb7f36b1a21773052b"
   }, {
     "url": "manifest.webmanifest",
     "revision": "cea2c37f0d693bb73515cea0eb9c9cdb"

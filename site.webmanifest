@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "LJK New Testment Bible App",
+  "short_name": "LJK-Bible",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
