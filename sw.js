@@ -78,8 +78,8 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
    * See https://goo.gl/S9QRab
    */
   workbox.precacheAndRoute([{
-    "url": "apple-touch-icon.png",
-    "revision": "f21611b452a0a3106ebb9c829ac160e8"
+    "url": "apple-touch-icon-2.png",
+    "revision": "5d4726e217669b9d446e2de151b1b21d"
   }, {
     "url": "assets/index-CVwW1kPv.css",
     "revision": null
@@ -87,17 +87,17 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "assets/index-ZwWa4c3a.js",
     "revision": null
   }, {
-    "url": "favicon-96x96.png",
-    "revision": "1f3188f47d481f203881c43c914a6d02"
+    "url": "favicon-2.ico",
+    "revision": "2fef8b8fca512c48ef7d262384f29014"
   }, {
-    "url": "favicon.ico",
-    "revision": "5b12c32d7859d1875896457bbf46e932"
-  }, {
-    "url": "favicon.svg",
+    "url": "favicon-2.svg",
     "revision": "bc25ce440fd26506cb11c8311a4c8ac0"
   }, {
+    "url": "favicon-96x96-2.png",
+    "revision": "74333ed8c75d1f30634875c88abff2ef"
+  }, {
     "url": "index.html",
-    "revision": "7569a4cf4a3f2c07501183f3a6769fd6"
+    "revision": "cf6e339647f6649275c82cf864176036"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -108,11 +108,11 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "registerSW.js",
     "revision": "01a4cd97d457afb7c2b7c5c2828f05ba"
   }, {
-    "url": "web-app-manifest-192x192.png",
-    "revision": "9c9d233a1b4468044dd4d1a47f329524"
+    "url": "web-app-manifest-192x192-2.png",
+    "revision": "ec6723d39e8c059edbaa3cf4f78876ed"
   }, {
-    "url": "web-app-manifest-512x512.png",
-    "revision": "12ca137a497102fb7f36b1a21773052b"
+    "url": "web-app-manifest-512x512-2.png",
+    "revision": "fd94eda02b0f6cf666c414e35707a63c"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "aca665a75a388661cdf3b85df58382e0"
@@ -485,18 +485,6 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
   }, {
     "url": "resources/tw-tit.json",
     "revision": "0.0.0"
-  }, {
-    "url": "apple-touch-icon.png",
-    "revision": "f21611b452a0a3106ebb9c829ac160e8"
-  }, {
-    "url": "favicon.ico",
-    "revision": "5b12c32d7859d1875896457bbf46e932"
-  }, {
-    "url": "web-app-manifest-192x192.png",
-    "revision": "9c9d233a1b4468044dd4d1a47f329524"
-  }, {
-    "url": "web-app-manifest-512x512.png",
-    "revision": "12ca137a497102fb7f36b1a21773052b"
   }, {
     "url": "manifest.webmanifest",
     "revision": "cea2c37f0d693bb73515cea0eb9c9cdb"
