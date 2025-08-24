@@ -9,7 +9,9 @@ import type { DataBook } from '@/app/data-types'
 const allBooks = _allBooks as Array<DataBook>
 
 export function copyToClipboard(text: string) {
-  return navigator.clipboard.writeText(text)
+  return navigator.clipboard.writeText(
+    text.replace(/<[^>]+>.*?<\/[^>]+>|<[^>]+\/>/gs, ''),
+  )
 }
 
 export function getSelectedVersesText(

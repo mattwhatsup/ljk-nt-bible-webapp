@@ -296,7 +296,7 @@ function Content({}: Props) {
       {/* 显示注释 */}
       <Field.Root orientation="horizontal">
         <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
-          {useT(['显示注释', '顯示注釋'])}
+          {useT(['显示注释', '顯示註釋'])}
         </Field.Label>
         <Switch.Root
           // @ts-ignore

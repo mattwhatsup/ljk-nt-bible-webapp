@@ -79,7 +79,7 @@ span.hebrew {
 }
 mark.hebrew,
 span.hebrew {
-  font-size: 1.23em;
+  font-size: 1.3em;
   background-color: unset;
   font-family: hebrewfont, sans-serif;
 }
@@ -88,6 +88,9 @@ span.greek {
   background-color: unset;
   font-size: 1.05em;
   font-family: greekfont;
+}
+span.latin {
+  font-size: 0.875em;
 }
 sup {
   font-size: 0.5em !important;

@@ -3,7 +3,7 @@ import type { RootState } from '@/app/store'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-export const textSizes = [16, 18, 20, 22, 24] as const
+export const textSizes = [16, 18, 20, 22, 24, 28, 32, 36] as const
 export type TextSize = (typeof textSizes)[number]
 
 const uiSizes = [0, 1, 2, 3] as const
