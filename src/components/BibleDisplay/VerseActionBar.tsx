@@ -42,52 +42,56 @@ export default function VerseActionBar({}: Props) {
     selectAfterNavigateKeepSelection,
   )
 
-  const handleCopy = useCallback(() => {
-    const selection = window.getSelection()
-    if (
-      selection &&
-      selection.type === 'Range' &&
-      selection.toString().length > 0
-    ) {
-      return
-    }
+  const handleCopy = useCallback(
+    (force: boolean = false) => {
+      const selection = window.getSelection()
+      if (
+        !force &&
+        selection &&
+        selection.type === 'Range' &&
+        selection.toString().length > 0
+      ) {
+        return
+      }
 
-    if (!selectedVerses.length) return
+      if (!selectedVerses.length) return
 
-    copyToClipboard(
-      getSelectedVersesText(
-        language,
-        book as BookName,
-        parseInt(chapter || '1'),
-        selectedVerses,
-        chapterData,
-      ),
-    )
-      .then(() => {
-        toaster.create({
-          title: _T(
-            [
-              `已复制 ${selectedVerses.length} 节经文`,
-              `已複製 ${selectedVerses.length} 節經文`,
-            ],
-            language,
-          ),
-          type: 'success',
+      copyToClipboard(
+        getSelectedVersesText(
+          language,
+          book as BookName,
+          parseInt(chapter || '1'),
+          selectedVerses,
+          chapterData,
+        ),
+      )
+        .then(() => {
+          toaster.create({
+            title: _T(
+              [
+                `已复制 ${selectedVerses.length} 节经文`,
+                `已複製 ${selectedVerses.length} 節經文`,
+              ],
+              language,
+            ),
+            type: 'success',
+          })
         })
-      })
-      .catch(() => {
-        toaster.create({
-          title: _T(['复制失败', '複製失敗'], language),
-          type: 'error',
+        .catch(() => {
+          toaster.create({
+            title: _T(['复制失败', '複製失敗'], language),
+            type: 'error',
+          })
         })
-      })
-    dispatch(
-      clearSelectedVerses({
-        book: book!,
-        chapter: parseInt(chapter || '1'),
-      }),
-    )
-  }, [language, book, chapter, selectedVerses, chapterData, dispatch])
+      dispatch(
+        clearSelectedVerses({
+          book: book!,
+          chapter: parseInt(chapter || '1'),
+        }),
+      )
+    },
+    [language, book, chapter, selectedVerses, chapterData, dispatch],
+  )
 
   const handleCancel = useCallback(() => {
     if (!selectedVerses.length) return
@@ -159,7 +163,7 @@ export default function VerseActionBar({}: Props) {
                   variant="outline"
                   // @ts-ignore
                   size={useUiSizeClassName('sm', 'button')}
-                  onClick={handleCopy}
+                  onClick={() => handleCopy(true)}
                   color="white"
                   _hover={{
                     backgroundColor: `${useColorPalette()}.400`,
