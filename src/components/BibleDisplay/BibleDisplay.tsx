@@ -146,9 +146,19 @@ export default function BibleDisplay({ data }: Props) {
 
   return (
     <Box
-      userSelect={'none'}
+      // userSelect={'none'}
       className="content-display"
       onClick={event => {
+        const selection = window.getSelection()
+        if (
+          selection &&
+          selection.type === 'Range' &&
+          selection.toString().length > 0
+        ) {
+          // 用户正在选中文字，不处理点击
+          return
+        }
+
         let { target, shiftKey } = event
         if (target instanceof HTMLElement) {
           const el = findMatchedParentNode(target, el => {

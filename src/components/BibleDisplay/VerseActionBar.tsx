@@ -43,7 +43,17 @@ export default function VerseActionBar({}: Props) {
   )
 
   const handleCopy = useCallback(() => {
+    const selection = window.getSelection()
+    if (
+      selection &&
+      selection.type === 'Range' &&
+      selection.toString().length > 0
+    ) {
+      return
+    }
+
     if (!selectedVerses.length) return
+
     copyToClipboard(
       getSelectedVersesText(
         language,
