@@ -81,10 +81,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon-2.png",
     "revision": "5d4726e217669b9d446e2de151b1b21d"
   }, {
-    "url": "assets/index-Co2OY4pK.js",
+    "url": "assets/index-CyloBb6N.js",
     "revision": null
   }, {
-    "url": "assets/index-CVwW1kPv.css",
+    "url": "assets/index-kmGED2z3.css",
     "revision": null
   }, {
     "url": "favicon-2.ico",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "74333ed8c75d1f30634875c88abff2ef"
   }, {
     "url": "index.html",
-    "revision": "b03a6bd4b6aa7f554846608dcec66ced"
+    "revision": "2409a7c1b0d457dec1922c73dacf4fa5"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -151,10 +151,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9f32924524a30d6a26a8657fab6919fc"
   }, {
     "url": "resources/cn-author-bio.json",
-    "revision": "d577671973c74000e502e6b86e2adebf"
+    "revision": "97531c3087a037faa82e28e4561742c7"
   }, {
     "url": "resources/cn-bibliography.json",
-    "revision": "743b7cb656342bb9f6d9bbfa30e8d525"
+    "revision": "f805341672e062562337a3474facc3c0"
   }, {
     "url": "resources/cn-col.json",
     "revision": "124ecbbb8ec56752814b653a2ae947b2"
@@ -196,7 +196,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "b50d62b4f76da50df777acffd79c6e8c"
   }, {
     "url": "resources/cn-preface.json",
-    "revision": "a60762a3f65b653fe206cab4bcffd280"
+    "revision": "bfd25fdcc89fddeeade67ea84293e004"
   }, {
     "url": "resources/cn-rev.json",
     "revision": "af31d7af0f84adb48084f4955f7c6779"
@@ -244,10 +244,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "bdf5d684b19e10e1417366a525137ebf"
   }, {
     "url": "resources/tw-author-bio.json",
-    "revision": "2e9e001c49e857f9ae0d6f5ced025f54"
+    "revision": "0b310ffa82339e9613ea22239f03f4fc"
   }, {
     "url": "resources/tw-bibliography.json",
-    "revision": "ac2e3728d1de4e3b0c6cd81f14523995"
+    "revision": "2b958f574b2a734d44da5b99f99056c3"
   }, {
     "url": "resources/tw-col.json",
     "revision": "8254faca4fc6ecaf53bd0eb2a75c41aa"
@@ -289,7 +289,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "38027bfa1f68cfa09b457c5163e13746"
   }, {
     "url": "resources/tw-preface.json",
-    "revision": "8fc7ba0d4968c2582e725de61b0a53ab"
+    "revision": "39362cbdaf32c332cda29662d9e1f913"
   }, {
     "url": "resources/tw-rev.json",
     "revision": "d2b24c1b5fea5466c14abd101cb07531"
