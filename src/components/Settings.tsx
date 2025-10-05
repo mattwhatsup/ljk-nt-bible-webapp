@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { CloseButton, Dialog, Portal } from '@chakra-ui/react'
+import { Button, CloseButton, Dialog, Portal } from '@chakra-ui/react'
 import { Field, Stack, Switch } from '@chakra-ui/react'
 import type { TextSize, UiSize } from '@/features/settings/settingsSlice'
 import {
@@ -24,9 +24,9 @@ import {
 import { Select, createListCollection } from '@chakra-ui/react'
 import { useAppDispatch } from '@/app/hooks'
 
-type Props = {}
+type Props = { withReturn?: boolean }
 
-function Content({}: Props) {
+function Content({ withReturn }: Props) {
   const dispatch = useAppDispatch()
   const languages = createListCollection({
     items: [
@@ -88,6 +88,7 @@ function Content({}: Props) {
     // itemToValue: item => item.value,
   })
   const colorPalette = useColorPalette()
+  const navigate = useNavigate()
 
   // const textSizes = createListCollection({
   //   items: [...Array(11)].map((_, index) => ({
@@ -125,7 +126,7 @@ function Content({}: Props) {
   })
   const language = useLanguage()
   const uiSize = useUiSize()
-
+  const returnText = useT(['返回', '返回'])
   return (
     <Stack gap="8" css={{ '--field-label-width': '200px' }}>
       {/* 色调 */}
@@ -349,6 +350,12 @@ function Content({}: Props) {
           <Switch.Control />
         </Switch.Root>
       </Field.Root>
+
+      {withReturn && (
+        <Button colorPalette={colorPalette} onClick={() => navigate(-1)}>
+          {returnText}
+        </Button>
+      )}
     </Stack>
   )
 }
@@ -360,7 +367,7 @@ export default function Settings({}: Props) {
   const uiSize = useUiSize()
 
   if (!state?.backgroundLocation) {
-    return <Content />
+    return <Content withReturn />
   } else {
     return (
       <Dialog.Root

@@ -39,7 +39,8 @@ const App = () => {
     <div className="App">
       <ResponsiveMenu />
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<FrontPage />} />
+        {/* <Route path="/" element={<FrontPage />} /> */}
+        <Route path="/" index element={<Navigate to="/book/mt/1" replace />} />
         <Route path="/book/:book/:chapter/:verse?" element={<BookLayout />}>
           <Route index element={<Book />} />
 
