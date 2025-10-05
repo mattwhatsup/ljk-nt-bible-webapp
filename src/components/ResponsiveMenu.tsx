@@ -21,7 +21,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
-import { GoGear, GoSearch } from 'react-icons/go'
+import { GoGear } from 'react-icons/go'
 import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
@@ -34,6 +34,7 @@ import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
 import Logo from '@/logo-new.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
+import { TbLocation } from 'react-icons/tb'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -70,9 +71,9 @@ const ResponsiveMenu = () => {
         onClick={() => dispatch(openJumpToDialog())}
       >
         <Icon>
-          <GoSearch />
+          <TbLocation />
         </Icon>
-        {useT(['跳转', '跳轉'])}
+        {useT(['定位', '定位'])}
         <Kbd>
           {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
         </Kbd>
@@ -86,7 +87,7 @@ const ResponsiveMenu = () => {
         _hover={{ color: `${useColorPalette()}.700` }}
         onClick={() => dispatch(openJumpToDialog())}
       >
-        <GoSearch />
+        <TbLocation />
       </IconButton>
     </>
   )

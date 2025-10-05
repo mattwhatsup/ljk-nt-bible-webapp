@@ -17,11 +17,12 @@ import {
 import { copyToClipboard, getSelectedVersesText } from '@/utils/copy-utils'
 import { ActionBar, Button, Portal, Checkbox } from '@chakra-ui/react'
 import { useCallback, useEffect } from 'react'
-import { FaRegCopy, FaRegTrashAlt } from 'react-icons/fa'
+import { FaRegCopy } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { toaster, Toaster } from '../ui/toaster'
 import { Tooltip } from '../ui/tooltip'
 import { selectIsJumpToDialogOpen } from '@/features/status/statusSlice'
+import { MdClear } from 'react-icons/md'
 
 type Props = {}
 
@@ -186,7 +187,7 @@ export default function VerseActionBar({}: Props) {
                     backgroundColor: `${useColorPalette()}.400`,
                   }}
                 >
-                  <FaRegTrashAlt />
+                  <MdClear />
                 </Button>
               </Tooltip>
 
