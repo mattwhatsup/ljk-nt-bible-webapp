@@ -30,6 +30,7 @@ interface SettingsState {
   afterNavigateKeepSelection: boolean // 是否在跳转后保留选择
   textSize: TextSize // 字体大小
   uiSize: UiSize
+  lastNavigateBook: string | null
 }
 
 const defaultState: SettingsState = {
@@ -40,6 +41,7 @@ const defaultState: SettingsState = {
   afterNavigateKeepSelection: true,
   textSize: 16,
   uiSize: 0,
+  lastNavigateBook: null,
 }
 
 const loadState = (): SettingsState => {
@@ -82,6 +84,10 @@ export const settingsSlice = createSlice({
     setUiSize(state, action: PayloadAction<UiSize>) {
       state.uiSize = action.payload
     },
+
+    setLastNavigateBook(state, action: PayloadAction<string | null>) {
+      state.lastNavigateBook = action.payload
+    },
   },
 })
 
@@ -93,6 +99,7 @@ export const {
   setAfterNavigateKeepSelection,
   setTextSize,
   setUiSize,
+  setLastNavigateBook,
 } = settingsSlice.actions
 
 export default settingsSlice.reducer
@@ -131,6 +138,11 @@ export const selectAfterNavigateKeepSelection = (state: RootState) =>
 
 export const useAfterNavigateKeepSelection = () =>
   useAppSelector(selectAfterNavigateKeepSelection)
+
+export const selectLastNavigateBook = (state: RootState) =>
+  state.settings.lastNavigateBook
+
+export const useLastNavigateBook = () => useAppSelector(selectLastNavigateBook)
 export const useLanguage = () => {
   const language = useAppSelector(selectLanguage)
   return language

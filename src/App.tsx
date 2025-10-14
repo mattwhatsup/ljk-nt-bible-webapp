@@ -1,19 +1,12 @@
 import Layout from './components/Layout'
 import ResponsiveMenu from './components/ResponsiveMenu'
-import {
-  Routes,
-  Route,
-  Navigate,
-  useParams,
-  Outlet,
-  useLocation,
-} from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
 import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
 import NoMatch from './NoMatch'
 import AboutLayout from './pages/AboutLayout'
-import Preface from './pages/Preface'
+// import Preface from './pages/Preface'
 import Bibliography from './pages/Bibliography'
 import Logs from './pages/Logs'
 import {
@@ -22,7 +15,7 @@ import {
 } from './features/settings/settingsSlice'
 import { useEffect } from 'react'
 import Article from './pages/Article'
-import FrontPage from './pages/FrontPage'
+// import FrontPage from './pages/FrontPage'
 
 const App = () => {
   let location = useLocation()
@@ -49,7 +42,7 @@ const App = () => {
 
         <Route element={<OtherLayout />}>
           <Route path="/about" element={<AboutLayout />}>
-            <Route index element={<Navigate to="author-bio" />} />
+            <Route index element={<Navigate to="author-bio" replace />} />
             <Route
               path="author-bio"
               element={<Article resourceName="author-bio" />}
@@ -83,7 +76,7 @@ const App = () => {
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/modal?file=src%2FApp.tsx
 
 const BookLayout = () => {
-  const { book } = useParams<{ book: string }>()
+  // const { book } = useParams<{ book: string }>()
 
   return (
     <Layout forBook>

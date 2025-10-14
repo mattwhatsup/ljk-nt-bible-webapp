@@ -25,6 +25,7 @@ import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
 import {
   useColorPalette,
+  useLastNavigateBook,
   useT,
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
@@ -47,12 +48,7 @@ const ResponsiveMenu = () => {
   const isReadingActive = useMatch('/book/*') !== null
   const isAboutActive = useMatch('/about/*') !== null
   const isBibliographyActive = useMatch('/bibliography/*') !== null
-
-  console.log({
-    isReadingActive,
-    isAboutActive,
-    isBibliographyActive,
-  })
+  const lastNavigateBook = useLastNavigateBook()
 
   const jumpToButton = (
     <>
@@ -169,7 +165,11 @@ const ResponsiveMenu = () => {
               // @ts-ignore
               fontSize={useUiSizeClassName('md', 'button')}
               onClick={() => {
-                navigate('/book/mt/1')
+                if (lastNavigateBook) {
+                  navigate(lastNavigateBook)
+                } else {
+                  navigate('/book/mt/1')
+                }
                 setOpen(false)
               }}
               variant={isReadingActive ? 'solid' : 'surface'}
@@ -181,7 +181,7 @@ const ResponsiveMenu = () => {
               // @ts-ignore
               fontSize={useUiSizeClassName('md', 'button')}
               onClick={() => {
-                navigate('/about')
+                navigate('/about/author-bio')
                 setOpen(false)
               }}
               variant={isAboutActive ? 'solid' : 'surface'}
@@ -231,7 +231,11 @@ const ResponsiveMenu = () => {
           // @ts-ignore
           fontSize={useUiSizeClassName('sm', 'button')}
           onClick={() => {
-            navigate('/book/mt/1')
+            if (lastNavigateBook) {
+              navigate(lastNavigateBook)
+            } else {
+              navigate('/book/mt/1')
+            }
           }}
         >
           <CgReadme /> {useT(['阅读', '閱讀'])}
@@ -249,7 +253,7 @@ const ResponsiveMenu = () => {
           // @ts-ignore
           fontSize={useUiSizeClassName('sm', 'button')}
           onClick={() => {
-            navigate('/about')
+            navigate('/about/author-bio')
           }}
         >
           <MdOutlineInfo /> {useT(['关于', '關於'])}

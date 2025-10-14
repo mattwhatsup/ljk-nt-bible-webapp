@@ -23,6 +23,7 @@ import {
 } from '@/features/settings/settingsSlice'
 import { Select, createListCollection } from '@chakra-ui/react'
 import { useAppDispatch } from '@/app/hooks'
+import { useRouteHistory } from '@/RouteHistoryContext'
 
 type Props = { withReturn?: boolean }
 
@@ -365,9 +366,10 @@ export default function Settings({}: Props) {
   const navigate = useNavigate()
   const title = useT(['设置', '設置'])
   const uiSize = useUiSize()
+  const { previous } = useRouteHistory()
 
   if (!state?.backgroundLocation) {
-    return <Content withReturn />
+    return <Content withReturn={!!previous} />
   } else {
     return (
       <Dialog.Root

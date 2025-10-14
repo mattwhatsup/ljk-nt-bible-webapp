@@ -9,16 +9,19 @@ import Paragraph from './Paragraph'
 import Reference from './Reference'
 import Line from './Line'
 import VerseNo from './VerseNo'
-import { cloneElement } from 'react'
+import { cloneElement, useEffect } from 'react'
 import CommentList from './CommonList'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import {
   makeChapterVersesSelector,
   selectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import VerseActionBar from './VerseActionBar'
-import { useTextSize } from '@/features/settings/settingsSlice'
+import {
+  setLastNavigateBook,
+  useTextSize,
+} from '@/features/settings/settingsSlice'
 
 type Props = {
   data: BibleItemNodeWithVerseList
@@ -143,6 +146,10 @@ export default function BibleDisplay({ data }: Props) {
     parseInt(chapter || '1'),
   )
   const selectedVerses = useAppSelector(chapterVersesSelector)
+  const location = useLocation()
+  useEffect(() => {
+    dispatch(setLastNavigateBook(location.pathname))
+  }, [dispatch, location.pathname])
 
   return (
     <Box

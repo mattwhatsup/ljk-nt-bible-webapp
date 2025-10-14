@@ -30,6 +30,7 @@ import {
   useUiSize,
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
+import { useNavigateBible } from '@/useNavigateBible'
 type Props = {}
 
 export default function JumpToDialog({}: Props) {
@@ -56,11 +57,7 @@ export default function JumpToDialog({}: Props) {
       // console.log('key down', event.key.toLowerCase())
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'j') {
         event.preventDefault()
-        console.log(
-          location,
-          location.pathname === '/settings' &&
-            location.state?.backgroundLocation,
-        )
+
         if (
           location.pathname === '/settings' &&
           location.state?.backgroundLocation
@@ -134,12 +131,11 @@ export default function JumpToDialog({}: Props) {
     }
   }
 
-  const navigate = useNavigate()
-
+  // const navigate = useNavigate()
+  const navigateBible = useNavigateBible()
   const jumpTo = (value: string) => {
     const [abbr, chapter, verse] = value.split(' ')
-    const path = `/book/${abbr}/${chapter}/${verse}`
-    navigate(path)
+    navigateBible(abbr, chapter, verse)
   }
 
   return (

@@ -7,6 +7,7 @@ import { Provider as ChakraProvider } from '@/components/ui/provider'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 import ErrorBoundary from './components/ErrorBoundary'
+import { RouteHistoryProvider } from './RouteHistoryContext'
 
 const container = document.getElementById('root')
 
@@ -18,15 +19,17 @@ if (container) {
       <Router
         basename={process.env.NODE_ENV === 'gh' ? '/ljk-nt-bible-webapp/' : '/'}
       >
-        <Provider store={store}>
-          <ChakraProvider>
-            <ErrorBoundary>
-              <Suspense fallback={<div>Error...</div>}>
-                <App />
-              </Suspense>
-            </ErrorBoundary>
-          </ChakraProvider>
-        </Provider>
+        <RouteHistoryProvider>
+          <Provider store={store}>
+            <ChakraProvider>
+              <ErrorBoundary>
+                <Suspense fallback={<div>Error...</div>}>
+                  <App />
+                </Suspense>
+              </ErrorBoundary>
+            </ChakraProvider>
+          </Provider>
+        </RouteHistoryProvider>
       </Router>
     </React.StrictMode>,
   )
