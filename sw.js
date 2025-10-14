@@ -81,10 +81,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon-2.png",
     "revision": "5d4726e217669b9d446e2de151b1b21d"
   }, {
-    "url": "assets/index-BbxKBKXK.js",
+    "url": "assets/index-kmGED2z3.css",
     "revision": null
   }, {
-    "url": "assets/index-kmGED2z3.css",
+    "url": "assets/index-rZvvhugI.js",
     "revision": null
   }, {
     "url": "favicon-2.ico",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "74333ed8c75d1f30634875c88abff2ef"
   }, {
     "url": "index.html",
-    "revision": "0f80e3ccf1ffed8ea3f96f0981851f72"
+    "revision": "4c62c3f973e66224cb71cb1164939bd5"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -151,7 +151,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8a1cc1890c2b60b58e31f010ae80eaa7"
   }, {
     "url": "resources/cn-author-bio.json",
-    "revision": "afaa6eb68bc7a9203223a99d89f77029"
+    "revision": "1898d6370b25b9eb1426d7c34f9b7636"
   }, {
     "url": "resources/cn-bibliography.json",
     "revision": "2d0d00a2098f86fc367423958efc3ee3"
@@ -244,7 +244,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "ddf89a686208b403ecc531cfb06b57dc"
   }, {
     "url": "resources/tw-author-bio.json",
-    "revision": "0829178051f77633028436ca55611ec6"
+    "revision": "02a9d68a8c811f9463fb635c54727b56"
   }, {
     "url": "resources/tw-bibliography.json",
     "revision": "7fef908a2a0daeb4e83a65e6d368c650"
@@ -265,7 +265,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "e021800192632286d6be336f0e0d4636"
   }, {
     "url": "resources/tw-jas.json",
-    "revision": "b471f763afa070bba506c1d93927d500"
+    "revision": "27134fe9f10515aa3c45f65e49b28fec"
   }, {
     "url": "resources/tw-joh.json",
     "revision": "7f6d41a7f4d3c607f6e124178ddd6ad1"
