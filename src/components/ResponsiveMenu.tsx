@@ -6,7 +6,6 @@ import {
   Stack,
   HStack,
   Icon,
-  Kbd,
 } from '@chakra-ui/react'
 import {
   DrawerBackdrop,
@@ -22,7 +21,6 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { CgReadme } from 'react-icons/cg'
 import { GoGear } from 'react-icons/go'
-import { ImCommand, ImCtrl } from 'react-icons/im'
 import { useAppDispatch } from '@/app/hooks'
 import { openJumpToDialog } from '@/features/status/statusSlice'
 import {
@@ -34,7 +32,6 @@ import { Link, useLocation, useMatch, useNavigate } from 'react-router-dom'
 import Logo from '@/logo-new.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
-import { TbLocation } from 'react-icons/tb'
 import { BsArrowReturnRight } from 'react-icons/bs'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
