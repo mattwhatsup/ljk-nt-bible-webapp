@@ -26,8 +26,8 @@ interface SettingsState {
   colorPalette: ColorPaletteType
   language: 'cn' | 'tw' // 简体中文 or 繁体中文
   showComments: boolean // 是否显示注释
-  jumpToSelect: boolean // 是否定位后选中
-  afterNavigateKeepSelection: boolean // 是否在定位后保留选择
+  jumpToSelect: boolean // 是否跳转后选中
+  afterNavigateKeepSelection: boolean // 是否在跳转后保留选择
   textSize: TextSize // 字体大小
   uiSize: UiSize
 }

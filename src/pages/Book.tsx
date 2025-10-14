@@ -78,7 +78,7 @@ export default function Book() {
           .scrollIntoView({ behavior: 'instant', block: 'center' })
       })
     } else {
-      // 高亮定位的verse
+      // 高亮跳转的verse
       sleep(200).then(() => {
         const els = document.querySelectorAll(`[data-verse='${verseValue}']`)
         const el1 = els[0]
@@ -141,7 +141,7 @@ export default function Book() {
     }
   }, [verse, dispatch, book, chapter, contents, verseValue, jumpToSelect])
 
-  // 路由定位时清除lastSelectedVerse
+  // 路由跳转时清除lastSelectedVerse
   const afterNavigateKeepSelectionRef = useRef(afterNavigateKeepSelection)
 
   useEffect(() => {

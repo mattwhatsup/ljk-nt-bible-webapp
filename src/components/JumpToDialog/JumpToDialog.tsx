@@ -50,7 +50,7 @@ export default function JumpToDialog({}: Props) {
   const location = useLocation()
   const uiSize = useUiSize()
 
-  // 唤醒/关闭 快速定位窗口
+  // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // console.log('key down', event.key.toLowerCase())
@@ -162,7 +162,7 @@ export default function JumpToDialog({}: Props) {
           <Dialog.Content ref={contentRef}>
             <Dialog.Header>
               <Dialog.Title fontSize={getUiSizeClassName('lg', uiSize, 'text')}>
-                {useT(['快速定位', '快速定位'])}
+                {useT(['快速跳转', '快速跳轉'])}
               </Dialog.Title>
             </Dialog.Header>
             <Dialog.Body pb="4">
@@ -181,8 +181,8 @@ export default function JumpToDialog({}: Props) {
                       fontSize={getUiSizeClassName('md', uiSize, 'text')}
                     >
                       {useT([
-                        '定位指定某一节时，直接选中该节经文',
-                        '定位指定某一節時，直接選中該節經文',
+                        '跳转指定某一节时，直接选中该节经文',
+                        '跳轉指定某一節時，直接選中該節經文',
                       ])}
                     </Checkbox.Label>
                   </Checkbox.Root>

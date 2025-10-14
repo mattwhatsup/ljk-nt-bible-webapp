@@ -3,7 +3,6 @@ import { MenuContent, MenuItem, MenuRoot } from '@/components/ui/menu'
 import {
   getUiSizeClassName,
   useUiSize,
-  useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
 
 type Props = {

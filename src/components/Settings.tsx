@@ -313,10 +313,10 @@ function Content({ withReturn }: Props) {
         </Switch.Root>
       </Field.Root>
 
-      {/* 定位选中 */}
+      {/* 跳转选中 */}
       <Field.Root orientation="horizontal">
         <Field.Label fontSize={getUiSizeClassName('md', uiSize, 'text')}>
-          {useT(['定位后选中经文', '定位後選中經文'])}
+          {useT(['跳转后选中经文', '跳轉後選中經文'])}
         </Field.Label>
         <Switch.Root
           // @ts-ignore

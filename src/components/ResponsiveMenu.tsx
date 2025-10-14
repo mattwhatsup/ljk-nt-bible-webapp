@@ -35,6 +35,7 @@ import Logo from '@/logo-new.svg?react'
 import { RiArchiveDrawerLine } from 'react-icons/ri'
 import { MdOutlineInfo } from 'react-icons/md'
 import { TbLocation } from 'react-icons/tb'
+import { BsArrowReturnRight } from 'react-icons/bs'
 
 const MenuItem = ({ children }: { children: React.ReactNode }) => (
   <Box display="block">{children}</Box>
@@ -70,13 +71,10 @@ const ResponsiveMenu = () => {
         fontSize={useUiSizeClassName('xs', 'button')}
         onClick={() => dispatch(openJumpToDialog())}
       >
-        <Icon>
-          <TbLocation />
+        <Icon marginRight={'0.4rem'}>
+          <BsArrowReturnRight />
         </Icon>
-        {useT(['定位', '定位'])}
-        <Kbd>
-          {/win/i.test(navigator.userAgent) ? <ImCtrl /> : <ImCommand />}J
-        </Kbd>
+        {useT(['跳转经文', '跳轉經文'])}
       </Button>
       <IconButton
         aria-label="jump to"
@@ -87,7 +85,7 @@ const ResponsiveMenu = () => {
         _hover={{ color: `${useColorPalette()}.700` }}
         onClick={() => dispatch(openJumpToDialog())}
       >
-        <TbLocation />
+        <BsArrowReturnRight />
       </IconButton>
     </>
   )
