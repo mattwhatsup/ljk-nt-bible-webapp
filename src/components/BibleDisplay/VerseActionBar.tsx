@@ -156,9 +156,22 @@ export default function VerseActionBar({}: Props) {
               <Tooltip
                 showArrow
                 content={useT([
-                  '复制选中经文 Ctrl+C/Cmd+C',
-                  '復制選中經文 Ctrl+C/Cmd+C',
+                  '复制选中经文 ' +
+                    (/Macintosh|Mac OS/.test(navigator.userAgent)
+                      ? 'Cmd+C'
+                      : 'Ctrl+C'),
+                  '復制選中經文 ' +
+                    (/Macintosh|Mac OS/.test(navigator.userAgent)
+                      ? 'Cmd+C'
+                      : 'Ctrl+C'),
                 ])}
+                contentProps={{
+                  css: {
+                    '--tooltip-bg': 'white',
+                    color: 'black',
+                    letterSpacing: '0.15em',
+                  },
+                }}
               >
                 <Button
                   variant="outline"
@@ -175,7 +188,14 @@ export default function VerseActionBar({}: Props) {
               </Tooltip>
               <Tooltip
                 showArrow
-                content={useT(['"清除选中经文 Esc"', '清除選中經文 Esc'])}
+                content={useT(['清除选中经文 Esc', '清除選中經文 Esc'])}
+                contentProps={{
+                  css: {
+                    '--tooltip-bg': 'white',
+                    color: 'black',
+                    letterSpacing: '0.15em',
+                  },
+                }}
               >
                 <Button
                   variant="outline"

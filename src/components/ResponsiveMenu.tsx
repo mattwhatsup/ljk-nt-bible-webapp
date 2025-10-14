@@ -7,6 +7,7 @@ import {
   HStack,
   Icon,
 } from '@chakra-ui/react'
+import { Tooltip } from './ui/tooltip'
 import {
   DrawerBackdrop,
   DrawerBody,
@@ -52,23 +53,41 @@ const ResponsiveMenu = () => {
 
   const jumpToButton = (
     <>
-      <Button
-        // @ts-ignore
-        display={{ maxContentDown: 'none', base: 'inline-flex' }} // 响应式布局
-        colorPalette={useColorPalette()}
-        color={'white'}
-        _hover={{ color: `${useColorPalette()}.700` }}
-        variant={'outline'}
-        size={'xs'}
-        // @ts-ignore
-        fontSize={useUiSizeClassName('xs', 'button')}
-        onClick={() => dispatch(openJumpToDialog())}
+      <Tooltip
+        showArrow
+        content={useT([
+          '快速跳转到指定经文 ' +
+            (/Macintosh|Mac OS/.test(navigator.userAgent) ? 'Cmd+J' : 'Ctrl+J'),
+          '快速跳轉到指定經文 ' +
+            (/Macintosh|Mac OS/.test(navigator.userAgent) ? 'Cmd+J' : 'Ctrl+J'),
+        ])}
+        contentProps={{
+          css: {
+            '--tooltip-bg': 'white',
+            color: 'black',
+            letterSpacing: '0.15em',
+          },
+        }}
+        positioning={{ placement: 'bottom-end' }}
       >
-        <Icon marginRight={'0.4rem'}>
-          <BsArrowReturnRight />
-        </Icon>
-        {useT(['跳转经文', '跳轉經文'])}
-      </Button>
+        <Button
+          // @ts-ignore
+          display={{ maxContentDown: 'none', base: 'inline-flex' }} // 响应式布局
+          colorPalette={useColorPalette()}
+          color={'white'}
+          _hover={{ color: `${useColorPalette()}.700` }}
+          variant={'outline'}
+          size={'xs'}
+          // @ts-ignore
+          fontSize={useUiSizeClassName('xs', 'button')}
+          onClick={() => dispatch(openJumpToDialog())}
+        >
+          <Icon marginRight={'0.4rem'}>
+            <BsArrowReturnRight />
+          </Icon>
+          {useT(['跳转经文', '跳轉經文'])}
+        </Button>
+      </Tooltip>
       <IconButton
         aria-label="jump to"
         display={{ base: 'none', ...{ maxContentDown: 'inline-flex' } }} // 响应式布局
