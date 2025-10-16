@@ -177,7 +177,6 @@ export default function BibleDisplay({ data }: Props) {
 
           if (el) {
             // console.log({
-            //   lang: language,
             //   book: book!,
             //   chapter: parseInt(chapter || '1'),
             //   verse: el.getAttribute('data-verse') || '1',
@@ -187,7 +186,7 @@ export default function BibleDisplay({ data }: Props) {
               selectVerseThunkAction({
                 book: book!,
                 chapter: parseInt(chapter || '1'),
-                verse: el.getAttribute('data-verse') || '1',
+                verse: (el.getAttribute('data-verse') || '1').trim(),
                 shiftKey,
               }),
             )

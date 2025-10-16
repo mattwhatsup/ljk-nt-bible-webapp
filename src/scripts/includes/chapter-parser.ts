@@ -112,7 +112,7 @@ const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         const newNode: VerseNode = {
           type: 'verse',
           paragraph: firstTime ? 'paragraph' : 'inline',
-          verseIndex: element.textContent!,
+          verseIndex: element.textContent!.trim(),
           contents: [],
         }
         bookNodes.push(newNode)
@@ -149,7 +149,7 @@ const iteratePsalmParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         const newNode: VerseNode = {
           type: 'verse',
           paragraph: firstTime ? 'reference' : 'inline',
-          verseIndex: element.textContent!,
+          verseIndex: element.textContent!.trim(),
           contents: [],
         }
         bookNodes.push(newNode)
