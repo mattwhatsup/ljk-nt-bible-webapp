@@ -81,7 +81,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon-2.png",
     "revision": "5d4726e217669b9d446e2de151b1b21d"
   }, {
-    "url": "assets/index-Bcdvy1ca.js",
+    "url": "assets/index-BDf69Wmh.js",
     "revision": null
   }, {
     "url": "assets/index-kmGED2z3.css",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "74333ed8c75d1f30634875c88abff2ef"
   }, {
     "url": "index.html",
-    "revision": "ef43c7cf2bc6281f0452856eceb93403"
+    "revision": "9cb783aa44784a4cf84b884c6265b371"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -166,7 +166,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "b674459b40be0e9557b0748bdbf3b719"
   }, {
     "url": "resources/cn-heb.json",
-    "revision": "be363983e7e84a73abe0c01c0fee9b10"
+    "revision": "b39cef708be0fa9f546e3b835b0e6afc"
   }, {
     "url": "resources/cn-history.json",
     "revision": "43f9da46cf326e85ace0177a1542f3c1"
@@ -181,13 +181,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "c1f81d5504cf5d68ed88c130e4ac9d75"
   }, {
     "url": "resources/cn-lk.json",
-    "revision": "747bdf77ed2485c5911a69cf893061ca"
+    "revision": "ca9c13ba93e0406286b6bf348b56ddea"
   }, {
     "url": "resources/cn-mk.json",
     "revision": "c446c127ce49de5317911746ff8fec40"
   }, {
     "url": "resources/cn-mt.json",
-    "revision": "3a540c8aaa20df128079a91db1e4874a"
+    "revision": "42db38b69e3ccb6cbc036ddebc0bf9cc"
   }, {
     "url": "resources/cn-phi.json",
     "revision": "fcfafca76b6e748d632d4224adebb0e3"
@@ -205,7 +205,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "d46fe3a7bce9199cea9213e48cc51841"
   }, {
     "url": "resources/cn-tit.json",
-    "revision": "69d90dc0fc4b58c6824b28dae5c64ead"
+    "revision": "41ed402ac57ff54aabe1a2e0bed16344"
   }, {
     "url": "resources/tw-1co.json",
     "revision": "1e896d785726a1cc8786b3de3beceede"
@@ -259,7 +259,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "2108963802b96c68f00d2beced88aa04"
   }, {
     "url": "resources/tw-heb.json",
-    "revision": "41ecc03a2bd52fb59fdab84b45921e62"
+    "revision": "1643e4c01b0a0e8b835d8737c6297f81"
   }, {
     "url": "resources/tw-history.json",
     "revision": "e021800192632286d6be336f0e0d4636"
