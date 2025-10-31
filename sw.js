@@ -229,7 +229,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "c75660adff8987c30bf6e00e4227531e"
   }, {
     "url": "resources/tw-2pe.json",
-    "revision": "086e1b3e09754a339cecacb2199e0502"
+    "revision": "436c693be52f2f77690d8c0c68c181d6"
   }, {
     "url": "resources/tw-2th.json",
     "revision": "782f8142a0da34ac7a299c71bfbd1686"
@@ -271,13 +271,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "01bc5adaa5eaff71baa4ff1dd1250164"
   }, {
     "url": "resources/tw-jud.json",
-    "revision": "c0a2b957b826875234d3032f297d75bd"
+    "revision": "180e40d37803c98a9380dca5f1dc5576"
   }, {
     "url": "resources/tw-lk.json",
     "revision": "a28687ab110dd53503da683d99e86a4d"
   }, {
     "url": "resources/tw-mk.json",
-    "revision": "ecd8d4d0598d0bd32a1537f83ad3ddf1"
+    "revision": "bef4060c2ac88d5d0c5698d10e5d8ad3"
   }, {
     "url": "resources/tw-mt.json",
     "revision": "591884458f6eac9609ea6bf784070757"
