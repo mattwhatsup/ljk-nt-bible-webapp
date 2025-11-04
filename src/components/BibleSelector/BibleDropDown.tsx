@@ -45,6 +45,29 @@ export interface BibleSelectorProps {
   onClose?: Function
 }
 
+function isNonDesktopEnvironment(): boolean {
+  if (typeof navigator === 'undefined' || typeof window === 'undefined')
+    return false
+
+  const ua = navigator.userAgent || ''
+  // 常见移动/平板 UA 标志
+  const mobileUaRe =
+    /Mobi|Android|iPhone|Windows Phone|webOS|BlackBerry|Opera Mini|Mobile/i
+
+  // 触摸能力（包括触屏笔记本和平板）
+  const hasTouch =
+    'ontouchstart' in window ||
+    (navigator as any).maxTouchPoints > 0 ||
+    (navigator as any).msMaxTouchPoints > 0
+
+  // iPadOS 13+ 在 UA 中可能看起来像 Mac；用 platform + maxTouchPoints 进一步判断
+  const isIpad =
+    /iPad/.test(ua) ||
+    (navigator.platform === 'MacIntel' && (navigator as any).maxTouchPoints > 1)
+
+  return mobileUaRe.test(ua) || hasTouch || isIpad
+}
+
 const BibleDropDown: FunctionComponent<
   BibleDropDownProps & BibleSelectorProps
 > = ({ label, children, onClose, selectType, ...selectorProps }) => {
@@ -59,7 +82,11 @@ const BibleDropDown: FunctionComponent<
       closeTriggerRef.current.click()
     }
   }, [selected, showVerseSelector])
-  const isMobile = useBreakpointValue({ base: true, maxContent: false }) // 响应式布局
+  // 原来的响应式判断：
+  const responsiveMobile = useBreakpointValue({ base: true, maxContent: false })
+  // 新的“不是电脑环境”判断
+  const nonDesktop = isNonDesktopEnvironment()
+  const isMobile = Boolean(responsiveMobile) || nonDesktop // 响应式布局
 
   const popover = (
     <PopoverRoot
