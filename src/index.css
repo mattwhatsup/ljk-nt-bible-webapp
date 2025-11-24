@@ -339,3 +339,7 @@ i {
     box-shadow: none;
   }
 }
+
+.no-hidden {
+  display: block !important;
+}

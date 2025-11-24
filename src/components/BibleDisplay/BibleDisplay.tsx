@@ -46,7 +46,15 @@ function renderChapter(
         nodes.push({ node: <ChapterTitle key={`c-${index}`} data={item} /> })
         break
       case item.type === 'comment':
-        nodes.push({ node: <Comment key={index} data={item} /> })
+        nodes.push({
+          node: (
+            <Comment
+              key={index}
+              data={item}
+              noHidden={item.noHidden || false}
+            />
+          ),
+        })
         break
       case item.type === 'comment-list':
         nodes.push({ node: <CommentList key={index} data={item} /> })
@@ -59,7 +67,12 @@ function renderChapter(
           let _item = item as VerseNode
           const selected = selectedVerses.includes(_item.verseIndex)
           if (item.paragraph === 'paragraph') {
-            paragraphNode = <Paragraph key={`p-${index}-${_item.verseIndex}`} />
+            paragraphNode = (
+              <Paragraph
+                key={`p-${index}-${_item.verseIndex}`}
+                otherClassNames={item.options?.otherClassNames}
+              />
+            )
             paragraphChildren = []
             nodes.push({ node: paragraphNode, children: paragraphChildren })
           } else if (item.paragraph === 'reference') {
