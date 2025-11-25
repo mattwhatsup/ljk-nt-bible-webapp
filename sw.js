@@ -268,7 +268,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "c413eea4d073a3328de66dc8dbaacc55"
   }, {
     "url": "resources/tw-joh.json",
-    "revision": "1511f11ca6a796fbe5be957fcd804a34"
+    "revision": "a1ea1b7af5f84615a25b0a285f4dd349"
   }, {
     "url": "resources/tw-jud.json",
     "revision": "768b4063374fdc95aed731b3386c93f8"
