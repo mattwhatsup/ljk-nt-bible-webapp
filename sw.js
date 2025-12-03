@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "74333ed8c75d1f30634875c88abff2ef"
   }, {
     "url": "index.html",
-    "revision": "8cc9b6a29b5ae9aaf2e126f89d448df3"
+    "revision": "962c31ebbfa2d53dae666a8e17f9fa5b"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
