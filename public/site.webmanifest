@@ -1,6 +1,8 @@
 {
   "name": "LJK New Testment Bible App",
   "short_name": "LJK-Bible",
+  "start_url": "/ljk-nt-bible-webapp/",
+  "scope": "/ljk-nt-bible-webapp/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192-2.png",
