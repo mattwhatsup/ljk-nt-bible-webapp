@@ -8,9 +8,15 @@ import type { DataBook } from '@/app/data-types'
 
 const allBooks = _allBooks as Array<DataBook>
 
-export function copyToClipboard(text: string) {
+export function copyToClipboard(text: string, commented: boolean = false) {
+  // console.log(text)
+
   return navigator.clipboard.writeText(
-    text.replace(/<[^>]+>.*?<\/[^>]+>|<[^>]+\/>/gs, ''),
+    commented
+      ? text.replace(/<cite>(.*?)<\/cite>/gi, '（注：$1）')
+      : text
+          .replace(/<span class="affix">(.*?)<\/span>/g, '$1')
+          .replace(/<cite>.*?<\/cite>/gi, ''),
   )
 }
 

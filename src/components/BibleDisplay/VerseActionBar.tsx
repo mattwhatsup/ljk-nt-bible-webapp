@@ -8,6 +8,7 @@ import {
 import {
   _T,
   selectAfterNavigateKeepSelection,
+  selectShowComments,
   setAfterNavigateKeepSelection,
   useColorPalette,
   useLanguage,
@@ -42,6 +43,7 @@ export default function VerseActionBar({}: Props) {
   const afterNavigateKeepSelection = useAppSelector(
     selectAfterNavigateKeepSelection,
   )
+  const showComments = useAppSelector(selectShowComments)
 
   const handleCopy = useCallback(
     (force: boolean = false) => {
@@ -65,6 +67,7 @@ export default function VerseActionBar({}: Props) {
           selectedVerses,
           chapterData,
         ),
+        showComments,
       )
         .then(() => {
           toaster.create({
@@ -91,7 +94,15 @@ export default function VerseActionBar({}: Props) {
         }),
       )
     },
-    [language, book, chapter, selectedVerses, chapterData, dispatch],
+    [
+      language,
+      book,
+      chapter,
+      selectedVerses,
+      chapterData,
+      dispatch,
+      showComments,
+    ],
   )
 
   const handleCancel = useCallback(() => {
