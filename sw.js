@@ -81,10 +81,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "url": "apple-touch-icon-2.png",
     "revision": "5d4726e217669b9d446e2de151b1b21d"
   }, {
-    "url": "assets/index-DPXJu04c.css",
+    "url": "assets/index-Bf15A_NK.js",
     "revision": null
   }, {
-    "url": "assets/index-RzKeg-5d.js",
+    "url": "assets/index-DPXJu04c.css",
     "revision": null
   }, {
     "url": "favicon-2.ico",
@@ -97,7 +97,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "74333ed8c75d1f30634875c88abff2ef"
   }, {
     "url": "index.html",
-    "revision": "1e9c9d70e588cac72713c300121eb703"
+    "revision": "fb3fb3084e61ee46505aeec990c493d4"
   }, {
     "url": "mask-icon.svg",
     "revision": "039ceb16c1ff2548b6c0f40df839e007"
@@ -277,7 +277,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "12325887ad560952659e0af869406694"
   }, {
     "url": "resources/tw-mk.json",
-    "revision": "286367ffc784f3ce074da98c199eb1d0"
+    "revision": "01a6ac08b57b7721c763eb9e6d1a46c0"
   }, {
     "url": "resources/tw-mt.json",
     "revision": "e272be543b562e071955dea9d268e93e"
