@@ -13,10 +13,13 @@ export function copyToClipboard(text: string, commented: boolean = false) {
 
   return navigator.clipboard.writeText(
     commented
-      ? text.replace(/<cite>(.*?)<\/cite>/gi, '（注：$1）')
+      ? text.replace(
+          /<cite>([\s\S]*?)<\/cite>/gis,
+          (_, p1) => `（注：${p1.trim()}）`,
+        )
       : text
           .replace(/<span class="affix">(.*?)<\/span>/g, '$1')
-          .replace(/<cite>.*?<\/cite>/gi, ''),
+          .replace(/<cite>.*?<\/cite>/gis, ''),
   )
 }
 
