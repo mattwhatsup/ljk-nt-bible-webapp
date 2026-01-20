@@ -241,7 +241,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "7181f28702c64801e8c90a9103c2fbde"
   }, {
     "url": "resources/tw-act.json",
-    "revision": "d398a64c62d49164d8253e998583716b"
+    "revision": "411127af6cd230f2b3d544aaf68ddbed"
   }, {
     "url": "resources/tw-author-bio.json",
     "revision": "02a9d68a8c811f9463fb635c54727b56"
@@ -277,7 +277,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "12325887ad560952659e0af869406694"
   }, {
     "url": "resources/tw-mk.json",
-    "revision": "01a6ac08b57b7721c763eb9e6d1a46c0"
+    "revision": "ecc5387777d9593c421129a82b070938"
   }, {
     "url": "resources/tw-mt.json",
     "revision": "e272be543b562e071955dea9d268e93e"
