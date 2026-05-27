@@ -9,6 +9,7 @@ export type VerseNode = {
   paragraph: 'inline' | 'paragraph' | 'reference'
   verseIndex: string
   contents: VerseContentNode[]
+  options?: Record<string, string>
 }
 export type VerseContentNode = {
   lineBreak: 'inline' | 'reference' | 'line' | 'paragraph'
@@ -17,9 +18,14 @@ export type VerseContentNode = {
 export type CommentNode = {
   type: 'comment'
   contents: string[]
+  noHidden?: boolean
 }
 export type CommentListNode = {
   type: 'comment-list'
+  contents: string[]
+}
+export type ULCommentListNode = {
+  type: 'ul-comment-list'
   contents: string[]
 }
 
@@ -28,6 +34,7 @@ export type BibleItemNode =
   | VerseNode
   | CommentNode
   | CommentListNode
+  | ULCommentListNode
 
 export type BibleItemNodeWithVerseList = {
   verseList: string[]
@@ -50,11 +57,12 @@ export const chapterParser = (chapterSection: Element) => {
         })
       } else if (
         element.tagName.toUpperCase() === 'P' &&
-        element.className === 'comment'
+        element.classList.contains('comment')
       ) {
         nodeData.push({
           type: 'comment',
           contents: [element.innerHTML!],
+          noHidden: element.classList.contains('no-hidden'),
         })
       } else if (
         element.tagName.toUpperCase() === 'OL' &&
@@ -65,10 +73,22 @@ export const chapterParser = (chapterSection: Element) => {
           contents: [element.innerHTML!],
         })
       } else if (
-        element.tagName.toUpperCase() === 'P' &&
-        element.className === 'para'
+        element.tagName.toUpperCase() === 'UL' &&
+        element.className === 'comment-list'
       ) {
-        iterateParagraph(element.firstChild!, nodeData)
+        nodeData.push({
+          type: 'ul-comment-list',
+          contents: [element.innerHTML!],
+        })
+      } else if (
+        element.tagName.toUpperCase() === 'P' &&
+        element.classList.contains('para')
+      ) {
+        iterateParagraph(element.firstChild!, nodeData, {
+          otherClassNames: Array.from(element.classList)
+            .filter(c => c !== 'para')
+            .join(' '),
+        })
       } else if (
         element.tagName.toUpperCase() === 'DIV' &&
         element.className === 'ot-refs'
@@ -89,7 +109,11 @@ export const chapterParser = (chapterSection: Element) => {
 const getLastBookNode = (bookNodes: BibleItemNode[]) => {
   return bookNodes[bookNodes.length - 1]
 }
-const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
+const iterateParagraph = (
+  node: Node,
+  bookNodes: BibleItemNode[],
+  options?: Record<string, string>,
+) => {
   let firstTime = true
   while (node) {
     const lastBookNode = getLastBookNode(bookNodes)
@@ -99,8 +123,11 @@ const iterateParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         const newNode: VerseNode = {
           type: 'verse',
           paragraph: firstTime ? 'paragraph' : 'inline',
-          verseIndex: element.textContent!,
+          verseIndex: element.textContent!.trim(),
           contents: [],
+        }
+        if (firstTime) {
+          newNode.options = options
         }
         bookNodes.push(newNode)
       } else {
@@ -136,7 +163,7 @@ const iteratePsalmParagraph = (node: Node, bookNodes: BibleItemNode[]) => {
         const newNode: VerseNode = {
           type: 'verse',
           paragraph: firstTime ? 'reference' : 'inline',
-          verseIndex: element.textContent!,
+          verseIndex: element.textContent!.trim(),
           contents: [],
         }
         bookNodes.push(newNode)

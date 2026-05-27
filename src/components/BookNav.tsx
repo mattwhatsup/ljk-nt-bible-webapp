@@ -1,19 +1,20 @@
 import { Box } from '@chakra-ui/react'
 import BibleSelector from '@/components/BibleSelector/BibleSelector'
 import type { SelectValue } from './BibleSelector/BibleDropDown'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useColorPalette } from '@/features/settings/settingsSlice'
+import { useNavigateBible } from '@/useNavigateBible'
 
 type Props = {}
 
 export default function BookNav({}: Props) {
   const { book, chapter } = useParams<{ book: string; chapter?: string }>()
-  const navigate = useNavigate()
 
   const selected: SelectValue = {
     book,
     chapter: chapter ? parseInt(chapter) : undefined,
   }
+  const navigateBible = useNavigateBible()
 
   return (
     <Box
@@ -33,11 +34,9 @@ export default function BookNav({}: Props) {
           onChange={(selected: SelectValue) => {
             const newBook = selected.book
             const newChapter = selected.chapter
+
             if (newBook) {
-              const newPath = newChapter
-                ? `/book/${newBook}/${newChapter}`
-                : `/book/${newBook}`
-              navigate(newPath)
+              navigateBible(newBook, newChapter || 1)
             }
           }}
         />

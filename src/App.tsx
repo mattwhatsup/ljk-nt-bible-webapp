@@ -1,19 +1,12 @@
 import Layout from './components/Layout'
 import ResponsiveMenu from './components/ResponsiveMenu'
-import {
-  Routes,
-  Route,
-  Navigate,
-  useParams,
-  Outlet,
-  useLocation,
-} from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
 import Book from './pages/Book'
 import JumpToDialog from './components/JumpToDialog/JumpToDialog'
 import Settings from './components/Settings'
 import NoMatch from './NoMatch'
-import InfoLayout from './pages/InfoLayout'
-import Preface from './pages/Preface'
+import AboutLayout from './pages/AboutLayout'
+// import Preface from './pages/Preface'
 import Bibliography from './pages/Bibliography'
 import Logs from './pages/Logs'
 import {
@@ -21,6 +14,8 @@ import {
   useColorPalette,
 } from './features/settings/settingsSlice'
 import { useEffect } from 'react'
+import Article from './pages/Article'
+// import FrontPage from './pages/FrontPage'
 
 const App = () => {
   let location = useLocation()
@@ -37,7 +32,8 @@ const App = () => {
     <div className="App">
       <ResponsiveMenu />
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<Navigate to="/book/mt/1" />} />
+        {/* <Route path="/" element={<FrontPage />} /> */}
+        <Route path="/" index element={<Navigate to="/book/mt/1" replace />} />
         <Route path="/book/:book/:chapter/:verse?" element={<BookLayout />}>
           <Route index element={<Book />} />
 
@@ -45,12 +41,20 @@ const App = () => {
         </Route>
 
         <Route element={<OtherLayout />}>
-          <Route path="/info" element={<InfoLayout />}>
-            <Route index element={<Navigate to="preface" />} />
-            <Route path="preface" element={<Preface />} />
-            <Route path="bibliography" element={<Bibliography />} />
+          <Route path="/about" element={<AboutLayout />}>
+            <Route index element={<Navigate to="author-bio" replace />} />
+            <Route
+              path="author-bio"
+              element={<Article resourceName="author-bio" />}
+            />
+            <Route
+              path="preface"
+              element={<Article resourceName="preface" />}
+            />
+
+            <Route path="logs" element={<Logs />} />
           </Route>
-          <Route path="/logs" element={<Logs />} />
+          <Route path="/bibliography" element={<Bibliography />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
@@ -72,7 +76,7 @@ const App = () => {
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/modal?file=src%2FApp.tsx
 
 const BookLayout = () => {
-  const { book } = useParams<{ book: string }>()
+  // const { book } = useParams<{ book: string }>()
 
   return (
     <Layout forBook>

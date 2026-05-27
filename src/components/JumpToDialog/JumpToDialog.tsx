@@ -30,6 +30,7 @@ import {
   useUiSize,
   useUiSizeClassName,
 } from '@/features/settings/settingsSlice'
+import { useNavigateBible } from '@/useNavigateBible'
 type Props = {}
 
 export default function JumpToDialog({}: Props) {
@@ -53,12 +54,10 @@ export default function JumpToDialog({}: Props) {
   // 唤醒/关闭 快速跳转窗口
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // console.log('key down', event.key.toLowerCase())
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'j') {
         event.preventDefault()
-        console.log(
-          location.pathname === '/settings' &&
-            location.state?.backgroundLocation,
-        )
+
         if (
           location.pathname === '/settings' &&
           location.state?.backgroundLocation
@@ -132,12 +131,11 @@ export default function JumpToDialog({}: Props) {
     }
   }
 
-  const navigate = useNavigate()
-
+  // const navigate = useNavigate()
+  const navigateBible = useNavigateBible()
   const jumpTo = (value: string) => {
     const [abbr, chapter, verse] = value.split(' ')
-    const path = `/book/${abbr}/${chapter}/${verse}`
-    navigate(path)
+    navigateBible(abbr, chapter, verse)
   }
 
   return (
@@ -190,6 +188,7 @@ export default function JumpToDialog({}: Props) {
                     ref={ref}
                     // @ts-ignore
                     size={useUiSizeClassName('md', 'control')}
+                    autoComplete="off"
                     placeholder={useT([
                       '输入格式：书 章:节，书名可输入部分中英文自动匹配，如 mt 28 13',
                       '輸入格式：書 章:節，書名可輸入部分中英文自動匹配，如 mt 28 13',

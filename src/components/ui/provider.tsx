@@ -15,6 +15,8 @@ const config = defineConfig({
       desktop: '1200px',
       wide: '1400px',
       maxContent: '672px', // 2xl
+      cellphone: '430px', // iphone 14 pro max
+      minScreen: '360px',
       // 响应式布局
     },
   },

@@ -8,8 +8,19 @@ import type { DataBook } from '@/app/data-types'
 
 const allBooks = _allBooks as Array<DataBook>
 
-export function copyToClipboard(text: string) {
-  return navigator.clipboard.writeText(text)
+export function copyToClipboard(text: string, commented: boolean = false) {
+  // console.log(text)
+
+  return navigator.clipboard.writeText(
+    commented
+      ? text.replace(
+          /<cite>([\s\S]*?)<\/cite>/gis,
+          (_, p1) => `（注：${p1.trim()}）`,
+        )
+      : text
+          .replace(/<span class="affix">(.*?)<\/span>/g, '$1')
+          .replace(/<cite>.*?<\/cite>/gis, ''),
+  )
 }
 
 export function getSelectedVersesText(

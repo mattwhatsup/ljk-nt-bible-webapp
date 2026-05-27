@@ -44,6 +44,19 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
     }
   }, [selected])
 
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  useEffect(() => {
+    const handleResize = () => {
+      // 在这里处理窗口大小变化的逻辑
+      setWindowHeight(window.innerHeight)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   return (
     <SelectedValueContext.Provider
       value={{
@@ -82,6 +95,13 @@ const BibleSelector: FunctionComponent<BibleSelectorProps> = ({
           --tw-bg-opacity: 1;
           background-color: var(--chakra-colors-${useColorPalette()}-200);
           border-color: var(--chakra-colors-${useColorPalette()}-500);
+        }
+        ${
+          windowHeight < 622
+            ? `.list-height {
+                height: ${windowHeight - 222 - 12}px;
+              }`
+            : ''
         }
       `}</style>
       <Box

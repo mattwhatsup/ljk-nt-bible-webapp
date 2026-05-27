@@ -9,17 +9,19 @@ import Paragraph from './Paragraph'
 import Reference from './Reference'
 import Line from './Line'
 import VerseNo from './VerseNo'
-import { cloneElement } from 'react'
-import './BibleDisplay.css'
+import { cloneElement, useEffect } from 'react'
 import CommentList from './CommonList'
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import {
   makeChapterVersesSelector,
   selectVerseThunkAction,
 } from '@/features/choosen/choosenSlice'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import VerseActionBar from './VerseActionBar'
-import { useTextSize } from '@/features/settings/settingsSlice'
+import {
+  setLastNavigateBook,
+  useTextSize,
+} from '@/features/settings/settingsSlice'
 
 type Props = {
   data: BibleItemNodeWithVerseList
@@ -44,17 +46,33 @@ function renderChapter(
         nodes.push({ node: <ChapterTitle key={`c-${index}`} data={item} /> })
         break
       case item.type === 'comment':
-        nodes.push({ node: <Comment key={index} data={item} /> })
+        nodes.push({
+          node: (
+            <Comment
+              key={index}
+              data={item}
+              noHidden={item.noHidden || false}
+            />
+          ),
+        })
         break
       case item.type === 'comment-list':
         nodes.push({ node: <CommentList key={index} data={item} /> })
+        break
+      case item.type === 'ul-comment-list':
+        nodes.push({ node: <CommentList key={index} data={item} ul /> })
         break
       case item.type === 'verse':
         {
           let _item = item as VerseNode
           const selected = selectedVerses.includes(_item.verseIndex)
           if (item.paragraph === 'paragraph') {
-            paragraphNode = <Paragraph key={`p-${index}-${_item.verseIndex}`} />
+            paragraphNode = (
+              <Paragraph
+                key={`p-${index}-${_item.verseIndex}`}
+                otherClassNames={item.options?.otherClassNames}
+              />
+            )
             paragraphChildren = []
             nodes.push({ node: paragraphNode, children: paragraphChildren })
           } else if (item.paragraph === 'reference') {
@@ -98,7 +116,12 @@ function renderChapter(
                 nodes.push({ node: paragraphNode, children: paragraphChildren })
                 break
               case 'paragraph':
-                paragraphNode = <Paragraph key={`${index}-${subIndex}`} />
+                paragraphNode = (
+                  <Paragraph
+                    key={`${index}-${subIndex}`}
+                    otherClassNames={item.options?.otherClassNames}
+                  />
+                )
                 paragraphChildren = [
                   <Line
                     key={subIndex}
@@ -141,12 +164,26 @@ export default function BibleDisplay({ data }: Props) {
     parseInt(chapter || '1'),
   )
   const selectedVerses = useAppSelector(chapterVersesSelector)
+  const location = useLocation()
+  useEffect(() => {
+    dispatch(setLastNavigateBook(location.pathname))
+  }, [dispatch, location.pathname])
 
   return (
     <Box
-      userSelect={'none'}
+      // userSelect={'none'}
       className="content-display"
       onClick={event => {
+        const selection = window.getSelection()
+        if (
+          selection &&
+          selection.type === 'Range' &&
+          selection.toString().length > 0
+        ) {
+          // 用户正在选中文字，不处理点击
+          return
+        }
+
         let { target, shiftKey } = event
         if (target instanceof HTMLElement) {
           const el = findMatchedParentNode(target, el => {
@@ -158,7 +195,6 @@ export default function BibleDisplay({ data }: Props) {
 
           if (el) {
             // console.log({
-            //   lang: language,
             //   book: book!,
             //   chapter: parseInt(chapter || '1'),
             //   verse: el.getAttribute('data-verse') || '1',
@@ -168,7 +204,7 @@ export default function BibleDisplay({ data }: Props) {
               selectVerseThunkAction({
                 book: book!,
                 chapter: parseInt(chapter || '1'),
-                verse: el.getAttribute('data-verse') || '1',
+                verse: (el.getAttribute('data-verse') || '1').trim(),
                 shiftKey,
               }),
             )

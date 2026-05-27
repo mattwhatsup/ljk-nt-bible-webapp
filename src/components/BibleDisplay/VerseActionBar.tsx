@@ -8,6 +8,7 @@ import {
 import {
   _T,
   selectAfterNavigateKeepSelection,
+  selectShowComments,
   setAfterNavigateKeepSelection,
   useColorPalette,
   useLanguage,
@@ -17,11 +18,12 @@ import {
 import { copyToClipboard, getSelectedVersesText } from '@/utils/copy-utils'
 import { ActionBar, Button, Portal, Checkbox } from '@chakra-ui/react'
 import { useCallback, useEffect } from 'react'
-import { FaRegCopy, FaRegTrashAlt } from 'react-icons/fa'
+import { FaRegCopy } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { toaster, Toaster } from '../ui/toaster'
 import { Tooltip } from '../ui/tooltip'
 import { selectIsJumpToDialogOpen } from '@/features/status/statusSlice'
+import { MdClear } from 'react-icons/md'
 
 type Props = {}
 
@@ -41,43 +43,67 @@ export default function VerseActionBar({}: Props) {
   const afterNavigateKeepSelection = useAppSelector(
     selectAfterNavigateKeepSelection,
   )
+  const showComments = useAppSelector(selectShowComments)
 
-  const handleCopy = useCallback(() => {
-    if (!selectedVerses.length) return
-    copyToClipboard(
-      getSelectedVersesText(
-        language,
-        book as BookName,
-        parseInt(chapter || '1'),
-        selectedVerses,
-        chapterData,
-      ),
-    )
-      .then(() => {
-        toaster.create({
-          title: _T(
-            [
-              `已复制 ${selectedVerses.length} 节经文`,
-              `已複製 ${selectedVerses.length} 節經文`,
-            ],
-            language,
-          ),
-          type: 'success',
+  const handleCopy = useCallback(
+    (force: boolean = false) => {
+      const selection = window.getSelection()
+      if (
+        !force &&
+        selection &&
+        selection.type === 'Range' &&
+        selection.toString().length > 0
+      ) {
+        return
+      }
+
+      if (!selectedVerses.length) return
+
+      copyToClipboard(
+        getSelectedVersesText(
+          language,
+          book as BookName,
+          parseInt(chapter || '1'),
+          selectedVerses,
+          chapterData,
+        ),
+        showComments,
+      )
+        .then(() => {
+          toaster.create({
+            title: _T(
+              [
+                `已复制 ${selectedVerses.length} 节经文`,
+                `已複製 ${selectedVerses.length} 節經文`,
+              ],
+              language,
+            ),
+            type: 'success',
+          })
         })
-      })
-      .catch(() => {
-        toaster.create({
-          title: _T(['复制失败', '複製失敗'], language),
-          type: 'error',
+        .catch(() => {
+          toaster.create({
+            title: _T(['复制失败', '複製失敗'], language),
+            type: 'error',
+          })
         })
-      })
-    dispatch(
-      clearSelectedVerses({
-        book: book!,
-        chapter: parseInt(chapter || '1'),
-      }),
-    )
-  }, [language, book, chapter, selectedVerses, chapterData, dispatch])
+      dispatch(
+        clearSelectedVerses({
+          book: book!,
+          chapter: parseInt(chapter || '1'),
+        }),
+      )
+    },
+    [
+      language,
+      book,
+      chapter,
+      selectedVerses,
+      chapterData,
+      dispatch,
+      showComments,
+    ],
+  )
 
   const handleCancel = useCallback(() => {
     if (!selectedVerses.length) return
@@ -135,33 +161,52 @@ export default function VerseActionBar({}: Props) {
                 color="white"
                 fontSize={useUiSizeClassName('sm', 'button')}
               >
-                {useT(['已选中', '已選中'])} {selectedVerses.length}
+                {useT(['已选', '已選'])} {selectedVerses.length}
               </ActionBar.SelectionTrigger>
-              <ActionBar.Separator />
+
               <Tooltip
                 showArrow
                 content={useT([
-                  '复制选中经文 Ctrl+C/Cmd+C',
-                  '復制選中經文 Ctrl+C/Cmd+C',
+                  '复制选中经文 ' +
+                    (/Macintosh|Mac OS/.test(navigator.userAgent)
+                      ? 'Cmd+C'
+                      : 'Ctrl+C'),
+                  '復制選中經文 ' +
+                    (/Macintosh|Mac OS/.test(navigator.userAgent)
+                      ? 'Cmd+C'
+                      : 'Ctrl+C'),
                 ])}
+                contentProps={{
+                  css: {
+                    '--tooltip-bg': 'white',
+                    color: 'black',
+                    letterSpacing: '0.15em',
+                  },
+                }}
               >
                 <Button
                   variant="outline"
                   // @ts-ignore
                   size={useUiSizeClassName('sm', 'button')}
-                  onClick={handleCopy}
+                  onClick={() => handleCopy(true)}
                   color="white"
                   _hover={{
                     backgroundColor: `${useColorPalette()}.400`,
                   }}
                 >
                   <FaRegCopy />
-                  {useT(['复制', '複製'])}
                 </Button>
               </Tooltip>
               <Tooltip
                 showArrow
-                content={useT(['"清除选中经文 Esc"', '清除選中經文 Esc'])}
+                content={useT(['清除选中经文 Esc', '清除選中經文 Esc'])}
+                contentProps={{
+                  css: {
+                    '--tooltip-bg': 'white',
+                    color: 'black',
+                    letterSpacing: '0.15em',
+                  },
+                }}
               >
                 <Button
                   variant="outline"
@@ -173,8 +218,7 @@ export default function VerseActionBar({}: Props) {
                     backgroundColor: `${useColorPalette()}.400`,
                   }}
                 >
-                  <FaRegTrashAlt />
-                  {useT(['清除', '清除'])}
+                  <MdClear />
                 </Button>
               </Tooltip>
 
@@ -197,9 +241,7 @@ export default function VerseActionBar({}: Props) {
                     '當導航離開本頁時返回仍然選中',
                   ])}
                 >
-                  <Checkbox.Label>
-                    {useT(['保持选中', '保持選中'])}
-                  </Checkbox.Label>
+                  <Checkbox.Label>{useT(['保持', '保持'])}</Checkbox.Label>
                 </Tooltip>
               </Checkbox.Root>
             </ActionBar.Content>

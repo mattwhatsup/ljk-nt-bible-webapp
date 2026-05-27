@@ -120,7 +120,7 @@ export default function Logs({}: Props) {
         textAlign={'center'}
         paddingBottom={'1em'}
       >
-        {useT(['更 新 历 史', '更 新 歷 史'])}
+        {useT(['更 新 记 录', '更 新 記 錄'])}
       </Heading>
 
       {logs ? versions : skeletons}

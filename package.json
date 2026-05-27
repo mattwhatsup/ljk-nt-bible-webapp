@@ -18,7 +18,7 @@
     "gh-build": "cross-env NODE_ENV=gh tsc && cross-env NODE_ENV=gh vite build && cross-env NODE_ENV=gh node src/scripts/copy-index.js",
     "predeploy": "npm run gh-build",
     "deploy": "gh-pages -d dist",
-    "repo:refresh": "cd ./repo/ljk-nt-bible && git reset --hard HEAD && git clean -fd && git pull origin main && cd -"
+    "repo:refresh": "cd ./repo/ljk-nt-bible && git checkout main && git reset --hard HEAD && git clean -fd && git pull --no-rebase origin main && cd -"
   },
   "dependencies": {
     "@babel/standalone": "^7.26.8",
