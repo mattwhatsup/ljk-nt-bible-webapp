@@ -154,7 +154,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1898d6370b25b9eb1426d7c34f9b7636"
   }, {
     "url": "resources/cn-bibliography.json",
-    "revision": "2d0d00a2098f86fc367423958efc3ee3"
+    "revision": "272187635bca6b352c5f8195c232d5a1"
   }, {
     "url": "resources/cn-col.json",
     "revision": "1c2971e58ed6fb4a32549be5253dad33"
@@ -169,7 +169,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9a19c7f1c85b42653e9adc929e7212c7"
   }, {
     "url": "resources/cn-history.json",
-    "revision": "43f9da46cf326e85ace0177a1542f3c1"
+    "revision": "ef4b740e635fc2f1f53d4185c6cce467"
   }, {
     "url": "resources/cn-jas.json",
     "revision": "2a63ba96ffed8a849bfb05a77d16b41b"
@@ -205,7 +205,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8b559bc37342939752b99fc846a60682"
   }, {
     "url": "resources/cn-tit.json",
-    "revision": "402b7128645f8f439d43948af4997628"
+    "revision": "d6b60d80946296e1d85971574ac380ec"
   }, {
     "url": "resources/tw-1co.json",
     "revision": "9e850a4f1fcbdbb1930be54e837b7a98"
@@ -247,7 +247,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "02a9d68a8c811f9463fb635c54727b56"
   }, {
     "url": "resources/tw-bibliography.json",
-    "revision": "7fef908a2a0daeb4e83a65e6d368c650"
+    "revision": "c3f66ab83a87f112f92b79487023e890"
   }, {
     "url": "resources/tw-col.json",
     "revision": "c447821531d721c0f05778a2a03763de"
@@ -262,7 +262,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8aa1f60fc633b4760dac5a2d93ffb400"
   }, {
     "url": "resources/tw-history.json",
-    "revision": "e021800192632286d6be336f0e0d4636"
+    "revision": "733466df5d9e85a1798228d3aadbdbe0"
   }, {
     "url": "resources/tw-jas.json",
     "revision": "0abd3b45ade50803104666f7ec6a9b0f"
@@ -298,7 +298,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a43c8a862297ecf7b126bec872bdf288"
   }, {
     "url": "resources/tw-tit.json",
-    "revision": "da5b6ee941d06525987e13205a7a5207"
+    "revision": "ed8c95e35f8e12f49d8c9fb090384f8d"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "0.0.0"
