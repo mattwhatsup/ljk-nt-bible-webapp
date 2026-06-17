@@ -154,13 +154,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1898d6370b25b9eb1426d7c34f9b7636"
   }, {
     "url": "resources/cn-bibliography.json",
-    "revision": "272187635bca6b352c5f8195c232d5a1"
+    "revision": "963775d7dc6eeeae0cf4ea73eb1d0607"
   }, {
     "url": "resources/cn-col.json",
     "revision": "1c2971e58ed6fb4a32549be5253dad33"
   }, {
     "url": "resources/cn-eph.json",
-    "revision": "8f576dfe2269b9fcf6233e2e1b805786"
+    "revision": "90b41db6f485f3f4bd4e00b4f716da37"
   }, {
     "url": "resources/cn-gal.json",
     "revision": "9230dcab2a0e3fc170f8ccb65834c965"
@@ -169,7 +169,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9a19c7f1c85b42653e9adc929e7212c7"
   }, {
     "url": "resources/cn-history.json",
-    "revision": "ef4b740e635fc2f1f53d4185c6cce467"
+    "revision": "51c942c541ced321d749445f14e88f75"
   }, {
     "url": "resources/cn-jas.json",
     "revision": "2a63ba96ffed8a849bfb05a77d16b41b"
@@ -178,7 +178,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "aebecac6d6fda48fffedf539b7d98917"
   }, {
     "url": "resources/cn-jud.json",
-    "revision": "851e494860e70353c97c94a19694a577"
+    "revision": "08a432a1a4ee3dac6743fb20878fe176"
   }, {
     "url": "resources/cn-lk.json",
     "revision": "1f4810652e417eefc90500e4593006ec"
@@ -190,7 +190,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "02911928975e29cd5a69d3240dd4eed5"
   }, {
     "url": "resources/cn-phi.json",
-    "revision": "de0663ca5c744f2876d2e4270e3d1c15"
+    "revision": "adce808d0417992ed4bcdd9227ebcef3"
   }, {
     "url": "resources/cn-phm.json",
     "revision": "2d80027df8e9930487f8db0ea9b8e880"
@@ -205,7 +205,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8b559bc37342939752b99fc846a60682"
   }, {
     "url": "resources/cn-tit.json",
-    "revision": "d6b60d80946296e1d85971574ac380ec"
+    "revision": "2714f3168644b517fbc920c2a9bccda7"
   }, {
     "url": "resources/tw-1co.json",
     "revision": "9e850a4f1fcbdbb1930be54e837b7a98"
@@ -247,13 +247,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "02a9d68a8c811f9463fb635c54727b56"
   }, {
     "url": "resources/tw-bibliography.json",
-    "revision": "c3f66ab83a87f112f92b79487023e890"
+    "revision": "de08a669ea4e2f2dd8393a49a0bd16b6"
   }, {
     "url": "resources/tw-col.json",
     "revision": "c447821531d721c0f05778a2a03763de"
   }, {
     "url": "resources/tw-eph.json",
-    "revision": "98490b468d0b4ed7b3e3bd86c2cce4b5"
+    "revision": "9748743bb7522d53811b78fe97b72c23"
   }, {
     "url": "resources/tw-gal.json",
     "revision": "c6d909865f8ca37dad91a3531235b6af"
@@ -262,7 +262,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "8aa1f60fc633b4760dac5a2d93ffb400"
   }, {
     "url": "resources/tw-history.json",
-    "revision": "733466df5d9e85a1798228d3aadbdbe0"
+    "revision": "7c23ff9ec00f172b5fbff088465bb66c"
   }, {
     "url": "resources/tw-jas.json",
     "revision": "0abd3b45ade50803104666f7ec6a9b0f"
@@ -271,7 +271,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a2ddd3205279495530b47a38e7aa254e"
   }, {
     "url": "resources/tw-jud.json",
-    "revision": "3543aa5744b905c95a25cab28b6ac102"
+    "revision": "ae5fffd3878375a7bf36043b5a98c461"
   }, {
     "url": "resources/tw-lk.json",
     "revision": "8031eea2af183eac0611a6afb467043d"
@@ -283,7 +283,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a50f1e45bcf666879e1aabc1d5e6b6d0"
   }, {
     "url": "resources/tw-phi.json",
-    "revision": "629b2dce2c6240de56c99fb76e84b125"
+    "revision": "14c79e8ecca0c16f52acc85b64c517e7"
   }, {
     "url": "resources/tw-phm.json",
     "revision": "2b90c59bd1a4f92d2bf42d437f4f8b30"
@@ -298,7 +298,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a43c8a862297ecf7b126bec872bdf288"
   }, {
     "url": "resources/tw-tit.json",
-    "revision": "ed8c95e35f8e12f49d8c9fb090384f8d"
+    "revision": "06dd39a193d0522993de4f6e72eca3a3"
   }, {
     "url": "resources/cn-1co.json",
     "revision": "0.0.0"
