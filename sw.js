@@ -169,7 +169,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "9a19c7f1c85b42653e9adc929e7212c7"
   }, {
     "url": "resources/cn-history.json",
-    "revision": "46d70483420c5aa440d3becb312b8be3"
+    "revision": "b88c6fb6afa1eba7b2ea045fb9b6b699"
   }, {
     "url": "resources/cn-jas.json",
     "revision": "2a63ba96ffed8a849bfb05a77d16b41b"
@@ -202,7 +202,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "7d21c5e5026560802629c3ecefc5ec9c"
   }, {
     "url": "resources/cn-rom.json",
-    "revision": "c60260fbd1c79f80dfc47913de12646a"
+    "revision": "105119b9d65016691ea199ac7212435d"
   }, {
     "url": "resources/cn-tit.json",
     "revision": "2714f3168644b517fbc920c2a9bccda7"
@@ -295,7 +295,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "cc71a40bf6e54d73c170aa0d9e3990a4"
   }, {
     "url": "resources/tw-rom.json",
-    "revision": "182928f3a0c1062cedd74ff1101e3113"
+    "revision": "cadbdc06b76561def1d96ebcdc28a5c9"
   }, {
     "url": "resources/tw-tit.json",
     "revision": "06dd39a193d0522993de4f6e72eca3a3"
