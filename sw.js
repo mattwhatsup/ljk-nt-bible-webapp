@@ -184,7 +184,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "1f4810652e417eefc90500e4593006ec"
   }, {
     "url": "resources/cn-mk.json",
-    "revision": "4f782e9c50542709840b15cd7341bead"
+    "revision": "f6ade8959878861e6cc4c0c8bc7fcb60"
   }, {
     "url": "resources/cn-mt.json",
     "revision": "9fe33221a43d5a092483d20ef9245723"
