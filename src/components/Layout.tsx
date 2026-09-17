@@ -1,4 +1,11 @@
-import { Box, Container, HStack, Separator, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Container,
+  HStack,
+  VStack,
+  Separator,
+  Text,
+} from '@chakra-ui/react'
 import BookNav from './BookNav'
 import { useT } from '@/features/settings/settingsSlice'
 import { useEffect, useState } from 'react'
@@ -56,27 +63,41 @@ const Layout: React.FC<LayoutProps> = ({
         >
           <Text>
             {useT([
-              `© 2025 新约圣经梁家铿译本 WebApp v${version}`,
-              `© 2025 新約聖經梁家鏗譯本 WebApp v${version}`,
+              // `© 2025 新约圣经梁家铿译本 WebApp v${version}`,
+              `《新约圣经·梁家铿译本（注释本）》@ 2026年第二版`,
+              // `© 2025 新約聖經梁家鏗譯本 WebApp v${version}`,
+              `《新約聖經·梁家鏗譯本（註釋本）》@ 2026年第二版`,
+            ])}
+          </Text>
+          <Text>
+            {useT([
+              `版权梁家铿所有，经授权使用。`,
+              `版權梁家鏗所有，經授權使用。`,
             ])}
           </Text>
         </Box>
 
-        <HStack
+        <VStack
           {...{
-            maxContentDown: { display: 'flex', padding: '1rem' }, // maxContent是自己定义的，在provider.tsx中
+            maxContentDown: { padding: '1rem' }, // maxContent是自己定义的，在provider.tsx中
             maxContent: { display: 'none' },
           }}
         >
-          <Separator flex="1" />
           <Text flexShrink="0">
             {useT([
-              `© 2025 新约圣经梁家铿译本 WebApp v${version}`,
-              `© 2025 新約聖經梁家鏗譯本 WebApp v${version}`,
+              // `© 2025 新约圣经梁家铿译本 WebApp v${version}`,
+              `《新约圣经·梁家铿译本（注释本）》@ 2026年第二版`,
+              // `© 2025 新約聖經梁家鏗譯本 WebApp v${version}`,
+              `《新約聖經·梁家鏗譯本（註釋本）》@ 2026年第二版`,
             ])}
           </Text>
-          <Separator flex="1" />
-        </HStack>
+          <Text flexShrink="0">
+            {useT([
+              `版权梁家铿所有，经授权使用。`,
+              `版權梁家鏗所有，經授權使用。`,
+            ])}
+          </Text>
+        </VStack>
       </Container>
     </>
   )
