@@ -151,10 +151,10 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "c3b8643b28a7cbe9abb1788cac6a6edc"
   }, {
     "url": "resources/cn-author-bio.json",
-    "revision": "1898d6370b25b9eb1426d7c34f9b7636"
+    "revision": "20de7d673ec90c65f0ae58f1cc274bed"
   }, {
     "url": "resources/cn-bibliography.json",
-    "revision": "963775d7dc6eeeae0cf4ea73eb1d0607"
+    "revision": "142280f31aa929c1a1bfbf14191428b6"
   }, {
     "url": "resources/cn-col.json",
     "revision": "1c2971e58ed6fb4a32549be5253dad33"
@@ -175,13 +175,13 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "2a63ba96ffed8a849bfb05a77d16b41b"
   }, {
     "url": "resources/cn-joh.json",
-    "revision": "aebecac6d6fda48fffedf539b7d98917"
+    "revision": "0960fddbd1467df47039713f5ec57512"
   }, {
     "url": "resources/cn-jud.json",
     "revision": "08a432a1a4ee3dac6743fb20878fe176"
   }, {
     "url": "resources/cn-lk.json",
-    "revision": "e6f74466363dca16105defffed408365"
+    "revision": "06d63c4b8b7cc435e504d8c0c20250a2"
   }, {
     "url": "resources/cn-mk.json",
     "revision": "d01ebf3d555cb2df206e046acaa379a1"
@@ -244,7 +244,7 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "a74ab7eb9a31727958ead729e5d11de3"
   }, {
     "url": "resources/tw-author-bio.json",
-    "revision": "02a9d68a8c811f9463fb635c54727b56"
+    "revision": "34275fca533bc6956aa59662f6e12790"
   }, {
     "url": "resources/tw-bibliography.json",
     "revision": "de08a669ea4e2f2dd8393a49a0bd16b6"
@@ -268,19 +268,19 @@ define(['./workbox-1a24de20'], (function (workbox) { 'use strict';
     "revision": "0abd3b45ade50803104666f7ec6a9b0f"
   }, {
     "url": "resources/tw-joh.json",
-    "revision": "9e9964d791d451922a5d7a8cd177f1cb"
+    "revision": "474fae3277d2a5090bb900f9657cee06"
   }, {
     "url": "resources/tw-jud.json",
     "revision": "ae5fffd3878375a7bf36043b5a98c461"
   }, {
     "url": "resources/tw-lk.json",
-    "revision": "37e257bebc0edf323ef89225eb584640"
+    "revision": "d28456c48a57c932ac1b7482b581ef12"
   }, {
     "url": "resources/tw-mk.json",
     "revision": "83a347e9537702bc5decf41c5df0750e"
   }, {
     "url": "resources/tw-mt.json",
-    "revision": "fd567eb6c679b63f0245b5b71f1267b6"
+    "revision": "20b6ba3ee111383e93fc2562451ec554"
   }, {
     "url": "resources/tw-phi.json",
     "revision": "14c79e8ecca0c16f52acc85b64c517e7"
